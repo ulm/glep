@@ -3,7 +3,7 @@ Title: New "keyword" system to incorporate various userlands/kernels/archs
 Version: $Revision$
 Last-Modified: $Date$
 Author: Grant Goodyear <g2boojum@gentoo.org>
-Status: Draft
+Status: Informational
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 6-Mar-2004
