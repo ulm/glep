@@ -81,12 +81,12 @@ implicitly, the following parameters: ARCH, USERLAND, LIBC, and KERNEL.
 
     ARCH: 
         x86, amd64, cobalt, mips64, arm, hppa, ia64, ppc64, sparc
+    KERNEL: 
+        linux, selinux, openbsd, freebsd, netbsd, macosx
     USERLAND: 
         gnu, bsd
     LIBC: 
         glibc, openbsd, freebsd, netbsd, macosx
-    KERNEL: 
-        linux, selinux, openbsd, freebsd, netbsd, macosx
 
 (The above examples are not meant to be complete.  Hurd, for example
 is not included because I know very little about Hurd.)
