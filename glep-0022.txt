@@ -128,7 +128,7 @@ Profiles
 
 Along with an explosion of keywords comes a concomitant explosion of potential
 profiles.  Just as in the current system, the profile name would be
-"DESCRIPTION-KEYWORD-VERSION" (such as "default-s390-2004.1").  One drawback
+"FLAVOR-KEYWORD-VERSION" (such as "default-s390-2004.1").  One drawback
 to having a large number of profiles is that maintainance becomes a
 significant problem.  In fact, one could reasonably argue that the current
 number of profiles is already too many to be easily maintained.  One proposal
