@@ -3,10 +3,11 @@ Title: Extending metadata.xml
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Heinrich Wendel <sysop@heinospage.de>,
-Status: Draft
+Status: deferred
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 02-Jul-2003
+Post-History: 02-Jul-2003, 11-Nov-2004
 
 
 Abstract
@@ -16,6 +17,12 @@ As the latest development in Gentoo and Portage added the metadata.xml file
 to each package, which provides information about the package and it's
 maintainers, this GLEP proposes to extend this format in order to simplify
 the .ebuild format.
+
+
+Status
+======
+
+Timed out
 
 
 Motivation
