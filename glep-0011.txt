@@ -3,8 +3,9 @@ Title: Web Application Installation
 Version: $Revision$
 Last-Modified: $Date$
 Author: Troy Dack <tad@gentoo.org>
+Author: Stuart Herbert <stuart@gentoo.org>
 Discussions-To: gentoo-dev@gentoo.org
-Status: Draft
+Status: Accepted
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 02-August-2003
