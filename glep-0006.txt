@@ -3,7 +3,7 @@ Title: Gentoo Linux monthly bug day
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Brian Jackson <iggy@gentoo.org>
-Status: Accepted
+Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 02-Jul-2003

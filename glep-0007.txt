@@ -3,7 +3,7 @@ Title: New ombudsman position
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Grant Goodyear <g2boojum@gentoo.org>
-Status: Accepted
+Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 6-Jul-2003, 28-Jul-2003
