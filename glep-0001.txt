@@ -2,7 +2,7 @@ GLEP: 1
 Title: GLEP Purpose and Guidelines
 Version: $Revision$
 Last-Modified: $Date$
-Author: Grant Goodyear
+Author: Grant Goodyear <g2boojum@gentoo.org>
 Status: Draft
 Type: Informational
 Content-Type: text/x-rst
