@@ -7,7 +7,7 @@ Status: Approved
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 30 Sep 2003
-Post-History: 30-Sep-2003
+Post-History: 30-Sep-2003, 25-Oct-2004
 
 
 Abstract
@@ -16,6 +16,11 @@ Abstract
 There is currently no central repository for scripts that are useful
 in administering a Gentoo system. This GLEP proposes a way to deal
 with this issue.
+
+Status Update
+=============
+
+Expect the first alpha release by the end of November or so.
 
 Motivation
 ==========
