@@ -3,7 +3,7 @@ Title: Gentoo Package Update System
 Version: $Revision$
 Last-Modified: $Date$
 Author:	John J. Whitney <jjw@linuxmail.org>
-Status: Draft
+Status: deferred
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 19-Jul-2003
