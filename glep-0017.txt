@@ -3,7 +3,7 @@ Title: Resolution for Aging EBuilds
 Version: $Revision$
 Last-Modified: $Date$
 Author: Caleb Tennis <caleb@gentoo.org>
-Status: Draft
+Status: deferred
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 21-Nov-2003
@@ -17,6 +17,12 @@ Many of the ebuild scripts found within Gentoo's Portage have come as a direct
 result of user submission via Gentoo's Bugzilla interface.  However, a large number
 of open ebuild requests remain in Bugzilla.  This GLEP attempts to resolve these
 requests.
+
+Status
+======
+
+Timed out
+
 
 Motivation
 ==========

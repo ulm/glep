@@ -3,17 +3,23 @@ Title: Distfile Patching Support
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Brian Harring <ferringb@gentoo.org>
-Status: Draft
+Status: deferred
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 6-Mar-2004
-Post-History: 4-Apr-2004
+Post-History: 4-Apr-2004, 11-Nov-2004
 
 Abstract
 ========
 
 The intention of this GLEP is to propose the creation of patching support for
 portage, and iron out the implementation details.
+
+Status
+======
+
+Timed out
+
 
 Motivation
 ==========

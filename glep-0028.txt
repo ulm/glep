@@ -3,8 +3,8 @@ Title: "Expiration" of inactive GLEPs
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Grant Goodyear <g2boojum@gentoo.org>
-Status: Informational
-Type: Standards Track
+Status: Approved
+Type: Informational
 Content-Type: text/x-rst
 Created: 2-Jun-2004
 Post-History: 2-Jun-2004, 20-Jul-2004
