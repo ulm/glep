@@ -1,6 +1,6 @@
 GLEP: 9
 Title: Gentoo Package Update System
-Version: $Version: $
+Version: $Revision$
 Last-Modified: $Date$
 Author:	John J. Whitney <jjw@linuxmail.org>
 Status: Draft
