@@ -3,11 +3,19 @@ Title: "Planet Gentoo" web log aggregator
 Version: $Revision$
 Last-Modified: $Date$
 Author: Daniel Drake <dsd@gentoo.org>
-Status: Draft
+Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 24-Oct-2004
-Post-History: 25-Oct-2004, 10-Nov-2004
+Post-History: 25-Oct-2004, 10-Nov-2004, 11-Mar-2005
+
+Status
+======
+
+The new `Planet Gentoo`_ came online 10-Mar-2005, so this GLEP is now Final.
+
+.. _Planet Gentoo: http://planet.gentoo.org/
+
 
 Credits
 =======
