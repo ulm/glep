@@ -1,5 +1,5 @@
-GLEP: 18
-Title: Gentoo Bimonthly Publication
+GLEP: 19
+Title: Gentoo Stable Portage Tree 
 Version: $Revision$
 Last-Modified: $Date$
 Author: Kurt Lieber <klieber@gentoo.org> 
