@@ -6,8 +6,8 @@ Author: Grant Goodyear <g2boojum@gentoo.org>
 Status: Draft
 Type: Informational
 Content-Type: text/x-rst
-Created: 31 May 2003
-Post-History: 
+Created: 31-May-2003
+Post-History: 1-Jun-2003
 
 
 Credits
