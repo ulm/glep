@@ -1,4 +1,4 @@
-GLEP: 0000
+GLEP: 29
 Title: USE flag groups
 Version: $Revision$
 Author: Ciaran McCreesh <ciaranm@gentoo.org>
@@ -7,6 +7,7 @@ Status: Draft
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 19-August-2004
+Post-Date: 21-August-2004
 
 BIG FAT DISCLAIMER: EARLY DRAFT, SEND COMMENTS TO ciaranm. EVERYTHING IN
 HERE IS OPEN TO DISCUSSION. THE WRITING STYLE SUCKS. MAY CAUSE CANCER IN
