@@ -3,11 +3,11 @@ Title: Portage handling of ACCEPT_LICENSE
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Jason Stubbs <jstubbs@gentoo.org>,
-Status: Draft
+Status: Accepted
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 9-Mar-2004
-Post-History: 8-Mar-2004 10-Mar-2004
+Post-History: 8-Mar-2004 10-Mar-2004 25-Oct-2004
 
 
 Abstract
@@ -17,6 +17,11 @@ Currently, every ebuild in the portage tree is required to have a valid
 LICENSE entry.  However, the syntax of this entry is not officially 
 defined and the entry itself is only used when outputting package 
 details.
+
+Status Update
+=============
+
+Repoman has been updated to check for the LICENSE syntax.
  
 
 Motivation
