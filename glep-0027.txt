@@ -1,5 +1,5 @@
 GLEP: 27
-Title: Portage User Management
+Title: Portage Management of UIDs/GIDs
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Mike Frysinger <vapier@gentoo.org>
