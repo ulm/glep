@@ -1,4 +1,4 @@
-GLEP: 6
+GLEP: 5
 Title: Extending metadata.xml
 Version: $Revision$
 Last-Modified: $Date$
