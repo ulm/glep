@@ -7,8 +7,13 @@ Status: Draft
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 29 May 2004
-Post-History: 29-May-2004
+Post-History: 29-May-2004, 20-Jul-2004
 
+
+Status
+======
+
+This GLEP was approved as-is on 14-Jun-2004.
 
 Abstract
 ========
