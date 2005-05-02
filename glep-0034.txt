@@ -3,11 +3,11 @@ Title: Per-Category metadata.xml Files
 Version: $Revision$
 Author: Ciaran McCreesh <ciaranm@gentoo.org>
 Last-Modified: $Date$
-Status: Accepted
+Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 11-March-2005
-Post-Date: 11-March-2005, 13-March-2005
+Post-Date: 11-March-2005, 13-March-2005, 2-May-2005
 
 Abstract
 ========
