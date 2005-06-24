@@ -7,7 +7,12 @@ Status: Draft
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 19-August-2004
-Post-Date: 21-August-2004, 18-October-2004, 25-October-2004
+Post-Date: 21-August-2004, 18-October-2004, 25-October-2004, 24-July-2005
+
+Status
+======
+
+Withdrawn by request of the author.
 
 Abstract
 ========
