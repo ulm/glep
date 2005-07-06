@@ -5,7 +5,7 @@ Last-Modified: $Date$
 Author:	Christian Hartmann <christian.hartmann at email.de>,
 	Wernfried Haas <w.haas at xover.htu.tuwien.ac.at>,
 	Tom Knight <tomk at gentoo.org>.
-Status: Draft
+Status: Accepted
 Type: Informational
 Content-Type: text/x-rst
 Created: 06-May-2005
