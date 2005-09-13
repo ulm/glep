@@ -134,7 +134,7 @@ Reference Implementation
 - `Staff quiz`_
 - `Thread on gentoo-dev`_
 
-..  _Moderators handbook/FAQ: http://curtis119.no-ip.org/forum-guide.xml
+..  _Moderators handbook/FAQ: http://www.gentoo.org/proj/en/forums/forum-guide.xml
 ..  _Becoming a developer: http://www.gentoo.org/proj/en/devrel/handbook/handbook.xml?part=1&chap=2
 ..  _Staff quiz: http://www.gentoo.org/proj/en/devrel/quiz/staff-quiz.txt
 ..  _Thread on gentoo-dev: http://thread.gmane.org/gmane.linux.gentoo.devel/28985
