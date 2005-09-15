@@ -3,12 +3,16 @@ Title: Eclass Restructure/Redesign
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Brian Harring <ferringb@gentoo.org>, John Mylchreest <johnm@gentoo.org>
-Status: Draft
+Status: Approved
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 29-Jan-2005
-Post-History: 29-Jan-2005 6-Mar-2005
+Post-History: 29-Jan-2005 6-Mar-2005 15-Sep-2005
 
+Status
+======
+
+Approved by the Gentoo Council on 15 September 2005.
 
 Abstract
 ========

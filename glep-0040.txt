@@ -3,11 +3,16 @@ Title: Standardizing "arch" keywording across all archs.
 Version: $Revision$
 Last-Modified: $Date$
 Author: Grant Goodyear <g2boojum@gentoo.org>
-Status: Draft
+Status: Approved
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 3-Sep-2005
-Post-History: 6-Sep-2005
+Post-History: 6-Sep-2005 15-Sep-2005
+
+Status
+======
+
+Approved by the Gentoo Council on 15 September 2005.
 
 Credits
 =======
