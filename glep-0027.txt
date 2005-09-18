@@ -3,7 +3,7 @@ Title: Portage Management of UIDs/GIDs
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Mike Frysinger <vapier@gentoo.org>
-Status: Draft
+Status: Approved
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 29 May 2004
