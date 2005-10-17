@@ -5,11 +5,11 @@ Last-Modified: $Date$
 Author:	Christian Hartmann <christian.hartmann at email.de>,
 	Wernfried Haas <w.haas at xover.htu.tuwien.ac.at>,
 	Tom Knight <tomk at gentoo.org>.
-Status: Accepted
+Status: Final
 Type: Informational
 Content-Type: text/x-rst
 Created: 06-May-2005
-Post-History: 17-Jun-2005, 28-Jun-2005
+Post-History: 17-Jun-2005, 28-Jun-2005, 17-Oct-2005
 
 
 Abstract
