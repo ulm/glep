@@ -111,5 +111,5 @@ Copyright
 
 This document has been placed in the public domain.
 
- vim: set tw=74 fileencoding=utf-8 :
+.. vim: set tw=74 fileencoding=utf-8 :
 
