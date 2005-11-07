@@ -38,7 +38,7 @@ An adequate solution must meet all of the following requirements:
 
 Preemptive
     Users should be told of changes *before* they break the user's system,
-    after the damage has already been done.
+    not after the damage has already been done.
 
 No user subscription required
     It has already been demonstrated [#forums-whining]_ that many users do not
@@ -202,7 +202,7 @@ text.
 
 The text body should be wrapped at 72 characters. No fancy formatting or tab
 characters should be used -- the news item may be being displayed directly to a
-terminal. Paragraphs should be separated by two blank lines.
+terminal. Paragraphs should be separated by a blank line.
 
 Hyperlinks may be used to refer to further information (for example, an upgrade
 guide). However, the main body of the news item should be descriptive and not
