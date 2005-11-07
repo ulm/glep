@@ -6,8 +6,8 @@ Last-Modified: $Date$
 Status: Approved
 Type: Standards Track
 Content-Type: text/x-rst
-Created: 27-October-2004
-Post-Date: 28-October-2004, 1-November-2004, 11-November-2004
+Created: 27-Oct-2004
+Post-History: 28-Oct-2004, 1-Nov-2004, 11-Nov-2004
 
 Abstract
 ========

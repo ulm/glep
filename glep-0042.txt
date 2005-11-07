@@ -6,8 +6,8 @@ Last-Modified: $Date$
 Status: Draft
 Type: Standards Track
 Content-Type: text/x-rst
-Created: 31-October-2005
-Post-Date: 1-November-2005, 5-November-2005
+Created: 31-Oct-2005
+Post-History: 1-Nov-2005, 5-Nov-2005
 
 Abstract
 ========
