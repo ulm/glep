@@ -15,6 +15,12 @@ Abstract
 This GLEP proposes the creation of a reliable hosting location for data (e.g.
 sample code) associated with GLEPs.
 
+Status
+======
+
+This GLEP has been approved by the GLEP editor and marked Final on
+13 Nov. 2005.
+
 Motivation
 ==========
 
