@@ -2,8 +2,8 @@ GLEP: 41
 Title: Making Arch Testers official Gentoo Staff
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Simon Stelling <blubb@gentoo.org>,
-Status: Rejected
+Author:	Simon Stelling <blubb@gentoo.org>, Homer Parker <hparker@gentoo.org>
+Status: Accepted
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 7-Sep-2005
