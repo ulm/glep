@@ -71,7 +71,7 @@ However theses entries will be stored in the existing Manifest files.
 
 An `actual example`__ for a (pure) Manifest2 file..
 
-.. __: glep-0044-extras/manifest2-example
+.. __: glep-0044-extras/manifest2-example.txt
 
 
 Compability Entries
