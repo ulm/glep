@@ -172,7 +172,7 @@ variables on the right hand side of the arrow::
     *-*-solaris*     -> KERNEL="Solaris" ELIBC="Solaris"
 
 A way to achieve this is proposed by Mike Frysinger, which
-suggests to have a env-map file, for instance filled with::
+suggests to have an env-map file, for instance filled with::
 
     % cat env-map
     *-linux-* KERNEL=linux
