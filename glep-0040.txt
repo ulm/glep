@@ -3,16 +3,17 @@ Title: Standardizing "arch" keywording across all archs.
 Version: $Revision$
 Last-Modified: $Date$
 Author: Grant Goodyear <g2boojum@gentoo.org>
-Status: Approved
+Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 3-Sep-2005
-Post-History: 6-Sep-2005 15-Sep-2005
+Post-History: 6-Sep-2005 15-Sep-2005 3-Sep-2006
 
 Status
 ======
 
-Approved by the Gentoo Council on 15 September 2005.
+Approved by the Gentoo Council on 15 September 2005.  As of 20060903
+we have a robust x86 arch team, so this GLEP is final
 
 Credits
 =======
