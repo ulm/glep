@@ -3,11 +3,19 @@ Title: Supporting alternative package managers
 Version: $Revision$
 Last-Modified: $Date$
 Author: Grant Goodyear <g2boojum@gentoo.org>
-Status: Draft
+Status: Rejected
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 22-May-2006
-Post-History: 15-Jun-2006
+Post-History: 15-Jun-2006, 6-Sep-2006
+
+Status
+======
+
+The council rejected this GLEP in favor of starting from a package manager
+API and requiring Gentoo package managers in the tree to support that
+API.  (That API is still pending, however.)
+
 
 Abstract
 ========
