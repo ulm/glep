@@ -1,7 +1,9 @@
 GLEP: 42
 Title: Critical News Reporting
 Version: $Revision$
-Author: Ciaran McCreesh <ciaranm@gentoo.org>
+Author: Ciaran McCreesh <ciaranm@gentoo.org>,
+        Stephen Bennett <spb@gentoo.org>,
+        Zach Medico <zmedico@gentoo.org>
 Last-Modified: $Date$
 Status: Draft
 Type: Standards Track

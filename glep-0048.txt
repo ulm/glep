@@ -3,7 +3,7 @@ Title: QA Team's Role and Purpose
 Version: $Revision$
 Last-Modified: $Date$
 Author: Mark Loeser <halcy0n@gentoo.org>,
-Status: Draft
+Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 24 April 2006
