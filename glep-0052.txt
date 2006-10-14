@@ -69,7 +69,10 @@ introduce it without.
 Reference Implementation
 ========================
 
-TODO
+A `patch against portage-2.1.2_pre2-r6`__ is available with this document.
+
+.. __: glep-0052-extras/portage-2.1.2_pre2-r6-interactive-restrict.diff.txt
+
 
 Credits
 =======
