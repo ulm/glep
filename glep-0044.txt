@@ -3,7 +3,7 @@ Title: Manifest2 format
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Marius Mauch <genone@gentoo.org>,
-Status: Final
+Status: Accepted
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 04-Dec-2005
