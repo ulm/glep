@@ -3,11 +3,11 @@ Title: Gentoo Knowledge Base
 Version: $Revision$
 Last-Modified: $Date$
 Author: Sven Vermeulen <swift@gentoo.org>,
-Status: Draft
+Status: Withdrawn
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 30-May-2006
-Post-History: 16-Aug-2006
+Post-History: 26-Mar-2007
 
 
 Abstract
