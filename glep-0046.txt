@@ -3,7 +3,7 @@ Title: Allow upstream tags in metadata.xml
 Version: $Revision$
 Last-Modified: $Date$
 Author: Marcelo Goes <vanquirius@gentoo.org>, Ciaran McCreesh <ciaranm@gentoo.org>
-Status: Draft
+Status: Deferred
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 26-Dec-2005

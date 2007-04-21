@@ -3,7 +3,7 @@ Title: Automated consistency check for ebuilds
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Adrian Lambeck <adrian@basicsedv.de>,
-Status: Draft
+Status: Deferred
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 12-Mar-2005
