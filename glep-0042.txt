@@ -5,7 +5,7 @@ Author: Ciaran McCreesh <ciaranm@gentoo.org>,
         Stephen Bennett <spb@gentoo.org>,
         Zach Medico <zmedico@gentoo.org>
 Last-Modified: $Date$
-Status: Draft
+Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 31-Oct-2005
