@@ -3,11 +3,11 @@ Title: Making Arch Testers official Gentoo Staff
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Simon Stelling <blubb@gentoo.org>, Homer Parker <hparker@gentoo.org>
-Status: Rejected
+Status: Approved
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 7-Sep-2005
-Post-History: 15-Sep-2005, 13-Nov-2005
+Post-History: 15-Sep-2005, 13-Nov-2005, 17-Aug-2007
 
 Abstract
 ========
