@@ -14,8 +14,10 @@ Post-History: 6-Mar-2004, 3-Sep-2006
 Status
 ======
 
-Taken over by antarus.
-
+Abandoned. Package set support has been added in portage-2.2, but it 
+doesn't match the description in this document in many cases, and the
+document has several major gaps regarding the behavior and restrictions 
+of package sets.
 
 Abstract
 ========
