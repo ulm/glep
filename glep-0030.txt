@@ -165,7 +165,7 @@ References
 
 .. _Planetplanet: http://www.planetplanet.org
 
-.. _Wordpress: http://packages.gentoo.org/search/?sstring=wordpress
+.. _Wordpress: http://packages.gentoo.org/package/wordpress
 
 .. _gentoo-dev discussion: http://thread.gmane.org/gmane.linux.gentoo.devel/20480
 
