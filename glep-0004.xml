@@ -1,16 +1,19 @@
 <?xml version='1.0' encoding="UTF-8"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
 
-<guide link="/doc/en/management-structure.xml">
+<guide link="/proj/en/glep/glep-0004.xml">
 
+<title>Gentoo top-level management structure proposal</title>
 <author title = "Author">
 <mail link = "drobbins@gentoo.org">Daniel Robbins</mail></author>
 <author title = "Editor">
 <mail link = "klieber@gentoo.org">Kurt Lieber</mail></author>
 
+<abstract>Gentoo top-level management structure proposal</abstract>
 <version>1.0</version>
 <date>24 Jun 2003</date>
-<abstract>Gentoo top-level management structure proposal, DRAFT</abstract>
 
   <chapter>
 		<title>GLEP Accepted and Superceded</title>
@@ -54,7 +57,7 @@
 					</tr>
 					<tr>
 						<ti><b>Status:</b></ti>
-						<ti>Final</ti>
+						<ti>Moribound</ti>
 					</tr>
 					<tr>
 						<ti><b>Content-Type:</b></ti>
@@ -420,8 +423,7 @@ defined in time. We are starting with the top levels first, then recursing
 downwards.
 </p>
 
-
-<pre>
+<pre caption="Management heiarchy">
 	gentoo-linux:
 		Gentoo Linux
 		strategic manager: drobbins, seemant
