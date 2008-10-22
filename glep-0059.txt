@@ -134,10 +134,10 @@ References
   Report 2004/204. Available online from:
   http://eprint.iacr.org/2004/207.pdf
 
-[J04] Joux, Antoie. (2004). "Multicollisions in Iterated Hash Functions
-  - Application to Cascaded Constructions;" Proceedings of CRYPTO 2004,
-  Franklin, M. (Ed); Lecture Notes in Computer Science 3152, pp. 
-  306-316. Available online from:
+[J04] Joux, Antoie. (2004).  "Multicollisions in Iterated Hash 
+  Functions - Application to Cascaded Constructions;" Proceedings of
+  CRYPTO 2004, Franklin, M. (Ed); Lecture Notes in Computer Science
+  3152, pp.  306-316. Available online from:
   http://web.cecs.pdx.edu/~teshrim/spring06/papers/general-attacks/multi-joux.pdf
 
 [K06a] Klima, V. (2006). "Tunnels in Hash Functions: MD5 Collisions

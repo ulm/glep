@@ -93,7 +93,7 @@ MISC
 New filetypes:
 --------------
 _INFO (new, abstract)
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 - This is the functionality of the old AUX, but does not include the
   implicit 'files/' prefix in the path, and is verified relative to the
   working directory instead of $FILESDIR.
@@ -101,7 +101,7 @@ _INFO (new, abstract)
   is not an error unless the package manager is attempting to be strict.
 
 _CRIT (new, abstract)
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 - _CRIT is based off the _INFO type.
 - The modification or absence of a file listed as a _CRIT-derived type 
   must be treated as an error.
