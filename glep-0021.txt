@@ -4,7 +4,7 @@ Version: $Revision$
 Last-Modified: $Date$
 Author:	Tal Peer <coredumb@gentoo.org>,
         Alec Warner <antarus@gentoo.org>
-Status: Deferred
+Status: Final
 Type: Standards Track
 Discussed-To: gentoo-portage-dev@lists.gentoo.org
 Content-Type: text/x-rst
