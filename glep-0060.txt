@@ -8,9 +8,9 @@ Type: Standards Track
 Content-Type: text/x-rst
 Requires: 44
 Created: November 2007
-Updated: June 2008, July 2008, October 2008
+Updated: June 2008, July 2008, October 2008, January 2010
 Updates: 44
-Post-History:
+Post-History: December 2009
 
 Abstract
 ========
