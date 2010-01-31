@@ -27,6 +27,10 @@ tree, but is only tangentially related to the actual signing of
 Manifests. Checksums present one possible weak point in the overall
 security of the tree - and a comprehensive security plan is needed.
 
+This GLEP is not mandatory for the tree-signing specification, but
+instead aims to improve the security of the hashes used in Manifest2.
+As such, it is also able to stand on it's own.
+
 Specification
 =============
 The bad news
