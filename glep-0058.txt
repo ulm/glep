@@ -304,6 +304,8 @@ References
 [C08b] Cappos, J et al. (2008). "Attacks on Package Managers"
     Available online at:
     http://www.cs.arizona.edu/people/justin/packagemanagersecurity/
+[#GLEPxx+2] Future GLEP on Developer Process security.
+[#GLEPxx+3] Future GLEP on GnuPG Policies and Handling.
 
 =========
 Copyright
