@@ -3,7 +3,7 @@ Title: Eclass Restructure/Redesign
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Brian Harring <ferringb@gentoo.org>, John Mylchreest <johnm@gentoo.org>
-Status: Moribound
+Status: Moribund
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 29-Jan-2005
