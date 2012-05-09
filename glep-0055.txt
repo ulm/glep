@@ -3,7 +3,7 @@ Title: Use EAPI-suffixed ebuilds (.ebuild-EAPI)
 Version: $Revision$
 Last-Modified: $Date$
 Author: Piotr Jaroszyński <peper@gentoo.org>
-Status: Draft
+Status: Rejected
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 17-Dec-2007
@@ -14,6 +14,13 @@ Post-History: 17-Dec-2007, 22-Dec-2007, 17-May-2009
   sobers us again."
 
   -- Alexander Pope, An Essay on Criticism
+
+Status
+======
+
+This GLEP was voted down by the Council in its meeting on 2010-08-23.
+The Council rejected it again in its meeting on 2012-05-08, in favour
+of parsing the EAPI from the bash assignment statement in ebuilds.
 
 Abstract
 ========
