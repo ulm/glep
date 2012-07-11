@@ -1,4 +1,4 @@
-GLEP: XXX
+GLEP: 62
 Title: Optional runtime dependencies via runtime-switchable USE flags
 Version: $Revision$
 Last-Modified: $Date$
@@ -7,7 +7,7 @@ Status: Draft
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 17 Jun 2012
-Post-History: 17 Jun 2012
+Post-History: 11 Jul 2012
 
 
 Abstract
