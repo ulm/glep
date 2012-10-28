@@ -3,7 +3,7 @@
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
 
-<guide link="/proj/en/glep/glep-0004.xml">
+<guide>
 
 <title>Gentoo top-level management structure proposal</title>
 <author title = "Author">
