@@ -31,16 +31,16 @@ documenting the design decisions that have gone into Gentoo Linux.  The GLEP
 author is responsible for building consensus within the community and
 documenting dissenting opinions.
 
-Because the GLEPs are maintained as text files under CVS control, their
-revision history is the historical record of the feature proposal
-[#CVS]_.
+Because the GLEPs are maintained as Wiki pages, their edit history is
+publicly viewable. For the older GLEPs which started out in CVS, their
+revision history is the historical record of the feature proposal [#CVS]_.
 
 
 Kinds of GLEPs
 ==============
 
 There are two kinds of GLEPs.  A Standards Track GLEP describes a new feature
-or implementation for Gentoo Linux.  An Informational GLEP describes provides
+or implementation for Gentoo Linux.  An Informational GLEP provides
 general guidelines or information to the Gentoo Linux community, but does not
 propose a new feature.  Informational GLEPs do not necessarily represent a
 Gentoo Linux community consensus or recommendation, so users and implementors
@@ -50,8 +50,7 @@ are free to ignore Informational GLEPs or follow their advice.
 GLEP Work Flow
 ==============
 
-The GLEP editors assign GLEP numbers and change their status.  The current
-GLEP editors are Grant Goodyear and Alastair Tse.  Please send all
+The GLEP editors assign GLEP numbers and change their status. Please send all
 GLEP-related email to <glep@gentoo.org>.
 
 The GLEP process begins with a new idea for Gentoo Linux.  It is highly
@@ -68,27 +67,31 @@ GLEP-able.  Small enhancements or patches often don't need a GLEP and can be
 injected into the Gentoo Linux development work flow with an enhancement "bug"
 submitted to the Gentoo Linux bugzilla [#BUGS]_.
 
-The GLEP champion then emails the GLEP editors <glep@gentoo.org> with a
-proposed title and a rough, but fleshed out, draft of the GLEP.  This draft
-must be written in GLEP style as described below.
+The GLEP champion then files a bug on Bugzilla in the GLEP product, under
+the "New GLEP submissions" component of the "Doc Other" product with
+a proposed title and a rough, but fleshed out, draft of the GLEP.  This
+draft must be written in GLEP style as described below and in GLEP 2.
 
-If the GLEP editor accepts the GLEP, he will assign the GLEP a number, label
+If the GLEP editors accept the GLEP, they will assign the GLEP a number, label
 it as Standards Track (a better name would be nice here -- suggestions?) or
 Informational, give it status "Draft", and create and check-in the initial
-draft of the GLEP.  The GLEP editors will not unreasonably deny a GLEP.
-Reasons for denying GLEP status include duplication of effort, being
-technically unsound, not providing proper motivation or addressing backwards
-compatibility, or not in keeping with Gentoo Linux philosophy.  
+draft of the GLEP on the Wiki in the GLEP namespace.  The GLEP editors will
+not unreasonably deny a GLEP. Reasons for denying GLEP status include
+duplication of effort, being technically unsound, not providing proper
+motivation or addressing backwards compatibility, or not in keeping with
+Gentoo Linux philosophy.
 
 If a pre-GLEP is rejected, the author may elect to take the pre-GLEP to the
-gentoo-dev@gentoo.org mailing list to help flesh it out, gain feedback and
-consensus from the community at large, and improve the GLEP for re-submission.
+gentoo-dev@gentoo.org mailing list (for technical GLEPs) or
+the gentoo-project@gentoo.org mailing list (for non-technical GLEPs) to help
+flesh it out, gain feedback and consensus from the community at large,
+and improve the GLEP for re-submission.
 
-The author of the GLEP is then responsible for posting the GLEP to the
-gentoo-dev mailing list (and additionally to the Gentoo Linux forums [#FORUMS]_
-if they so desire), and marshaling community support for it.  As updates are
-necessary, the GLEP author may check in new versions directly, or forward to
-a Gentoo developer with commit access.
+The author of the GLEP is then responsible for posting the GLEP to
+the gentoo-dev or gentoo-project mailing list (and additionally to
+the Gentoo Linux forums [#FORUMS]_ if they so desire), and marshaling community
+support for it.  As updates are necessary, the GLEP author should request
+changes to the Wiki page from a GLEP editor.
 
 Standards Track GLEPs consist of two parts, a design document and a reference
 implementation.  The GLEP should be reviewed and accepted before a reference
@@ -98,7 +101,7 @@ the form of code, patch, or URL to same -- before it can be considered Final.
 
 GLEP authors are responsible for collecting community feedback on a GLEP
 before submitting it for review.  A GLEP that has not been discussed on
-gentoo-dev@gentoo.org and the Gentoo Linux forums [#FORUMS]_ will not be
+the mailing lists and the Gentoo Linux forums [#FORUMS]_ will not be
 accepted.  However, wherever possible, long open-ended discussions on public
 mailing lists should be avoided.  Strategies to keep the discussions efficient
 include setting up a specific forums thread for the topic, having the GLEP
@@ -106,12 +109,13 @@ author accept private comments in the early design phases, etc.  GLEP authors
 should use their discretion here.
 
 Once the authors have completed a GLEP, they must inform the Gentoo Council
-[#COUNCIL]_ that it is ready for review by way of the gentoo-dev mailing
+[#COUNCIL]_ that it is ready for review by way of the appropriate mailing
 list.  GLEPs are then reviewed at a Council meeting where the may be approved
 or rejected outright, or sent back to the author(s) for revision.  This
 generally should be done a few weeks in advance of the actual review so as to
 avoid the appearance of "slipping" a GLEP in without proper public review
-by the Gentoo developer community.
+by the Gentoo developer community. Any revisions should be added to the GLEP
+bug on Bugzilla.
 
 For a GLEP to be approved it must meet certain minimum criteria.  It must be a
 clear and complete description of the proposed enhancement.  The enhancement
@@ -142,7 +146,7 @@ GLEP work flow is as follows::
     Deferred
 
 Some Informational GLEPs may also have a status of "Active" if they are never
-meant to be completed.  E.g. GLEP 1 (this GLEP).
+meant to be completed, e.g. GLEP 1 (this GLEP).
 
 
 What belongs in a successful GLEP?
@@ -154,6 +158,8 @@ Each GLEP should have the following parts:
    GLEP, including the GLEP number, a short descriptive title (limited
    to a maximum of 44 characters), the names, and optionally the
    contact info for each author, etc.
+
+   Described further below.
 
 2. Abstract -- a short (~200 word) description of the technical issue
    being addressed.
@@ -190,49 +196,44 @@ Each GLEP should have the following parts:
    specification and rationale first and reach consensus on it before writing
    code or significantly modifying ebuilds.
 
-8. Copyright/public domain -- Each GLEP must either be explicitly
-   labelled as placed in the public domain (see this GLEP as an example) or
-   licensed under the Open Publication License [#OPL].
+8. Copyright -- Every new GLEP must be explicitly labelled
+   as licensed under the Creative Commons Attribution-ShareAlike (CC-BY-SA)
+   license, version 3.0 [#CC-BY-SA3.0]_. Older GLEPs in the public domain
+   should be relicensed to CC-BY-SA 3.0 when they are moved to the Wiki.
+   GLEPs released under the Open Publication License (OPL) may remain
+   as-is, but are strongly encouraged to be relicensed under CC-BY-SA
+   3.0 with the consent of all authors.
 
 
 GLEP Formating and Template
 ===========================
 
-GLEPs are written either in Gentoo Linux Guide-XML [#GUIDEXML]_ or in
-a just-barely-marked-up version of plain ASCII text
-called ReStructuredText [#ReSTHOME]_ that is then converted to HTML using
-Docutils [#DOCUTILS]_.  Using ReStructuredText GLEPs allows for rich markup
-that is still quite easy to read, but results in much better-looking and more
-functional HTML.  Moreover, it should be straightforward to convert GLEPs to
-Gentoo Linux guide xml [#GUIDEXML]_ if needed.  GLEP 2 contains a boilerplate
-template [#ReST]_ for use with ReStructuredText GLEPs.
+GLEPs are written in Wiki markup [#wikimarkup]_, which is a markup language
+compatible with MediaWiki.  This format is both human-readable and displays
+well on the Gentoo Wiki.  GLEP 2 contains a boilerplate template [#GLEP2]_
+for use with Wiki markup GLEPs.
 
 
-GLEP Header Preamble
-====================
+GLEP Header
+===========
 
-Each GLEP must begin with an RFC 2822 style header preamble.  The headers
-must appear in the following order.  Headers marked with "*" are
-optional and are described below.  All other headers are required. ::
+Every GLEP has certain attributes associated with it. When a GLEP is sent
+to the mailing lists for discussion, it should begin with an RFC 2822 style
+header preamble.  The headers must appear in the following order.  Headers
+marked with "*" are optional. All other headers are required. ::
 
     GLEP: <glep number>
     Title: <glep title>
-    Version: <cvs version string>
-    Last-Modified: <cvs date string>
     Author: <list of authors' real names and optionally, email addrs>
-  * Discussions-To: <email address>
     Status: <Draft | Active | Accepted | Deferred | Rejected |
              Final | Replaced>
     Type: <Informational | Standards Track>
-  * Content-Type: <text/plain | text/x-rst>
   * Requires: <glep numbers>
-    Created: <date created on, in dd-mmm-yyyy format>
-    Post-History: <dates of postings to gentoo-dev>
   * Replaces: <glep number>
-  * Replaced-By: <glep number>
 
 The Author header lists the names, and optionally the email addresses
-of all the authors/owners of the GLEP.  The format of the Author header
+of all the authors/owners of the GLEP.  Anybody who submits changes to
+the GLEP should be added to this field.The format of the Author header
 value must be
 
     Random J. User <address@dom.ain>
@@ -244,37 +245,22 @@ if the email address is included, and just
 if the address is not given.  
 
 If there are multiple authors, each should be on a separate line
-following RFC 2822 continuation line conventions.  Note that personal
-email addresses in GLEPs will be obscured as a defense against spam
-harvesters.
-
-While a GLEP is in private discussions (usually during the initial Draft
-phase), a Discussions-To header will indicate the mailing list or URL where
-the GLEP is being discussed.  No Discussions-To header is necessary if the
-GLEP is being discussed privately with the author, or on the gentoo-dev
-mailing list.  Note that email addresses in the Discussions-To header will not
-be obscured.
+following RFC 2822 continuation line conventions.
 
 The Type header specifies the type of GLEP: Informational or Standards
 Track.
 
-The format of a GLEP is specified with a Content-Type header, which 
-should read "text/xml" for Gentoo Guide XML or 
-"text/x-rst" for ReStructuredText GLEPs (see GLEP 2
-[#ReST]_).
-
-The Created header records the date that the GLEP was assigned a number, while
-Post-History is used to record the dates of when new versions of the GLEP are
-posted to gentoo-dev.  Both headers should be in dd-mmm-yyyy format, e.g.
-14-Aug-2001.
-
 GLEPs may have a Requires header, indicating the GLEP numbers that this GLEP
 depends on.
 
-GLEPs may also have a Replaced-By header indicating that a GLEP has been
-rendered obsolete by a later document; the value is the number of the GLEP
-that replaces the current document.  The newer GLEP must have a Replaces
-header containing the number of the GLEP that it rendered obsolete.
+A GLEP may have a Replaces header, which indicates that this GLEP supersedes
+a previous one.  This header should contain the number of the GLEP that this
+one renders obsolete.
+
+When the GLEP editor enters the GLEP into the Wiki, they will be automatically
+prompted for the contents of these fields, which will then be associated with
+the GLEP as metadata.  The version of the GLEP stored on the Wiki should
+not contain the RFC 2822 headers as part of the body of the GLEP.
 
 
 Reporting GLEP Bugs, or Submitting GLEP Updates
@@ -283,17 +269,22 @@ Reporting GLEP Bugs, or Submitting GLEP Updates
 How you report a bug, or submit a GLEP update depends on several factors, such
 as the maturity of the GLEP, the preferences of the GLEP author, and the
 nature of your comments.  For the early draft stages of the GLEP, it's
-probably best to send your comments and changes directly to the GLEP author.
-For more mature, or finished GLEPs you may want to submit corrections to the
-Gentoo Linux bugzilla [#BUGS]_ so that your changes don't get lost.  If the GLEP
-author is a Gentoo Linux developer, assign the bug/patch to him, otherwise
-assign it to the GLEP editors.
+probably best to send your comments and changes directly to the GLEP author
+or comment on the GLEP bug. For more mature, or finished GLEPs you may want
+to submit corrections to the Gentoo Linux bugzilla [#BUGS]_ under the "GLEP
+Changes" component of the "Doc Other" product so that your changes don't get
+lost. Be sure to CC the GLEP author on the bug. When in doubt about where
+to send your changes, please check first with the GLEP author and/or GLEP
+editors.
 
-When in doubt about where to send your changes, please check first with the
-GLEP author and/or GLEP editors.
+GLEP authors must have a GLEP editor commit their changes to the Wiki,
+as the GLEP namespace is restricted to GLEP editors in order to protect
+the integrity of the GLEPs.
 
-GLEP authors who are also Gentoo Linux developers can update the GLEPs
-themselves by using "cvs commit" to commit their changes.  
+Any major updates to GLEPs (that is, those that change the content of
+the GLEP rather than just fixing typos or adding small clarifications)
+should be approved by the Gentoo Council before being committed.
+
 
 Transferring GLEP Ownership
 ===========================
@@ -310,9 +301,9 @@ that's not possible, you can always submit a competing GLEP.
 
 If you are interested in assuming ownership of a GLEP, send a message asking
 to take over, addressed to both the original author and the GLEP editors
-<glep@gentoo.org>.  If the original author doesn't respond to email in a
-timely manner, the GLEP editors will make a unilateral decision (it's not like
-such decisions can't be reversed :).
+<glep@gentoo.org>, or comment on the GLEP bug.  If the original author doesn't
+respond to email in a timely manner, the GLEP editors will make a unilateral
+decision (it's not like such decisions can't be reversed :).
 
 
 References and Footnotes
@@ -330,25 +321,22 @@ References and Footnotes
    Linux viewcvs web site at
    http://www.gentoo.org/cgi-bin/viewcvs.cgi/gentoo/xml/htdocs/proj/en/glep/
 
-.. [#ReST] GLEP 2, Sample ReStructuredText GLEP Template, 
-   (http://glep.gentoo.org/glep-0002.html)
-
 .. [#BUGS] http://bugs.gentoo.org
 
 .. [#FORUMS] http://forums.gentoo.org
 
 .. [#COUNCIL] http://www.gentoo.org/proj/en/glep/glep-0039.html
 
-.. [#OPL] http://www.opencontent.org/openpub/
+.. [#CC-BY-SA3.0] http://creativecommons.org/licenses/by-sa/3.0/us/
 
-.. [#ReSTHOME] http://docutils.sourceforge.net/rst.html
+.. [#wikimarkup] http://en.wikipedia.org/wiki/Help:Wiki_markup
 
-.. [#GUIDEXML] http://www.gentoo.org/doc/en/xml-guide.xml
-
-.. [#DOCUTILS] http://docutils.sourceforge.net/
+.. [#GLEP2] http://glep.gentoo.org/glep-0002.html
 
 
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
