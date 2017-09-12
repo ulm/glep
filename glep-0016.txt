@@ -65,7 +65,7 @@ following advantages:
 * follow specified standards
 * i18n support
 * provide the necessary flexibility and modularity 
-* integrate with small changes to our ebuildtree.
+* integrate with small changes to our ebuild tree.
 * support for per system and per user menus
 
 
@@ -97,7 +97,7 @@ This GLEP exists for a long time now, still it is not accepted. I will outline
 the current status:
 
 * KDE 3.2 (x86) supports this specification
-* GNOME 2.6 (~x86) support this specification
+* GNOME 2.6 (~x86) supports this specification
 * domenu[12_] has to be included in portage to be used by the ebuilds to
   install a desktop entry
 * Somebody needs to write patches for the other WM's:
@@ -151,4 +151,6 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
