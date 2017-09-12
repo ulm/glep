@@ -39,7 +39,7 @@ directory, should they exist and be readable.
 
 The finger protocol is mature, secure and widely used in the UNIX community.
 There are clients available for all major operating systems, and web-based
-clients for those that dont.
+clients for those that don't.
 
 Motivation
 ==========
@@ -48,7 +48,7 @@ Gentoo developers are already aware of the importance of User Relations [9]_ .
 
 It is essential to keep the community up to date with current goals, status 
 updates, and information from the development team. Currently it is suggested
-users track mailing lists, monitor the Gentoo bugzilla, developer IRC
+users track mailing lists, monitor the Gentoo Bugzilla, developer IRC
 channels and cvs commits.
 
 While the resources to track developer progress and activity are made
@@ -63,7 +63,7 @@ developers to catch each other on IRC, and making already high-volume mailing
 lists even more cluttered with status updates is not desirable.
 
 A method that would allow individual developers to keep a log of their
-activities and plans that were instantly accesible to anyone who was
+activities and plans that were instantly accessible to anyone who was
 interested would be desirable, I propose running a finger daemon on
 gentoo.org, or dev.gentoo.org and forwarding requests there from gentoo.org.
 
@@ -72,7 +72,7 @@ user communication and relations, and reduce workload on developers who have to
 respond to queries from users on project status updates.
 
 In the future, it is foreseen that portage will require a cryptographically 
-secure means of verifying ebuilds aquired from an rsync mirror are identical 
+secure means of verifying ebuilds acquired from an rsync mirror are identical
 to those checked into the portage tree by a developer [10]_ . Making developer keys 
 available to users for manually checking the integrity of files, or patches 
 sent to them is important. It has long been known that encouraging the 
@@ -90,9 +90,9 @@ Providing a finger daemon will allow users to instantly access information on
 developers, and all details of that developers current projects that they decide 
 to share. 
 
-GPG keys for all developers will be instantly availble, and the output of the 
+GPG keys for all developers will be instantly available, and the output of the
 finger devname@gentoo.org command can be piped into gpg --import to instantly 
-add it to the users keyring.
+add it to the user's keyring.
 
 The following projects use finger for user-developer communications,::
 
@@ -122,11 +122,11 @@ commonly referred to as "information leaks" [7]_.
 This means an attacker may be able to use a finger daemon to identify valid 
 accounts on their target, which they would then try to obtain access to.
 
-This scenario does not apply to this implementation, as the gentoo developer 
+This scenario does not apply to this implementation, as the Gentoo developer
 names are already well publicised. [8]_
 
-No security issues have ever been reported with the fingerd available in gentoo 
-portage. Finger is used worldwide by universities, unix systems, and development 
+No security issues have ever been reported with the fingerd available in Gentoo
+Portage. Finger is used worldwide by universities, unix systems, and development
 projects.
 
 Adding dummy users, will be trivial and allow projects such as gentoo-docs,
@@ -181,7 +181,7 @@ References
 .. [6]	http://www.oisafety.org/process.html
 .. [7]	http://search.linuxsecurity.com/cgi-bin/htsearch?words=information%20leak
 .. [8]	http://www.gentoo.org/main/en/devlist.xml
-.. [9]  http://www.gentoo.org/proj/en/devrel/user-relations.xml
+.. [9]  https://wiki.gentoo.org/wiki/Project:ComRel
 .. [10] http://www.gentoo.org/news/en/gwn/20030407-newsletter.xml
 
 Copyright
