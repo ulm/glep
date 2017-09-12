@@ -30,9 +30,9 @@ Motivation
 ==========
 
 I believe this would help keep the number of bugs in bugzilla at a lower level.
-This would also be a good chance for some user submitted ebuilds to be commited
+This would also be a good chance for some user submitted ebuilds to be committed
 that would normally go overlooked. I think this is a good idea. We could turn
-this into a big deal for the user community
+this into a big deal for the user community.
 
 Specification
 =============
@@ -43,7 +43,7 @@ participate, but I know it's unlikely that we could get everybody free on the
 same day. The majority of the people that have had an opinion have 
 suggested a weekend day. We will have bugday's on a Saturday. Gentoo 
 developers can try to get some of the users to help them out. A prize to 
-the most succesful developer was suggested. This is an idea to keep in 
+the most successful developer was suggested. This is an idea to keep in
 mind for the future. I guess I'm going to be the one coordinating this 
 until I get help, but when I do get help in coordinating this we can 
 coordinate via irc if all parties are capable, or email if not. I will 
@@ -66,5 +66,6 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
-
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
