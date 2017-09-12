@@ -1,0 +1,371 @@
+GLEP: 4
+Title: Gentoo top-level management structure proposal
+Version: $Revision$
+Last-Modified: $Date$
+Author: Daniel Robbins <drobbins@gentoo.org>
+Editor: Kurt Lieber <klieber@gentoo.org>
+Status: Replaced
+Type: Informational
+Content-Type: text/x-rst
+Created: 24-Jun-2003
+Post-History: 30-Jun-2003
+Replaced-By: 39
+
+What is the purpose of this proposal?
+=====================================
+
+The purpose of this proposal is to solve chronic management, coordination
+and communication issues in the Gentoo project. In particular, currently we
+have no clearly defined top-level management structure, and no official,
+regular meetings to communicate status updates between developers serving
+in critical roles. In general, most communication takes place on irc and
+irregularly via email. There is also little to no accountability, even
+at a high level, to complete projects on time.
+
+Because of this current state of affairs, it is difficult to set goals and
+track the status of projects. This lack of communication and coordination
+also makes it difficult for top-level developers to manage their own
+projects. In addition, we have the other chronic problem of not having
+clearly-defined roles and scopes of executive decision-making authority for
+top-level developers, which results in many top-level developers doubting
+that they even have the authority to manage their own projects and
+sub-projects. While this has *never* been the intention of top-level
+developers, it is the unfortunate result of an unstructured development
+process: no one knows what is going on, and everyone defers to the Chief
+Architect for all executive decisions.
+
+Clearly, a plan is needed to swiftly and permanently address these issues by
+increasing communication, coordination, and accountability. Roles and scopes
+of executive decision-making authority need to be defined for top developers
+so that they have a clear mandate as well as accountability to manage their
+projects and thus ensure their projects complete their appointed work
+efficiently and on-schedule.
+
+
+How do we fix this?
+===================
+
+This proposal suggests fixing this issue by creating an official top-level
+management structure. This management structure will consist of the chief
+architect and a group of developers that will be given the title of
+"Top-level managers." Top-level managers will be accountable for the
+projects they manage, and be responsible for communicating the status of
+their projects to the rest of the top-level managers and chief architect,
+among other things detailed later in this document.
+
+All the top-level projects in the Gentoo project will be clearly
+defined, including with goals, sub-projects, members, roadmap and schedules.
+The "Hardened Gentoo" page at [#Hardened]_ is an excellent example of
+such a top-level project definition.
+
+Certain executive decision-making authority will be granted to these
+projects, as agreed upon by the top-level managers and project members.
+Then, a top-level manager or managers will be officially adopt projects.
+These managers will be responsible for tracking the status of the project,
+ensuring that the project meets targets and is generally managed properly.
+Manager responsibilities are described in detail later in this document.
+
+The operational manager of each top-level project will also be responsible
+to report the status of the project in regular weekly status meetings in
+which all top-level managers will participate. This regular communication
+will allow proper coordination, goal-setting and scheduling to take place.
+
+
+Types of management
+===================
+
+For top-level projects, there are currently two possible types of managers.
+Each project must have at least one manager of each type, although one
+person may serve both roles.  The first type of manager is the operational
+manager, who is granted executive authority for the day-to-day running of
+the project. Because this person is directly involved in the day-to-day
+running of the project, this person has the responsibility to communicate
+project status to the rest of the top-level management team.
+
+The other type of manager is the strategic manager. The tactical manager has
+executive decision-making authority over the long-term strategic direction
+of the project. This manager's involvement in the day-to-day operations of
+the project is limited. Both strategic and operational management are equally
+important for a successful project.
+
+
+Management team
+===============
+
+Proposed initial top-level management team is as follows (in no
+particular order):
+
+* Seemant Kulleen (seemant)
+* Jay Pfeifer (pfeifer)
+* Joshua Brindle (method)
+* Kurt Lieber (klieber)
+* Nick Jones (carpaski)
+* Pieter Van den Abeele (pvdabeel)
+* Jon Portnoy (avenj)
+
+In addition to Daniel Robbins, serving as Chief Architect.
+
+
+Management charter
+==================
+
+1. Constructive, professional communication: All communication should be
+   focused on improving the management of Gentoo projects, should be
+   constructive in nature and should be shared in a friendly, professional
+   manner.
+
+2. Accountability to peers: Allow fellow members of this list to hold us
+   accountable to follow-through on projects and meet deadlines. Keep fellow
+   members accountable.
+
+3. Management of projects: empower managers to have the authority and
+   strategic direction necessary to properly manage thier projects and efforts
+   to ensure projects complete their appointed work on time.
+
+4. Results: our expectation is that our efforts, when properly executed,
+   will result in the Gentoo project's ability to meet deadlines, have much
+   better communication and coordination throughout the entire project, higher
+   overall quality and a more positive experience for all.
+
+
+Manager responsibilities
+========================
+
+Every top-level Gentoo project will have a clearly defined scope, and
+clearly defined and explicit executive decision-making authority that will
+be granted to managers of the project to exercise and/or delegate as they
+see fit. Both the scope and any necessary decision-making authority must be
+agreed upon by both the chief architect and project members. The scope and
+executive authority of a project can be expanded over time as required as
+approved by the top level managers.
+
+In addition to decision-making authority, managers have the following
+responsibilities:
+
+1. Keep a complete list of all projects and efforts you are managing,
+   and associated gentoo.org project page up-to-date
+
+2. Manage and track the status of these efforts. This includes active
+   direction as well as passive tracking of progress.
+
+3. Define clear goals, roadmaps and timelines (preliminary if necessary) for
+   every effort.
+
+4. Proactively identify efforts that have problems and need help.
+
+5. Ensure that your efforts are completed on-time, or that any efforts that
+   are behind-schedule are reported in a timely manner.
+
+6. Remain focused. Make sure that you are not managing more than you can
+   handle.
+
+7. Fulfill formal communication and coordination responsibilities required by
+   top-level managers (weekly meetings, etc.)
+
+8. Fulfill formal communication and coordination responsibilities required
+   by individual efforts (project meetings, communication with project members,
+   etc.) This is *important* -- our management of projects means that we
+   have the responsibility not only to communicate with our peers but
+   also those who we are managing. This communication should be frequent,
+   have a formal component (planned meetings, official status updates,
+   etc.) and model good management practices to members of our teams.
+
+9. **RECURSIVE FUNCTIONALITY**: At an appropriate time, implement these management
+   practices for *sub*-projects (define managers, clear sub-project goals,
+   grant executive authority) with you serving as primary authority.
+
+
+gentoo-managers list
+====================
+
+The gentoo-managers list will be created as the official email communications
+channel for all top-level Gentoo Linux managers.
+
+The tenative plan for top-level management coordination is as follows:
+
+Monday full status email
+------------------------
+
+Every Monday afteroon, every member of this list posts a status summary of
+projects/efforts that they are managing, as well as any items that they
+would like to discuss "live" on IRC in the upcoming "live" meeting.
+If you are unable to attend the "live" IRC meeting, an email to this
+list mentioning your inability to attend should be posted by Monday
+afternoon or before.
+
+The goal of the Monday afternoon email is to get every other top-level
+manager up to speed on the status of your efforts and any efforts
+managed by you, and to have a tenative meeting agenda in place for the
+"live" IRC meeting.
+
+Monday IRC chat
+---------------
+
+On Monday evening, we convene on irc for a "live" meeting.
+The goal of this meeting isn't to provide status updates on our
+projects, but to work out any outstanding hands-on issues relating to the
+management of Gentoo Linux. These issues can include:
+
+1. Assignment of unmanaged projects
+2. Resolving critical, time-sensitive problems
+3. Trying to "fix" projects that are having trouble staying on-target
+4. Sharing new ideas about how to coordinate our efforts better
+5. Finding ways to improve our management of projects
+
+The goal of this live IRC chat is to provide a regular forum to resolve
+tricky issues that benefit from real-time, "live" discussion. Generally,
+this meeting should last no more than one hour if possible. Generally,
+new ideas and practices should be discussed in this live meeting, with
+the list being used for status updates and coordinated resolution of
+critical issues.
+
+
+Note: Inability to attend due to time zone can be addressed by posting
+the full IRC log to gentoo-managers and allowing non-attending members
+to post ideas, comments and follow-ups.
+
+Thursday update
+---------------
+
+Every Thursday afternoon, every member of this list posts a "status
+update" email, giving all members a quick, general update on any efforts
+currently underway. This allows for some fairly rapid feedback for any
+efforts that were started the previous Monday, and an opportunity to
+recover from any efforts that have fallen off-target since the previous
+Monday.
+
+This email need not be exhaustive, but may be if necessary.
+
+The goal of this update is to allow any problems with our projects to be
+discussed and shared before the weekend, so that an adequate solution or
+interim solution can be found before the weekend.
+
+
+Top-level metaprojects
+======================
+
+Top-level projects and **preliminary** top-level managerial assignments below.
+Note that **sub-project** managers are generally not listed, but will be
+defined in time. We are starting with the top levels first, then recursing
+downwards.
+
+::
+
+	gentoo-linux:
+		Gentoo Linux
+		strategic manager: drobbins, seemant
+		operational manager: seemant
+		back-up: avenj
+		sub-projects:
+			x86-stable: Gentoo Linux x86 stable branch
+			x86-unstable: Gentoo Linux x86 unstable branch
+			amd64
+			ppc
+			alpha
+			sparc
+			hppa
+			etc.
+
+	kernel:
+		Kernel development
+		strategic manager: pfeifer (lolo?)
+		operational manager: pfeifer (lolo?)
+		sub-projects:
+			x86
+			amd64
+			ppc
+			alpha
+			sparc
+			hppa
+			etc.
+
+	gentoo-alt:
+		Alternate operating system platform/special-purpose projects
+		strategic managers: drobbins, pvdabeel
+		operational manager: pvdabeel
+		sub-projects:
+			gentoo-bsd
+			gentoo-macos
+			livecd: Gentoo Linux LiveCD technology efforts
+
+	hardened:
+		Hardened Gentoo -- efforts related to integrated security
+		techologies into Gentoo Linux.
+		strategic manager: method
+		operational manager: method
+		page: http://www.gentoo.org/proj/en/hardened/
+		sub-projects:
+			selinux
+			propolice
+			systrace
+			hardened-sources
+			grsecurity
+
+	tools:
+		Useful Gentoo scripts and tools (for user or developer use, possibly
+		Portage-related)
+		strategic manager: pvdabeel
+		operational manager: pvdabeel
+		subprojects:
+			keychain
+			dynfw
+			eperl
+
+	devrel:
+		General development management, developer relations
+		strategic managers: seemant, drobbins
+		operational manager: avenj
+		back-up: klieber
+		subprojects:
+			newdev: Recruiting of developers, enforcement of recruitment policy
+			devops: Day-to-day oversight of Gentoo development, commits
+
+	releng:
+		Managing and coordinating release process
+		strategic manager: drobbins, seemant
+		operational manager: avenj
+		subprojects:
+			build: Management of stage/package building efforts on all architectures
+			install-doc: install documentation
+
+	qa:
+		Explicit, proactive quality control efforts
+		strategic manager: drobbins
+		operational manager: seemant
+		subprojects:
+			bugs: Overseeing bug distribution/assigment/completion and responsiveness
+			security: Manage tracking and application of security fixes to packages
+			policy-doc: policy documentation
+
+	pr:
+		Public relations efforts, contact with distrowatch.com, etc.
+		strategic manager: drobbins
+		operational manager: klieber
+		back-up: seemant
+		subprojects:
+			partners: Gentoo partnerships, liaison(s) to metapkg, Gentoo Games, Inc.
+			shows: Planning and organization for trade shows
+			gwn: Gentoo Weekly News
+
+	portage:
+		Portage development, maintenance and new features implementation
+		strategic manager: drobbins
+		operational manager: carpaski
+		subprojects:
+			package-research: Research into new packaging technologies and capabilities
+			managers: carpaski, drobbins, pvdabeel
+
+	infrastructure:
+		strategic manager: klieber
+		operational manager: klieber
+		gentoo.org Mirrors, servers, email, hosting, server security
+		subprojects:
+			mirrors: ftp, web and rsync mirrors
+			web: gentoo.org Web site design and related technology
+			doc: general documentation
+
+
+References and Footnotes
+========================
+
+.. [#Hardened] http://www.gentoo.org/proj/en/hardened/
