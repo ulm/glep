@@ -68,7 +68,7 @@ injected into the Gentoo Linux development work flow with an enhancement "bug"
 submitted to the Gentoo Linux bugzilla [#BUGS]_.
 
 The GLEP champion then files a bug on Bugzilla in the GLEP product, under
-the "New GLEP submissions" component of the "Doc Other" product with
+the "New GLEP submissions" component of the "Documentation" product with
 a proposed title and a rough, but fleshed out, draft of the GLEP.  This
 draft must be written in GLEP style as described below and in GLEP 2.
 
@@ -272,7 +272,7 @@ nature of your comments.  For the early draft stages of the GLEP, it's
 probably best to send your comments and changes directly to the GLEP author
 or comment on the GLEP bug. For more mature, or finished GLEPs you may want
 to submit corrections to the Gentoo Linux bugzilla [#BUGS]_ under the "GLEP
-Changes" component of the "Doc Other" product so that your changes don't get
+Changes" component of the "Documentation" product so that your changes don't get
 lost. Be sure to CC the GLEP author on the bug. When in doubt about where
 to send your changes, please check first with the GLEP author and/or GLEP
 editors.
