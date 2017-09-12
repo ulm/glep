@@ -31,7 +31,7 @@ Motivation
 As of the first draft of this GLEP, there are 1387 EBUILD bug requests in
 Gentoo's bugzilla database.  Many of these requests contain ebuilds that
 have been submitted by the bug reporter and are simply awaiting a Gentoo
-developer to sponsor the submittal of the ebuild.
+developer to sponsor the submission of the ebuild.
 
 
 
@@ -70,10 +70,10 @@ NEEDINFO.  A message asking the user to create and submit an ebuild should be
 attached to the bug.
 
 Bug reports that *do* have an attached ebuild should be responded to with
-a message asking if the reporter agrees to provide maintence and support for
+a message asking if the reporter agrees to provide maintenance and support for
 the ebuild and package.
 
-If a reporter *does not* agree to provide package maintence, the bug report
+If a reporter *does not* agree to provide package maintenance, the bug report
 should be marked WONTFIX.
 
 If a reporter *does* agree to provide package support, the ebuild should
@@ -119,5 +119,6 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
-
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/
