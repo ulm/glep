@@ -39,7 +39,7 @@ Motivation
 There are some developers out there that are using very slow hardware, and some 
 that have broken equipment that they could put back into use if they 
 had one more part. This program will help developers get the most out of 
-their exisiting hardware and fix any systems that may currently be broken.
+their existing hardware and fix any systems that may currently be broken.
 
 Specification
 =============
@@ -65,5 +65,6 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
-
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
