@@ -38,7 +38,7 @@ its way into Portage.
 3. No ebuild has been provided with the bug request.
 
 Leaving these requests open does not help Gentoo.  Not only does the bug count
-become artifically inflated, but bug maintenance also becomes more difficult adding
+become artificially inflated, but bug maintenance also becomes more difficult adding
 to open requests that developers must sift through.
 
 Furthermore, having a policy in place as to how ebuild bug requests are handled is
@@ -72,7 +72,7 @@ Repercussions
 
 The (systematic) denial of the inclusion of ebuilds into the Portage tree may leave
 some users to feel slighted because their ebuild was not accepted into Portage.
-This is an unfortunate side effect of a system that relies on acceptal or denial.
+This is an unfortunate side effect of a system that relies on acceptance or denial.
 
 
 Future
@@ -80,7 +80,7 @@ Future
 
 It may be desirable to provide an official repository for abandoned ebuilds to go.
 Any attachments to these bug reports could be placed here, so that the author's effort
-has not gone in vein.
+has not gone in vain.
 
 
 Backwards Compatibility
@@ -99,5 +99,6 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
-
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
