@@ -43,7 +43,7 @@ will accept and publish these scripts to the website. The team will need
 access to a portion of the website, but just enough to add the scripts, and 
 update links from the main "scripts" page. I would  propose it be a 
 subproject of the tools or base top level project. The scripts team would 
-need commit access to gentoo/xml/htdocs/proj/en/[base|tools]/scripts/.It 
+need commit access to gentoo/xml/htdocs/proj/en/[base|tools]/scripts/. It
 shouldn't increase the load on gentoo.org significantly.
 
 The scripts should be divided by type of task, for example sysadmin, 
@@ -76,5 +76,6 @@ Not a problem for this GLEP.
 Copyright
 =========
 
-This document has been placed in the public domain.
-
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
