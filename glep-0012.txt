@@ -55,7 +55,7 @@ While the resources to track developer progress and activity are made
 available to users, they are not in a form usable to many people. Keeping
 track of development is a tedious challenge, even for developers.  For
 non-technical users wishing to track the progress of a developer, using
-mailing lists and bugzilla may not be a practical option.
+mailing lists and Bugzilla may not be a practical option.
 
 Developers may also need a way to quickly find out the progress or activity of
 other developers, different time zones sometimes makes it difficult for

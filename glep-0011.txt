@@ -50,12 +50,12 @@ Conventions
 ===========
 
 	When describing the location of a directory in the file system it
-	wil be shown *with* a trailing slash, eg::
+	will be shown *with* a trailing slash, eg::
 
 		/foo/bar/
 
 	When describing the location of a specific file (irrespective of any
-	file extention) it will shown *with out* a trailing slash, eg::
+	file extension) it will shown *without* a trailing slash, eg::
 
 		/foo/blah
 
@@ -68,7 +68,7 @@ Motivation
 ==========
 
 Currently there is no standard defined regarding the installation of web
-based applicaitons in Gentoo.  This leads to ebuild authors creating a
+based applications in Gentoo.  This leads to ebuild authors creating a
 variety of methods to determine:
 
 	* where the application should be installed
@@ -78,7 +78,7 @@ variety of methods to determine:
 
 Due to a lack of standard install method configuration files are at
 risk of being overwritten during upgrade, potentially causing system
-administrators down tine as they have to reconfigure web applications
+administrators downtime as they have to reconfigure web applications
 after an upgrade.
 
 Rationale
@@ -121,7 +121,7 @@ to CVS, this is a stop-gap measure whilst this GLEP is being finalised.
 A common default web server should be selected.  Selection of a default web 
 server will help to reduce the number of bugs that are reported.
 
-Given the popularity of the Apache web server it is suggested that Apache be 
+Given the popularity of the Apache webserver it is suggested that Apache be
 selected as the Gentoo default web server.
 
 The Virtual Host Configuration tool (see below) will transparently support
@@ -135,9 +135,9 @@ The current default Document Root for Gentoo is /home/httpd/, this is
 unsuitable for a couple of reasons:
 
 	* /home/ may be exported via nfs to numerous other hosts, it is not
-	  acceptable to share publically accessible files with numerous hosts.
+	  acceptable to share publicly accessible files with numerous hosts.
 
-	* there is a potential (all be it small) for a user name clash
+	* There is a potential (albeit small) for a user name clash
 
 To ensure the greatest flexibility when installing applications the following
 *Document Root* locations are to be used:
@@ -153,7 +153,7 @@ To ensure the greatest flexibility when installing applications the following
 		eg:
 			/var/www/www.gentoo.org/
 
-Additionally the chosen location ( /var/www/ ) appears to be becoming a defacto
+Additionally the chosen location ( /var/www/ ) appears to be becoming a de facto
 standard for Linux distributions.
 
 1.2 Apache 2
@@ -214,7 +214,7 @@ to be added to Portage. The use flag will be::
 	vhost
 
 When *vhost* is _set_ the installation location and configuration for the web
-application will be effected, see below for more details.
+application will be affected, see below for more details.
 
 3.2 VHost Configuration Tool
 ''''''''''''''''''''''''''''
@@ -226,7 +226,7 @@ Config tool and proposed usage can be found at http://article.gmane.org/gmane.li
 It's the job of the VHost Config toolset to make a local instance of the web
 application run under a specific web server.
 
-The VHost Configuration Utility will need to be a seperate package, maintained by Gentoo.
+The VHost Configuration Utility will need to be a separate package, maintained by Gentoo.
 
 Web Server .ebuilds will require the VHost Config tool as a dependency (DEPEND).
 
@@ -318,4 +318,6 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
