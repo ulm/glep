@@ -44,7 +44,7 @@ To address the beforementioned problem, there are two ideas:
   Kernel Guide, create a partitioning-howto that decribes the fdisk (and
   possibly others) steps users need to go through, etc.
 
-- Merge all information into one Big Handbook. This is ofcourse an idea that
+- Merge all information into one Big Handbook. This is of course an idea that
   we borrow from our FreeBSD friends [#FBSDHandBook]_ who already have an
   extensive handbook related to their BSD-distribution. 
 
@@ -74,8 +74,8 @@ our users to use a non-usable document.
 After improving the GuideXML format, the first things that need to be
 addressed are the installation instructions. They should be merged with other,
 existing guides that inform the user with installation-specific items (such as
-the Aternative Installation Guide, LVM Guide, Platform-specific Installation 
-Guides, etc.
+the Alternative Installation Guide, LVM Guide, Platform-specific Installation
+Guides, etc.)
 
 Other chapters that need to be put in place are:
 
@@ -113,8 +113,8 @@ information-division::
             <section>
 
 The ``<guide>`` tag is currently a one-time tag: it defines the start of the
-guide, and ofcourse the guide ends with ``</guide>``. 
-The ``<chapter>`` tag divides the document into seperate chapters. However, 
+guide, and of course the guide ends with ``</guide>``.
+The ``<chapter>`` tag divides the document into separate chapters. However,
 most of our documents have small chapters, whereas normal books and documents 
 have chapters that encompasses several pages. 
 The ``<section>`` tag further divides the chapter in which it resides.
@@ -145,7 +145,7 @@ implementation for small documents, but impossible for handbooks.
 
 Implementing a more HTML-alike reference inside the division-tags would be
 preferable: ``<chapter name="installation">``, ``<section
-name="partitioning">`` etc. Refering would then be ``#installation`` and
+name="partitioning">`` etc. Referring would then be ``#installation`` and
 ``#partitioning`` respectively.
 
 
@@ -225,7 +225,7 @@ Backwards Compatibility
 =======================
 
 By making only small changes (actually extending) the GuideXML format, it is
-possible (and even adviseable) to develop each chapter on its own parallel
+possible (and even advisable) to develop each chapter on its own parallel
 with the guides that are involved. 
 
 By developing the handbook in a subdirectory of the current documentation
@@ -281,4 +281,6 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
