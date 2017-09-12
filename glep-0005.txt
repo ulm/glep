@@ -14,7 +14,7 @@ Abstract
 ========
 
 As the latest development in Gentoo and Portage added the metadata.xml file
-to each package, which provides information about the package and it's
+to each package, which provides information about the package and its
 maintainers, this GLEP proposes to extend this format in order to simplify
 the .ebuild format.
 
@@ -47,7 +47,7 @@ The three tags description, homepage and license are mostly the same in all
 versions of an ebuild, but they must be added to each version. In order to
 simplify the .ebuild format they can be moved to the new metadata.xml [1]_ file.
 This would also allow different descriptions for different languages (lang
-attribute) and there are no problems when a programm changes it license
+attribute) and there are no problems when a program changes it license
 (restrict attribute).
 
 
@@ -73,4 +73,6 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
