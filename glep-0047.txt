@@ -121,11 +121,11 @@ intention, and that an invalid ``CHOST`` will cause major malfunctioning
 of the system.  A user that changes the ``CHOST`` into something that is
 not valid for the system, is already warned that this might render the
 system unusable.  Concluding, the 'safeness' of the ``CHOST`` variable
-is based on externally assumed 'safeness', which's discussion falls
+is based on externally assumed 'safeness', which discussion falls
 outside this GLEP.
 
 Current USE-expansion of the variables is being maintained, as this
-results in full backward compatibility.  Since the variables themself
+results in full backward compatibility.  Since the variables themselves
 don't change in what they represent, but only how they are being
 assigned, there should be no problem in maintaining them.  Using
 USE-expansion, conditional code can be written down in ebuilds, which is
@@ -141,7 +141,7 @@ not different from any existing methods at all::
     }
 
 Alternatively, the variables ``ELIBC``, ``KERNEL`` and ``ARCH``
-are available in the ebuild evironment and they can be used instead of
+are available in the ebuild environment and they can be used instead of
 invoking ``xxx_Xxxx`` or in switch statements where they are actually
 necessary.
 
@@ -249,5 +249,6 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
-
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
