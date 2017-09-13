@@ -108,18 +108,18 @@ Specification
 A.  A project is a group of developers working towards a goal (or a set
     of goals).
 
-      *  A project exists if it has a web page at
-         www.g.o/proj/en/whatever that is maintained and/or a maintained Wiki
+      *  A project exists if it has a maintained Wiki
          project page as described below.  ("Maintained" means
          that the information on the page is factually correct and not
-         out-of-date.)  If the webpage isn't maintained, it is presumed dead.  
+         out-of-date.)  If the Wiki page isn't maintained, it is presumed
+         dead.
       *  It may have one or many leads, and the leads are
          selected by the members of the project.  This selection must
          occur at least once every 12 months, and may occur at any
          time.
       *  It may have zero or more sub-projects.  Sub-projects are
          just projects that provide some additional structure, and their
-         web pages are in the project's space.
+         Wiki pages are defined as sub-projects of the parent project.
       *  Not everything (or everyone) needs a project.  
       *  Projects need not be long-term.
       *  Projects may well conflict with other projects.  That's okay.
