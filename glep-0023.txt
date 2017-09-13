@@ -3,12 +3,19 @@ Title: Handling of ACCEPT_LICENSE
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Jason Stubbs <jstubbs@gentoo.org>, Marius Mauch <genone@gentoo.org>
-Status: Accepted
+Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 9-Mar-2004
 Post-History: 8-Mar-2004 10-Mar-2004 25-Oct-2004 18-Nov-2006 21-Nov-2006
 
+
+Status Update
+=============
+
+Repoman has been updated to check for the LICENSE syntax.  Portage now handles
+ACCEPT_LICENSE and license groups, with NON-MUST-HAVE-READ's role handled
+by @EULA.  Marking as Final as of 1/16/2014.
 
 Abstract
 ========
@@ -17,13 +24,6 @@ Currently, every ebuild in the main Gentoo repository is required to have a
 valid LICENSE entry.  However, the syntax of this entry is not officially 
 defined and the entry itself is only used when outputting package 
 details.
-
-Status Update
-=============
-
-Repoman has been updated to check for the LICENSE syntax.
-A development portage branch with support for ACCEPT_LICENSE
-and license groups exists.
 
 Motivation
 ==========
