@@ -9,6 +9,9 @@ Content-Type: text/x-rst
 Created: 18-May-2006
 Post-History: 19-May-2006, 6-Sep-2006
 
+Note: This document needs to be relicensed to CC-BY-SA 3.0 after consulting
+with the original author
+
 Status
 ======
 
@@ -98,7 +101,7 @@ Package manager requirements
 As  a  package  manager is  in  a  state  of  higher  support there  are  higher
 requirements to it. The purpose of  these requirements is to ensure the unity of
 the distribution and the package tree.  For this purpose it is needed that there
-is only one primary package manager. This is from gentoo's perspective. From a
+is only one primary package manager. This is from Gentoo's perspective. From a
 user perspective it is perfectly possible to use another package
 manager. Candidate primary package managers and secondary package managers are
 also supported in regards to bugs etc.
@@ -112,7 +115,7 @@ the  tree. All  ebuilds  in the  tree  must function  with  the primary  package
 manager. As  the primary package manager sets  the standard it does  not have to
 maintain compatibility with other package  managers. This does not mean that the
 actual implementation is the standard, but that the maintainers have the ability
-to define new standards, together with the other involved gentoo projects.
+to define new standards, together with the other involved Gentoo projects.
 
 The primary package manager does however have the responsibility that it must be
 very stable.  The primary package  manager must maintain compatibility  with old
