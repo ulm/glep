@@ -3,11 +3,16 @@ Title: GLEP date format
 Version: $Revision$
 Author: Henrik Brix Andersen <brix@gentoo.org>
 Last-Modified: $Date$
-Status: Draft
+Status: Deferred
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 13-Dec-2005
 Post-History: 13-Dec-2005
+
+Status
+======
+
+No progress, marked as Deferred by GLEP editor creffett.
 
 Abstract
 ========
@@ -50,5 +55,6 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
-
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
