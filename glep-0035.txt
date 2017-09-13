@@ -28,7 +28,7 @@ When browsing `bugs.gentoo.org`_ you will find Bugs that take away a good
 amount of scarce developing time that could be used otherwise.  These are
 trivial bugs, i.e. wrong SRC_URI or cycles in DEPEND. Even worst - these bugs
 are sometimes reported several times so that they need to be marked as
-dublicates.  Bugs of that kind are easy to find and easy to fix. By using
+duplicates.  Bugs of that kind are easy to find and easy to fix. By using
 automatic checks on a regular schedule these bugs can be found.  Users have to
 be asked NOT to commit these bugs to `bugs.gentoo.org`_.  So there will
 (hopefully) be fewer bugs that need to be checked and assigned and they might
