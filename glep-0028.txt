@@ -3,7 +3,7 @@ Title: "Expiration" of inactive GLEPs
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Grant Goodyear <g2boojum@gentoo.org>
-Status: Approved
+Status: Final
 Type: Informational
 Content-Type: text/x-rst
 Created: 2-Jun-2004
@@ -13,7 +13,7 @@ Post-History: 2-Jun-2004, 20-Jul-2004
 Status
 ======
 
-This GLEP was approved on 14-Jun-2004.
+This GLEP was approved on 14-Jun-2004 and marked as final on 1/16/2014.
 
 Abstract
 ========
@@ -68,4 +68,6 @@ Not really an issue here.
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
