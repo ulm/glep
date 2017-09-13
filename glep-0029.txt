@@ -3,7 +3,7 @@ Title: USE flag groups
 Version: $Revision$
 Author: Ciaran McCreesh <ciaranm@gentoo.org>
 Last-Modified: $Date$
-Status: Draft
+Status: Withdrawn
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 19-Aug-2004
@@ -242,7 +242,7 @@ The user will not need to make any changes to keep their current setup.
 Users who are not running a portage version which supports groups can
 carry on using current syntax with no side-effects.
 
-Some tools which work with make.conf and / or USE flags (for example,
+Some tools which work with make.conf and/or USE flags (for example,
 ``ufed``) will need to be updated to understand the new group syntax.
 
 There is currently a dynamic list of USE flags available on the Gentoo
@@ -261,6 +261,8 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
 
  vim: set tw=74 :
