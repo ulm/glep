@@ -23,7 +23,7 @@ about combining the x86 and amd64 keywords.  This GLEP attempts to get at the
 heart of that discontent.  The proposed stable-keyword guidelines have been
 lifted verbatim from `The Doc`_.
 
-.. _discussion: http://tinyurl.com/bp859
+.. _discussion: https://groups.google.com/forum/?hl=en#!topic/linux.gentoo.dev/EwjbOaNLFio
 .. _The Doc: http://dev.gentoo.org/~plasmaroo/devmanual
 
 Abstract
@@ -155,4 +155,6 @@ Not really an issue here.
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
