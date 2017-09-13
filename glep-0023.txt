@@ -69,7 +69,8 @@ GLEP proposes that the syntax be identical.  For example:
 
 
 License names may contain [a-zA-Z0-9] (english alphanumeric characters),
-_ (underscore), - (dash), . (dot) and + (plus sign).
+_ (underscore), - (hyphen), . (dot) and + (plus sign).  They must not
+begin with a hyphen, a dot or a plus sign.
 
 License Groups
 --------------
