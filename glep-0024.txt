@@ -3,8 +3,8 @@ Title: Consistent Gentoo tool naming scheme
 Version: $Revision$
 Last-Modified: $Date$
 Author: Donnie Berkholz <dberkholz@gentoo.org>,
-Status: deferred
-Type: Standards
+Status: Deferred
+Type: Standards Track
 Content-Type: text/x-rst
 Created: 16 March 2004
 Post-History: 17-Mar-2004, 25-Oct-2004
@@ -115,4 +115,6 @@ not yet ..
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
