@@ -3,7 +3,7 @@ Title: Critical News Reporting
 Version: $Revision$
 Author: Ciaran McCreesh <ciaranm@gentoo.org>,
         Stephen Bennett <spb@gentoo.org>,
-        Zach Medico <zmedico@gentoo.org>
+        Zac Medico <zmedico@gentoo.org>
 Last-Modified: $Date$
 Status: Final
 Type: Standards Track
@@ -515,6 +515,8 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
 
 .. vim: set tw=80 fileencoding=utf-8 spell spelllang=en et :
