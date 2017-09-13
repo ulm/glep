@@ -109,7 +109,8 @@ A.  A project is a group of developers working towards a goal (or a set
     of goals).
 
       *  A project exists if it has a web page at
-         www.g.o/proj/en/whatever that is maintained.  ("Maintained" means
+         www.g.o/proj/en/whatever that is maintained and/or a maintained Wiki
+         project page as described below.  ("Maintained" means
          that the information on the page is factually correct and not
          out-of-date.)  If the webpage isn't maintained, it is presumed dead.  
       *  It may have one or many leads, and the leads are
@@ -122,12 +123,11 @@ A.  A project is a group of developers working towards a goal (or a set
       *  Not everything (or everyone) needs a project.  
       *  Projects need not be long-term.
       *  Projects may well conflict with other projects.  That's okay.
-      *  Any dev may create a new project just by creating a new page
-         (or, more realistically, directory and page) in
-         ``gentoo/xml/htdocs/proj/en`` and sending a Request For Comments
-         (RFC) e-mail to gentoo-dev.  Note that this GLEP does not provide for
-         a way for the community at large to block a new project, even if the
-         comments are wholly negative.
+      *  Any dev may create a new project just by creating a new project
+         page on the wiki.gentoo.org (see [#Project_pages]_ and sending
+         a Request For Comments (RFC) e-mail to gentoo-dev.  Note that
+         this GLEP does not provide for a way for the community at large
+         to block a new project, even if the comments are wholly negative.
 
 B.  Global issues will be decided by an elected Gentoo council.
 
@@ -203,6 +203,10 @@ current system it does.  With this proposal it wouldn't.
 
 8. This proposal has nothing to say about GLEPs.
 
+References
+==========
+
+.. [#Project_pages] https://wiki.gentoo.org/wiki/Gentoo_Wiki:Developer_Central/Project_pages
 
 Copyright
 =========
