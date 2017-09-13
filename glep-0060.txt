@@ -28,7 +28,7 @@ This GLEP is not mandatory for the tree-signing specification, but
 instead aims to clarify the usage of the Manifest2 filetype specifiers,
 and note which types signify files that are allowed to be missing from
 the tree (e.g. a user excluding a package or category). As such, it is
-also able to stand on it's own.
+also able to stand on its own.
 
 Specification
 =============
@@ -201,7 +201,7 @@ Chosing a filetype
 9. not matched by any other rule 
     => OTHER, stop.
 
-The logic behind 5, 6, 7 is ensuring that every item that by it's
+The logic behind 5, 6, 7 is ensuring that every item that by its
 presence or absence may be dangerous should always be treated strictly.
 (Consider epatch given a directory of patches ``${FILESDIR}/${PV}/``,
 where it blindly includes them, or alternatively, the package.mask file
