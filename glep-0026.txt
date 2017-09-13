@@ -43,13 +43,13 @@ There would be 3 layers to kernel building:		(place of implementation)
 	
 Stages 1 and 3 are optional on most arches.  
 
-Stage 1 would be achieved through a seperate utility (perhaps like the current
+Stage 1 would be achieved through a separate utility (perhaps like the current
 genkernel).  This utility would help the user configure the kernel and any kernel/build
 related settings.  This stage is optional and would only be used if a person wanted a
 customized kernel settings.  One optional thought is to have this utility a part of the 
 base Gentoo system.  That way there are less steps to make a custom kernel.
 
-Stage 2 would be implimented through an eclass.  This stage is not optional.  One would
+Stage 2 would be implemented through an eclass.  This stage is not optional.  One would
 perform this step by typing "emerge kernel-name", where "kernel-name" is the name of
 the kernel package you want to use (ie. "gentoo-dev").  This package would have a
 "buildkernel" USE flag.  If the flag was not set, it would simply download and install
@@ -101,10 +101,10 @@ There are many advantages gained by this method:
 	1.	Full arch support (GentooInstaller really could use this)
 	2.	More consistent with the rest of portage (installs binaries by building from source)
 	3.	Better user experience
-	4.	More flexability (genkernel forces building of initrd on x86)
+	4.	More flexibility (genkernel forces building of initrd on x86)
 	5.	Don't have to store full kernel sources (each source tree is ~200MB unpacked)
 	6.	Creates the ability to make binary kernel packages for fast installs (think GRP kernel)
-	7.	A seperate package for "generic" kernel config files gives us better version tracking
+	7.	A separate package for "generic" kernel config files gives us better version tracking
 
 The major problem is, however, that we currently have two different build systems,
 portage and genkernel.  Having competing build systems is not a GoodThing TM.  Therefore,
@@ -116,7 +116,7 @@ Backwards Compatibility
 If you want to emerge kernel sources the old way, just do: USE="-buildkernel" emerge kernel-name
 
 Perhaps we could also name the new kernel-config program (from Stage 1) "genkernel" so that users 
-can have a seemless transition.
+can have a seamless transition.
 
 Reference Implementation
 ========================
@@ -126,4 +126,6 @@ not yet ..
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
