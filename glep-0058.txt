@@ -225,7 +225,7 @@ to generate multiple levels of Manifests in parallel, and this is
 explicitly permitted, provided that every file in the tree is covered by
 at least one Manifest or the MetaManifest file. The uppermost
 Manifest (MetaManifest) is the only item that does not occur in any
-other Manifest file, but is instead GPG-signed to enable it's
+other Manifest file, but is instead GPG-signed to enable its
 validation.
 
 --------------------------------------------
@@ -310,7 +310,7 @@ References
    http://www.gentoo.org/proj/en/glep/glep-0033.html	
 
 .. [GLEP60] Manifest2 filetypes
-   http://www.gentoo.org/proj/en/glep/glep-0044.html	
+   http://www.gentoo.org/proj/en/glep/glep-0060.html
 
 .. [GLEPxx2] Future GLEP on Developer Process security.
 
