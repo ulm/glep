@@ -34,7 +34,7 @@ Problem
 The current way of specifying the EAPI in ebuilds is flawed. In order to get the
 EAPI the package manager needs to source the ebuild, which itself needs the EAPI
 in the first place. Otherwise it imposes a serious limitation, namely every ebuild,
-using any of the future EAPIs, will have to be source'able by old package
+using any of the future EAPIs, will have to be sourceable by old package
 managers and hence there is no way to do any of the following:
 
   *  Change the behaviour of inherit in any way (for example, to extend or change
@@ -301,7 +301,7 @@ For example, package foo has versions 1, 2, 3, 4, 5 and 6. 6 is masked, 5 is
 package. With EAPI in the filename it will read metadata only for versions
 6, 5 and 4. With EAPI in the ebuild it needs to load metadata for all versions.
 
-It's hard to say what's the avarage case, but surely the worst case scenario
+It's hard to say what's the average case, but surely the worst case scenario
 (when only the lowest version is visible) is uncommon.
 
 Easily fetchable EAPI inside the ebuild and one-time extension change
@@ -335,11 +335,13 @@ References
     (http://glep.gentoo.org/glep-0054.html)
 
 .. [#PortageProblems] Common portage problems
-    (http://www.gentoo.org/proj/en/portage/doc/common-problems.xml)
+    (https://wiki.gentoo.org/wiki/Project:Portage/Common_problems)
 
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
 
 .. vim: set tw=80 fileencoding=utf-8 spell spelllang=en et :
