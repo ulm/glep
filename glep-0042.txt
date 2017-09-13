@@ -3,7 +3,8 @@ Title: Critical News Reporting
 Version: $Revision$
 Author: Ciaran McCreesh <ciaranm@gentoo.org>,
         Stephen Bennett <spb@gentoo.org>,
-        Zac Medico <zmedico@gentoo.org>
+        Zac Medico <zmedico@gentoo.org>,
+        Ulrich Müller <ulm@gentoo.org>
 Last-Modified: $Date$
 Status: Final
 Type: Standards Track
@@ -217,7 +218,7 @@ News Item Headers
 The following headers describe the purpose and format of the news item:
 
 ``Title:``
-    A short (maximum 44 characters) descriptive title. Mandatory.
+    A short (maximum 50 characters) descriptive title. Mandatory.
 
 ``Author:``
     Author's name and email address, in the form ``Real Name <email@address>``.
@@ -228,7 +229,8 @@ The following headers describe the purpose and format of the news item:
     translator headers may be specified if appropriate.
 
 ``Content-Type:``
-    Must be ``text/plain``. Mandatory.
+    Only in news item format ``1.0``, where it is mandatory and must be
+    ``text/plain``.
 
 ``Posted:``
     Date of posting, in ``yyyy-mm-dd`` format (e.g. 2005-12-18) for
@@ -242,27 +244,31 @@ The following headers describe the purpose and format of the news item:
     item. Mandatory.
 
 ``News-Item-Format:``
-    Must be ``1.0``. Future revisions to the format may increment the minor
-    number for backwards-compatible changes, or the major number for major
-    changes.
+    Known formats are ``1.0`` and ``2.0``.  Future revisions to the format
+    may increment the minor number for forwards-compatible changes (i.e.,
+    still allowing older tools to process the new format), or the major
+    number for major changes.
 
 The following headers are used for filtering:
 
 ``Display-If-Installed:``
-    A dependency atom (for example, ``<dev-lang/php-5_alpha`` or
-    ``net-www/apache``). If the user has the package specified installed from
-    the repository from which the news item was obtained, the news item should
-    be displayed.
+    A package dependency specification (for example, ``>=sys-devel/gcc-5``
+    or ``www-servers/apache``) conforming to EAPI 0 [#PMS]_ in news item
+    format ``1.0`` or to EAPI 5 in format ``2.0``.  If the user has the
+    package specified installed from the repository from which the news item
+    was obtained, the news item should be displayed.
 
 ``Display-If-Keyword:``
     A keyword [#glep-22]_ name, for example ``mips`` or ``x86-fbsd``. If the
     user is on the keyword in question, the news item should be displayed.
 
 ``Display-If-Profile:``
-    A profile path, for example ``default-linux/sparc/sparc64/server``. If the
+    A profile path, for example ``default/linux/sparc/13.0``. If the
     user is using the exact profile in question, the news item should be
     displayed. This header may be used to replace ``deprecated`` files in the
-    future.
+    future.  In news item format ``2.0``, a terminal asterisk immediately
+    following a slash acts as a wildcard for any further path components,
+    for example ``default/linux/*``.
 
 .. Note:: When performing package moves, developers must also update any
    relevant ``Display-If-Installed`` headers in news files.
@@ -501,6 +507,7 @@ References
 .. [#eselect-news] news.eselect, http://svn.berlios.de/svnroot/repos/paludis/trunk/eselect/news.eselect
 .. [#stuart-blog] "Favouring an automatic news mechanism", Stuart Herbert,
      http://stu.gnqs.org/diary/gentoo.php/2005/10/28/favouring_an_automatic_news_mechanism
+.. [#PMS] https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification
 
 Copyright
 =========
