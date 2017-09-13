@@ -3,7 +3,7 @@ Title: Export PMS's cached VDB information
 Version: $Revision$
 Last-Modified: $Date$
 Author: Anthony G. Basile <blueness@gentoo.org>
-Status: Draft
+Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 31-Jul-2014
