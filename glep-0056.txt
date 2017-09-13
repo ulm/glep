@@ -24,7 +24,7 @@ installations of a given package. For example, many global USE flags have very
 generic descriptions but no specifics on how it affects a certain package.
 Specifically speaking, an example would be net-print/cups and the 'jpeg' USE
 flag. Does this flag mean you won't be able to print jpeg files? You can print
-them directly? It's interface won't use jpeg files.
+them directly? Its interface won't use jpeg files.
 
  - Motivator References: [#motivators1]_, [#motivators2]_, [#motivators3]_,
    and [#motivators4]_
@@ -146,7 +146,8 @@ in ``use.local.desc``.
 Copyright
 =========
 
-This document is placed into the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
 
 .. vim: set ft=glep tw=72 :
-
