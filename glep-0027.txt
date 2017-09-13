@@ -3,7 +3,7 @@ Title: Portage Management of UIDs/GIDs
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Mike Frysinger <vapier@gentoo.org>
-Status: Approved
+Status: Accepted
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 29 May 2004
@@ -84,7 +84,7 @@ Local Overrides
 
 Following the tried and true style of custom local portage files being 
 found in /etc/portage, this new system will follow the same.  Users can 
-setup their own directory heirarchy in /etc/portage/profile/accounts/ that 
+setup their own directory hierarchy in /etc/portage/profile/accounts/ that
 mimics the heirarchy found in the portage tree.  When portage attempts to add 
 a new user, it will first check /etc/portage/profile/accounts/user/<username>.  
 If it does not exist, it will simply use the default definition in the 
@@ -166,4 +166,6 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
