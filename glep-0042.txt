@@ -122,7 +122,7 @@ News items are published and delivered to users as follows:
 2. The news item is reviewed, following the process described in
    `News Item Quality Control`_.
 
-3. The news item is committed to a CVS (or Subversion [#glep-36]_) repository.
+3. The news item is committed to a VCS repository.
    From here, it is merged with the rsync tree. This is described in `News Item
    Distribution`_.
 
@@ -488,9 +488,6 @@ References
      http://www.gentoo.org/proj/en/glep/glep-0031.html
 .. [#glep-34] GLEP 34: "Per-Category metadata.xml Files", Ciaran McCreesh,
      http://www.gentoo.org/proj/en/glep/glep-0034.html
-.. [#glep-36] GLEP 36: "Subversion/CVS for Gentoo Hosted Projects", Aaron
-     Walker,
-     http://www.gentoo.org/proj/en/glep/glep-0036.html
 .. [#glep-45] GLEP 45: "GLEP date format", Henrik Brix Andersen,
      http://www.gentoo.org/proj/en/glep/glep-0045.html
 .. [#iso-639] ISO 639 "Code for the representation of names of languages"
