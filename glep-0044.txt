@@ -74,10 +74,10 @@ An `actual example`__ for a (pure) Manifest2 file..
 .. __: glep-0044-extras/manifest2-example.txt
 
 
-Compability Entries
--------------------
+Compatibility Entries
+---------------------
 
-To maintain compability with existing portage versions a transition period after
+To maintain compatibility with existing portage versions a transition period after
 is the introduction of the Manifest2 format is required during which portage 
 will not only have to be capable of using existing Manifest and digest files but
 also generate them in addition to the new entries.
@@ -106,12 +106,12 @@ Number of hashes
 While using multiple hashes for each file is a major feature of this proposal
 we have to make sure that the number of hashes listed is limited to avoid
 an explosion of the Manifest size that would revert the main benefit of this proposal
-(reduzing tree size). Therefore the number of hashes that will be generated
-will be limited to three different hash functions. For compability though we 
+(reducing tree size). Therefore the number of hashes that will be generated
+will be limited to three different hash functions. For compatibility though we
 have to rely on at least one hash function to always be present, this proposal
 suggest to use SHA1 for this purpose (as it is supposed to be more secure than MD5
 and currently only SHA1 and MD5 are directly available in python, also MD5 doesn't
-have any benefit in terms of compability).
+have any benefit in terms of compatibility).
 
 Rationale
 =========
@@ -126,7 +126,7 @@ Removal of digest files
 Normal users that don't use a "tuned" filesystem for the portage tree are 
 wasting several dozen to a few hundred megabytes of disk space with the current
 system, largely caused by the digest files. 
-This is due to the filesystem overhead present in most filesystem that 
+This is due to the filesystem overhead present in most filesystems that
 have a standard blocksize of four kilobytes while most digest files are under 
 one kilobyte in size, so this results in approximately a waste of three kilobytes
 per digest file (likely even more). At the time of this writing the tree contains
@@ -137,7 +137,7 @@ the Manifest files as they now contain more content, but this hasn't been
 verified yet.
 
 By unifying the digest files with the Manifest these tiny files are eliminated
-(in the long run), reducing the apparent tree size by about 20%, benefitting 
+(in the long run), reducing the apparent tree size by about 20%, benefiting
 both users and the Gentoo infrastructure.
 
 Reducing redundancy
@@ -156,7 +156,7 @@ Removal of checksum collisions
 The current system theoretically allows for a ``DIST`` type file to be recorded 
 in multiple digest files with different sizes and/or checksums. In such a case
 one version of a package would report a checksum violation while another one 
-would not. This could create confusion and uncertainity among users.
+would not. This could create confusion and uncertainty among users.
 So far this case hasn't been observed, but it can't be ruled out with the 
 existing system.
 As the new format lists each file exactly once this would be no longer possible.
@@ -197,14 +197,14 @@ implementation will be rolled out in several phases:
 2. Enable generation of Manifest2 entries in addition to the current system
 
 3. Ignore digests during ``emerge --sync`` to get the size-benefit clientside. 
-   This step may be ommitted if the following steps are expected to follow soon.
+   This step may be omitted if the following steps are expected to follow soon.
 
 4. Disable generation of entries for the current system
 
 5. Remove all traces of the current system from the tree (serverside)
 
 Each step has its own issues. While 1) and 2) can be implemented without any 
-compability problems all later steps have a major impact:
+compatibility problems all later steps have a major impact:
 
 - Step 3) can only be implemented when the whole tree is Manifest2 ready 
   (ideally speaking, practically the requirement will be more like 95% coverage
@@ -214,7 +214,7 @@ compability problems all later steps have a major impact:
 - Steps 4) and 5) will render all portage versions without Manifest2 support 
   basically useless (users would have to regenerate the digest and Manifest 
   for each package before being able to merge it), so this requires a almost
-  100% coverage of the userbase with Manifest2 capabale portage versions 
+  100% coverage of the userbase with Manifest2 capable portage versions
   (with step 1) completely implemented).
 
 Another problem is that some steps affect different targets:
@@ -226,7 +226,7 @@ Another problem is that some steps affect different targets:
 - Step 5) targets the portage tree on the cvs server
 
 While it is relatively easy to get all devs to use a new portage version this is 
-practically impossible with users as some don't update their systems regulary.
+practically impossible with users as some don't update their systems regularly.
 While six months are probably sufficient to reach a 95% coverage one year is 
 estimated to reach an almost-complete coverage. All times are relative to the
 stable-marking of a compatible portage version.
@@ -235,7 +235,7 @@ No timeframe for implementation is presented here as it is highly dependent
 on the completion of each step.
 
 In summary it can be said that while a full conversion will take over a year
-to be completed due to compability issues mentioned above some benefits of the 
+to be completed due to compatibility issues mentioned above some benefits of the
 system can selectively be used as soon as step 2) is completed.
 
 
@@ -322,5 +322,6 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
-
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
