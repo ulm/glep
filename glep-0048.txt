@@ -23,6 +23,9 @@ For years now developers have been saying how we need an empowered QA team to
 handle problems concerning the tree.  This GLEP provides the structure for
 such a team and specifies the roles the team would fulfill.
 
+The GLEP has been revised to improve the mandate of the QA team by giving it
+the full backing of the council.
+
 Specification
 =============
 
@@ -36,11 +39,11 @@ tree policies are respected.
   tree in a good state. This is done primarily by finding and pointing out
   issues to maintainers and, where necessary, taking direct action.
 * The QA team is directed by a lead, chosen yearly by private or
-  public election among the members of the team. The QA team lead can
-  choose one member as a deputy. The deputy has all of his powers directly
-  delegated from the QA team lead and thus his actions and decisions should
-  be considered equal to those of the QA team lead. The deputy is directly
-  responsible only to the QA team lead.
+  public election among the members of the team, and confirmed by the council.
+  The QA team lead can choose one member as a deputy. The deputy has all of
+  his powers directly delegated from the QA team lead and thus his actions
+  and decisions should be considered equal to those of the QA team lead.
+  The deputy is directly responsible only to the QA team lead.
 * The QA team lead must approve developers who would like to join the project. The
   applicant must demonstrate a thorough understanding of the duties he would like
   to perform. By accepting the applicant the QA team lead will accept
@@ -57,13 +60,13 @@ tree policies are respected.
   are not severe, they can make automated checks of the tree more difficult.
 * There will be cases when our tools are incapable of handling a certain
   situation and policy must be broken in order to get something working
-  completely.  This will hopefully not occur very often but each time it
+  completely.  This will hopefully not occur very often, but each time it
   does occur, the QA team and the maintainer will come to some agreement on
   an interim solution and it is expected that a bug will be opened with the
   appropriate team to work towards a correct solution.
 * In the case of disagreement among QA members the majority of established
   QA members must agree with the action.  Some examples of disagreements are:
-  whether the percieved problem violates the policy or whether the solution
+  whether the perceived problem violates the policy or whether the solution
   makes the situation worse.
 * In the event that a developer still insists that a package does not break
   QA standards, an appeal can be made at the next council meeting. The package
@@ -72,8 +75,8 @@ tree policies are respected.
 * Just because a particular QA violation has yet to cause an issue does not
   change the fact that it is still a QA violation.
 * If a particular developer persistently causes breakage, the QA team
-  may request that devrel re-evaluates that developer's commit rights.
-  Evidence of past breakages will be presented with this request to devrel.
+  may request that Comrel re-evaluates that developer's commit rights.
+  Evidence of past breakages will be presented with this request to Comrel.
 * The QA team will maintain a list of current "QA Standards" with explanations
   as to why they are problems, and how to fix the problem.  The list is not
   meant by any means to be a comprehensive document, but rather a dynamic
@@ -87,6 +90,8 @@ tree policies are respected.
   unmaintained packages as they are found to be broken.  It is also
   encouraged of members of the QA team to assist in mentoring new developers
   that wish to take over unmaintained packages/herds.
+* The QA lead's term expires one year after confirmation, and during any
+  period that the position is vacant the council may appoint an interim lead.
 
 
 Backwards Compatibility
@@ -97,5 +102,6 @@ Not a problem for this GLEP.
 Copyright
 =========
 
-This document has been placed in the public domain.
-
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
