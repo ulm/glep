@@ -56,7 +56,7 @@ contains a good overview of most of the issues. Summarized here:
    The previous two items make it possible for a skilled attacker to
    design an attack and then execute it against specific portions of
    existing infrastructure (e.g.: Compromise a country-local rsync
-   mirror, and totally replace a package and it's Manifest).
+   mirror, and totally replace a package and its Manifest).
 
 Specification
 =============
@@ -166,7 +166,7 @@ Protection for process #2 is a different matter entirely. While it also
 cannot be complete (as the User may be attacked directly), we can ensure
 that Gentoo infrastructure and the mirrors are not a weak point. This
 objective is actually much closer than it seems already - most of the
-work has been completed for other things!. This is further discussed in
+work has been completed for other things! This is further discussed in
 [GLEP58]. As this process has the most to gain in security, and the
 most immediate impact, it should be implemented before or at the same
 time as any changes to process #1. Security at this layer is already
