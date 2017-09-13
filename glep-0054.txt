@@ -3,11 +3,16 @@ Title: scm package version suffix
 Version: $Revision$
 Last-Modified: $Date$
 Author: Piotr Jaroszyński <peper@gentoo.org>
-Status: Draft
+Status: Deferred
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 09-Dec-2007
 Post-History: 09-Dec-2007
+
+Status
+======
+
+Marked as deferred by GLEP editor creffett due to inactivity
 
 Abstract
 ========
@@ -116,6 +121,8 @@ release or later.
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
 
 .. vim: set tw=80 fileencoding=utf-8 spell spelllang=en et :
