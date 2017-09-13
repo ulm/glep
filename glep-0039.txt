@@ -96,10 +96,10 @@ Problems with the existing system
 Additional problems identified by the current metastructure reform proposals
 ----------------------------------------------------------------------------
 
-1. The current system has no mechanism for identifying either projects
+6. The current system has no mechanism for identifying either projects
    or devs that have gone inactive.
-2. Bugs that cut across projects often remain unresolved.
-3. GLEPs often linger in an undetermined state.
+7. Bugs that cut across projects often remain unresolved.
+8. GLEPs often linger in an undetermined state.
 
 Specification
 =============
