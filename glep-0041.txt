@@ -3,7 +3,7 @@ Title: Making Arch Testers official Gentoo Staff
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Simon Stelling <blubb@gentoo.org>, Homer Parker <hparker@gentoo.org>
-Status: Approved
+Status: Rejected
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 7-Sep-2005
@@ -45,7 +45,7 @@ to the current situation:
   address if they go on to become a Gentoo developer.
 - Get read-only access to the gentoo-x86 repository. This doesn't have to be
   individual accounts, a single account, without a shell, with all of their 
-  keys will be sufficiant.
+  keys will be sufficient.
 
 There will be a 30 day probationary/mentoring period for new ATs.The lead AT/HT
 for arch/herd will be responsible for the mentoring period. If arch/herd
@@ -78,5 +78,6 @@ All current active arch testers should be migrated.
 Copyright
 =========
 
-This document has been placed in the public domain.
-
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
