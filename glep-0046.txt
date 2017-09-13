@@ -33,7 +33,7 @@ specialist external data source. One of the authors, for example, has a
 shell script hack that tries to determine whether any ``app-vim``
 packages need bumping by checking the associated ``vim.org`` script
 page. Again, tying packages to external data source entries is not
-particulaly straight forward.
+particularly straight forward.
 
 Making additional upstream-related data easily available will have other
 benefits:
@@ -146,7 +146,8 @@ etc).
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
 
 .. vim: set ft=glep tw=72 :
-
