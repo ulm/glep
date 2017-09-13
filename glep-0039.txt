@@ -4,7 +4,7 @@ Version: $Revision$
 Last-Modified: $Date$
 Author:	Grant Goodyear <g2boojum@gentoo.org>,
 	Ciaran McCreesh <ciaranm@gentoo.org>,
-Status: Accepted
+Status: Final
 Type: Informational
 Content-Type: text/x-rst
 Created: 01-Sep-2005
@@ -45,7 +45,8 @@ we do not want to make things harder (or less fun) for such people.  So here's
 a minimal proposal for those who remembers the "good ol' days" and thinks
 things aren't really so different now.
 
-Synopsis of the current system:
+Synopsis of the current system
+------------------------------
 
   *  There are 13-15 top-level projects (TLPs).  Top-level projects are
      comprised of sub-projects, and the goal was that every Gentoo
@@ -69,7 +70,8 @@ Synopsis of the current system:
      case disciplinary action must be enacted by the other strategic TLP
      managers.
 
-Problems with the existing system:
+Problems with the existing system
+---------------------------------
 
 1. The assumption that TLPs are complete is either incorrect (there
    still is no "server" TLP) or just plain weird (but the lack of a
@@ -90,13 +92,13 @@ Problems with the existing system:
 5. Regardless of whether or not it is justified, devrel is loathed by
    many in its enforcement role.
 
-Here's a couple of additional problems identified by the current
-metastructure reform proposals:
+Additional problems identified by the current metastructure reform proposals
+----------------------------------------------------------------------------
 
-6. The current system has no mechanism for identifying either projects
+1. The current system has no mechanism for identifying either projects
    or devs that have gone inactive.
-7. Bugs that cut across projects often remain unresolved.
-8. GLEPs often linger in an undetermined state.
+2. Bugs that cut across projects often remain unresolved.
+3. GLEPs often linger in an undetermined state.
 
 Specification
 =============
@@ -204,5 +206,6 @@ current system it does.  With this proposal it wouldn't.
 Copyright
 =========
 
-This document has been placed in the public domain.
-
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
