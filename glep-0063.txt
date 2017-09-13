@@ -1,0 +1,250 @@
+GLEP: 63
+Title: Gentoo GPG key policies
+Version: $Revision$
+Last-Modified: $Date$
+Author: Robin H. Johnson <robbat2@gentoo.org>, Andreas K. Hüttel <dilfridge@gentoo.org>
+Status: Draft
+Type: Standards Track
+Content-Type: text/x-rst
+Created: 18-Feb-2013
+Post-History: 10-Nov-2013
+
+Credits
+=======
+
+Many developers and external sources helped in this GLEP.
+
+Abstract
+========
+
+This GLEP provides a both a minimum requirement and a recommended set of GPG
+key management policies for the Gentoo Linux distribution.
+
+Motivation
+==========
+
+Given the increasing use and importance of cryptographic protocols in internet
+transactions of any kind, unified requirements for GnuPG keys used in Gentoo
+Linux development are sorely needed.  This document provides both a set of
+bare minimum requirements and a set of best practice recommendations for
+the use of GnuPG by Gentoo Linux developers.  It is intended to provide
+a basis for future improvements such as, e.g., consistent ebuild or package
+signing and verifying by end users.
+
+Specifications for GnuPG keys
+=============================
+
+Bare minimum requirements
+-------------------------
+1. SHA2-series output digest (SHA1 digests internally permitted)::
+
+       personal-digest-preferences SHA256
+
+2. Root key and signing subkey of EITHER:
+
+   a. DSA, 2048-bit
+
+      Exception: if your hardware token only supports 1024-bit, you may use it
+
+   b. RSA, >=2048 bits, RSAv4 or later only
+
+3. Key expiry: 5 years maximum
+
+4. Upload your key to the SKS keyserver rotation before usage!
+
+Recommendations
+---------------
+
+1. Copy /usr/share/gnupg/gpg-conf.skel to ~/.gnupg/gpg.conf, append the block
+   given in the FAQ section of this GLEP.
+
+2. SHA2-series digest on output and certifications::
+
+       personal-digest-preferences SHA256
+       cert-digest-algo SHA256
+
+3. Root key type RSA, 4096 bits, RSAv4 or later
+
+   This may require creating an entirely new key.
+
+4. Dedicated signing subkey of EITHER:
+
+   a. DSA 2048 bits exactly.
+
+   b. RSA 4096 bits exactly.
+
+5. Key expiry:
+
+   a. Root key: 3 years maximum, expiry date renewed annually.
+
+   b. Gentoo subkey: 1 year maximum, expiry date renewed every 6 months.
+
+6. Create a revocation certificate & store it hardcopy offsite securely
+   (it's about ~300 bytes).
+
+7. Encrypted backup of your secret keys.
+
+8. Include an unambiguous indicator of which key made a signature: in your
+   gpg.conf, add::
+
+       # include an unambiguous indicator of which key made a signature:
+       # (and http://www.ietf.org/mail-archive/web/openpgp/current/msg00405.html)
+       # (see http://thread.gmane.org/gmane.mail.notmuch.general/3721/focus=7234)
+       sig-notation issuer-fpr@notations.openpgp.fifthhorseman.net=%g
+
+Notes / FAQ
+===========
+
+1. *Ok, so how do I follow this?* See [#DEBIANGPG]_, [#EKAIA]_.
+
+2. *How can I be really sure / paranoid enough?* See [#RISEUP]_.
+
+3. *When should I update my key expiry date?* Every 3-6 months, and / or
+   before key expiry and major keysigning events, you should update your
+   key expiry date with the ``expire`` command (remember to do all subkeys).
+   Put it on your calendar!
+
+4. *Can you give me a full ~/.gnupg/gpg.conf file?* Certainly::
+
+       keyserver pool.sks-keyservers.net
+
+       emit-version
+
+       default-recipient-self
+
+       # -- All of the below portion from the RiseUp.net OpenPGP best practices, and
+       # -- many of them are also in the Debian GPG documentation.
+
+       # when outputting certificates, view user IDs distinctly from keys:
+       fixed-list-mode
+
+       # long keyids are more collision-resistant than short keyids (it's trivial to make a key
+       # with any desired short keyid)
+       # NOTE: this breaks kmail gnupg support!
+       keyid-format 0xlong
+
+       # when multiple digests are supported by all recipients, choose the strongest one:
+       personal-digest-preferences SHA512 SHA384 SHA256 SHA224
+
+       # preferences chosen for new keys should prioritize stronger algorithms:
+       default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 BZIP2 ZLIB ZIP Uncompressed
+
+       # If you use a graphical environment (and even if you don't) you should be using an agent:
+       # (similar arguments as  https://www.debian-administration.org/users/dkg/weblog/64)
+       use-agent
+
+       # You should always know at a glance which User IDs gpg thinks are legitimately bound to
+       # the keys in your keyring:
+       verify-options show-uid-validity
+       list-options show-uid-validity
+
+       # include an unambiguous indicator of which key made a signature:
+       # (see http://thread.gmane.org/gmane.mail.notmuch.general/3721/focus=7234)
+       sig-notation issuer-fpr@notations.openpgp.fifthhorseman.net=%g
+
+       # when making an OpenPGP certification, use a stronger digest than the default SHA1:
+       cert-digest-algo SHA256
+
+5. *What about elliptic-curve/ECC keys?* They are not used finalized
+   in the OpenPGP draft specification, esp. in light of concerns that the NSA
+   may have chosen some of the key values to be backdoor values; when
+   the specification includes curves that are known to be free of this
+   concern, this GLEP should be revised.
+
+6. *What about larger keys?* Keys with sizes RSA >4096 bits, and DSA >2048
+   bits are not supported in the OpenPGP specification, and there may be
+   interoperability issues with them.
+
+7. *How about make.conf settings?* ::
+
+       FEATURES="${FEATURES} sign"
+
+       PORTAGE_GPG_DIR="/home/exampleuser/.gnupg"
+
+       # You should use the full 16-character key handle to your signing
+       # subkey, with a '!' on the end to ensure that subkey is used.
+       PORTAGE_GPG_KEY="0x1234567890ABCDEF!"
+
+Gentoo LDAP
+===========
+
+All Gentoo developers must list the complete GPG fingerprint for their root
+keys in the 'gpgfingerprint' LDAP field. It must be exactly 40 hex digits,
+uppercase, with optional spaces every 8 hex digits. Regular expression for
+validation::
+
+    ^[[:xdigit]]{8}(?[[:xdigit]]{8}){4}$
+
+The prior 'gpgkey' field will be removed, as it is a subset of the fingerprint
+field. In any place that presently displays the gpgkey field, the last 16 hex
+digits of the fingerprint should be displayed instead.
+
+Recommended / planned tools
+===========================
+
+Most of the key tracking is work in progress in the gentoo-keys project
+[#GENTOOKEYS]_. The resulting toolset should also include easy-to-use tools
+for developers to generate new keys [#TOOLSET]_ (using the recommendations)
+and update expiry dates.  A final user-formatted keyring will be generated to
+be hosted on the Gentoo API site.
+
+This paragraph is included here for informational purposes; the exact
+specification of these tools is outside the scope of this GLEP.
+
+Backwards Compatibility
+=======================
+
+There is no consistent standard for GPG usage in Gentoo to date. There is
+conflicting information in the Devmanual [#DEVMANUAL-MANIFEST]_ and the GnuPG
+Gentoo user guide [#GNUPG-USER]_. As there is little enforcement of Manifest
+signing and very little commit signing to date, there are no backwards
+compatibility concerns.
+
+External documentation
+======================
+
+Much of the above was driven by the following:
+
+* NIST SP 800-57 recommendations [#NISTSP800571]_, [#NISTSP800572]_
+
+* Debian GPG documentation [#DEBIANGPG]_
+
+* RiseUp.net OpenPGP best practices [#RISEUP]_
+
+References
+==========
+
+.. [#DEBIANGPG] Debian GPG documentation
+   (https://wiki.debian.org/Keysigning)
+
+.. [#EKAIA] Ana's blog: Creating a new GPG key
+   (http://ekaia.org/blog/2009/05/10/creating-new-gpgkey/)
+
+.. [#RISEUP] RiseUp.net OpenPGP best practices
+   (https://we.riseup.net/riseuplabs+paow/openpgp-best-practices)
+
+.. [#GENTOOKEYS] Gentoo Keys project
+   (http://git.overlays.gentoo.org/gitweb/?p=proj/gentoo-keys.git)
+
+.. [#TOOLSET] http://thread.gmane.org/gmane.linux.gentoo.devel/83996/focus=84220
+
+.. [#DEVMANUAL-MANIFEST] Gentoo Development Guide: Manifest
+   (http://devmanual.gentoo.org/general-concepts/manifest/index.html)
+
+.. [#GNUPG-USER] GnuPG Gentoo User Guide
+   (http://www.gentoo.org/doc/en/gnupg-user.xml)
+
+.. [#NISTSP800571] NIST SP 800-57: Recommendation for Key Management:
+   Part 1: General (Revision 3)
+   (http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57_part1_rev3_general.pdf)
+
+.. [#NISTSP800572] NIST SP 800-57: Recommendation for Key Management:
+   Part 2: Best Practices for Key Management Organization
+   (http://csrc.nist.gov/publications/nistpubs/800-57/SP800-57-Part2.pdf)
+
+Copyright
+=========
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
