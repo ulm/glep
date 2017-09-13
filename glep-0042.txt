@@ -186,7 +186,7 @@ The directory will contain a file named ``yyyy-mm-dd-short-name.en.txt``, which
 contains the text of the news item, in English, in the format described below.
 
 If a news item is translated, other files named ``yyyy-mm-dd-short-name.xx.txt``
-(where ``xx`` is the ISO 639 [#iso-639]_ two letter country code, and the date
+(where ``xx`` is the ISO 639 [#iso-639]_ two letter language code, and the date
 remains the same as the original news item) will also be provided. However, only
 the English version of a news item is authoritative.  This anglocentricity is
 justified by precedent [#glep-34]_.
