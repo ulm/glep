@@ -3,7 +3,7 @@ Title: Gentoo GPG key policies
 Version: $Revision$
 Last-Modified: $Date$
 Author: Robin H. Johnson <robbat2@gentoo.org>, Andreas K. Hüttel <dilfridge@gentoo.org>, Marissa Fischer <blogtodiffer@gmail.com>
-Status: Draft
+Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 18-Feb-2013
@@ -55,59 +55,7 @@ Recommendations
 ---------------
 
 1. Copy ``/usr/share/gnupg/gpg-conf.skel`` to ``~/.gnupg/gpg.conf``, append
-   the block given in the FAQ section of this GLEP.
-
-2. SHA2-series digest on output and certifications::
-
-       personal-digest-preferences SHA256
-       cert-digest-algo SHA256
-
-3. Root key type RSA, 4096 bits, RSAv4 or later
-
-   This may require creating an entirely new key.
-
-4. Dedicated signing subkey of EITHER:
-
-   a. DSA 2048 bits exactly.
-
-   b. RSA 4096 bits exactly.
-
-5. Key expiry:
-
-   a. Root key: 3 years maximum, expiry date renewed annually.
-
-   b. Gentoo subkey: 1 year maximum, expiry date renewed every 6 months.
-
-6. Create a revocation certificate & store it hardcopy offsite securely
-   (it's about ~300 bytes).
-
-7. Encrypted backup of your secret keys.
-
-8. Include an unambiguous indicator of which key made a signature: in your
-   gpg.conf, add::
-
-       # include an unambiguous indicator of which key made a signature:
-       # (see http://thread.gmane.org/gmane.mail.notmuch.general/3721/focus=7234)
-       # (and http://www.ietf.org/mail-archive/web/openpgp/current/msg00405.html)
-       sig-notation issuer-fpr@notations.openpgp.fifthhorseman.net=%g
-
-Notes / FAQ
-===========
-
-Ok, so how do I follow this?
-  See the Debian GPG documentation [#DEBIANGPG]_, or this guide to creating
-  a new GPG key [#EKAIA]_.
-
-How can I be really sure / paranoid enough?
-  See the RiseUp.net OpenPGP best practices [#RISEUP]_.
-
-When should I update my key expiry date?
-  You should update your key expiry date with the ``expire`` command (remember
-  to do all subkeys) every 3-6 months, as well as before key expiry and major
-  keysigning events.
-
-Can you give me a full ``~/.gnupg/gpg.conf`` file?
-  ::
+   the following block::
 
        keyserver pool.sks-keyservers.net
 
@@ -141,41 +89,34 @@ Can you give me a full ``~/.gnupg/gpg.conf`` file?
        verify-options show-uid-validity
        list-options show-uid-validity
 
-       # include an annotation of the certifying key fingerprint
+       # include an unambiguous indicator of which key made a signature:
+       # (see http://thread.gmane.org/gmane.mail.notmuch.general/3721/focus=7234)
+       # (and http://www.ietf.org/mail-archive/web/openpgp/current/msg00405.html)
        sig-notation issuer-fpr@notations.openpgp.fifthhorseman.net=%g
 
        # when making an OpenPGP certification, use a stronger digest than the default SHA1:
        cert-digest-algo SHA256
 
-What about elliptic-curve/ECC keys?
-  They are not used finalized in the OpenPGP draft specification, esp. in
-  light of concerns that the NSA may have chosen some of the key values to be
-  backdoor values; when the specification includes curves that are known to be
-  free of this concern, this GLEP should be revised.
+2. Root key type RSA, 4096 bits, RSAv4 or later
 
-What about larger keys?
-  Keys with sizes RSA >4096 bits, and DSA >2048 bits are not supported in the
-  OpenPGP specification, and there may be interoperability issues with them.
+   This may require creating an entirely new key.
 
-How about ``make.conf`` settings?
-  ::
+3. Dedicated signing subkey of EITHER:
 
-       FEATURES="${FEATURES} sign"
+   a. DSA 2048 bits exactly.
 
-       PORTAGE_GPG_DIR="/home/exampleuser/.gnupg"
+   b. RSA 4096 bits exactly.
 
-       # You should use the full 16-character key handle to your signing
-       # subkey, with a '!' on the end to ensure that subkey is used.
-       PORTAGE_GPG_KEY="0x1234567890ABCDEF!"
+4. Key expiry:
 
-What's this weird ``fifthhorseman`` thingy?
-  It's actually a workaround for a protocol weakness (which will be addressed
-  in a future version of the OpenPGP standard). The identifier
-  "``issuer-fpr@notations.openpgp.fifthhorseman.net``" is from
-  the developer that proposed the extension [#ISSUER-ANNOTATE]_
-  and stays constant. "%g" is automatically replaced by the fingerprint
-  of the key that makes the signature. The resulting annotation is added
-  in the signature.
+   a. Root key: 3 years maximum, expiry date renewed annually.
+
+   b. Gentoo subkey: 1 year maximum, expiry date renewed every 6 months.
+
+5. Create a revocation certificate & store it hardcopy offsite securely
+   (it's about ~300 bytes).
+
+6. Encrypted backup of your secret keys.
 
 Gentoo LDAP
 ===========
@@ -191,18 +132,6 @@ The prior "``gpgkey``" field will be removed, as it is a subset
 of the fingerprint field. In any place that presently displays
 the "``gpgkey``" field, the last 16 hex digits of the fingerprint should
 be displayed instead.
-
-Recommended / planned tools
-===========================
-
-This section is included for informational purposes; the exact specification
-of these tools is outside the scope of this GLEP.
-
-Most of the key tracking is work in progress in the gentoo-keys project
-[#GENTOOKEYS]_. The resulting toolset should also include easy-to-use tools
-for developers to generate new keys [#TOOLSET]_ (using the recommendations)
-and update expiry dates.  A final user-formatted keyring will be generated to
-be hosted on the Gentoo API site.
 
 Backwards Compatibility
 =======================
@@ -237,11 +166,6 @@ References
 
 .. [#RISEUP] RiseUp.net OpenPGP best practices
    (https://we.riseup.net/riseuplabs+paow/openpgp-best-practices)
-
-.. [#GENTOOKEYS] Gentoo Keys project
-   (http://git.overlays.gentoo.org/gitweb/?p=proj/gentoo-keys.git)
-
-.. [#TOOLSET] http://thread.gmane.org/gmane.linux.gentoo.devel/83996/focus=84220
 
 .. [#DEVMANUAL-MANIFEST] Gentoo Development Guide: Manifest
    (http://devmanual.gentoo.org/general-concepts/manifest/index.html)
