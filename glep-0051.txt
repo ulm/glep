@@ -23,9 +23,9 @@ Motivation
 ==========
 
 When we look at the software projects today, we find that information has
-broadened beyond documentation and the detail level has deepend to an almost
+broadened beyond documentation and the detail level has deepened to an almost
 individual, precise answer for every question. It is no longer reasonable to
-suggest that documentation is sufficient to succesfully aide users with
+suggest that documentation is sufficient to successfully aid users with
 exploring the world of software use. Documentation is a (and perhaps even the
 most) powerful tool to guide users through complex topics. Yet documentation
 mainly focuses on a large reader base. Whenever topics become too detailed, they
@@ -133,4 +133,6 @@ has final saying on the frameworks used in the knowledge base.
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
