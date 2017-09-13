@@ -13,7 +13,7 @@ Abstract
 ========
 
 The intention of this GLEP is to propose the creation of patching support for
-portage, and iron out the implementation details.
+Portage, and iron out the implementation details.
 
 Status
 ======
@@ -127,7 +127,7 @@ reconstructed.  Assuming reconstruction didn't return any errors, the target
 file has its uncompressed md5sum calculated and verified, then is recompressed
 and the compressed md5sum calculated.  At this point, if the compressed md5
 matches the md5 stored in the tree, then portage transfers the file into
-distfiles, and continues on it's merry way.
+distfiles, and continues on its merry way.
 
 If the compressed md5 is different from the tree's value, then the (proposed)
 md5 database is updated with new compressed md5.  Details of this database
@@ -214,7 +214,7 @@ figure yet, and a better figure is being checked into currently.
 Regardless of the exact space figure, finding a place to store the patches
 will be problematic.  Expansion of the required mirror space (essentially just
 swallowing the patches storage requirement) is unlikely, since it was one of
-the main arguements against the now defunct glep9 attempt [2]_.  A couple of
+the main arguments against the now defunct glep9 attempt [2]_.  A couple of
 ideas that have been put forth to handle the additional space requirements are
 as follows- 
 
@@ -292,4 +292,6 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
