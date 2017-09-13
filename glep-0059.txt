@@ -29,7 +29,7 @@ security of the tree - and a comprehensive security plan is needed.
 
 This GLEP is not mandatory for the tree-signing specification, but
 instead aims to improve the security of the hashes used in Manifest2
-[GLEP44]. As such, it is also able to stand on it's own.
+[GLEP44]. As such, it is also able to stand on its own.
 
 Specification
 =============
@@ -159,7 +159,7 @@ Backwards Compatibility
 Old versions of Portage may support and expect only specific checksums.
 This is accounted for in the checksum depreciation discussion.
 
-For maximum compatiability, we should only have to include each of the
+For maximum compatibility, we should only have to include each of the
 old algorithms that we are officially still supporting, as well as the
 new ones that we prefer.
 
