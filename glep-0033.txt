@@ -3,7 +3,7 @@ Title: Eclass Restructure/Redesign
 Version: $Revision$
 Last-Modified: $Date$
 Author:	Brian Harring <ferringb@gentoo.org>, John Mylchreest <johnm@gentoo.org>
-Status: Moribund
+Status: Deferred
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 29-Jan-2005
@@ -167,7 +167,7 @@ needs them.  The reasons for this are explained below.
 Structuring of the elibs directory will be exactly the same as that of the new
 eclass directory (detailed below), sans a different extension.
 
-As to why their are so many restrictions, the answer is simple- the definition of 
+As to why there are so many restrictions, the answer is simple- the definition of
 what elibs are, what they are capable of, and how to use them is nailed down as much as 
 possible to avoid *any* ambiguity related to them.  The intention is to make it clear,
 such that no misconceptions occur, resulting in bugs.
@@ -476,5 +476,6 @@ To recap:
 Copyright
 =========
 
-This document has been placed in the public domain.
-
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
