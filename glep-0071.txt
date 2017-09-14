@@ -1,0 +1,86 @@
+GLEP: 71
+Title: Require Projects to report to Council Monthly
+Version: $Revision$
+Last-Modified: $Date$
+Author: William L\. Thomson Jr\. <wlt@o-sinc.com>
+Status: Draft
+Type: Standards Track
+Content-Type: text/x-rst
+Created: 19-Jan-2017
+Post-History:
+
+Abstract
+========
+
+The Council does not seem to be any over all awarness of any project's
+activity, status, members, etc. Projects need to report what is going on
+within that project to the council on a monthly basis.
+
+
+Motivation
+==========
+
+Presently there is no awarness of any project activity by the council over
+all. There is no required or optional reporting done from any project
+to the council. The council is likely aware of a projects existence
+but not ongoing details. The council should be aware of what is going on
+in the various projects, from activity, to members, to leadership changes,
+etc.  Not necessarily for oversight but more for awareness of the big picture.
+How all projects come together to form Gentoo.
+
+
+Specification
+=============
+
+Each project will be required to provide a summary briefing to the council
+each month. This should include at minimum what is going on in the project.
+The direction of the project. The current developers associated with the
+project. What each developer is working on and their estimated volunteer time
+for the upcoming period. The summary should be done by the projects team
+leader but can be done by any member and presented to the council. Projects
+should also meet once a month to provide such information to other members
+of that project for presentation to the council. This should not require allot
+of time.
+
+If a project is unable to meet such, maybe it should not be a project. Though
+a developer can still work on anything. Once a project is formed, its
+activity, status, etc should be made known on a regular basis by the council
+members.
+
+
+Rationale
+=========
+
+The council will have a high level overview of development activity occuring
+in every project. Council members and others can get a high level overview
+of what is going on in Gentoo as a whole. The council could help with
+coordination between projects for a cohesive direction. Teams may be working
+on similar things or have commont goals. With councils awarness they may be
+able to facilitate further cooperation and unity. This may allow the council
+to lead the project as a whole in any given direction.
+
+
+Backwards Compatibility
+=======================
+
+N/A
+
+
+External documentation
+======================
+
+N/A
+
+
+References
+==========
+
+N/A
+
+
+Copyright
+=========
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
