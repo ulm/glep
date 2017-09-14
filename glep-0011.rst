@@ -4,7 +4,6 @@ Version: $Revision$
 Last-Modified: $Date$
 Author: Troy Dack <tad@gentoo.org>
 Author: Stuart Herbert <stuart@gentoo.org>
-Discussions-To: gentoo-dev@gentoo.org
 Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
