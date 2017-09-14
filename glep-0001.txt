@@ -212,10 +212,11 @@ Each GLEP should have the following parts:
 GLEP Formating and Template
 ===========================
 
-GLEPs are written in Wiki markup [#wikimarkup]_, which is a markup language
-compatible with MediaWiki.  This format is both human-readable and displays
-well on the Gentoo Wiki.  GLEP 2 contains a boilerplate template [#GLEP2]_
-for use with Wiki markup GLEPs.
+GLEPs are written in ReStructuredText markup [#ReSTHOME]_ that is then
+converted to HTML using Docutils [#DOCUTILS]_.  Using ReStructuredText GLEPs
+allows for rich markup that is still quite easy to read, but results in much
+better-looking and more functional HTML.  GLEP 2 contains a boilerplate
+template [#GLEP2]_ for use with ReStructuredText GLEPs.
 
 
 GLEP Header
@@ -328,7 +329,9 @@ References and Footnotes
 
 .. [#CC-BY-SA3.0] http://creativecommons.org/licenses/by-sa/3.0/us/
 
-.. [#wikimarkup] http://en.wikipedia.org/wiki/Help:Wiki_markup
+.. [#ReSTHOME] http://docutils.sourceforge.net/rst.html
+
+.. [#DOCUTILS] http://docutils.sourceforge.net/
 
 .. [#GLEP2] http://glep.gentoo.org/glep-0002.html
 
