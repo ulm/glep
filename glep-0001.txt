@@ -138,6 +138,10 @@ a GLEP is deferred, the GLEP editor can re-assign it to draft status.
 A GLEP can also be "Rejected".  Perhaps after all is said and done it was not
 a good idea.  It is still important to have a record of this fact.
 
+The "Withdrawn" status is similar - it means that the GLEP author has decided
+that the GLEP is actually a bad idea, or has accepted that a competing
+proposal is a better alternative.
+
 GLEPs can also be replaced by a different GLEP, rendering the original
 obsolete (where version 2 of a policy, for example, might replace version 1).
 
@@ -146,6 +150,8 @@ GLEP work flow is as follows::
     Draft -> Accepted -> Final -> Replaced
       ^
       +----> Rejected
+      |
+      +----> Withdrawn
       v
     Deferred
 
@@ -240,7 +246,7 @@ All other headers are required.
     Last-Modified: <date of last update>
     Title: <glep title>
     Author: <list of authors' real names and optionally, email addrs>
-    Status: <Draft | Active | Accepted | Deferred | Rejected |
+    Status: <Draft | Active | Accepted | Deferred | Withdrawn | Rejected |
              Final | Replaced>
     Type: <Informational | Standards Track>
   * Content-Type: <text/x-rst>
