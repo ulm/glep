@@ -145,11 +145,14 @@ proposal is a better alternative.
 GLEPs can also be replaced by a different GLEP, rendering the original
 obsolete (where version 2 of a policy, for example, might replace version 1).
 
+If a "Final" GLEP becomes obsolete and requires no explicit replacement,
+it can be marked "Moribund".
+
 GLEP work flow is as follows::
 
     Draft -> Accepted -> Final -> Replaced
-      ^
-      +----> Rejected
+      ^                    |
+      +----> Rejected      +----> Moribund
       |
       +----> Withdrawn
       v
@@ -247,7 +250,7 @@ All other headers are required.
     Title: <glep title>
     Author: <list of authors' real names and optionally, email addrs>
     Status: <Draft | Active | Accepted | Deferred | Withdrawn | Rejected |
-             Final | Replaced>
+             Final | Replaced | Moribund>
     Type: <Informational | Standards Track>
   * Content-Type: <text/x-rst>
     Created: <date created on>
