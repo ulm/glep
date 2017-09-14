@@ -3,7 +3,6 @@ Title: Gentoo top-level management structure proposal
 Version: $Revision$
 Last-Modified: $Date$
 Author: Daniel Robbins <drobbins@gentoo.org>
-Editor: Kurt Lieber <klieber@gentoo.org>
 Status: Replaced
 Type: Informational
 Content-Type: text/x-rst
