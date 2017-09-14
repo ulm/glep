@@ -1,0 +1,1545 @@
+GLEP: 73
+Title: Automated enforcing of REQUIRED_USE constraints
+Version: $Revision$
+Last-Modified: $Date$
+Author: Michał Górny <mgorny@gentoo.org>
+Status: Draft
+Type: Standards Track
+Content-Type: text/x-rst
+Created: 11-Jun-2017
+Post-History:
+
+Abstract
+========
+
+This GLEP proposes using automated solving to satisfy REQUIRED_USE
+constraints. It lists the problems with the current handling of REQUIRED_USE,
+and explains how auto-solving would solve them. It specifies the algorithms
+that can be used to verify the constraints, automatically solve them and check
+whether they can be solved. It provides the rationale for all the design
+decisions, and considers the compatibility with the PMS, and between
+the constraints and the package managers before and after the GLEP is used.
+
+
+Motivation
+==========
+
+The issues with REQUIRED_USE
+----------------------------
+
+REQUIRED_USE [#REQUIRED_USE]_ has been introduced in EAPI 4 as a solution to
+the problem of enforcing specific relations between USE flags. According to
+the Portage documentation on REQUIRED_USE [#PORTAGE-REQUIRED_USE]_, it has
+been specifically targeted as a more data-oriented and machine-friendly
+alternative to verifying the validity of USE flag choice in ebuild phases.
+
+At the moment of writing, REQUIRED_USE is used in around 25% of the ebuilds
+in Gentoo. It is an obligatory part of some eclasses, e.g. in the Python
+ecosystem. Its uses include improving clarity of user choices, simplifying
+ebuilds via copying upstream feature dependencies and enforcing valid data
+for USE dependencies. Nevertheless, a number of developers raise strong
+arguments against using REQUIRED_USE.
+
+The commonly noted disadvantages of REQUIRED_USE are:
+
+1. Unsatisfied REQUIRED_USE constraints unnecessarily (and sometimes
+   frequently) require explicit user action, even if there is no real gain
+   from the user explicitly selecting. For example, if a package supports
+   building either against Qt4 or Qt5, and user has enabled the flags for
+   both, the package manager would request him to disable one of the flags for
+   the package.  For most of the cases, just using the newer version would be
+   more friendly.
+
+2. Satisfying REQUIRED_USE usually requires altering flags via permanent
+   configuration. Those alterations can become obsolete over time and without
+   proper maintenance can put system into a suboptimal configuration.
+   For example, if a Python package requires enabling a non-default Python
+   target, then the leftover flag can keep forcing an obsolete Python version
+   when the package gains support for the default target.
+
+3. The machine-oriented form of REQUIRED_USE constraints can result
+   in confusing and unreadable output to the user, especially for complex
+   constructs and cross-dependent constraints. Bad output can result
+   in the user being unable to solve the problem at all, or to solve it
+   in a satisfactory way (i.e. without disabling the features he needs).
+   It can also cause frustration if satisfying REQUIRED_USE requires more than
+   one attempt.
+
+Those arguments have resulted in a number of developers avoiding REQUIRED_USE.
+For example, the Qt team policies [#QT-POLICY]_ discourage using it unless
+absolutely necessary. The attempts of avoiding REQUIRED_USE sometimes result
+in suboptimal descriptions of USE flags or even inconsistent use of them.
+
+The providers problem
+---------------------
+
+A very specific case of a problem where REQUIRED_USE has some use is the
+*providers* problem. That is, whenever a package has a feature that can be
+supplied by more than one library of choice, and the user needs to choose
+between the providers. The exact form of this problem depends on the number
+of providers and whether the feature is optional.
+
+The commonly used solutions include:
+
+- Using one or more binary flags to toggle between the providers (with number
+  of the flags < number of providers). This is most readable with only two
+  providers, e.g. with ``USE=libressl`` meaning *use LibreSSL instead of
+  OpenSSL*, and ``USE=-libressl`` meaning *use OpenSSL*. For packages with
+  optional SSL/TLS feature, there is also an additional ``USE=ssl`` to toggle
+  that feature, and with ``USE=-ssl``, the ``libressl`` flag is meaningless
+  (ignored). This is usually the least intrusive method but it's unreadable
+  and causes the flags to be confusing.
+
+- Using unary flags for providers along with REQUIRED_USE. In this case, each
+  provider gets an explicit flag and REQUIRED_USE is used to force selecting
+  exactly one of them. For optional feature, there is either an additional
+  feature flag or it is disabled when all providers are disabled. This is
+  usually the most readable solution although it frequently requires adjusting
+  flags.
+
+- Using unary flags without REQUIRED_USE. In this case, if user selects more
+  than one provider (or does not select any), the package decides which one is
+  preferred and uses that. For optional feature, again there could be either
+  an additional feature flag or it could be disabled by disabling all
+  the providers. This is less intrusive than the previous solution but it's
+  less readable (it is unclear which provider is actually used) and unsuitable
+  for USE dependencies.
+
+As noted, all of the mentioned solutions have their specific disadvantages.
+This causes different developers to use different solutions for specific
+problems. Sometimes, it could go as bad as to have more than one solution
+applied to a single problem, or different concepts used inconsistently
+by different developers.
+
+Automatic solving as the solution
+---------------------------------
+
+This GLEP focuses on the idea of establishing automated solving of
+REQUIRED_USE as a solution to the aforementioned issues. In this context,
+REQUIRED_USE is extended not only to specify what combinations of USE flags
+are valid but also how to proceed from a disallowed flag set to one that
+satisfies the constraints.
+
+This clearly resolves the first two issues with REQUIRED_USE. Since
+REQUIRED_USE mismatches are solved automatically, there is no explicit user
+interaction required. No changes are done in configuration files — since
+the solving is meant to be deterministic, the package manager can recalculate
+the effective USE flag set using the input USE flag set and the REQUIRED_USE
+constraint.
+
+The third disadvantage is partially solved. Since there is no necessity
+for the user to perform any action, there is also no necessity of explaining
+the constraints to the user. However, for practical uses it may be deemed
+appropriate to explain to the user why a particular flag has been enabled
+or disabled.
+
+Solving the most common problems with REQUIRED_USE makes it possible to extend
+its use cases to the areas where developers so far rejected to use it, or did
+not even think of using it. This includes working towards a single solution
+to the providers problem. Given that REQUIRED_USE no longer requires altering
+the configuration to select between multiple allowed providers, we can
+reasonably work towards using the middle solution consistently — that is,
+having clear unary flags for every provider, and using REQUIRED_USE to
+automatically transform inconclusive input into a single implementation.
+
+Furthermore, the non-intrusive version of REQUIRED_USE could be used
+extensively to conditionally mask meaningless flags and map equivalent flag
+sets into a single common set of choice. This can further improve readability
+(by making flags clearly indicate what it used, e.g. by disabling all SSL/TLS
+provider flags when SSL/TLS is disabled) and improve compatibility between
+binary packages (by reducing the number of incompatible USE flag sets).
+
+
+Specification
+=============
+
+Restrictions on REQUIRED_USE format
+-----------------------------------
+
+The REQUIRED_USE format is defined by the PMS [#PMS]_. This specification
+requires the following additional restrictions being enforced:
+
+- An any-of group (||), at-most-one-of (??) and an exactly-one-of (^^) group
+  can contain only flat USE flag items. In particular, no other group can
+  be nested inside it.
+
+- All-of groups are forbidden inside REQUIRED_USE (they have no use now).
+
+- An any-of group (||), at-most-one-of (??) and an exactly-one-of (^^) group
+  must contain at least one subitem (can not be empty).
+
+As a result, unlimited nesting is allowed only for use-conditional groups.
+All other constructs are kept flat. This serves the following goals:
+
+- avoiding surprising results of automatic flag adjustments,
+- improving readability of REQUIRED_USE constraints,
+- keeping the specification and implementation relatively simple.
+
+The algorithm for satisfying REQUIRED_USE constraints
+-----------------------------------------------------
+Processing algorithm
+~~~~~~~~~~~~~~~~~~~~
+
+The existing package managers have to validate REQUIRED_USE constraints while
+evaluating the dependency graph. The current validation action is replaced
+by the following algorithm:
+
+1. Check whether the REQUIRED_USE constraint is satisfied by the USE flags
+   enabled by the current user configuration. If it is, accept the package
+   (the algorithm stops).
+
+2. Check whether the REQUIRED_USE constraint matches restrictions set
+   in `restrictions on REQUIRED_USE format`_. If it does not, report
+   a REQUIRED_USE mismatch and abort.
+
+3. Find all any-of (||), at-most-one-of (??) and exactly-one-of (^^) groups
+   inside REQUIRED_USE and reorder (sort) them according to the algorithm
+   defined below.
+
+4. Attempt to solve the REQUIRED_USE constraint using the algorithm defined
+   below. If the attempt succeeds, accept the package with the set of USE
+   flags determined by the solver.
+
+5. If the attempt at solving failed, report a REQUIRED_USE mismatch and abort.
+
+REQUIRED_USE verification algorithm
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The verification algorithm is implied by the meanings of REQUIRED_USE
+constructs as defined by the PMS. It is repeated here for completeness
+and for reuse in further algorithms.
+
+The REQUIRED_USE constraint is considered satisfied if *all* the top-level
+items evaluate to true. An item evaluates to true if, depending on the item
+type:
+
+- A **USE flag name** that is not prefixed by an exclamation mark evaluates
+  to true if the named flag is enabled. Accordingly, a USE flag name that
+  is prefixed by an exclamation mark evaluates to true if the named flag
+  is disabled.
+
+- For a **USE-conditional group** the condition needs to be tested first
+  (according to the same rule). If the condition evaluates to true,
+  the USE-conditional group is true only if all items in it evaluate to true.
+  If the condition evaluates to false, the USE-conditional group always
+  evaluates to true and the items inside it need not to be tested.
+
+- An **any-of group** (||) evaluates to true if at least one of the items
+  in it evaluates to true.
+
+- An **exactly-one-of group** (^^) evaluates to true if exactly one
+  of the items in it evaluates to true, and all the remaining items evaluate
+  to false.
+
+- An **at-most-one-of group** (??) evaluates to true if at most one
+  of the items in it evaluates to true.
+
+Constraint group reordering algorithm
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The constraint solving algorithm is built on *prefer leftmost* assumption
+for all any-of, exactly-one-of and at-most-one-of groups. That is,
+if the constraint is not satisfied by the current set of enabled USE flags,
+the algorithm prefers enforcing the leftmost constraints and disabling
+rightmost.
+
+Due to different system profiles, it might be impossible to automatically
+solve the constraint using the leftmost flag specified by ebuild (e.g. when it
+is masked). In order to account for this, the specification provides a group
+reordering (sorting) phase before the solving algorithm.
+
+The reordering applies to any-of, exactly-one-of and at-most-one-of groups.
+Per the format restriction, each group can only contain flat USE flags.
+
+For each of the items in the group, if the item names a forced/masked USE
+flag:
+
+- if the item evaluates to true according to the flag's value, it is moved to
+  the leftmost position in the group,
+
+- if the item evaluates to false according to the flag's value, it is moved to
+  the rightmost position in the group,
+
+Relative positions of multiple forced/masked flags are of no relevance since
+those flags are not altered.
+
+This reordering ensures that if a flag is forced, it is always preferred over
+other choices; and if it is masked, it is never preferred. This makes it
+possible to easily account for all possible cases without having to provide
+a detailed algorithm to handle various possible results.
+
+REQUIRED_USE solving algorithm
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If the REQUIRED_USE constraint is not satisfied according to the initial set
+of USE flags implied by the configuration, the package manager attempts
+to alter the USE flags according to REQUIRED_USE.
+
+Before solving, a set of **immutable flags** is determined based on forced
+and masked USE flags. If a flag is either forced or masked, it is marked
+immutable and the algorithm can not alter its value. If a particular rule
+would cause the flag to be altered, the solving is aborted and an error is
+reported.
+
+The solving algorithm is applied at least once, and the REQUIRED_USE is
+rechecked after each application. The package manager may support running
+multiple iterations of the algorithm, in which case it needs to either limit
+the allowed number of iterations or abort after obtaining one of the values
+previously given by the algorithm (hitting an infinite loop).
+
+In order to enforce REQUIRED_USE, each top-level item in REQUIRED_USE that did
+not evaluate to true needs to be enforced. All items are enforced in order,
+left to right. Depending on the item type, enforcing implies:
+
+- For a **USE flag name** that is not prefixed by an exclamation mark,
+  the named flag is enabled. If it is prefixed by an exclamation mark,
+  the named flag is disabled.
+
+- For a **USE-conditional group**, the condition (LHS) is evaluated first.
+  If the condition evaluates to true, all the items inside the group
+  are enforced, in order. If it evaluates to false, the group is skipped.
+
+- For an **any-of group** that did evaluate to false, the first (left-most)
+  item in the group is enforced.
+
+- For an **at-most-one-of group** that did evaluate to false, the first
+  (left-most) item that evaluates to true needs to be determined first.
+  Afterwards, all items following it are negatively-enforced (forced to
+  evaluate to false).
+
+- An **exactly-one-of group** is equivalent to a conjunction of an
+  at-most-one-of group and an any-of group. That is, if all items evaluate
+  to false, the rule for any-of is applied. If more than one item evaluates
+  to true, the rule for at-most-one-of is applied.
+
+The negative enforcing action can be applied to plain **USE flag names** only.
+If the name is not prefixed by an exclamation mark, then the flag is disabled.
+If the name is prefixed by an exclamation mark, it is enabled appropriately.
+
+
+QA checks to verify REQUIRED_USE solutions
+------------------------------------------
+
+Context to QA checks
+~~~~~~~~~~~~~~~~~~~~
+
+All of the QA checks are performed in context of a specific set of forced
+and masked USE flags, called *immutable flags*. All of the checks need to be
+repeated for every set. Since they can alter the preferences inside any-of,
+at-most-one-of and exactly-one-of groups, it may also be necessary to perform
+a separate transformation for each set.
+
+The complete set of immutable flag combinations can be obtained using
+the following algorithm:
+
+1. let **U** be the set of all USE flags (both explicit IUSE and implicit)
+   that are used in REQUIRED_USE,
+
+2. for every enabled profile:
+
+   1. let **I1** be the effective ``use.force``, ``use.mask``,
+      ``package.use.force``, ``package.use.mask`` values that apply
+      to the package and affect flags in **U**,
+
+   2. let **I2** be the effective ``use.stable.force``, ``use.stable.mask``,
+      ``package.use.stable.force``, ``package.use.stable.mask`` values that
+      apply to the package and affect flags in **U**,
+
+   3. add **I1** to the result set,
+
+   4. if package has any stable keywords, combine **I1** and **I2**,
+      and add the result to the result set.
+
+Afterwards, all checks should be performed for all unique values in the result
+set.
+
+Requirements for REQUIRED_USE constraints
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to verify the ability to solve REQUIRED_USE reliably, the QA check
+tools should ensure that the following conditions are met:
+
+1. no valid combination of USE flags can result in the constraint requesting
+   the same flag to be simultaneously both enabled and disabled;
+
+2. no valid combination of USE flags (that is, not prohibited by immutable
+   flags) can attempt to alter immutable flags;
+
+3. no constraint in REQUIRED_USE may alter flags in such a way that any
+   of the constraints preceding it would start to apply and change
+   the resulting flags in a second iteration.
+
+Concept for transforming REQUIRED_USE into implications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The algorithms used to verify REQUIRED_USE rely on them being expressed
+in a *flat implication form*. In this form, the constraints are expressed
+as zero or more *implications*. Each implication specifies zero or more
+conjunctive *conditions*, and one or more *effects*. It is equivalent
+to a nested USE-conditional group. If all of the *conditions* are met,
+the *effects* are applied.
+
+If a constraint is valid, then the solutions of its transformation
+are the same as of the original.
+
+By idea, the transformation consists of the following steps:
+
+1. Reordering all any-of (||), at-most-one-of (??) and exactly-one-of (^^)
+   groups according to the `Constraint group reordering algorithm`_.
+
+2. Replacing all any-of (||), at-most-one-of (??) and exactly-one-of (^^)
+   groups according to the following transformations:
+
+   - ``^^ ( a b c… )`` → ``|| ( a b c… ) ?? ( a b c… )``,
+   - ``|| ( a b c… )`` → ``!b? ( !c? ( !…? ( a )… ) )``,
+   - ``?? ( a b c… )`` → ``a? ( !b !c… ) b? ( !c… ) c? ( … ) …``.
+
+3. Creating an ordered directed graph linking all nested conditions to their
+   effects.
+
+4. Traversing all the paths from the topmost graph nodes to the deepest,
+   in order.
+
+For example, an ordered graph is provided for the following REQUIRED_USE
+constraint::
+
+    a b? ( c? ( d !b ) d? ( e ) ) b? ( f )
+
+Nodes and edges are numbered to explain the ordering. Furthermore, the final
+(effect) nodes are colored red.
+
+.. figure:: glep-0073-extras/required-use-example-graph.svg
+
+   Example graph for REQUIRED_USE
+
+Traversing this graph produces the following paths, in order:
+
+1. **a(1)**
+2. b(2) → c(3) → **d(4)**
+3. b(2) → c(3) → **!b(5)**
+4. b(2) → d(6) → **e(7)**
+5. b(8) → **g(9)**
+
+Those paths are roughly equivalent to the following USE-conditional group
+constructs:
+
+1. ``a``
+2. ``b? ( c? ( d ) )``
+3. ``b? ( c? ( !b ) )``
+4. ``b? ( d? ( f ) )``
+5. ``b? ( g )``
+
+Except that the value of *b* for constraint 4 is considered from the initial
+value rather than the one possibly altered by constraint 3. Constraint 5 uses
+a separate condition, and so uses the new value of *b*.
+
+Algorithm for transforming REQUIRED_USE into implications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Steps 2 through 4 of the fore-mentioned transformation can be performed using
+the following recursive function. It should be applied to every top-level
+REQUIRED_USE item, in order.
+
+It should be noted that for the purpose of distinguishing separate branches,
+all the condition objects need to have an unique identity. In Python this
+occurs naturally via instantiating an object. In other languages an explicit
+unique identifier may need to be included.
+
+::
+
+    function transform(item, conditions=[]):
+      if item is a USE flag:
+        append (conditions, item) to the results
+      if item is a USE-conditional group:
+        new_conditions := conditions + [item.condition]
+        for subitem in item.subitems:
+          call transform(subitem, new_conditions)
+      if item is an any-of (||) group:
+        n := len(item.subitems) - 1  # (last index)
+        new_conditions := conditions
+        for f in item.subitems[1..n-1]:
+          new_conditions += [!f]
+        append (new_conditions, item.subitems[0]) to the results
+      if item is an at-most-one-of (??) group:
+        n := len(item.subitems) - 1  # (last index)
+        for i := 0 .. n-1:
+          new_conditions := conditions + [item.subitems[i]]
+          for f in item.subitems[i+1..n]:
+            append (new_conditions, !f) to the results
+      if item is an exactly-one-of (^^) group:
+        apply the logic for an any-of (||) group
+        apply the logic for an at-most-one of (??) group
+
+QA check logic
+~~~~~~~~~~~~~~
+
+The logic for the reference algorithm is split into four split functions:
+
+1. Verifying that the constraints do not alter immutable flags,
+
+2. Verifying that the conditions for the constraints are not self-conflicting,
+
+3. Verifying that no two constraints will attempt to force opposite values
+   for a single flag,
+
+4. Verifying that no constraint will meaningfully enable
+   any of the constraints preceding it.
+
+In the following descriptions, *C* will indicate zero or more conditions
+(*ci* being the sub-conditions) of the flat constraint, and *E*
+will indicate the enforcement.
+
+The check for alteration of immutable flags is done for every constraint
+separately. A flat constraint is determined to alter immutable flags if both
+of the following conditions occur:
+
+- *C* can evaluate to true — that is, none of *ci* refer to an immutable
+  flag whose value is *¬ci*,
+
+- *E* references an immutable flag whose immutable state is *¬E*.
+
+The check for self-conflicting constraints is performed for every constraint
+separately. A flat constraint is determined to be self-conflicting
+if the following condition occurs:
+
+- For any pair of sub-conditions *ci*, *cj* (*i ≠ j*), *ci = ¬cj*.
+
+The check for attempting to force opposite values for a single flag is
+performed for every pair of constraints. Since it is symmetric, it is only
+necessary to perform it for unique pairs. For practical reasons, let's assume
+it is performed for every pair *((Ci, Ei), (Cj, Ej))*, where *j > i*. The pair
+is determined to force opposite values for a single flag if all of the
+following conditions are met:
+
+- *Ei = ¬Ej*,
+
+- *Ci* and *Cj* can simultaneously evaluate to true,
+
+- *Ci* can evaluate to true after applying all the constraints preceding it,
+  with flags *F = Ci ∪ Cj*,
+
+- *Cj* can evaluate to true after applying all the constraints preceding it,
+  with flags *F = Ci ∪ Cj*.
+
+The check for enabling the previous constraints is performed for every pair
+*((Ci, Ei), (Cj, Ej))*, where *j > i*. The constraint *(Cj, Ej)* is determined
+to meaningfully enable the constraint *(Ci, Ei)* if all of the following
+conditions are met:
+
+- *Ej* matches any of the conditions in *Ci* (*Ej = ci,k*, for any *k*),
+
+- *Ci* and *Cj* can simultaneously evaluate to true,
+
+- *Ei* does not always evaluate to true after applying all of the constraints,
+  with flags *F = Cj*.
+
+Two flat constraints *Ci* and *Cj* can simultaneously evaluate to true
+if the following condition is met:
+
+- For every *ci,k*, *cj,l* (where *k* and *l* are all possible indexes
+  of the condition of the first and second constraint appropriately),
+  *ci,k ≠ ¬cj,l*.
+
+A constraint *C* can evaluate to true if and only if all sub-constraints can
+evaluate to true. A sub-constraint *ci* can evaluate to true if the current
+set of flags does not include its negation (for every *fj*, *fj ≠ ci*).
+
+A constraint *C* always evaluates to true if and only if all sub-constraints
+always evaluate to true. A sub-constraint *ci* always evaluates to true if the
+current set of flags includes the condition (there exists at least one *fj*
+that *fj = ci*).
+
+In order to determine whether a condition *Ci* can evaluate to true after
+applying a specific set of constraints, with initial flags *F1*, determine
+the final set of flags *Fn* and afterwards test if the constraint can evaluate
+to true with flags *Fn*.
+
+In order to determine whether a condition *Ci* always evaluates to true after
+applying a specific set of constraints, with initial flags *F1*, determine
+the final set of flags *Fn* and afterwards test if the constraint always
+evaluates to true with flags *Fn*.
+
+In order to determine the final set of flags *Fn*, with specific set
+of constraints *(Ci, Ei)* and initial flags *F1*:
+
+- For every flat constraint *(Ci, Ei)* in the set:
+
+  - If the condition *Ci* always evaluates to true, update *F* with *Ei*
+    (*Fi+1 = Fi ∪ {Ei} ∖ {¬Ei}*).
+
+Limitations of the algorithm
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The presented check algorithm has a limitation which could result in false
+positives. However, the testing against all real Gentoo uses of REQUIRED_USE
+has shown that none of those occur at the moment of writing this GLEP,
+and that is quite unlikely for them to become a major issue in the future.
+
+The algorithm is unable to infer indirect implications of the constraints.
+For example, given the following constraint::
+
+    a? ( !b ) !a? ( !b ) b? ( c )
+
+The algorithm is unable to correctly infer that due to the first two
+constraints, *b* will never be true. As a result, it will e.g. report
+an immutability error on ``b? ( c )`` if *c* is masked even though this
+condition could never evaluate to true.
+
+However, it is considered that a natural occurrence of such a constraint
+is quite unlikely, and usually indicates a problem with the constraint anyway.
+Therefore, reporting a false positive here could serve as an indication
+of another problem.
+
+Policy implications
+-------------------
+
+This GLEP does not directly add, alter or remove any of the Gentoo policies.
+Any policy changes related to it need to be done independently of its
+approval, using the appropriate Gentoo procedures.
+
+
+Rationale
+=========
+
+Restrictions for allowed REQUIRED_USE syntax
+--------------------------------------------
+
+The specification imposes a number of arbitrary restrictions to REQUIRED_USE
+syntax, in particular by restricting the possible nesting and disallowing
+other complex constructs. The main goal is to simplify the algorithms used
+and make the results more obvious. This is at cost of prohibiting constructs
+that are rarely used, and usually could be replaced by simpler and more
+readable constructs.
+
+Nested any-of, at-most-one-of, exactly-one-of groups
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The first and most important restriction is that nesting of any-of,
+at-most-one-of and exactly-one-of groups is forbidden. While technically such
+constructs could work, some of them are not really meaningful and others
+are really confusing. At the time of writing, nested ||/??/^^ groups were used
+in exactly two Gentoo packages. The specific uses were:
+
+1. app-admin/bacula::
+
+    || ( ^^ ( mysql postgres sqlite ) bacula-clientonly )
+
+2. dev-games/ogre::
+
+    ?? ( gl3plus ( || ( gles2 gles3 ) ) )
+
+The first use is not very complex, and indicates that either exactly one
+of the database providers need to be selected, or the *bacula-clientonly* flag
+needs to be used. However, at a first glance a user might be confused that
+the database ^^ constraint needs to be applied independently
+of the *bacula-clientonly* flag. The same construct can be expressed in a more
+straightforward way::
+
+    !bacula-clientonly? ( ^^ ( mysql postgres sqlite ) )
+
+The second use is much more confusing. It means that both *gl3plus* and either
+of the *gles2* or *gles3* flags can not be enabled at the same time. However,
+*gles2* and *gles3* can be enabled simultaneously. The same construct can be
+expressed in a more straightforward way as::
+
+    gl3plus? ( !gles2 !gles3 )
+
+As can be seen, in both cases the alternative constructs were both more
+readable and shorter than the nested expressions. In the first case, it is
+also the more natural way of expressing the problem. While replacing
+expressions that have more than two subexpressions would be harder, there were
+no uses of such expressions so far, and the potential ambiguity makes them
+unlikely to appear.
+
+All-of groups
+~~~~~~~~~~~~~
+
+The second restriction imposed by this GLEP is disallowing all-of groups.
+The PMS allows them anywhere but in reality they are only meaningful inside
+||, ??  and ^^ groups (elsewhere they do not have any effect, and can be
+inlined into parent block). Inside those groups, they imply that the item is
+considered matched only if all items inside the all-of group match.
+
+The meaning of all-of groups inside || is pretty clear. However, inside ??
+and ^^ some confusion may occur. In particular, for a general case of::
+
+    ?? ( a ( b c ) )
+
+the constraint only affects the combination of all flags inside the all-of
+group. In this case, enabling *a* prohibits having the combination of both *b*
+and *c* enabled. However, either *b* or *c* can be enabled separately without
+affecting *a*. This makes this constraint unlikely to have real use cases,
+and if it has, they are unlikely to be the most natural way of expressing
+the problem.
+
+Furthermore, automatic solving of such constraints forces some implicit
+ambiguity. Since both (multiple) flags have to be enabled together to cause
+a particular item to match, there are multiple solutions of forcing an item
+not to match. For the fore-mentioned sample, having *a* enabled would require
+the solver to force *( b c )* not to match. To do this, the solver could
+either disable *b*, disable *c* or disable both flags.
+
+There are arguments for both options — disabling only one flag follows
+the idea of 'smallest change needed'. Disabling both can be considered more
+consistent. In either case, there will be developers and user confused
+by the package manager relying on either behavior.
+
+The all-of groups inside || do not suffer from the same issue since solving
+them does not require disabling anything. However, they also have seemingly
+low value and banning all-of groups altogether improves symmetry between
+the different group types.
+
+Furthermore, the nested all-of groups make transformation into implication
+graph much more complex. Without them, the conditions are purely conjunctive.
+If we were to support all-of groups inside ||, ??, ^^ we would have to support
+disjunctive conditions, and transform them into conjunctive form.
+
+The all-of groups were used in 5 different packages at the time of writing.
+Two of them were outside ||, ??, ^^, rendering them meaningless and probably
+accidental. The three remaining cases were:
+
+1. sci-chemistry/icm::
+
+    ^^ ( ( !32bit 64bit ) ( 32bit !64bit ) ( 32bit 64bit ) )
+
+2. media-sound/snd::
+
+    ^^ ( ( !ruby !s7 ) ( ruby !s7 ) ( !ruby s7 ) )
+
+3. app-i18n/ibus::
+
+    || ( deprecated ( gtk3 introspection ) ) )
+
+Of those cases, the first two can be replaced by pure, flat || and ?? groups
+appropriately. It furthermore indicates that all uses of all-of groups inside
+^^ in Gentoo were purely mistaken.
+
+The third case is potentially valid. It indicates that either *deprecated*
+or both *gtk3* and *introspection* flags need to be enabled. However, it does
+not clearly indicate the preferred course of action. After investigating
+the ebuild in question, it is most likely that the following constraint would
+be more correct, and clearer to the user::
+
+    || ( deprecated gtk3 ) gtk3? ( introspection )
+
+That is, if user enables *gtk3* and *gtk3* requires *introspection*, then it
+seems more reasonable to enable *introspection* than to ignore the *gtk3* flag
+and force *deprecated* module instead.
+
+USE-conditionals inside ||, ??, ^^ groups
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The last restriction forbids using USE-conditional groups inside any-of,
+at-most-one-of and exactly-one-of groups. Those indicate that some
+of the items inside the group are to be considered its members only
+if the relevant flags are enabled. They are logically equivalent to all-of
+groups, i.e. ``|| ( foo? ( bar ) ... )`` and ``|| ( ( foo bar ) ... )``,
+except they have a different semantic — the latter form suggests enabling both
+flags, the former suggests considering *bar* only if *foo* is already enabled.
+
+Supporting USE-conditional groups properly would most likely require splitting
+the parent group into multiple variants for different initial values of USE
+conditionals. Considering the above equality, it would also be inconsistent
+with the ban on all-of groups. Finally, those groups have little real value.
+
+The only use case in Gentoo was in media-video/mpv::
+
+    opengl? ( || ( aqua egl X raspberry-pi !cli? ( libmpv ) ) )
+
+It indicates that the OpenGL video output requires selecting one of the
+variants, with the *libmpv* variant being allowed only without CLI enabled.
+While this may be technically valid, it is confusing. Furthermore, other
+REQUIRED_USE constraints already require that either *cli* or *libmpv* is
+enabled, making *!cli* imply *libmpv*. Therefore, the USE-conditional
+in the constraint is redundant.
+
+Empty any-of, at-most-one-of, exactly-one-of groups
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As the first mailing list review indicated, the PMS explicitly specifies
+a special case that empty any-of, at-most-one-of and exactly-one-of groups all
+evaluate to true.
+
+This behavior has been explained as a historical behavior associated with
+Portage removing unmatched USE-conditional groups inside any-of dependency
+groups which could result in the group becoming effectively empty.
+As REQUIRED_USE was introduced, the rule was effectively extended into the new
+operators.
+
+It is unclear whether this is the most correct behavior logically though.
+Alexis Ballier pointed out:
+
+> I mean, in every context I've ever seen, applying a rule to the empty set is
+> the neutral of that rule, so that it preserves associativity.
+>
+> That'd mean: ``|| ( )`` is false, ``&& ( )`` is true, ``^^ ( )`` is false,
+> ``?? ( )`` is false.
+
+(the thread afterwards develops that the more correct result for ``?? ( )``
+could be to be true)
+
+Since the original use case does not apply here (USE-conditional groups
+are banned inside those operators), the correct behavior is unclear and this
+has no real use case, banning it seems like the best course of action.
+
+There is not a single use of such groups at the time of writing, and their
+natural occurrence is extremely unlikely. It has some potential of occurring
+due to eclass-generated strings but it is doubtful whether any of such cases
+would not be more appropriately reported as an error.
+
+Solving algorithm
+-----------------
+
+The solving algorithm attempts to enforce REQUIRED_USE in the most natural
+way, interpreting the constraints as developer suggestions on how to make
+the constraint apply.
+
+Application of different types of constraints
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The algorithm aims to solve mismatched constraints in the most natural way,
+presuming that this interpretation is the most likely to be correct.
+
+For the USE-conditional groups, it assumes that they mean *if X is true, then
+Y should also be true*. Appropriately, the algorithm does not alter the flag
+in the condition (*X*); instead, if the condition is true, it enforces
+the expression inside the group (*Y*).
+
+For other groups, the algorithm applies the natural interpretation presuming
+that the items in group are stated in decreasing preference order, with
+the left-most item being most preferred. That is, if the group evaluates to
+false, it enforces a solution that either disables all enabled items except
+for the left-most already enabled, or enables the first item if no item
+is enabled.
+
+Reordering of ||, ??, ^^ groups
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The left-most-preferred assumption about the groups results in the solving
+algorithm relying on the ability to enable the item and disable other items.
+This is not possible if the relevant flag is masked, or (in cases of ??, ^^)
+some other flag is forced. If that were the case, the ordering inside those
+groups would have to be strictly limited by the 'common denominator' between
+the profiles. This would sometimes result in less preferred options being
+encouraged, or even impossible to express constraints — e.g. if the preferred
+implementation would not be stable but the package were stabilized.
+
+To account for this, the groups are transformed to account for forced/masked
+(immutable) flags. The transformation is done through reordering the items
+because this keeps the specification as simple as possible. It does not to
+cover specifically how to interpret immutable flags in different kind
+of groups, and how to handle the groups afterwards. Instead, reordering
+results in the forced flags being preferred naturally, and the masked flags
+being discouraged naturally.
+
+It also naturally handles the case when forced/masked flags result
+in impossible to satisfy constraints. Those cases do not need to be detected
+by the reordering algorithm implicitly, and instead just cause solver to fail
+early.
+
+Left-to-right constraint application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The solving algorithm applies all changes necessary to enforce the constraints
+in order, left to right. Enforcing a specific ordering, combined with the PMS
+specifying how ebuild and eclass values for REQUIRED_USE are combined, makes
+the algorithm deterministic. Applying left-to-right is also the most natural
+way of doing it, making it easy for developers to predict the results.
+
+Originally I had considered making the algorithm work independently
+of constraint order. However, this would clearly defining what the desired
+solution is, and finding an algorithm to enforce that. To achieve
+a deterministic solution, we would most likely have to require developers
+to provide groups that do not overlap. That is, for example::
+
+    a? ( !b ) b? ( c )
+
+would be unacceptable since with both *a* and *b* flags enabled,
+the constraint would either enforce *c* or not, depending on the processing
+order. The developer would have to write::
+
+    a? ( !b ) !a? ( !b? ( c ) )
+
+While this is a possible solution, expressing complex constraints would be
+very hard. Developers would no longer be able to naturally express
+the constraints, and instead would have to determine the correct sets
+of conditions for each requested result.
+
+Single vs multiple iterations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This GLEP does not specifically restrict the implementations to doing simple
+or multiple iterations. Both options have their advantages.
+
+A single iteration can successfully solve all valid REQUIRED_USE constraints,
+as long as they are properly ordered. An implementation using a single
+iteration has simpler error handling — it is only necessary to verify whether
+the REQUIRED_USE actually matches after enforcing it. It is also reasonable
+to request developers to order their constraints for a single iteration
+solving.
+
+The advantage of using multiple iterations is that they can also solve wrongly
+ordered constraints. However, the implementation needs to account
+for the possibility of invalid (circular) constraints putting the solver
+in an infinite loop. For this reason, the solver needs to either limit
+the maximum number of iterations or store previous results and detect when
+the algorithm gives one of the previous results again.
+
+For most of the real-life use cases, two iterations should be able to solve
+all the constraints. A large number of iterations is unlikely to be required
+by naturally written REQUIRED_USE constraints. It could be artificially caused
+by writing constructs like::
+
+    c? ( d ) b? ( c ) a? ( b )
+
+QA checks/verification
+----------------------
+
+The necessity of verification
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The purpose of REQUIRED_USE constraint verification is to ensure that for all
+valid combinations of input USE flags, the solver will be able to find a valid
+solution. This needs to be done explicitly since complex REQUIRED_USE
+constraints may trigger solving issues with non-obvious USE flag combinations,
+causing the developers to miss the issue.
+
+Since the solver must be able to deal with non-solvable constraints
+(by reporting them and letting the user deal with them), verification
+is not a strict necessity for enforcing REQUIRED_USE. However, it improves
+the user experience, and so is a worthwhile addition to the QA tools in place.
+
+To provide the best coverage, it is beneficial to integrate the verification
+into the tools commonly used by developers — repoman and pkgcheck, including
+the CI runs. For this to be possible, the algorithm must meet two
+requirements:
+
+- It must be fast enough not to cause significant increase in repoman/pkgcheck
+  run time for the full repository.
+
+- It must not trigger a large number of false positives, and if any are
+  triggered, they should be easy to work around.
+
+Context to the checks
+~~~~~~~~~~~~~~~~~~~~~
+
+As noted in the specification part, all of them checks need to be repeated
+for all possible sets of the immutable flags. This is necessary since
+the immutable flags can alter the solutions significantly. In particular:
+
+- They can alter the preferred choices in the any-of, at-most-one-of
+  and exactly-one-of groups,
+
+- They can cause some of the constraints to be unable to be satisfied,
+
+- They can cause some of the USE-conditional groups to be disabled entirely.
+
+To account for that and avoid the case where REQUIRED_USE solving would fail
+on some of the profiles, the verification should be performed for all
+combinations of immutable flags found throughout the enabled classes
+of profiles. Only the flags that apply to the REQUIRED_USE constraint
+in question need to be considered.
+
+Due to the EAPI 5 stable masking [#STABLE-MASK]_, the immutable flags have
+to be calculated separately for ~arch and stable keywords. The stable variant
+does not need to be considered unless the package is actually stable or being
+stabilized, to avoid unnecessarily cluttering up ``package.use.stable.mask``
+and/or ``package.use.stable.force`` for packages that are going to stay
+in ~arch.
+
+The requirements for REQUIRED_USE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The rules imposed for verification aim to cover most of the common cases
+of unsolvable constraints. In particular:
+
+1. *no valid combination of USE flags can result in the constraint requesting
+   the same flag to be simultaneously both enabled and disabled*.
+
+   If the effective REQUIRED_USE constraint (after collapsing all the groups)
+   contains both *foo* and *!foo*, the verification will never consider
+   the constraint met (since logically *x ∧ ¬x* is always false).
+
+2. *no valid combination of USE flags (that is, not prohibited by immutable
+   flags) can attempt to alter immutable flags*.
+
+   This is implied by the immutability of masked/forced flags. An attempt
+   to toggle those flags while solving should be considered a fatal error
+   since ``use.mask``/``use.force``/… always takes precedence over regular
+   configuration and package-level toggles. Therefore, if such flags
+   are enforced by an USE-conditional group, their condition should also
+   be masked or forced appropriately.
+
+3. *no constraint in REQUIRED_USE may alter flags in such a way that any
+   of the constraints preceding it would start to apply and change
+   the resulting flags in a second iteration*.
+
+   This is required for reliable single-pass solving. While the solving may
+   work correctly with multiple iterations, the constraints can be reliably
+   (and usually easily) fixed via reordering. More importantly, this also
+   catches the constraints that can not be solved due to circular toggling
+   between the constraints.
+
+The additional condition for the second iteration change has been added
+to account for the common case of ``a? ( b ) c? ( a b )``. While technically
+the second clause causes the first to start to apply, the second one already
+covers that case explicitly, so a second iteration would not change
+the result.
+
+Transformation into implication form
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The transformation of REQUIRED_USE into implication form is used to provide
+a form of the original constraint that is more convenient for analysis.
+
+Firstly, the diverse (convenience) item types are all converted into
+a combination of implications and plain USE flags. The latter can express all
+the original constraints exactly, provided that the any reordering necessary
+is done prior to the transformation. As a result, we gain both simplified set
+of items that need to be considered, and a clear logical mapping of behavior
+associated any-of, at-most-one-of and exactly-one-of groups.
+
+All of the transformed forms are built by definition, from the verification
+and solving algorithm:
+
+- Any-of group constraints are satisfied if at least one of the items match.
+  Therefore, the solving only applies if none of them does, in which case
+  the first item is enforced. Appropriately, the result of transformation
+  is the enforcement of first item conditional to the negation of all other
+  items (the condition for the first item is omitted as redundant — enforcing
+  a flag that is already enabled does not change anything).
+
+- At-most-one-of group constraints are satisfied if no more than one item
+  matches. The solving is applied if more than one item is enabled, in which
+  case all but the first enabled item are forcibly disabled. Since disabling
+  an already disabled flag does not change anything, this can be simplified
+  to disabling all the remaining items if the left-most item is matched.
+  The transformation does exactly that, for each item that can be possibly
+  enabled, left-to-right.
+
+- Exactly-one-of group constraints are satisfied if exactly one item matches.
+  Logically this is equivalent to both having at least one item and no more
+  than one item matching. Therefore, this constraint can be converted
+  into a combination of an any-of group and an at-most-one-of-group, for which
+  the transforms are already defined.
+
+Secondly, having limited the set of item types to just two, of which only one
+can be nested, the constraint can be easily converted into a graph.
+The resulting graph provides a clean visualization of the structure of the
+nested conditions. All nodes but the final (bottom-most) ones represent
+conditions, while the final nodes represent enforcements.
+
+A plain graph could be used to visualize relations between different
+conditions and enforcements. However, the specifics of REQUIRED_USE
+processing, especially left-to-right processing, require that the transform
+preserves exact structure of the constraints.
+
+Thirdly, having the graph (tree) of conditions, we can easily traverse them.
+In doing so, we construct paths that precisely express which conditions need
+to be met for a particular enforcement to apply. Since the constraints
+are applied in order, we need to traverse the graph in this specific order,
+and write the paths down in the same order.
+
+In doing the two last steps, it is important that we preserve the identity
+of the original condition nodes. This is necessary to distinguish between two
+cases:
+
+1. ``a? ( b c )``
+2. ``a? ( b ) a? ( c )``
+
+Since the solving algorithm is applied recursively to USE-conditional groups,
+in the first case the outer *a* condition is not reevaluated between
+processing *b* and *c*. In the latter case, the use of separate groups causes
+reevaluation of the condition.
+
+While in this specific example there is no technical difference between
+the two forms, it becomes apparent when dealing with the following corner
+case:
+
+1. ``a? ( !a b )``
+2. ``a? ( !a ) a? ( b )``
+
+In both cases, applying the first sub-item disables *a*. However, only
+in the second case will the solver reevaluate the value of *a* and omit
+the second group. A plain flattening would cause the same to incorrectly
+happen for the first case, rendering the transform not equivalent
+to the original form.
+
+In order to prevent that from happening, the verification algorithms need
+to be able to determine that the *a* condition is the same node in both
+resulting flattened expressions, and appropriately account for the fact that
+it is not affected by the enforcement. In the reference implementation, this
+is done via preserving the identity of the node, and doing identity-wide node
+comparison.
+
+The choice of algorithm
+~~~~~~~~~~~~~~~~~~~~~~~
+
+A few algorithms were considered for the purpose of verification.
+
+The first and the most obvious choice was to attempt to enforce the constraint
+for all possible combinations of USE flags, and report issues if any
+of the combinations results in failure. Such an algorithm has three important
+advantages:
+
+1. it is trivial to implement and requires little extra code,
+
+2. it is reliable since all combinations of USE flags are tested — if any
+   of them fails, the check would find it,
+
+3. it reuses the verification/enforcing function verbatim, so there is no risk
+   of the check diverging from the base algorithm.
+
+However, this method has a single important drawback: it is slow. For each
+test context, it needs to process 2^n combinations (n — number of USE flags);
+the number can grow huge with packages having 30 or more USE flags
+in REQUIRED_USE (which is especially the case for any-of groups). Furthermore,
+for each combination the check takes the average of 1 to 3 constraint
+iterations.
+
+It is possible to attempt to speed up this method a little, e.g. via grouping
+the flags into separate, independent groups and processing them separately.
+However, this still doesn't give a significant gain and is not a reliable
+method of solving the problem. As a result, such an algorithm — while useful
+for the purposes of testing and reference — is not suitable for integrating
+with the QA tools.
+
+An alternate algorithm has been considered that processes the restriction
+left-to-right and builds a decision tree-like structure in order to analyze
+all the possible outcomes of the REQUIRED_USE constraint. However, the pure
+version of this algorithm was also rejected because it could not give
+a significant speed gain — the check still needed to consider 2^n cases
+(n — number of USE conditional groups in the transformed constraint). While
+it certainly could be faster than the previous one, especially that it did not
+require multiple iterations for each variant, and that the latter variants
+required less processing, it would still not be fast enough for a broad use.
+
+The effective algorithm selected is somehow a simplified derivation
+of the above method. However, instead of analyzing the complete decision tree
+enforced by the REQUIRED_USE constraint, it focuses on analyzing the possible
+effects of each constraint. The specified algorithm has been split into four
+logical checks, although in real implementation they could be easily grouped
+together. Two of the checks are performed on each flattened constraint
+separately, and the other two are done on unique pairs of flattened
+constraints. As a result, the effective number of iterations is much lower
+than in the other cases, as is the complexity of each iteration.
+
+Even with the additional logic needed to prevent some of the false positives
+the algorithm is still fast enough to serve its purpose. While it is not
+perfect, it has been tested on all real cases of REQUIRED_USE from Gentoo
+and verified not to cause any issues.
+
+Verification: altering immutable flags
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The first of the checks is meant to ensure that under no circumstances
+the constraint will attempt to toggle flags that are immutable, that is whose
+values are established through use.mask / use.force files. This concept
+is not only important for the scope of this GLEP but it also ensures that
+the constraints could be satisfied at all.
+
+The generic idea is that the following constraint::
+
+    a? ( b )
+
+combined with use.mask on *b* will cause an error because if the user enables
+*a*, then *b* is required but it can not be enabled. Likewise, the following::
+
+    a? ( !b )
+
+with *b* use.forced will cause an error since *b* can not be disabled.
+
+Those constraints would be acceptable if *a* were masked as well,
+as to prevent the condition from ever being true. This is both the reason
+for the rule on the condition of flattened constraint, and the correct
+solution for the issue.
+
+It should be noted that the check is done separately for every flattened
+constraint, and does not consider the implications of other constraints.
+That is, given the following example constraint::
+
+    !a? ( !b ) b? ( c )
+
+with both *a* and *c* masked, the check will still consider the REQUIRED_USE
+erroneous even though *b* could not ever be true. However, this is not
+realistically considered an issue and can be solved via masking *b* as well.
+It will also improve the clarity of the USE flags and avoid giving a false
+sense that *b* could be enabled.
+
+Verification: self-conflicting constraints
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This check is not especially important; it was added mostly as a matter
+of a precondition check to avoid providing unexpected input to the checks
+following it. It is meant to catch a self-conflicting conditions such as::
+
+    a? ( !a? ( b ) )
+
+As it can clearly be seen here, this condition will never evaluate to true
+because it would require *a* being both enabled and disabled simultaneously.
+
+An occurrence of such a constraint is extremely unlikely. However, it
+effectively breaks some of the assumptions for the algorithms since it is
+impossible to provide a valid set of flags that would satisfy the condition.
+It is therefore explicitly rejected as invalid.
+
+Verification: forcing opposite values for a flag
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This check is meant to account for the case where a combination of two
+different constraints would require a flag to be both enabled and disabled
+at the same time. A generic example is::
+
+    a? ( c )
+    b? ( !c )
+
+Here, the first constraint requires *c* enabled while the second one requires
+it disabled. Therefore, if the user enables both *a* and *b*, the constraint
+can not be satisfied. The only enforcements explicitly allowed here are
+enabling and disabling *c* in order, neither of which is capable of solving
+the problem.
+
+The first condition listed in the algorithm verifies the most important
+symptom of the problem — that two flattened constraints require the opposite
+values of a flag. The remaining conditions are meant to rule out false
+positives.
+
+The second rule states that both conditions need to be able to simultaneously
+evaluate to true, or in other words the two conditions can not contain
+opposite values. For example, this rules out the following case::
+
+    a? ( c )
+    !a? ( b? ( !c ) )
+
+where both conditions can never evaluate to true simultaneously because they
+require the opposite values of *a*.
+
+The third and fourth rules aim to verify that the condition can realistically
+occur after considering all the constraints preceding it. This is meant to
+avoid the following kind of false positives::
+
+    !a? ( !b )
+    !a? ( !c )
+    b? ( c )
+
+Here, after considering the first two conditions the second and third
+constraints can occur simultaneously because *!a* and *b* do not conflict with
+each other. However, after considering the constraints preceding it is clear
+that they can't since *!a* will implicitly disable *b*, rendering the third
+condition false.
+
+It should be noted that this also works for corner cases like::
+
+    c? ( a )
+    a? ( b )
+    d? ( !a )
+    !a? ( !b )
+
+because even though the algorithm would incorrectly presume that the second
+and the fourth conditions can not occur simultaneously, it will detect
+a conflict between the first and the third conditions.
+
+Verification: enabling a condition preceding the constraint
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This check verifies that a constraint will not meaningfully cause a constraint
+preceding it to start to apply. This effectively means the constraints that
+will require more than one iteration of the algorithm to enforce them.
+
+A generic example is::
+
+    b? ( c )
+    a? ( b )
+
+In this case, having only *a* enabled will result in *b* being enabled
+in the first iteration, and *c* in the second.
+
+The first condition verifies the most important symptom of the problem —
+that is, that the effect of the later constraint matches the condition
+of an earlier constraint. The remaining conditions rule false positives out.
+
+Once again, the second condition checks whether the two conditions can occur
+simultaneously, that is not conflict one with another. A generic example
+of a false positive ruled out by this is::
+
+    !a? ( b? ( c ) )
+    a? ( b )
+
+in which case although the second constraint enforces *b* that is one
+of the conditions for the first constraint, both conditions can not occur
+simultaneously since *a* would have to be enabled and disabled at the same
+time.
+
+The third rule checks whether the conditions of the later constraint do not
+enforce the same effect as the earlier constraint anyway. That is, they
+account for a relatively common pattern of::
+
+    b? ( c )
+    a? ( b )
+    a? ( c )
+
+Even though the second constraint causes the first one to start to apply,
+having *a* enabled will also cause the third constraint to apply. Since
+the third constraint has the same effect as the first one, applying the first
+one will have no effect (the constraint will be satisfied already)
+and the second iteration will not be required.
+
+Helper algorithms
+~~~~~~~~~~~~~~~~~
+
+The specification also provides helper algorithms to determine the two cases:
+when a condition can evaluate to true, and when it always evaluates to true.
+In general, the algorithms are concerned only by *strong* enforcements, that
+is those that are guaranteed to happen.
+
+Therefore, it is assumed that a condition *can* evaluate to true unless there
+is at least one sub-condition that can not evaluate to true. That is, having a
+condition of the form::
+
+    a? ( b? ( c? ( ... ) ) )
+
+it is assumed that it can evaluate to true unless we explicitly have *!a*,
+*!b* and/or *!c* in the currently enforced flag state. Otherwise, we assume
+that the flag can have any value and so the condition could be made true
+with appropriate flag values.
+
+Appropriately, a condition *always* evaluates to true only if we know that all
+sub-conditions will evaluate to true. In the fore-mentioned example this would
+mean that the current flags would have to explicitly list *a*, *b* and *c*.
+Otherwise, we assume that one of the flags can have an opposite value
+and therefore make the condition evaluate to false.
+
+While determining the effective flags, we are only concerned with the
+flattened constraints whose conditions always evaluate to true (with the value
+of flags current to the processed constraint). This is in order to avoid
+enforcing any flags that may not be enforced in a real use case. Considering
+the above, it means that the flags that would be enforced by such constraints
+are left in *undefined* state, and do not restrict the constraints following.
+
+As noted in the limitation section, this logic suffers from the limitation
+that it can not infer complex implications of the constraints such as::
+
+    !a? ( b ) a? ( b )
+
+If the value of *a* is undefined at the time of processing, the algorithm will
+presume that neither of the conditions is guaranteed to be true, and therefore
+*b* will be left in undefined state. However, this is considered an unlikely
+corner case and is not a major concern.
+
+
+Backwards compatibility
+=======================
+
+Compliance with the PMS
+-----------------------
+
+This GLEP does not break the PMS compliance in any way. The syntax used
+by the constraints is a subset of the REQUIRED_USE syntax allowed by the PMS
+[#PMS-SYNTAX]_.  The semantic extends the one defined in the PMS
+in non-conflicting way.
+
+The PMS does not require a very specific behavior for REQUIRED_USE. The USE
+state constraints section [#REQUIRED_USE]_ requires that the package manager
+does not use (build/install) package versions where REQUIRED_USE constraints
+are not met.
+
+However, it does not require the package manager to verbosely report
+the conflict which the package managers actually do. That considered, it
+should not cause any non-compliance if this verbose reporting is (partially)
+replaced by automatic solving. If the solving succeeds, the constraints
+are met and the package manager can proceed with building/installing
+the package. If it does not, the existing behavior of reporting the issue
+is preserved.
+
+New constraints vs non-compliant package managers
+-------------------------------------------------
+
+This GLEP preserves full syntax compatibility with the existing package
+managers. The constraints written for auto-solving will still work correctly
+in the package managers not supporting it, resulting in regular REQUIRED_USE
+mismatch. Furthermore, the extended semantic meaning can result in improved
+readability of constraints, and therefore the messages issued by the package
+managers. Users aware of the auto-solving rules will have a suggested
+algorithm for satisfying REQUIRED_USE.
+
+The only potential danger is that the auto-solving will result in more
+extensive use of REQUIRED_USE and less concern for whether they are satisfied
+by default, resulting in more frequent REQUIRED_USE mismatches. Avoiding this
+problem should be done on policy level, requiring the developers not to rely
+purely on auto-solving through a migration period.
+
+Old constraints vs auto-solving
+-------------------------------
+
+Most of the existing REQUIRED_USE constraints are already compatible with
+auto-solving. There are three problematic cases:
+
+1. Constraints that are disallowed per the `restrictions on REQUIRED_USE
+   format`_,
+
+2. Constraints that can not be solved by the algorithm,
+
+3. Constraints that give sub-optimal (non-preferred) solutions.
+
+While the impact and details differ for each case, it can be commonly noted
+that all of them can be reliably fixed before implementing auto-solving,
+and — as noted above — the fixes will not break existing package managers.
+
+Constraints disallowed in this GLEP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For simplification, this GLEP will reject some of the REQUIRED_USE forms that
+are valid per the PMS. They will be rejected for all combinations of USE flags
+that do not satisfy the constraint. However, this is not a major issue
+for three reasons:
+
+1. The unsupported constraints are extremely rare, of low value and fixing
+   them improves readability. As listed in rationale `restrictions for allowed
+   REQUIRED_USE syntax`, there were a total of 8 packages being affected
+   at the time of writing, and fixing them was already in progress.
+
+2. The constraints are only rejected for auto-solving but are still supported
+   for REQUIRED_USE verification. The package manager will therefore just
+   report the unsolvable REQUIRED_USE to the user, making this
+   not a regression from the previous state.
+
+3. This GLEP does not strictly disallow the package manager from solving those
+   constraints, only does not specify the solutions for them. Therefore,
+   the package managers may implement custom extensions to solve them.
+   However, they should still warn that this is non-portable and unreadable.
+
+Constraints that can not be solved
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Not all valid REQUIRED_USE constraints can be reliably solved. There are two
+major cases for that:
+
+1. Constraints that toggle flags that caused previous conditions not to apply.
+   Solving those may require more than one iteration of the solving algorithm.
+   However, they usually can be fixed easily by reordering.
+
+2. Constraints that have conflicts between flags. Solving those will result
+   in repeated results where the constraint is unsatisfied. With
+   multi-iteration solving, they can cause infinite loops. They have no
+   trivial solution.
+
+However, the problem usually applies to only some of the disallowed USE flag
+combinations. The verification algorithm should be able to detect most
+of those cases.
+
+Constraints with sub-optimal solutions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+While this specification uses an algorithm that attempts to read REQUIRED_USE
+constraints in the most natural way, not all constraints in Gentoo are written
+in this manner. Especially, many any-of, at-most-one-of and exactly-one-of
+groups are written with no specific ordering in mind. In some cases, they are
+used interchangeably with USE-conditional groups. Some USE-conditional groups
+are written without concern for clearly establishing the relation between
+the condition and the items inside the group.
+
+While the auto-solving algorithm is able to solve many of those constraints,
+the solution can be considered sub-optimal as they do not follow the solution
+that the developers would knowingly suggest. For example, per the current
+rules the two following constraints are equivalent::
+
+    feature? ( dep )
+    !dep? ( !feature )
+
+However, per the auto-solving semantic the first one will favor enabling
+the dependency, while the second one will favor disabling the feature.
+
+This is probably the most important issue since there is no easy way
+to automatically detect that.
+
+
+Reference implementation
+========================
+
+Proof-of-concept code
+---------------------
+
+The reference implementation of various algorithms and the scripts used to
+test them are included in the mgorny/required-use project on GitHub
+[#GITHUB-REQUIRED-USE]_.
+
+The repository includes the following scripts/modules:
+
+- ``parser.py`` which provides a simple parser of REQUIRED_USE constraints
+  into AST, and is supposed to represent a minimal parser that should be
+  implemented in a package manager already. When run as a script, it outputs
+  the AST of input string.
+
+- ``solve.py`` which provides an implementation of solving (enforcement)
+  algorithm. When run a script, it prints the solutions (output flag sets)
+  for every possible input flag combination.
+
+- ``sort_nary.py`` which provides an implementation of sorting any-of,
+  at-most-one-of and exactly-one-of groups according to immutable flags.
+  When run as a script, it prints the AST of input string after sorting.
+
+- ``to_flat3.py`` which implements the transformation into flattened
+  constraints. When run as a script, it transforms the input string to
+  a list of flattened constraints and prints it.
+
+- ``validate_ast.py`` which implements the validation of correct nesting
+  in AST. When run as a script, it validates the input string.
+
+- ``verify2.py`` which implements the verification algorithms for the QA
+  checks. When run as a script, it verifies the input string and prints
+  the result.
+
+PkgCore
+-------
+
+The implementation of the validation and verification bits has been prepared
+for the PkgCore package manager. It has been submitted as pkgcheck PR#60
+[#PKGCHECK-PR]_. It is being actively tested in the pkgcheck fork used
+for the Repository mirror & CI [#REPO-MIRROR-CI]_ project.
+
+
+Thanks
+======
+
+The author would like to thank Alexis Ballier <aballier@gentoo.org> for his
+feedback, mathematical analysis and his own reference code that helped shape
+the GLEP into its final form and made it possible to solve many
+of the problems.
+
+
+References
+==========
+
+.. [#REQUIRED_USE] PMS: USE state constraints
+   (https://projects.gentoo.org/pms/6/pms.html#x1-910008.2.7)
+
+.. [#PORTAGE-REQUIRED_USE] Portage: REQUIRED_USE
+   (https://dev.gentoo.org/~zmedico/portage/doc/ch06s03s05.html#package-ebuild-eapi-4-metadata-required-use)
+
+.. [#QT-POLICY] Qt project policies: Handling different versions of Qt
+   (https://wiki.gentoo.org/wiki/Project:Qt/Policies#Handling_different_versions_of_Qt)
+
+.. [#PMS] Package Manager Specification
+   (https://projects.gentoo.org/pms/6/pms.html)
+
+.. [#STABLE-MASK] PMS: USE masking and forcing
+   (https://projects.gentoo.org/pms/6/pms.html#x1-600005.2.11 stable masking)
+
+.. [#PMS-SYNTAX] PMS: Dependency Specification Format
+   (https://projects.gentoo.org/pms/6/pms.html#x1-780008.2)
+
+.. [#GITHUB-REQUIRED-USE] GitHub: mgorny/required-use project
+   (https://github.com/mgorny/required-use)
+
+.. [#PKGCHECK-PR] pkgcore/pkgcheck PR#60: GLEP73 REQUIRED_USE GLEP checks
+   (https://github.com/pkgcore/pkgcheck/pull/60)
+
+.. [#REPO-MIRROR-CI] Repository mirror and CI project
+   https://wiki.gentoo.org/wiki/Project:Repository_mirror_and_CI
+
+Copyright
+=========
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
