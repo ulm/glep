@@ -229,7 +229,7 @@ marked with "*" are optional. All other headers are required. ::
 
     GLEP: <glep number>
     Version: <cvs version string>
-    Last-Modified: <cvs date string>
+    Last-Modified: <date of last update>
     Title: <glep title>
     Author: <list of authors' real names and optionally, email addrs>
     Status: <Draft | Active | Accepted | Deferred | Rejected |
@@ -264,9 +264,11 @@ Track.
 The format of a GLEP is specified with a Content-Type header, which
 must be "text/x-rst" for ReStructuredText GLEPs (see GLEP 2 [#GLEP2]_).
 
+The Last-Modified header specifies the date that the GLEP was last updated
+in the master branch.
 The Created header records the date that the GLEP was assigned a number, while
 Post-History is used to record the dates of when new versions of the GLEP are
-posted to gentoo-dev.  Both headers should be in dd-mmm-yyyy format, e.g.
+posted to gentoo-dev.  All three headers should be in dd-mmm-yyyy format, e.g.
 14-Aug-2001.
 
 GLEPs may have a Requires header, indicating the GLEP numbers that this GLEP
