@@ -228,8 +228,9 @@ GLEP Header
 Every GLEP has certain attributes associated with it. When a GLEP is sent
 to the mailing lists for discussion, it should begin with an RFC 2822 style
 header preamble between two triple-dashed lines.  The headers must appear
-in the following order.  Headers marked with "*" are optional. All other
-headers are required.
+in the following order.  For interoperability, the header preamble should also
+conform to the YAML standard [#YAML]_.  Headers marked with "*" are optional.
+All other headers are required.
 
 ::
 
@@ -370,6 +371,8 @@ References and Footnotes
 .. [#DOCUTILS] http://docutils.sourceforge.net/
 
 .. [#GLEP2] http://glep.gentoo.org/glep-0002.html
+
+.. [#YAML] http://yaml.org/
 
 
 Copyright
