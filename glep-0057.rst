@@ -8,7 +8,6 @@ Type: Informational
 Content-Type: text/x-rst
 Created: November 2005
 Post-History: December 2009
-Approved: 18 January 2010
 
 Abstract
 ========
