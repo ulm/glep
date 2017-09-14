@@ -236,7 +236,7 @@ marked with "*" are optional. All other headers are required. ::
              Final | Replaced>
     Type: <Informational | Standards Track>
   * Content-Type: <text/x-rst>
-    Created: <date created on, in dd-mmm-yyyy format>
+    Created: <date created on>
     Post-History: <dates of postings to mailing lists>
   * Requires: <glep numbers>
   * Replaces: <glep number>
@@ -279,8 +279,8 @@ The Last-Modified header specifies the date that the GLEP was last updated
 in the master branch.
 The Created header records the date that the GLEP was assigned a number, while
 Post-History is used to record the dates of when new versions of the GLEP are
-posted to gentoo-dev.  All three headers should be in dd-mmm-yyyy format, e.g.
-14-Aug-2001.
+posted to gentoo-dev.  All three headers should be in ISO 8601 ``yyyy-mm-dd``
+format, e.g. 2001-08-14.
 
 GLEPs may have a Requires header, indicating the GLEP numbers that this GLEP
 depends on.
