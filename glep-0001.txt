@@ -218,6 +218,9 @@ allows for rich markup that is still quite easy to read, but results in much
 better-looking and more functional HTML.  GLEP 2 contains a boilerplate
 template [#GLEP2]_ for use with ReStructuredText GLEPs.
 
+For best interoperability, the GLEPs using ReStructuredText format must use
+``.rst`` file suffix.
+
 
 GLEP Header
 ===========
