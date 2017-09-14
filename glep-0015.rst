@@ -3,7 +3,7 @@ Title: Gentoo Script Repository
 Version: $Revision$
 Last-Modified: $Date$
 Author: James Harlow <hythloday@gentoo.org>,
-Status: Approved
+Status: Accepted
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 30 Sep 2003
