@@ -3,7 +3,7 @@ Title: Package and category metadata
 Version: $Revision$
 Last-Modified: $Date$
 Author: Michał Górny <mgorny@gentoo.org>
-Status: Draft
+Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 14-Mar-2016
@@ -177,9 +177,8 @@ Each ``<slots/>`` element describes slots of a package (in specific language).
 
 The ``<slots/>`` element can contain the following elements:
 
-- zero or more ``<slot/>`` elements describing specific ebuild slots,
-  optionally restricted to specific package versions (at most one entry
-  for a combination of slot specification and package version).
+- zero or more ``<slot/>`` elements describing specific ebuild slots
+  (at most one for each slot name).
   The ``<slot/>`` element contains an obligatory ``name=""`` attribute stating
   the slot to which the description applies, and contains slot description as
   text. Alternatively, a slot name of ``*`` can be used to indicate a single
@@ -468,7 +467,6 @@ Example metadata.xml file
         <flag name='foo'>Enables foo feature</flag>
         <flag name='bar' restrict='&lt;dev-libs/foo-12'>Enables bar feature (requires <pkg>dev-libs/bar</pkg>)</flag>
         <flag name='bar' restrict='&gt;=dev-libs/foo-12'>Enables bar feature</flag>
-        <flag name='bar'>Enables bar feature (requires <pkg>dev-libs/bar</pkg>)</flag>
       </use>
       <use lang='de'>
         <flag name='foo'>Konfiguriert das Paket mit Unterstütztung für foo</flag>
@@ -499,7 +497,7 @@ References
 ==========
 
 .. [#PMS-A] PMS Appendix A
-   https://projects.gentoo.org/pms/6/pms.html#x1-166000A
+   https://projects.gentoo.org/pms/5/pms.html#x1-163000A
 
 .. [#METADATA-DTD] The original metadata.dtd file
    https://gitweb.gentoo.org/data/dtd.git/tree/metadata.dtd?id=a908a93b5afe295359e0a01814c9bef8b5268bcd
