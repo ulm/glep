@@ -285,10 +285,10 @@ posted to gentoo-dev.  All three headers should be in dd-mmm-yyyy format, e.g.
 GLEPs may have a Requires header, indicating the GLEP numbers that this GLEP
 depends on.
 
-GLEPs may also have a Replaced-By header indicating that a GLEP has been
-rendered obsolete by a later document; the value is the number of the GLEP
-that replaces the current document.  The newer GLEP must have a Replaces
-header containing the number of the GLEP that it rendered obsolete.
+GLEPs may also have a Replaces header indicating that a GLEP is meant
+to replace one or more older GLEPs.  Once such a GLEP is accepted, a matching
+Replaced-By should be added to all replaced GLEPs and their status should
+be updated to Replaced.
 
 
 Reporting GLEP Bugs, or Submitting GLEP Updates
