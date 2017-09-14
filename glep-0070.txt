@@ -1,0 +1,143 @@
+GLEP: 70
+Title: Addition of distribution environment variables
+Version: $Revision$
+Last-Modified: $Date$
+Author: A\. Wilcox <awilfox@adelielinux.org>
+Status: Draft
+Type: Standards Track
+Content-Type: text/x-rst
+Created: 15-Dec-2016
+Post-History:
+
+Abstract
+========
+
+This GLEP outlines an addition of environment variables to a future EAPI that
+specify the name of the distribution an ebuild has been compiled for,
+and the URL used to file bugs against that distribution. It additionally
+describes the route for their more immediate addition to the Gentoo package
+tree.
+
+
+Motivation
+==========
+
+Background
+----------
+
+The Gentoo package repository is used not only by thousands of users, but also
+used by other distributions and organisations, such as Funtoo, CoreOS,
+and Google ChromeOS.  From the Gentoo Foundation's own charter, it
+self-describes in the following way: "Gentoo is a metadistribution".  That
+allows users to make their own flavours of Gentoo themselves.  Several forks
+already exist, including Exherbo, Funtoo, Sabayon, Galapagos, Vida,
+and Calculate.  Google also maintains a fork, ChromeOS, for their Chromebook
+laptops.  CoreOS also uses Gentoo's repository for their distribution.
+In addition, there are also binary distributions such as Pentoo and Adélie
+that provide additional value but are not, in so many words, a 'fork'
+of Gentoo.
+
+Current Situation
+-----------------
+
+Currently, forks and derivatives of Gentoo are required to choose one of only
+two options.  They can either use the tree as is, which causes packages
+to identify as being built for Gentoo and causes most autoconf-based packages
+(and some CMake packages in KDE) to have their bug report URLs to point to
+bugs.g.o. Alternatively, they can fork the Git repository, requiring the need
+of manual merges when conflicts arise, and additional wasted effort when
+upstreams release new versions of software.
+
+Deficiencies
+------------
+
+If a fork/derivative of Gentoo does not have the manpower or resources to
+modify and maintain all ebuilds that mention the Gentoo name and bug URL
+(rough estimate of 1,656 occurrences across 496 ebuilds), then both
+distributions suffer.  Users of the fork will file bugs with Gentoo that are
+not bugs in Gentoo.  Developers of the fork will not know about said bugs,
+and be unable to fix them.  Gentoo bug-wranglers and devs will have to waste
+time and resources testing bugs, finding out they are not even Gentoo bugs,
+and closing them as WONTFIX or WORKSFORME.
+
+If they choose the alternative of forking the repository and changing these
+parameters in ebuilds, then it makes upstreaming their improvements much more
+difficult.  Sabayon has a repository on GitHub specifically for this,
+and Adélie wastes continual effort applying patches against the tree as it
+evolves.
+
+Solution Objectives
+-------------------
+
+- Protect Gentoo's name, trademark, and reputation by avoiding any appearance
+  that derivative distributions are associated with Gentoo.
+
+- Lessen number of inappropriate bugs filed on bugs.g.o due to forks
+  and derivatives.
+
+- Foster better collaboration and sharing of improvements between Gentoo
+  and its forks/derivatives.
+
+- Future potential changes to the bug report URL, while exceedingly unlikely,
+  is additionally made easier.
+
+
+Specification
+=============
+
+The following variables shall be added to Gentoo's base profile:
+
+- ``${DISTRO}``: The name of the distribution.  This would be set
+  to "Gentoo" on Gentoo.
+
+- ``${DISTRO_BUG_URL}``: The URL used to report bugs with software
+  on the distribution.  This would be set to "https://bugs.gentoo.org/"
+  on Gentoo.
+
+
+Rationale
+=========
+
+By replacing references to 'Gentoo' passed to ./configure, make, etc with
+``${DISTRO}``, distributions like Sabayon, Calculate, and Adélie will
+be able to notate their name as the distributor on packages.  This will affect
+packages such as LibreOffice, OpenRC, X.Org, and KDE, which are all compiled
+with the name of the distribution internally.  They use this for bug
+information, and having the proper distribution name will allow for more
+proper bug handling and ensure less inappropriate blame is assigned to Gentoo.
+This also ensures that the fork or derivative's own mailing lists, forums,
+and so on are searched and contacted before Gentoo's.
+
+By replacing references to 'bugs.gentoo.org' passed to ./configure with
+``${DISTRO_BUG_URL}``, it is believed the Gentoo project will have
+a significant reduction in wasted effort handling inappropriately filed bugs
+when the issues are caused by changes by the forks and derivatives.
+
+
+Backward Compatibility
+======================
+
+Since the variables will be added to the base profile, there should be no
+impact to existing sites and installations.  The base profile would be changed
+before any ebuilds, so it would not be possible to have ``${DISTRO}``
+or ``${DISTRO_BUG_URL}`` empty.
+
+
+Reference Implementation
+========================
+
+A reference implementation is currently available on GitHub [#GITHUB]_.
+
+
+References
+==========
+
+.. [#GITHUB] https://github.com/gentoo/gentoo/pull/3112
+
+
+Copyright
+=========
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
