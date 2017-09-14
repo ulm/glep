@@ -7,7 +7,7 @@ Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 6-Jul-2003, 28-Jul-2003
-Post-History: 
+Post-History:
 
 Status
 ======

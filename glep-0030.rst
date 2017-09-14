@@ -1,5 +1,5 @@
 GLEP: 30
-Title: "Planet Gentoo" web log aggregator
+Title: Planet Gentoo web log aggregator
 Version: $Revision$
 Last-Modified: $Date$
 Author: Daniel Drake <dsd@gentoo.org>
