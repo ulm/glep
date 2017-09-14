@@ -227,9 +227,13 @@ GLEP Header
 
 Every GLEP has certain attributes associated with it. When a GLEP is sent
 to the mailing lists for discussion, it should begin with an RFC 2822 style
-header preamble.  The headers must appear in the following order.  Headers
-marked with "*" are optional. All other headers are required. ::
+header preamble between two triple-dashed lines.  The headers must appear
+in the following order.  Headers marked with "*" are optional. All other
+headers are required.
 
+::
+
+    ---
     GLEP: <glep number>
     Version: <major>[.<minor>]
     Last-Modified: <date of last update>
@@ -244,6 +248,7 @@ marked with "*" are optional. All other headers are required. ::
   * Requires: <glep numbers>
   * Replaces: <glep number>
   * Replaced-By: <glep number>
+    ---
 
 The Version field specifies the current version of the GLEP. The Version
 consists of a major version, optionally followed by a minor version (if
