@@ -1,0 +1,244 @@
+GLEP: 69
+Title: File installation masks
+Version: $Revision$
+Last-Modified: $Date$
+Author: Michał Górny <mgorny@gentoo.org>
+Status: Draft
+Type: Standards Track
+Content-Type: text/x-rst
+Created: 29-Mar-2015
+Post-History:
+
+Abstract
+========
+
+This GLEP describes a feature of package manager that can be used to prevent
+some of package's files from being installed. Both the minimal Package Manager
+behavior and profile data format is described, making it possible for
+GLEP-compliant package managers to support the feature efficiently,
+and allowing developers to rely upon it.
+
+
+Motivation
+==========
+
+Currently there are two major ways of filtering files installed by packages:
+USE flags and INSTALL_MASK.
+
+The advantage of USE flags is that they are cleanly supported, and therefore
+provide an elegant way of providing choice. However, they require each ebuild
+to provide a specific code path to handle them, and each value change requires
+rebuilding the whole package — which often comes with a greater cost than the
+cost of installing the unused file. It also causes USE flag mismatches in
+binary packages, making it impossible to reuse them on a wider range of
+systems.
+
+INSTALL_MASK is implemented purely at Package Manager (Portage) level,
+and therefore requires no specific ebuild support. It allows uniform filtering
+of installed files based on their names or paths. The files are still included
+in binary packages (and filtered out when binary packages are installed),
+making it possible to reuse binary packages across systems both using the
+files and filtering them out. However, the major disadvantage of INSTALL_MASK
+as implemented now is that it's rather low-level by design, requesting user to
+explicitly name paths to be wiped. Furthermore, it is a Portage-specific
+feature that lacks proper specification.
+
+This GLEP aims to solve the shortcomings of INSTALL_MASK by providing
+a minimal specification of how it should be supported, and extending
+the current Portage implementation with support for profile-defined path
+groups. This makes it possible for package managers to implement the feature
+reliably and in a user-friendly way, therefore making it possible to use it
+throughout Gentoo.
+
+
+Specification
+=============
+
+Package Manager Implementation requirements
+-------------------------------------------
+
+A Package Manager implementing this specification must provide an ability for
+user to configure installed path filtering. User must be allowed to at least
+select `profile-defined path groups`_. The Package Manager must provide
+support for stacking inclusive and exclusive path specifications.
+
+The filtering of installed files is to be performed when merging installed
+package to the filesystem. It must not apply to files contained in binary
+packages built by the Package Manager. However, the Package Manager may
+provide an additional mechanism for filtering files included in binary
+packages. The details of such mechanism are outside the scope of this
+specification.
+
+When filtering, the Package Manager should match each installed file path
+to the specified inclusive and exclusive filters, in configured order.
+If the filter chain results in the file being positively matched, the Package
+Manager must behave as if it was not installed by the package. The exact way
+for matching specified filters is unspecified, except for matching the path
+wildcards in path group definitions.
+
+Profile-defined path groups
+---------------------------
+
+Each profile can specify zero or more path groups. The groups are defined
+in an optional ``install-mask.conf`` file inside the profile. The file has
+sectioned, key-value format (alike ``layout.conf``).
+
+Each section is started by ``[name]``, with name specifying the defined group
+name, and must be followed by:
+
+- one or more ``path`` keys, each one specifying a single path to be filtered.
+  The path is specified as a ``fnmatch()`` wildcard, and all paths matching it
+  are filtered. If the path matches a directory, the directory is filtered
+  recursively. Enabling the group causes all paths included in it to be
+  filtered;
+
+- exactly one ``description`` key, specifying the human-readable description
+  of the group.
+
+::
+
+	[bash-completion]
+	path=/usr/share/bash-completion
+	description=Completions for app-shells/bash and auxiliary files
+
+	[locale]
+	path=/usr/share/locale/*/LC_MESSAGES
+	description=All localizations
+
+	[locale-pl]
+	path=/usr/share/locale/pl/LC_MESSAGES
+	description=Localizations for polish language
+
+Scope of path group definitions
+-------------------------------
+
+Since path groups are not directly tied to ebuilds, all of them apply
+globally. A specific group can be used by user as long as the profile
+providing it is enabled (either directly or as a result of profile
+inheritance). A reference to an undefined group should be considered an error.
+
+Sub-profiles can override path group definitions. If a path group with
+the same name is defined by multiple profiles in the inheritance chain,
+the last definition applies. If the last definition does not define
+any ``path=`` keys (i.e. is empty), it removes the path group defined
+by an earlier profile.
+
+Please note that an implementation is also allowed to provide means
+of overriding path groups in user configuration.
+
+
+Rationale
+=========
+
+The specification was intended to provide best match with current Portage
+implementation, while making it possibly flexible and extending appropriately
+for user-friendly use.
+
+The inclusion of profile-defined path groups was necessary to make the feature
+user-friendly. It both serves the purpose of saving user from figuring out the
+correct path wildcards, and providing a complete reference of possible paths
+of interest. Support for stacking and exclusive specifications makes it
+possible to exclude specific path subsets, e.g. a specific locale while
+filtering out all other localizations.
+
+The specification also requires that the mask is only applied to installed
+files and not binary packages. This way, it is possible to reuse the binary
+package on a system with different INSTALL_MASK value. This also makes
+deploying binhosts easier, as users don't have to worry about accidentally
+filtering out files. The additional clause allows providing additional
+mechanism to filter files from binary packages (PKG_INSTALL_MASK in Portage)
+while keeping the base implementation safe.
+
+The support for specifying direct paths is left optional since it is not
+strictly necessary for the goal. All its details are left
+implementation-defined, including the specific way patterns are matched, to
+accommodate the specific matching used in Portage.
+
+The file format for profile-defined path group database was chosen to reuse
+the format of metadata/layout.conf. This avoids having to implement yet
+another format parser in the package manager, while keeping it easy to read
+and write. XML was considered as an alternative, however it seemed
+unnecessarily complex for the needs of this specification.
+
+Originally, the path groups were defined repository-wide. However, this caused
+scoping problems — in particular, it was unclear what behavior would be
+correct for multiple repositories attempting to define the same group. Binding
+the groups to profiles fits the global scope better. It also makes it possible
+to limit path groups to specific profiles — e.g. avoid providing ``systemd``
+path group in systemd profiles where it would make the system unbootable.
+
+
+Backwards Compatibility
+=======================
+
+The GLEP specifically requires that binary packages built by Package Managers
+implementing it are not affected. Therefore, the binary packages retain full
+compatibility with Package Managers not implementing this GLEP.
+
+The GLEP does allow the current (2016-05-20) Portage implementation details
+of INSTALL_MASK and PKG_INSTALL_MASK as implementation-defined. However,
+Portage does not implement all the features required by this GLEP.
+
+The additional profile files will be discarded by non-compliant Package
+Managers, and therefore do not affect backwards compatibility.
+
+
+Reference implementation
+========================
+
+Initial INSTALL_MASK support in Portage
+---------------------------------------
+
+As of 2016-05-20 Portage has install masking support that is not compliant
+with this GLEP.
+
+The configuration is done through two variables:
+- INSTALL_MASK that filters files installed to the system,
+- PKG_INSTALL_MASK that filters files included in binary packages.
+
+Both variables are independent; that is, it is possible to filter a file
+for binary packages while installing it on the live system.
+
+Both variables accept space-separated set of ``fnmatch()`` patterns. Each
+pattern can either match against full path or against the filename. There is
+no support for exclusions; any file that matches at least one of the patterns
+is effectively filtered out by being removed from appropriate installation
+tree.
+
+GLEP implementation for Portage
+-------------------------------
+In order to enable support for this GLEP in Portage, three initial patches
+were prepared and sent for Portage:
+
+- portage.package.ebuild.config: Move FEATURES=no* handling there [#P1]_,
+- portage.dbapi.vartree: Move INSTALL_MASK handling into merging [#P2]_,
+- portage.dbapi.vartree: Support exclusions in INSTALL_MASK [#P3]_.
+
+The patches replace old INSTALL_MASK handling that was written using bash
+and GNU find with a complete Python infrastructure. The filtering is now done
+on-the-fly when installing files, therefore having no need to physically
+remove them from the install tree. This made it possible to add exclusion
+support.
+
+The path group support is work-in-progress.
+
+
+References
+==========
+
+.. [#P1] portage.package.ebuild.config: Move FEATURES=no* handling there
+   https://archives.gentoo.org/gentoo-portage-dev/message/bdce65377f162be398230c648d4f9712
+
+.. [#P2] portage.dbapi.vartree: Move INSTALL_MASK handling into merging
+   https://archives.gentoo.org/gentoo-portage-dev/message/c9b95dff7be46876d052ca13da675947
+
+.. [#P3] portage.dbapi.vartree: Support exclusions in INSTALL_MASK
+   https://archives.gentoo.org/gentoo-portage-dev/message/29e128a9f41122fa0420c1140f7b7f94
+
+
+Copyright
+=========
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
