@@ -3,7 +3,7 @@ Title: Package maintenance structure
 Version: $Revision$
 Last-Modified: $Date$
 Author: Michał Górny <mgorny@gentoo.org>
-Status: Draft
+Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 13-Dec-2015
