@@ -2,7 +2,7 @@ GLEP: 35
 Title: Automated consistency check for ebuilds
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Adrian Lambeck <adrian@basicsedv.de>,
+Author: Adrian Lambeck <adrian@basicsedv.de>,
 Status: Deferred
 Type: Standards Track
 Content-Type: text/x-rst

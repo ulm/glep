@@ -2,7 +2,7 @@ GLEP: 9
 Title: Gentoo Package Update System
 Version: $Revision$
 Last-Modified: $Date$
-Author:	John J. Whitney <jjw@linuxmail.org>
+Author: John J. Whitney <jjw@linuxmail.org>
 Status: deferred
 Type: Standards Track
 Content-Type: text/x-rst

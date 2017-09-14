@@ -2,7 +2,7 @@ GLEP: 32
 Title: Maildir Location
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Georgi Georgiev <chutz@gg3.net>
+Author: Georgi Georgiev <chutz@gg3.net>
 Status: Deferred
 Type: Standards Track
 Content-Type: text/x-rst

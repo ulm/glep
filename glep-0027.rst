@@ -2,7 +2,7 @@ GLEP: 27
 Title: Portage Management of UIDs/GIDs
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Mike Frysinger <vapier@gentoo.org>
+Author: Mike Frysinger <vapier@gentoo.org>
 Status: Accepted
 Type: Standards Track
 Content-Type: text/x-rst

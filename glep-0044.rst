@@ -2,7 +2,7 @@ GLEP: 44
 Title: Manifest2 format
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Marius Mauch <genone@gentoo.org>,
+Author: Marius Mauch <genone@gentoo.org>,
 Status: Final
 Type: Standards Track
 Content-Type: text/x-rst

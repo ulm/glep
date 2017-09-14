@@ -2,7 +2,7 @@ GLEP: 6
 Title: Gentoo Linux monthly bug day
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Brian Jackson <iggy@gentoo.org>
+Author: Brian Jackson <iggy@gentoo.org>
 Status: Final
 Type: Standards Track
 Content-Type: text/x-rst

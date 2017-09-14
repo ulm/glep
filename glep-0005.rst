@@ -2,7 +2,7 @@ GLEP: 5
 Title: Extending metadata.xml
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Heinrich Wendel <sysop@heinospage.de>,
+Author: Heinrich Wendel <sysop@heinospage.de>,
 Status: deferred
 Type: Standards Track
 Content-Type: text/x-rst

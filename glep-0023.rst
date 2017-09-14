@@ -2,7 +2,7 @@ GLEP: 23
 Title: Handling of ACCEPT_LICENSE
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Jason Stubbs <jstubbs@gentoo.org>, Marius Mauch <genone@gentoo.org>
+Author: Jason Stubbs <jstubbs@gentoo.org>, Marius Mauch <genone@gentoo.org>
 Status: Final
 Type: Standards Track
 Content-Type: text/x-rst

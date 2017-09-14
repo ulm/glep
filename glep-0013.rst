@@ -2,7 +2,7 @@ GLEP: 13
 Title: Providing the users with a Gentoo Handbook
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Sven Vermeulen <swift@gentoo.org>
+Author: Sven Vermeulen <swift@gentoo.org>
 Status: Final
 Type: Standards Track
 Content-Type: text/x-rst

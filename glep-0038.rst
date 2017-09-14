@@ -2,9 +2,9 @@ GLEP: 38
 Title: Status of forum moderators in the Gentoo project
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Christian Hartmann <christian.hartmann at email.de>,
-	Wernfried Haas <w.haas at xover.htu.tuwien.ac.at>,
-	Tom Knight <tomk at gentoo.org>.
+Author: Christian Hartmann <christian.hartmann at email.de>,
+        Wernfried Haas <w.haas at xover.htu.tuwien.ac.at>,
+        Tom Knight <tomk at gentoo.org>.
 Status: Final
 Type: Informational
 Content-Type: text/x-rst

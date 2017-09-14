@@ -2,7 +2,7 @@ GLEP: 7
 Title: New ombudsman position
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Grant Goodyear <g2boojum@gentoo.org>
+Author: Grant Goodyear <g2boojum@gentoo.org>
 Status: Final
 Type: Standards Track
 Content-Type: text/x-rst

@@ -2,7 +2,7 @@ GLEP: 8
 Title: Adopt-A-Developer
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Brian Jackson <iggy@gentoo.org>,
+Author: Brian Jackson <iggy@gentoo.org>,
         Thomas Cort <tcort@gentoo.org>
 Status: Final
 Type: Standards Track

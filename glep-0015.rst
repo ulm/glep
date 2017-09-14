@@ -2,7 +2,7 @@ GLEP: 15
 Title: Gentoo Script Repository
 Version: $Revision$
 Last-Modified: $Date$
-Author:	James Harlow <hythloday@gentoo.org>,
+Author: James Harlow <hythloday@gentoo.org>,
 Status: Approved
 Type: Standards Track
 Content-Type: text/x-rst

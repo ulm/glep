@@ -2,7 +2,7 @@ GLEP: 21
 Title: User-defined Package Sets
 Version: $Revision$ 
 Last-Modified: $Date$
-Author:	Tal Peer <coredumb@gentoo.org>,
+Author: Tal Peer <coredumb@gentoo.org>,
         Alec Warner <antarus@gentoo.org>
 Status: Final
 Type: Standards Track

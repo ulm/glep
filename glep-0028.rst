@@ -2,7 +2,7 @@ GLEP: 28
 Title: "Expiration" of inactive GLEPs
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Grant Goodyear <g2boojum@gentoo.org>
+Author: Grant Goodyear <g2boojum@gentoo.org>
 Status: Final
 Type: Informational
 Content-Type: text/x-rst

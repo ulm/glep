@@ -2,7 +2,7 @@ GLEP: 14
 Title: security updates based on GLSA
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Marius Mauch <genone@genone.de>,
+Author: Marius Mauch <genone@genone.de>,
 Status: Accepted
 Type: Standards Track
 Content-Type: text/x-rst
