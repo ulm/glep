@@ -44,12 +44,6 @@ Keeping those checks directly in Portage sources has two major disadvantages:
 2. Gentoo-specific checks are enforced for all repositories and derived
    distributions. Modifying the QA check list requires forking Portage.
 
-The specification detailed in this GLEP aims to provide a well-defined way
-of defining repository- and system-specific QA checks. It makes it possible
-to unbundle the QA checks from Portage. Multiple locations for QA checks
-improve maintainability, allowing better control over installation and
-updates.
-
 
 Specification
 =============
@@ -103,6 +97,11 @@ Aside to standard PMS functions, two additional commands are provided:
 In case of severe QA issues, the checks are allowed to alter the contents of
 the installation image in order to sanitize them, or call the ``die`` function
 to abort the build.
+
+Repository-defined QA checks are allowed to ``inherit`` eclasses from
+the repository providing the check or any of its masters. The same
+inheritance rules apply as to ebuilds in the particular repository. Sourced
+eclasses do not affect the final ebuild metadata or phase functions.
 
 Function specification
 ----------------------
@@ -207,6 +206,15 @@ between important user-directed warnings and developer-oriented QA issues.
 The ``eqatag`` function aims to store check results in a machine-readable
 format for further processing.
 
+Inheriting eclasses makes it possible to reuse code and improve
+maintainability. The possibility is mostly intended for eclass-specific checks
+that may want to e.g. obtain search paths from the eclass.
+
+Inheriting is allowed only in repository-specific since it is the only
+location where availability of eclasses can be assumed. For system-wide
+checks, we can't assume that the source repository will be available when
+ebuild in question is processed.
+
 Function specification
 ----------------------
 eqawarn
@@ -274,6 +282,13 @@ and no duplicate checking will happen.
 The transferred checks will be removed in the future versions of the Package
 Manager. However, since they will support this GLEP, the relevant checks will
 be used from the repository anyway.
+
+
+Reference implementation
+========================
+
+The reference implementation is available in Portage starting with version
+2.2.15 (released 4 Dec 2014).
 
 
 Copyright
