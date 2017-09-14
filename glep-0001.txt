@@ -252,7 +252,7 @@ All other headers are required.
     Status: <Draft | Active | Accepted | Deferred | Withdrawn | Rejected |
              Final | Replaced | Moribund>
     Type: <Informational | Standards Track>
-  * Content-Type: <text/x-rst>
+    Content-Type: <text/x-rst>
     Created: <date created on>
     Post-History: <dates of postings to mailing lists>
   * Requires: <glep numbers>
