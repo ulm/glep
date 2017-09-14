@@ -228,13 +228,19 @@ header preamble.  The headers must appear in the following order.  Headers
 marked with "*" are optional. All other headers are required. ::
 
     GLEP: <glep number>
+    Version: <cvs version string>
+    Last-Modified: <cvs date string>
     Title: <glep title>
     Author: <list of authors' real names and optionally, email addrs>
     Status: <Draft | Active | Accepted | Deferred | Rejected |
              Final | Replaced>
     Type: <Informational | Standards Track>
+  * Content-Type: <text/x-rst>
+    Created: <date created on, in dd-mmm-yyyy format>
+    Post-History: <dates of postings to mailing lists>
   * Requires: <glep numbers>
   * Replaces: <glep number>
+  * Replaced-By: <glep number>
 
 The Author header lists the names, and optionally the email addresses
 of all the authors/owners of the GLEP.  Anybody who submits changes to
@@ -255,12 +261,21 @@ following RFC 2822 continuation line conventions.
 The Type header specifies the type of GLEP: Informational or Standards
 Track.
 
+The format of a GLEP is specified with a Content-Type header, which
+must be "text/x-rst" for ReStructuredText GLEPs (see GLEP 2 [#GLEP2]_).
+
+The Created header records the date that the GLEP was assigned a number, while
+Post-History is used to record the dates of when new versions of the GLEP are
+posted to gentoo-dev.  Both headers should be in dd-mmm-yyyy format, e.g.
+14-Aug-2001.
+
 GLEPs may have a Requires header, indicating the GLEP numbers that this GLEP
 depends on.
 
-A GLEP may have a Replaces header, which indicates that this GLEP supersedes
-a previous one.  This header should contain the number of the GLEP that this
-one renders obsolete.
+GLEPs may also have a Replaced-By header indicating that a GLEP has been
+rendered obsolete by a later document; the value is the number of the GLEP
+that replaces the current document.  The newer GLEP must have a Replaces
+header containing the number of the GLEP that it rendered obsolete.
 
 
 Reporting GLEP Bugs, or Submitting GLEP Updates
