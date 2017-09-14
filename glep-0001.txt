@@ -32,9 +32,11 @@ documenting the design decisions that have gone into Gentoo Linux.  The GLEP
 author is responsible for building consensus within the community and
 documenting dissenting opinions.
 
-Because the GLEPs are maintained as Wiki pages, their edit history is
-publicly viewable. For the older GLEPs which started out in CVS, their
-revision history is the historical record of the feature proposal [#CVS]_.
+Because the GLEPs are maintained as text files in a VCS, their revision
+history is the historical record of the feature proposal [#VCS]_. For older
+GLEPs, the base repository may provide an approximate history of the changes.
+The original changes can still be found in [#CVS]_ for changes up to June 2013
+and/or [#WIKI]_ for changes onwards up to September 2017.
 
 
 Kinds of GLEPs
@@ -69,14 +71,15 @@ injected into the Gentoo Linux development work flow with an enhancement "bug"
 submitted to the Gentoo Linux bugzilla [#BUGS]_.
 
 The GLEP champion then files a bug on Bugzilla in the GLEP product, under
-the "New GLEP submissions" component of the "Documentation" product with
-a proposed title and a rough, but fleshed out, draft of the GLEP.  This
+the "New GLEP submissions" component of the "Documentation" product
+and prepares a rough, but fleshed out, draft of the GLEP on a dedicated
+branch of the GLEP repository or a private fork of that repository.  This
 draft must be written in GLEP style as described below and in GLEP 2.
 
 If the GLEP editors accept the GLEP, they will assign the GLEP a number, label
 it as Standards Track (a better name would be nice here -- suggestions?) or
-Informational, give it status "Draft", and create and check-in the initial
-draft of the GLEP on the Wiki in the GLEP namespace.  The GLEP editors will
+Informational, give it status "Draft", and merge the initial draft of the GLEP
+to the master branch of the repository.  The GLEP editors will
 not unreasonably deny a GLEP. Reasons for denying GLEP status include
 duplication of effort, being technically unsound, not providing proper
 motivation or addressing backwards compatibility, or not in keeping with
@@ -92,7 +95,7 @@ The author of the GLEP is then responsible for posting the GLEP to
 the gentoo-dev or gentoo-project mailing list (and additionally to
 the Gentoo Linux forums [#FORUMS]_ if they so desire), and marshaling community
 support for it.  As updates are necessary, the GLEP author should request
-changes to the Wiki page from a GLEP editor.
+merging changes to the master branch from a GLEP editor.
 
 Standards Track GLEPs consist of two parts, a design document and a reference
 implementation.  The GLEP should be reviewed and accepted before a reference
@@ -200,7 +203,7 @@ Each GLEP should have the following parts:
 8. Copyright -- Every new GLEP must be explicitly labelled
    as licensed under the Creative Commons Attribution-ShareAlike (CC-BY-SA)
    license, version 3.0 [#CC-BY-SA3.0]_. Older GLEPs in the public domain
-   should be relicensed to CC-BY-SA 3.0 when they are moved to the Wiki.
+   should be relicensed to CC-BY-SA 3.0 when they are updated.
    GLEPs released under the Open Publication License (OPL) may remain
    as-is, but are strongly encouraged to be relicensed under CC-BY-SA
    3.0 with the consent of all authors.
@@ -258,11 +261,6 @@ A GLEP may have a Replaces header, which indicates that this GLEP supersedes
 a previous one.  This header should contain the number of the GLEP that this
 one renders obsolete.
 
-When the GLEP editor enters the GLEP into the Wiki, they will be automatically
-prompted for the contents of these fields, which will then be associated with
-the GLEP as metadata.  The version of the GLEP stored on the Wiki should
-not contain the RFC 2822 headers as part of the body of the GLEP.
-
 
 Reporting GLEP Bugs, or Submitting GLEP Updates
 ===============================================
@@ -278,13 +276,13 @@ lost. Be sure to CC the GLEP author on the bug. When in doubt about where
 to send your changes, please check first with the GLEP author and/or GLEP
 editors.
 
-GLEP authors must have a GLEP editor commit their changes to the Wiki,
-as the GLEP namespace is restricted to GLEP editors in order to protect
+GLEP authors must have a GLEP editor merge their changes to the master branch,
+as the write access is restricted to GLEP editors in order to protect
 the integrity of the GLEPs.
 
 Any major updates to GLEPs (that is, those that change the content of
 the GLEP rather than just fixing typos or adding small clarifications)
-should be approved by the Gentoo Council before being committed.
+should be approved by the Gentoo Council before being merged.
 
 
 Transferring GLEP Ownership
@@ -316,11 +314,11 @@ References and Footnotes
 
 .. [#PEP1] http://www.python.org/peps/pep-0001.html
 
-.. [#CVS] This historical record is available by the normal CVS commands
-   for retrieving older revisions.  For those without direct access to the CVS
-   tree, you can browse the current and past GLEP revisions via the Gentoo
-   Linux viewcvs web site at
-   http://www.gentoo.org/cgi-bin/viewcvs.cgi/gentoo/xml/htdocs/proj/en/glep/
+.. [#VCS] https://gitweb.gentoo.org/proj/glep.git
+
+.. [#CVS] https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/xml/htdocs/proj/en/glep/
+
+.. [#WIKI] https://wiki.gentoo.org/index.php?title=Special%3AAllPages&from=&to=&namespace=550
 
 .. [#BUGS] http://bugs.gentoo.org
 
