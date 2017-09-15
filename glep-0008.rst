@@ -1,14 +1,16 @@
+---
 GLEP: 8
 Title: Adopt-A-Developer
-Version: $Revision$
-Last-Modified: $Date$
 Author: Brian Jackson <iggy@gentoo.org>,
         Thomas Cort <tcort@gentoo.org>
-Status: Final
 Type: Standards Track
+Status: Final
+Version: 1
+Created: 2003-07-02
+Last-Modified: 2014-01-15
+Post-History: 2003-07-09, 2004-04-04, 2006-09-03
 Content-Type: text/x-rst
-Created: 02-Jul-2003
-Post-History: 09-Jul-2003, 4-Apr-2004, 3-Sep-2006
+---
 
 Status
 ======

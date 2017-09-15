@@ -1,13 +1,15 @@
+---
 GLEP: 40
 Title: Standardizing "arch" keywording across all archs.
-Version: $Revision$
-Last-Modified: $Date$
 Author: Grant Goodyear <g2boojum@gentoo.org>
-Status: Final
 Type: Standards Track
+Status: Final
+Version: 1
+Created: 2005-09-03
+Last-Modified: 2014-01-22
+Post-History: 2005-09-06, 2005-09-15, 2006-09-03
 Content-Type: text/x-rst
-Created: 3-Sep-2005
-Post-History: 6-Sep-2005 15-Sep-2005 3-Sep-2006
+---
 
 Status
 ======

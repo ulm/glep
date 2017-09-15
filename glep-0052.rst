@@ -1,13 +1,15 @@
+---
 GLEP: 52
 Title: RESTRICT=unattended
-Version: $Revision$
-Last-Modified: $Date$
 Author: Marius Mauch <genone@gentoo.org>,
-Status: Withdrawn
 Type: Standards Track
+Status: Withdrawn
+Version: 1
+Created: 2006-10-13
+Last-Modified: 2014-01-23
+Post-History: 2006-10-14
 Content-Type: text/x-rst
-Created: 13-Oct-2006
-Post-History: 14-Oct-2006
+---
 
 
 Abstract

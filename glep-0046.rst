@@ -1,14 +1,18 @@
+---
 GLEP: 46
 Title: Allow upstream tags in metadata.xml
-Version: $Revision$
-Last-Modified: $Date$
-Author: Marcelo Goes <vanquirius@gentoo.org>, Ciaran McCreesh <ciaranm@gentoo.org>, Tiziano Müller <dev-zero@gentoo.org>
-Status: Accepted
+Author: Marcelo Goes <vanquirius@gentoo.org>,
+        Ciaran McCreesh <ciaranm@gentoo.org>,
+        Tiziano Müller <dev-zero@gentoo.org>
 Type: Standards Track
+Status: Accepted
+Version: 1
+Created: 2005-12-26
+Last-Modified: 2014-01-23
+Post-History: 2005-12-26, 2006-03-05, 2008-01-24, 2008-05-10
 Content-Type: text/x-rst
-Created: 26-Dec-2005
-Post-History: 26-Dec-2005, 5-Mar-2006, 24-Jan-2008, 10-May-2008
 Replaced-By: 68
+---
 
 Abstract
 ========

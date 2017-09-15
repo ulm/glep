@@ -1,14 +1,16 @@
+---
 GLEP: 59
 Title: Manifest2 hash policies and security implications
-Version: $Revision$
-Last-Modified: $Date$
-Author: Robin Hugh Johnson <robbat2@gentoo.org>, 
-Status: Draft
+Author: Robin Hugh Johnson <robbat2@gentoo.org>,
 Type: Standards Track
+Status: Draft
+Version: 1
+Created: 2008-10-22
+Last-Modified: 2014-01-23
+Post-History: 2009-12-01, 2010-01-31
 Content-Type: text/x-rst
 Requires: 44
-Created: 22-Oct-2008
-Post-History: 1-Dec-2009, 31-Jan-2010
+---
 
 Abstract
 ========

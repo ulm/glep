@@ -1,13 +1,15 @@
+---
 GLEP: 64
 Title: Export PMS's cached VDB information
-Version: $Revision$
-Last-Modified: $Date$
 Author: Anthony G. Basile <blueness@gentoo.org>
-Status: Final
 Type: Standards Track
+Status: Final
+Version: 1
+Created: 2014-07-31
+Last-Modified: 2014-11-08
+Post-History: 2014-08-30
 Content-Type: text/x-rst
-Created: 31-Jul-2014
-Post-History: 30-Aug-2014
+---
 
 Abstract
 ========

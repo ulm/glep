@@ -1,13 +1,15 @@
+---
 GLEP: 72
 Title: Architecture stability status file
-Version: $Revision$
-Last-Modified: $Date$
 Author: Andreas K. Hüttel <dilfridge@gentoo.org>
-Status: Draft
 Type: Standards Track
+Status: Draft
+Version: 1
+Created: 2017-05-06
+Last-Modified: 2017-05-05
+Post-History: 2017-05-06
 Content-Type: text/x-rst
-Created: 6-May-2017
-Post-History: 6-May-2017
+---
 
 Abstract
 ========

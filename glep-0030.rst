@@ -1,13 +1,15 @@
+---
 GLEP: 30
 Title: Planet Gentoo web log aggregator
-Version: $Revision$
-Last-Modified: $Date$
 Author: Daniel Drake <dsd@gentoo.org>
-Status: Final
 Type: Standards Track
+Status: Final
+Version: 1
+Created: 2004-10-24
+Last-Modified: 2014-01-17
+Post-History: 2004-10-25, 2004-11-10, 2005-03-11
 Content-Type: text/x-rst
-Created: 24-Oct-2004
-Post-History: 25-Oct-2004, 10-Nov-2004, 11-Mar-2005
+---
 
 Status
 ======

@@ -1,13 +1,17 @@
+---
 GLEP: 63
 Title: Gentoo GPG key policies
-Version: $Revision$
-Last-Modified: $Date$
-Author: Robin H. Johnson <robbat2@gentoo.org>, Andreas K. Hüttel <dilfridge@gentoo.org>, Marissa Fischer <blogtodiffer@gmail.com>
-Status: Final
+Author: Robin H. Johnson <robbat2@gentoo.org>,
+        Andreas K. Hüttel <dilfridge@gentoo.org>,
+        Marissa Fischer <blogtodiffer@gmail.com>
 Type: Standards Track
+Status: Final
+Version: 1
+Created: 2013-02-18
+Last-Modified: 2015-08-25
+Post-History: 2013-11-10
 Content-Type: text/x-rst
-Created: 18-Feb-2013
-Post-History: 10-Nov-2013
+---
 
 Credits
 =======

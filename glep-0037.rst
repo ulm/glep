@@ -1,13 +1,15 @@
+---
 GLEP: 37
 Title: Virtuals Deprecation
-Version: $Revision$
-Last-Modified: $Date$
 Author: Jason Stubbs <jstubbs@gentoo.org>
-Status: deferred
 Type: Standards Track
+Status: Deferred
+Version: 1
+Created: 2005-04-30
+Last-Modified: 2014-01-21
+Post-History: 2005-04-30, 2006-09-05
 Content-Type: text/x-rst
-Created: 30-Apr-2005
-Post-History: 30-Apr-2005, 5-Sep-2006
+---
 
 
 Status

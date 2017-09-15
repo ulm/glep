@@ -1,13 +1,15 @@
+---
 GLEP: 54
 Title: scm package version suffix
-Version: $Revision$
-Last-Modified: $Date$
 Author: Piotr Jaroszyński <peper@gentoo.org>
-Status: Deferred
 Type: Standards Track
+Status: Deferred
+Version: 1
+Created: 2007-12-09
+Last-Modified: 2014-01-23
+Post-History: 2007-12-09
 Content-Type: text/x-rst
-Created: 09-Dec-2007
-Post-History: 09-Dec-2007
+---
 
 Status
 ======

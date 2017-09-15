@@ -1,13 +1,15 @@
+---
 GLEP: 9
 Title: Gentoo Package Update System
-Version: $Revision$
-Last-Modified: $Date$
 Author: John J. Whitney <jjw@linuxmail.org>
-Status: deferred
 Type: Standards Track
+Status: Deferred
+Version: 1
+Created: 2003-07-19
+Last-Modified: 2014-01-15
+Post-History: 2003-07-25
 Content-Type: text/x-rst
-Created: 19-Jul-2003
-Post-History: 25-Jul-2003
+---
 
 
 Abstract

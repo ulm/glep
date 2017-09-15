@@ -1,13 +1,15 @@
+---
 GLEP: 3
 Title: Ebuild maintainter extension GLEP
-Version: $Revision$
-Last-Modified: $Date$
 Author: Caleb Tennis <caleb@gentoo.org>
-Status: Deferred
 Type: Standards Track
+Status: Deferred
+Version: 1
+Created: 2003-06-09
+Last-Modified: 2014-01-15
+Post-History: 2003-06-10
 Content-Type: text/x-rst
-Created: 09-Jun-2003
-Post-History: 10-Jun-2003
+---
 
 
 Abstract

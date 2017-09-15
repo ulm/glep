@@ -1,13 +1,15 @@
+---
 GLEP: 48
 Title: QA Team's Role and Purpose
-Version: $Revision$
-Last-Modified: $Date$
 Author: Mark Loeser <halcy0n@gentoo.org>,
-Status: Final
 Type: Standards Track
+Status: Final
+Version: 1
+Created: 2006-04-24
+Last-Modified: 2014-01-25
+Post-History: 2006-04-24, 2006-09-05, 2011-06-08
 Content-Type: text/x-rst
-Created: 24-Apr-2006
-Post-History: 24-Apr-2006, 5-Sep-2006, 8-Jun-2011
+---
 
 
 Abstract

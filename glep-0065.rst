@@ -1,13 +1,15 @@
+---
 GLEP: 65
 Title: Post-install QA checks
-Version: $Revision$
-Last-Modified: $Date$
 Author: Michał Górny <mgorny@gentoo.org>
-Status: Draft
 Type: Standards Track
+Status: Draft
+Version: 1
+Created: 2014-10-26
+Last-Modified: 2014-12-14
+Post-History: 2014-10-30
 Content-Type: text/x-rst
-Created: 26-Oct-2014
-Post-History: 30-Oct-2014
+---
 
 Abstract
 ========

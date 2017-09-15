@@ -1,13 +1,15 @@
-GLEP: 12 
-Title: Gentoo.org Finger Daemon 
-Version: $Revision$ 
-Last-Modified: $Date$ 
-Author: Tavis Ormandy <taviso@gentoo.org> 
-Status: Rejected 
-Type: Standards Track 
+---
+GLEP: 12
+Title: Gentoo.org Finger Daemon
+Author: Tavis Ormandy <taviso@gentoo.org>
+Type: Standards Track
+Status: Rejected
+Version: 1
+Created: 2003-08-10
+Last-Modified: 2014-01-17
+Post-History: 2003-08-11
 Content-Type: text/x-rst
-Created: 10-Aug-2003 
-Post-History: 11-Aug-2003
+---
 
 Reason for rejection
 ====================

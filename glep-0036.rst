@@ -1,13 +1,15 @@
+---
 GLEP: 36
 Title: Subversion/CVS for Gentoo Hosted Projects
-Version: $Revision$
 Author: Aaron Walker <ka0ttic@gentoo.org>
-Last-Modified: $Date$
-Status: Final
 Type: Standards Track
+Status: Final
+Version: 1
+Created: 2004-11-11
+Last-Modified: 2014-01-21
+Post-History: 2005-03-13, 2005-03-21
 Content-Type: text/x-rst
-Created: 11-Nov-2004
-Post-History: 13-Mar-2005, 21-Mar-2005
+---
 
 Abstract
 ========

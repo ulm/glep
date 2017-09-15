@@ -1,13 +1,15 @@
+---
 GLEP: 13
 Title: Providing the users with a Gentoo Handbook
-Version: $Revision$
-Last-Modified: $Date$
 Author: Sven Vermeulen <swift@gentoo.org>
-Status: Final
 Type: Standards Track
+Status: Final
+Version: 1
+Created: 2003-08-15
+Last-Modified: 2015-01-12
+Post-History: 2003-08-19, 2004-10-25
 Content-Type: text/x-rst
-Created: 15-Aug-2003
-Post-History: 19-Aug-2003, 25-Oct-2004
+---
 
 Abstract
 ========

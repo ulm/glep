@@ -1,14 +1,15 @@
+---
 GLEP: 11
 Title: Web Application Installation
-Version: $Revision$
-Last-Modified: $Date$
-Author: Troy Dack <tad@gentoo.org>
 Author: Stuart Herbert <stuart@gentoo.org>
-Status: Final
 Type: Standards Track
+Status: Final
+Version: 1
+Created: 2003-08-02
+Last-Modified: 2014-01-15
+Post-History: 2003-08-07, 2003-08-12, 2003-08-13, 2006-09-03
 Content-Type: text/x-rst
-Created: 02-Aug-2003
-Post-History: 07-Aug-2003, 12-Aug-2003, 13-Aug-2003, 3-Sep-2006
+---
 
 Status
 ======

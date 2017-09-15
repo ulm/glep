@@ -1,15 +1,17 @@
+---
 GLEP: 2
 Title: Sample ReStructuredText GLEP Template
-Version: $Revision$
-Last-Modified: $Date$
 Author: Grant Goodyear <g2boojum@gentoo.org>,
         Chris Reffett <creffett@gentoo.org>,
         Ulrich Müller <ulm@gentoo.org>
-Status: Active
 Type: Informational
+Status: Active
+Version: 1
+Created: 2003-05-31
+Last-Modified: 2014-01-17
+Post-History: 2003-06-02, 2013-12-17
 Content-Type: text/x-rst
-Created: 31-May-2003
-Post-History: 2-Jun-2003, 17-Dec-2013
+---
 
 
 Credits

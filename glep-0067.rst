@@ -1,13 +1,15 @@
+---
 GLEP: 67
 Title: Package maintenance structure
-Version: $Revision$
-Last-Modified: $Date$
 Author: Michał Górny <mgorny@gentoo.org>
-Status: Final
 Type: Standards Track
+Status: Final
+Version: 1
+Created: 2015-12-13
+Last-Modified: 2016-01-13
+Post-History: 2015-11-03, 2016-05-29
 Content-Type: text/x-rst
-Created: 13-Dec-2015
-Post-History: 3-Nov-2015, 29-May-2016
+---
 
 Abstract
 ========

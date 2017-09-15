@@ -1,13 +1,15 @@
+---
 GLEP: 45
 Title: GLEP date format
-Version: $Revision$
 Author: Henrik Brix Andersen <brix@gentoo.org>
-Last-Modified: $Date$
-Status: Final
 Type: Standards Track
+Status: Final
+Version: 1
+Created: 2005-12-13
+Last-Modified: 2014-01-23
+Post-History: 2005-12-13
 Content-Type: text/x-rst
-Created: 13-Dec-2005
-Post-History: 13-Dec-2005
+---
 
 Abstract
 ========

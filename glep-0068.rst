@@ -1,15 +1,17 @@
+---
 GLEP: 68
 Title: Package and category metadata
-Version: $Revision$
-Last-Modified: $Date$
 Author: Michał Górny <mgorny@gentoo.org>
-Status: Final
 Type: Standards Track
+Status: Final
+Version: 1
+Created: 2016-03-14
+Last-Modified: 2017-05-05
+Post-History: 2016-03-16
 Content-Type: text/x-rst
-Created: 14-Mar-2016
-Post-History: 16-Mar-2016
-Replaces: 34, 46, 56
 Requires: 67
+Replaces: 34, 46, 56
+---
 
 Abstract
 ========

@@ -1,13 +1,16 @@
+---
 GLEP: 47
 Title: Creating 'safe' environment variables
-Version: $Revision$
-Last-Modified: $Date$
-Author: Diego Pettenò, Fabian Groffen
-Status: Rejected
+Author: Diego Pettenò,
+        Fabian Groffen
 Type: Standards Track
+Status: Rejected
+Version: 1
+Created: 2005-10-14
+Last-Modified: 2014-01-23
+Post-History: 2006-02-09
 Content-Type: text/x-rst
-Created: 14-Oct-2005
-Post-History: 09-Feb-2006
+---
 
 
 Credits

@@ -1,14 +1,16 @@
+---
 GLEP: 4
 Title: Gentoo top-level management structure proposal
-Version: $Revision$
-Last-Modified: $Date$
 Author: Daniel Robbins <drobbins@gentoo.org>
-Status: Replaced
 Type: Informational
+Status: Replaced
+Version: 1
+Created: 2003-06-24
+Last-Modified: 2014-02-28
+Post-History: 2003-06-30
 Content-Type: text/x-rst
-Created: 24-Jun-2003
-Post-History: 30-Jun-2003
 Replaced-By: 39
+---
 
 What is the purpose of this proposal?
 =====================================

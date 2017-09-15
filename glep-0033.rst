@@ -1,13 +1,16 @@
+---
 GLEP: 33
 Title: Eclass Restructure/Redesign
-Version: $Revision$
-Last-Modified: $Date$
-Author: Brian Harring <ferringb@gentoo.org>, John Mylchreest <johnm@gentoo.org>
-Status: Deferred
+Author: Brian Harring <ferringb@gentoo.org>,
+        John Mylchreest <johnm@gentoo.org>
 Type: Standards Track
+Status: Deferred
+Version: 1
+Created: 2005-01-29
+Last-Modified: 2014-01-17
+Post-History: 2005-01-29, 2005-03-06, 2005-09-15, 2006-09-05
 Content-Type: text/x-rst
-Created: 29-Jan-2005
-Post-History: 29-Jan-2005 6-Mar-2005 15-Sep-2005 5-Sep-2006
+---
 
 Status
 ======

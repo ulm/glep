@@ -1,14 +1,16 @@
+---
 GLEP: 21
 Title: User-defined Package Sets
-Version: $Revision$ 
-Last-Modified: $Date$
 Author: Tal Peer <coredumb@gentoo.org>,
         Alec Warner <antarus@gentoo.org>
-Status: Final
 Type: Standards Track
+Status: Final
+Version: 1
+Created: 2004-02-22
+Last-Modified: 2016-02-25
+Post-History: 2004-03-06, 2006-09-03
 Content-Type: text/x-rst
-Created: 22-Feb-2004
-Post-History: 6-Mar-2004, 3-Sep-2006
+---
 
 Status
 ======

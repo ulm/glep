@@ -1,13 +1,15 @@
+---
 GLEP: 24
 Title: Consistent Gentoo tool naming scheme
-Version: $Revision$
-Last-Modified: $Date$
 Author: Donnie Berkholz <dberkholz@gentoo.org>,
-Status: Deferred
 Type: Standards Track
+Status: Deferred
+Version: 1
+Created: 2004-03-16
+Last-Modified: 2014-01-17
+Post-History: 2004-03-17, 2004-10-25
 Content-Type: text/x-rst
-Created: 16-Mar-2004
-Post-History: 17-Mar-2004, 25-Oct-2004
+---
 
 
 Abstract

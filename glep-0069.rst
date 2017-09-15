@@ -1,13 +1,15 @@
+---
 GLEP: 69
 Title: File installation masks
-Version: $Revision$
-Last-Modified: $Date$
 Author: Michał Górny <mgorny@gentoo.org>
-Status: Draft
 Type: Standards Track
+Status: Draft
+Version: 1
+Created: 2015-03-29
+Last-Modified: 2016-07-30
+Post-History: 2016-05-20
 Content-Type: text/x-rst
-Created: 29-Mar-2015
-Post-History: 20-May-2016
+---
 
 Abstract
 ========

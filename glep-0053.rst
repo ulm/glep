@@ -1,13 +1,16 @@
+---
 GLEP: 53
 Title: Keywording scheme
-Version: $Revision$
-Last-Modified: $Date$
-Author: Fabian Groffen <grobian@gentoo.org>, Diego Pettenò <flameeyes@gentoo.org>
-Status: Final
+Author: Fabian Groffen <grobian@gentoo.org>,
+        Diego Pettenò <flameeyes@gentoo.org>
 Type: Standards Track
+Status: Final
+Version: 1
+Created: 2005-12-11
+Last-Modified: 2014-01-23
+Post-History: 2007-04-13
 Content-Type: text/x-rst
-Created: 11-Dec-2005
-Post-History: 13-Apr-2007
+---
 
 
 

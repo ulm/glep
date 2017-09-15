@@ -1,13 +1,15 @@
+---
 GLEP: 71
 Title: Require Projects to report to Council Monthly
-Version: $Revision$
-Last-Modified: $Date$
 Author: William L\. Thomson Jr\. <wlt@o-sinc.com>
-Status: Draft
 Type: Standards Track
+Status: Draft
+Version: 1
+Created: 2017-01-19
+Last-Modified: 2017-01-19
+Post-History: 2017-01-19
 Content-Type: text/x-rst
-Created: 19-Jan-2017
-Post-History: 19-Jan-2017
+---
 
 Abstract
 ========

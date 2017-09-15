@@ -1,13 +1,15 @@
+---
 GLEP: 49
 Title: Alternative Package Manager requirements
-Version: $Revision$
-Last-Modified: $Date$
 Author: Paul de Vrieze <pauldv@gentoo.org>,
-Status: Rejected
 Type: Standards Track
+Status: Rejected
+Version: 1
+Created: 2006-05-18
+Last-Modified: 2014-01-23
+Post-History: 2006-05-19, 2006-09-06
 Content-Type: text/x-rst
-Created: 18-May-2006
-Post-History: 19-May-2006, 6-Sep-2006
+---
 
 Note: This document needs to be relicensed to CC-BY-SA 3.0 after consulting
 with the original author

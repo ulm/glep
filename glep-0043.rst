@@ -1,13 +1,15 @@
+---
 GLEP: 43
 Title: GLEP File Hosting
-Version: $Revision$
 Author: Ciaran McCreesh <ciaranm@gentoo.org>
-Last-Modified: $Date$
-Status: Final
 Type: Informational
+Status: Final
+Version: 1
+Created: 2005-11-07
+Last-Modified: 2014-01-23
+Post-History: 2005-11-07
 Content-Type: text/x-rst
-Created: 7-Nov-2005
-Post-History: 7-Nov-2005
+---
 
 Abstract
 ========

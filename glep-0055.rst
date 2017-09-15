@@ -1,13 +1,15 @@
+---
 GLEP: 55
 Title: Use EAPI-suffixed ebuilds (.ebuild-EAPI)
-Version: $Revision$
-Last-Modified: $Date$
 Author: Piotr Jaroszyński <peper@gentoo.org>
-Status: Rejected
 Type: Standards Track
+Status: Rejected
+Version: 1
+Created: 2007-12-17
+Last-Modified: 2014-01-23
+Post-History: 2007-12-17, 2007-12-22, 2009-05-17
 Content-Type: text/x-rst
-Created: 17-Dec-2007
-Post-History: 17-Dec-2007, 22-Dec-2007, 17-May-2009
+---
 
   "A little learning is a dangerous thing; drink deep, or taste not the Pierian
   spring: there shallow draughts intoxicate the brain, and drinking largely
