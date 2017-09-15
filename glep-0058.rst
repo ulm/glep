@@ -8,7 +8,7 @@ Type: Standards Track
 Content-Type: text/x-rst
 Requires: 44, 60
 Created: October 2006
-Post-History: December 2009, January 2010
+Post-History: 1-Dec-2009, 31-Jan-2010
 
 ========
 Abstract
