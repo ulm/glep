@@ -7,7 +7,7 @@ Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
 Created: 03-Jun-2008
-Post-History: 05-June-2008, 13-Jun-2008
+Post-History: 05-Jun-2008, 13-Jun-2008
 Replaced-By: 68
 
 Abstract

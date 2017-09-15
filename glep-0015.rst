@@ -6,7 +6,7 @@ Author: James Harlow <hythloday@gentoo.org>,
 Status: Accepted
 Type: Standards Track
 Content-Type: text/x-rst
-Created: 30 Sep 2003
+Created: 30-Sep-2003
 Post-History: 30-Sep-2003, 25-Oct-2004
 
 

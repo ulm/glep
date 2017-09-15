@@ -6,7 +6,7 @@ Author: Mark Loeser <halcy0n@gentoo.org>,
 Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
-Created: 24 April 2006
+Created: 24-Apr-2006
 Post-History: 24-Apr-2006, 5-Sep-2006, 8-Jun-2011
 
 

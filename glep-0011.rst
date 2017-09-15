@@ -7,7 +7,7 @@ Author: Stuart Herbert <stuart@gentoo.org>
 Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
-Created: 02-August-2003
+Created: 02-Aug-2003
 Post-History: 07-Aug-2003, 12-Aug-2003, 13-Aug-2003, 3-Sep-2006
 
 Status

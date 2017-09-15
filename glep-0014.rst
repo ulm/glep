@@ -6,7 +6,7 @@ Author: Marius Mauch <genone@genone.de>,
 Status: Accepted
 Type: Standards Track
 Content-Type: text/x-rst
-Created: 18 Aug 2003
+Created: 18-Aug-2003
 Post-History: 22-Aug-2003, 24-Aug-2003, 10-Nov-2003, 25-Oct-2004
 Requires: 21
 

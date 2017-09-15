@@ -6,8 +6,8 @@ Author: Sven Vermeulen <swift@gentoo.org>
 Status: Final
 Type: Standards Track
 Content-Type: text/x-rst
-Created: 15 Aug 2003
-Post-History: 19-Aug-2003 25-Oct-2004
+Created: 15-Aug-2003
+Post-History: 19-Aug-2003, 25-Oct-2004
 
 Abstract
 ========

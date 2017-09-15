@@ -6,8 +6,8 @@ Author: Michał Górny <mgorny@gentoo.org>
 Status: Draft
 Type: Standards Track
 Content-Type: text/x-rst
-Created: 17 Jun 2012
-Post-History: 11 Jul 2012
+Created: 17-Jun-2012
+Post-History: 11-Jul-2012
 
 
 Abstract

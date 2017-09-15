@@ -8,7 +8,7 @@ Author: Grant Goodyear <g2boojum@gentoo.org>,
 Status: Active
 Type: Informational
 Content-Type: text/x-rst
-Created: 31 May 2003
+Created: 31-May-2003
 Post-History: 2-Jun-2003, 17-Dec-2013
 
 

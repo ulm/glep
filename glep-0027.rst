@@ -6,7 +6,7 @@ Author: Mike Frysinger <vapier@gentoo.org>
 Status: Accepted
 Type: Standards Track
 Content-Type: text/x-rst
-Created: 29 May 2004
+Created: 29-May-2004
 Post-History: 29-May-2004, 20-Jul-2004
 
 
