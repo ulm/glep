@@ -245,31 +245,20 @@ All other headers are required.
 
     ---
     GLEP: <glep number>
-    Version: <major>[.<minor>]
-    Last-Modified: <date of last update>
     Title: <glep title>
     Author: <list of authors' real names and optionally, email addrs>
+    Type: <Informational | Standards Track>
     Status: <Draft | Active | Accepted | Deferred | Withdrawn | Rejected |
              Final | Replaced | Moribund>
-    Type: <Informational | Standards Track>
-    Content-Type: <text/x-rst>
+    Version: <major>[.<minor>]
     Created: <date created on>
+    Last-Modified: <date of last update>
     Post-History: <dates of postings to mailing lists>
+    Content-Type: <text/x-rst>
   * Requires: <glep numbers>
   * Replaces: <glep number>
   * Replaced-By: <glep number>
     ---
-
-The Version field specifies the current version of the GLEP. The Version
-consists of a major version, optionally followed by a minor version (if
-non-zero). Every GLEP starts at version 1 which is successively incremented
-as changes are merged to the GLEP.
-
-The major version number should be incremented (and minor reset to zero)
-whenever the meaning of the GLEP changes. The minor version number should
-be incremented for changes that do not affect the basic meaning (e.g.
-clarifications, reference implementation updates). Editorial changes should
-be merged without increasing the version.
 
 The Author header lists the names, and optionally the email addresses
 of all the authors/owners of the GLEP.  Anybody who submits changes to
@@ -290,15 +279,25 @@ following RFC 2822 continuation line conventions.
 The Type header specifies the type of GLEP: Informational or Standards
 Track.
 
+The Version field specifies the current version of the GLEP. The Version
+consists of a major version, optionally followed by a minor version (if
+non-zero). Every GLEP starts at version 1 which is successively incremented
+as changes are merged to the GLEP.
+
+The major version number should be incremented (and minor reset to zero)
+whenever the meaning of the GLEP changes. The minor version number should
+be incremented for changes that do not affect the basic meaning (e.g.
+clarifications, reference implementation updates). Editorial changes should
+be merged without increasing the version.
+
+The Created header records the date that the GLEP was assigned a number,
+Last-Modified specifies the date that the GLEP was last updated in the master
+branch, while Post-History is used to record the dates of when new versions
+of the GLEP are posted to the appropriate mailing list.  All three headers
+should be in ISO 8601 ``yyyy-mm-dd`` format, e.g. 2001-08-14.
+
 The format of a GLEP is specified with a Content-Type header, which
 must be "text/x-rst" for ReStructuredText GLEPs (see GLEP 2 [#GLEP2]_).
-
-The Last-Modified header specifies the date that the GLEP was last updated
-in the master branch.
-The Created header records the date that the GLEP was assigned a number, while
-Post-History is used to record the dates of when new versions of the GLEP are
-posted to gentoo-dev.  All three headers should be in ISO 8601 ``yyyy-mm-dd``
-format, e.g. 2001-08-14.
 
 GLEPs may have a Requires header, indicating the GLEP numbers that this GLEP
 depends on.
