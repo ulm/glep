@@ -4,7 +4,7 @@ Title: QA Team's Role and Purpose
 Author: Mark Loeser <halcy0n@gentoo.org>,
 Type: Standards Track
 Status: Final
-Version: 1
+Version: 2
 Created: 2006-04-24
 Last-Modified: 2014-01-25
 Post-History: 2006-04-24, 2006-09-05, 2011-06-08

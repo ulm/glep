@@ -6,7 +6,7 @@ Author: Grant Goodyear <g2boojum@gentoo.org>,
         Ulrich Müller <ulm@gentoo.org>
 Type: Informational
 Status: Active
-Version: 1
+Version: 3
 Created: 2003-05-31
 Last-Modified: 2016-07-04
 Post-History: 2003-06-01, 2003-07-02, 2008-01-19, 2008-06-05, 2011-03-09,
