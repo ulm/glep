@@ -6,7 +6,7 @@ Author: Robin Hugh Johnson <robbat2@gentoo.org>
 Status: Final
 Type: Informational
 Content-Type: text/x-rst
-Created: November 2005
+Created: 22-Oct-2008
 Post-History: 1-Dec-2009
 
 Abstract
