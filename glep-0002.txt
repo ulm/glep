@@ -72,7 +72,7 @@ doubt, read GLEP 1 for details or contact the GLEP editors <glep@gentoo.org>.
 Once you've decided which type of GLEP yours is going to be, follow the
 directions below.
 
-- Make a copy of this file (``.txt`` file, **not** HTML!) and perform
+- Make a copy of this file (``.rst`` file, **not** HTML!) and perform
   the following edits.
 
 - Replace the "GLEP: 2" header with "GLEP: XXX" since you don't yet have
@@ -92,26 +92,17 @@ directions below.
 
 - Change the Status header to "Draft".
 
-- Leave the Version and Last-Modified headers alone; we'll take care
-  of those when we check your GLEP into CVS.
+- Reset the Version to "1".
 
-- If there is a forum thread or a mailing list for discussion 
-  of your new feature, add a Discussions-To header right after the Author
-  header.  You should not add a Discussions-To header if the mailing list to
-  be used is gentoo-dev@gentoo.org, or if discussions should be sent to you
-  directly.  Most Informational GLEPs don't have a Discussions-To header.
+- Change the Created and Last-Modified headers to today's date.  Be sure to
+  follow the format carefully: it must be in ISO 8601 ``yyyy-mm-dd`` format.
 
-- Change the Created header to today's date.  Be sure to follow the
-  format carefully: it must be in ``dd-mmm-yyyy`` format, where the ``mmm`` is
-  the 3 English letter month abbreviation, i.e. one of Jan, Feb, Mar, Apr,
-  May, Jun, Jul, Aug, Sep, Oct, Nov, Dec.
+- Reset the Post-History to empty for now; you'll add dates to this header
+  each time you post your GLEP to gentoo-dev@lists.gentoo.org.  If you
+  posted your GLEP to the list on August 14, 2003 and September 3, 2003,
+  the Post-History header would look like::
 
-- Leave Post-History alone for now; you'll add dates to this header
-  each time you post your GLEP to gentoo-dev@gentoo.org.  If you posted your
-  GLEP to the list on August 14, 2003 and September 3, 2003, the Post-History
-  header would look like::
-
-      Post-History: 14-Aug-2003, 03-Sept-2003
+      Post-History: 2003-08-14, 2003-09-03
 
   You must manually add new dates and check them in.  If you don't have
   check-in privileges, send your changes to the GLEP editors.
