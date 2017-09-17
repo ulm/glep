@@ -2,7 +2,8 @@ GLEP: 2
 Title: Sample ReStructuredText GLEP Template
 Version: $Revision$
 Last-Modified: $Date$
-Author:	Grant Goodyear <g2boojum@gentoo.org>,
+Author: Grant Goodyear <g2boojum@gentoo.org>,
+        Chris Reffett <creffett@gentoo.org>
 Status: Active
 Type: Informational
 Content-Type: text/x-rst
@@ -86,8 +87,7 @@ directions below.
   email address.  Be sure to follow the format carefully: your name must
   appear first, and it must not be contained in parentheses.  Your email
   address may appear second (or it can be omitted) and if it appears, it must
-  appear in angle brackets.  Your e-mail address
-  here will e automatically obfuscated.
+  appear in angle brackets.
 
 - If there is a forum thread or a mailing list for discussion 
   of your new feature, add a Discussions-To header right after the Author
@@ -133,12 +133,9 @@ directions below.
   replacing all of this gobbledygook with your own text. Be sure to adhere to
   the format guidelines below, specifically on the indentation requirements.
 
-- Update your References and Copyright section.  Usually you'll place
-  your GLEP into the public domain, in which case just leave the Copyright
-  section alone.  Alternatively, you can use the `Open Publication License`__,
-  but public domain is still strongly preferred.
-
-  __ http://www.opencontent.org/openpub/
+- Update your References section.  You should leave the Copyright section
+  as-is, since all new GLEPs are to be licensed under the Creative Commons
+  Attribution-ShareAlike License, Version 3.0.
 
 - Send your GLEP submission to the GLEP editors at glep@gentoo.org.
 
@@ -612,5 +609,6 @@ References
 Copyright
 =========
 
-This document has been placed in the public domain.
-
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
