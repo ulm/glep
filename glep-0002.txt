@@ -80,33 +80,26 @@ directions below.
 
 - Change the Title header to the title of your GLEP.
 
-- Leave the Version and Last-Modified headers alone; we'll take care
-  of those when we check your GLEP into CVS.
-
 - Change the Author header to include your name, and optionally your
   email address.  Be sure to follow the format carefully: your name must
   appear first, and it must not be contained in parentheses.  Your email
   address may appear second (or it can be omitted) and if it appears, it must
   appear in angle brackets.
 
+- For Standards Track GLEPs, change the Type header to "Standards Track".
+
+- For Informational GLEPs, change the Type header to "Informational".
+
+- Change the Status header to "Draft".
+
+- Leave the Version and Last-Modified headers alone; we'll take care
+  of those when we check your GLEP into CVS.
+
 - If there is a forum thread or a mailing list for discussion 
   of your new feature, add a Discussions-To header right after the Author
   header.  You should not add a Discussions-To header if the mailing list to
   be used is gentoo-dev@gentoo.org, or if discussions should be sent to you
   directly.  Most Informational GLEPs don't have a Discussions-To header.
-
-- Change the Status header to "Draft".
-
-- For Standards Track GLEPs, change the Type header to "Standards
-  Track".
-
-- For Informational GLEPs, change the Type header to "Informational".
-
-- For Standards Track GLEPs, if your feature depends on the acceptance
-  of some other currently in-development GLEP, add a Requires header right
-  after the Type header.  The value should be the GLEP number of the GLEP
-  yours depends on.  Don't add this header if your dependent feature is
-  described in a Final GLEP.
 
 - Change the Created header to today's date.  Be sure to follow the
   format carefully: it must be in ``dd-mmm-yyyy`` format, where the ``mmm`` is
@@ -122,6 +115,12 @@ directions below.
 
   You must manually add new dates and check them in.  If you don't have
   check-in privileges, send your changes to the GLEP editors.
+
+- For Standards Track GLEPs, if your feature depends on the acceptance
+  of some other currently in-development GLEP, add a Requires header right
+  after the Type header.  The value should be the GLEP number of the GLEP
+  yours depends on.  Don't add this header if your dependent feature is
+  described in a Final GLEP.
 
 - Add a Replaces header if your GLEP obsoletes an earlier GLEP.  The
   value of this header is the number of the GLEP that your new GLEP is
