@@ -85,10 +85,10 @@ duplication of effort, being technically unsound, not providing proper
 motivation or addressing backwards compatibility, or not in keeping with
 Gentoo Linux philosophy.
 
-If a pre-GLEP is rejected, the author may elect to take the pre-GLEP to the
-gentoo-dev@gentoo.org mailing list (for technical GLEPs) or
-the gentoo-project@gentoo.org mailing list (for non-technical GLEPs) to help
-flesh it out, gain feedback and consensus from the community at large,
+If a pre-GLEP is rejected, the author may elect to take the pre-GLEP
+to the gentoo-dev@lists.gentoo.org mailing list (for technical GLEPs)
+or the gentoo-project@lists.gentoo.org mailing list (for non-technical GLEPs)
+to help flesh it out, gain feedback and consensus from the community at large,
 and improve the GLEP for re-submission.
 
 The author of the GLEP is then responsible for posting the GLEP to
