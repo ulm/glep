@@ -372,7 +372,7 @@ References and Footnotes
 
 .. [#COUNCIL] http://www.gentoo.org/proj/en/glep/glep-0039.html
 
-.. [#CC-BY-SA3.0] http://creativecommons.org/licenses/by-sa/3.0/us/
+.. [#CC-BY-SA3.0] http://creativecommons.org/licenses/by-sa/3.0/
 
 .. [#ReSTHOME] http://docutils.sourceforge.net/rst.html
 
