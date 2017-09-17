@@ -3,7 +3,8 @@ Title: Sample ReStructuredText GLEP Template
 Version: $Revision$
 Last-Modified: $Date$
 Author: Grant Goodyear <g2boojum@gentoo.org>,
-        Chris Reffett <creffett@gentoo.org>
+        Chris Reffett <creffett@gentoo.org>,
+        Ulrich Müller <ulm@gentoo.org>
 Status: Active
 Type: Informational
 Content-Type: text/x-rst
