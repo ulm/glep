@@ -165,7 +165,7 @@ References
    (http://ekaia.org/blog/2009/05/10/creating-new-gpgkey/)
 
 .. [#RISEUP] RiseUp.net OpenPGP best practices
-   (https://we.riseup.net/riseuplabs+paow/openpgp-best-practices)
+   (https://help.riseup.net/en/security/message-security/openpgp/best-practices)
 
 .. [#DEVMANUAL-MANIFEST] Gentoo Development Guide: Manifest
    (http://devmanual.gentoo.org/general-concepts/manifest/index.html)
