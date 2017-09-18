@@ -110,7 +110,7 @@ References
 ==========
 
 .. [1] Gentoo Metadata,
-       (http://www.gentoo.org/proj/en/devrel/handbook/handbook.xml?part=2&chap=4)
+       (https://devmanual.gentoo.org/ebuild-writing/misc-files/metadata/#category-metadata)
 .. [2] GLEP 31: Character Sets for Portage Tree Items
        (http://www.gentoo.org/proj/en/glep/glep-0031.html)
 .. [3] Gentoo bug 66917
