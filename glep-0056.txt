@@ -108,7 +108,7 @@ References
 
 .. [#use-flag-metadata-example2] http://sources.gentoo.org/viewcvs.py/gentoo-x86/media-tv/mythtv/metadata.xml?view=markup 
 
-.. [#devhandbook] http://www.gentoo.org/proj/en/devrel/handbook/handbook.xml?part=2&chap=4
+.. [#devhandbook] https://devmanual.gentoo.org/ebuild-writing/misc-files/metadata/index.html
 
 .. [#devmanual] http://devmanual.gentoo.org/ebuild-writing/file-format/index.html
 
