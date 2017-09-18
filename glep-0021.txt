@@ -172,10 +172,10 @@ References
 ==========
 
 .. [#NAME-RULES] Gentoo Linux Development Policy - Ebuild Policy
-   (http://www.gentoo.org/doc/en/policy.xml#doc_chap3)
+   (https://devmanual.gentoo.org/ebuild-writing/file-format/)
    
 .. [#PORTAGE-MANPAGE]
-   http://www.gentoo.org/cgi-bin/viewcvs.cgi/portage/man/portage.5?root=gentoo-src
+   https://gitweb.gentoo.org/proj/portage.git/tree/man/portage.5
 
 Copyright
 =========
