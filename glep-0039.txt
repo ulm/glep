@@ -124,7 +124,7 @@ A.  A project is a group of developers working towards a goal (or a set
       *  Projects need not be long-term.
       *  Projects may well conflict with other projects.  That's okay.
       *  Any dev may create a new project just by creating a new project
-         page on the wiki.gentoo.org (see [#Project_pages]_ and sending
+         page on the wiki.gentoo.org (see [#Project_pages]_) and sending
          a Request For Comments (RFC) e-mail to gentoo-dev.  Note that
          this GLEP does not provide for a way for the community at large
          to block a new project, even if the comments are wholly negative.
