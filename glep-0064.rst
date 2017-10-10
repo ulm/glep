@@ -169,4 +169,4 @@ References
    Portage itself constructs such a graph internally when evaluating emerge
    @preserved-rebuild.
 
-.. [#METADATA-CACHE] https://dev.gentoo.org/~ulm/pms/head/pms.html#x1-15900013
+.. [#METADATA-CACHE] https://projects.gentoo.org/pms/6/pms.html#x1-16300013
