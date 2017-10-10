@@ -82,10 +82,10 @@ of implicit ``git pull`` merges is entirely forbidden.
 In a merge commit that is committed straight to the Gentoo repository,
 the first parent is expected to reference an actual Gentoo commit
 preceding the merge, while the remaining parents can be used to
-reference external repositories.  The commits following the first parent
-are required to conform to this specification alike regular Gentoo
-commits.  The additional commits following other parents can use relaxed
-rules.
+reference commits originating from external repositories.  The commits
+on the ancestry path of the first parent (up to the next merge commit)
+are required to conform to this specification.  The commits on remaining
+ancestry paths can use relaxed rules.
 
 
 OpenPGP signatures
