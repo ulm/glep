@@ -187,7 +187,8 @@ A few tags of common use are:
 
   - ``Acked-by: Full Name <email@example.com>`` — commit approved
     by another person (usually without detailed review),
-  - ``Reported-by: Full Name <email@example.com>`` — usually indicates
+  - ``Reported-by: Full Name <email@example.com>``,
+  - ``Reviewed-by: Full Name <email@example.com>`` — usually indicates
     full review,
   - ``Signed-off-by: Full Name <email@example.com>`` — DCO approval (not
     used in Gentoo right now),
