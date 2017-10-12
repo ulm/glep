@@ -170,3 +170,10 @@ References
    @preserved-rebuild.
 
 .. [#METADATA-CACHE] https://projects.gentoo.org/pms/6/pms.html#x1-16300013
+
+Copyright
+=========
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
