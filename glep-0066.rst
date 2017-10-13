@@ -439,17 +439,16 @@ Ospald (hasufell) in his initial version of Gentoo git workflow
 References
 ==========
 .. [#GENTOO_GIT_WORKFLOW] Gentoo Git Workflow (on Gentoo Wiki)
-   https://wiki.gentoo.org/wiki/Gentoo_git_workflow
+   (https://wiki.gentoo.org/wiki/Gentoo_git_workflow)
 
 .. [#GENTOO_GITHUB] Gentoo GitHub (on Gentoo Wiki)
-   https://wiki.gentoo.org/wiki/Gentoo_GitHub
+   (https://wiki.gentoo.org/wiki/Gentoo_GitHub)
 
-.. TODO: verify this
 .. [#GLEP63] GLEP 63: Gentoo GPG key policies
-   https://www.gentoo.org/glep/glep-0063.html
+   (https://www.gentoo.org/glep/glep-0063.html)
 
 .. [#REPOMAN_PKG_NAME_COMMIT]
-   https://gitweb.gentoo.org/proj/portage.git/commit/?id=46dafadff58da0220511f20480b73ad09f913430
+   (https://gitweb.gentoo.org/proj/portage.git/commit/?id=46dafadff58da0220511f20480b73ad09f913430)
 
 
 Copyright
