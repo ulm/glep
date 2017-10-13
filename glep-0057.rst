@@ -340,7 +340,7 @@ References
     http://www.cs.arizona.edu/people/justin/packagemanagersecurity/
 
 .. [GLEP58] Security of distribution of Gentoo software - Infrastructure to User distribution - MetaManifest
-   http://www.gentoo.org/proj/en/glep/glep-0058.html	
+   https://www.gentoo.org/glep/glep-0058.html
 
 .. [GLEPxx2] Future GLEP on Developer Process security.
 

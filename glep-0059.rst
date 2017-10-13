@@ -220,7 +220,7 @@ I'd like to thank the following folks, in no specific order:
 References
 ==========
 .. [GLEP44] Mauch, M. (2005) GLEP44 - Manifest2 format.
-   http://www.gentoo.org/proj/en/glep/glep-0044.html	
+   https://www.gentoo.org/glep/glep-0044.html
 
 Copyright
 =========

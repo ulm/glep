@@ -492,14 +492,14 @@ References
      http://forums.gentoo.org/viewtopic-t-384368.html
 .. [#glep-22] GLEP 22: "New "keyword" system to incorporate various
      userlands/kernels/archs", Grant Goodyear,
-     http://www.gentoo.org/proj/en/glep/glep-0022.html
+     https://www.gentoo.org/glep/glep-0022.html
 .. [#glep-31] GLEP 31: "Character Sets for Portage Tree Items", Ciaran
      McCreesh,
-     http://www.gentoo.org/proj/en/glep/glep-0031.html
+     https://www.gentoo.org/glep/glep-0031.html
 .. [#glep-34] GLEP 34: "Per-Category metadata.xml Files", Ciaran McCreesh,
-     http://www.gentoo.org/proj/en/glep/glep-0034.html
+     https://www.gentoo.org/glep/glep-0034.html
 .. [#glep-45] GLEP 45: "GLEP date format", Henrik Brix Andersen,
-     http://www.gentoo.org/proj/en/glep/glep-0045.html
+     https://www.gentoo.org/glep/glep-0045.html
 .. [#iso-639] ISO 639 "Code for the representation of names of languages"
 .. [#ramereth-repo] "Re: [gentoo-dev] GLEP ??: Critical News Reporting", Lance
      Albertson,

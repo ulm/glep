@@ -48,7 +48,7 @@ not contacted the GLEP editors with either an update or a request to submit
 the GLEP for approval (in the case of a Draft GLEP) or a request that the GLEP
 be marked final (in the case of an Accepted GLEP).
 
-.. _GLEP page: http://glep.gentoo.org 
+.. _GLEP page: https://www.gentoo.org/glep/
 
 A GLEP that has been marked "deferred" may be reopened by request of the GLEP
 author or a Gentoo manager, as long as that request also includes either an

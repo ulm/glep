@@ -289,7 +289,7 @@ References
 .. [2] kdelibs-3.1.4-3.1.5.patch.bz2, switching format patch, created via diffball-0.4_pre4 (diffball is available at http://sourceforge.net/projects/diffball) 
        Bzip2 -9 compressed, the patch is 75,687 bytes, uncompressed it is 337,649 bytes.  The patch is available at http://dev.gentoo.org/~ferringb/kdelibs-3.1.4-3.1.5.patch.bz2 for those curious.
 .. [3] Glep9, 'Gentoo Package Update System' 
-	(http://glep.gentoo.org/glep-0009.html)
+	(https://www.gentoo.org/glep/glep-0009.html)
 
 Copyright
 =========

@@ -115,7 +115,7 @@ References
 ==========
 
 .. [#GLEP2] GLEP 2, Sample ReStructuredText GLEP Template, Goodyear,
-   (http://glep.gentoo.org/glep-0002.html)
+   (https://www.gentoo.org/glep/glep-0002.html)
 
 
 Copyright

@@ -374,7 +374,7 @@ References and Footnotes
 
 .. [#FORUMS] http://forums.gentoo.org
 
-.. [#COUNCIL] http://www.gentoo.org/proj/en/glep/glep-0039.html
+.. [#COUNCIL] https://www.gentoo.org/glep/glep-0039.html
 
 .. [#CC-BY-SA3.0] http://creativecommons.org/licenses/by-sa/3.0/
 
@@ -382,7 +382,7 @@ References and Footnotes
 
 .. [#DOCUTILS] http://docutils.sourceforge.net/
 
-.. [#GLEP2] http://glep.gentoo.org/glep-0002.html
+.. [#GLEP2] https://www.gentoo.org/glep/glep-0002.html
 
 .. [#YAML] http://yaml.org/
 

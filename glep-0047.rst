@@ -241,7 +241,7 @@ References
 
 .. [1] GLEP 22, New "keyword" system to incorporate various
    userlands/kernels/archs, Goodyear,
-   (http://glep.gentoo.org/glep-0022.html)
+   (https://www.gentoo.org/glep/glep-0022.html)
 
 .. [2] For the purpose of readability, we will refer to 1, 2 and
    4-tuples, even though tuple in itself suggest a field consisting of

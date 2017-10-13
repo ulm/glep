@@ -115,7 +115,7 @@ References
 ==========
 
 .. [#glep-42] GLEP 42: Critical news reporting, Ciaran McCreesh,
-   http://www.gentoo.org/proj/en/glep/glep-0042.html
+   https://www.gentoo.org/glep/glep-0042.html
 
 Copyright
 =========

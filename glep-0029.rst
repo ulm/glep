@@ -255,7 +255,7 @@ References
 ==========
 
 .. [1] GLEP 23: Portage handling of ACCEPT_LICENSE
-       (http://www.gentoo.org/proj/en/glep/glep-0023.html)
+       (https://www.gentoo.org/glep/glep-0023.html)
 .. [2] http://www.gentoo.org/dyn/use-index.xml
 .. [3] GLEP 29 discussion on the gentoo-dev mailing list
        (http://marc.theaimsgroup.com/?l=gentoo-dev&m=109813990013812)

@@ -319,7 +319,7 @@ References
 
 .. [#manifest2-patch] http://thread.gmane.org/gmane.linux.gentoo.portage.devel/1374
 
-.. [#manifest2-example] http://www.gentoo.org/proj/en/glep/glep-0044-extras/manifest2-example
+.. [#manifest2-example] glep-0044-extras/manifest2-example.txt
 
 Copyright
 =========

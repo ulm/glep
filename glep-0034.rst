@@ -115,7 +115,7 @@ References
 .. [1] Gentoo Metadata,
        (https://devmanual.gentoo.org/ebuild-writing/misc-files/metadata/#category-metadata)
 .. [2] GLEP 31: Character Sets for Portage Tree Items
-       (http://www.gentoo.org/proj/en/glep/glep-0031.html)
+       (https://www.gentoo.org/glep/glep-0031.html)
 .. [3] Gentoo bug 66917
        (http://bugs.gentoo.org/show_bug.cgi?id=66917)
 

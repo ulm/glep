@@ -91,7 +91,7 @@ keywords small and sensible.
 
 .. [#GLEP22] GLEP 22, New "keyword" system to incorporate various
    userlands/kernels/archs, Goodyear,
-   (http://glep.gentoo.org/glep-0022.html)
+   (https://www.gentoo.org/glep/glep-0022.html)
 
 
 Copyright

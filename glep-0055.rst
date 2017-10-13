@@ -334,7 +334,7 @@ References
 ==========
 
 .. [#GLEP54] GLEP 54, scm package version suffix
-    (http://glep.gentoo.org/glep-0054.html)
+    (https://www.gentoo.org/glep/glep-0054.html)
 
 .. [#PortageProblems] Common portage problems
     (https://wiki.gentoo.org/wiki/Project:Portage/Common_problems)

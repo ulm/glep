@@ -308,10 +308,10 @@ References
     http://www.cs.arizona.edu/people/justin/packagemanagersecurity/
 
 .. [GLEP33] Eclass Restructure/Redesign
-   http://www.gentoo.org/proj/en/glep/glep-0033.html	
+   https://www.gentoo.org/glep/glep-0033.html
 
 .. [GLEP60] Manifest2 filetypes
-   http://www.gentoo.org/proj/en/glep/glep-0060.html
+   https://www.gentoo.org/glep/glep-0060.html
 
 .. [GLEPxx2] Future GLEP on Developer Process security.
 
