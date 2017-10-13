@@ -3,13 +3,20 @@ GLEP: 71
 Title: Require Projects to report to Council Monthly
 Author: William L\. Thomson Jr\. <wlt@o-sinc.com>
 Type: Standards Track
-Status: Draft
+Status: Deferred
 Version: 1
 Created: 2017-01-19
-Last-Modified: 2017-01-19
+Last-Modified: 2017-10-13
 Post-History: 2017-01-19
 Content-Type: text/x-rst
 ---
+
+Status
+======
+
+No progress made for over 60 days. Marked deferred by GLEP editor Michał Górny
+on 2017-10-13.
+
 
 Abstract
 ========
