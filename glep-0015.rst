@@ -3,14 +3,20 @@ GLEP: 15
 Title: Gentoo Script Repository
 Author: James Harlow <hythloday@gentoo.org>,
 Type: Standards Track
-Status: Accepted
+Status: Deferred
 Version: 1
 Created: 2003-09-30
-Last-Modified: 2014-01-17
+Last-Modified: 2017-10-13
 Post-History: 2003-09-30, 2004-10-25
 Content-Type: text/x-rst
 ---
 
+
+Status
+======
+
+Implementation not completed. Marked deferred by GLEP editor Michał Górny
+on 2017-10-13.
 
 Abstract
 ========
