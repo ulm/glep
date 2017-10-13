@@ -4,16 +4,22 @@ Title: /srv - Services Home Directory Support
 Author: Stuart Herbert <stuart@gentoo.org>,
         Rob Holland <tigger@gentoo.org>
 Type: Standards Track
-Status: Accepted
+Status: Deferred
 Version: 1
 Created: 2004-02-09
-Last-Modified: 2014-01-17
+Last-Modified: 2017-10-13
 Post-History: 2004-02-21, 2004-11-11
 Content-Type: text/x-rst
 ---
 
 Note: This document needs to be relicensed to CC-BY-SA 3.0 after consulting
 with the original author
+
+Status
+======
+
+Implementation not completed. Marked deferred by GLEP editor Michał Górny
+on 2017-10-13.
 
 Thanks To
 =========
