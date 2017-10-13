@@ -3,12 +3,13 @@ GLEP: 22
 Title: New "keyword" system to incorporate various userlands/kernels/archs
 Author: Grant Goodyear <g2boojum@gentoo.org>
 Type: Standards Track
-Status: Final
+Status: Replaced
 Version: 1
 Created: 2004-03-06
-Last-Modified: 2014-01-17
+Last-Modified: 2017-10-13
 Post-History: 2004-03-06, 2004-06-05, 2004-07-20
 Content-Type: text/x-rst
+Replaced-By: 53
 ---
 
 Status
