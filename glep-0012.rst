@@ -190,4 +190,4 @@ References
 Copyright
 =========
 
-This document is released under the Open Publications License.
+This document is released under the Open Publication License.
