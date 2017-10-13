@@ -3,10 +3,10 @@ GLEP: 34
 Title: Per-Category metadata.xml Files
 Author: Ciaran McCreesh <ciaranm@gentoo.org>
 Type: Standards Track
-Status: Final
+Status: Replaced
 Version: 1
 Created: 2005-03-11
-Last-Modified: 2016-02-25
+Last-Modified: 2017-10-13
 Post-History: 2005-03-11, 2005-03-13, 2005-05-02
 Content-Type: text/x-rst
 Replaced-By: 68

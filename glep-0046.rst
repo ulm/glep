@@ -5,10 +5,10 @@ Author: Marcelo Goes <vanquirius@gentoo.org>,
         Ciaran McCreesh <ciaranm@gentoo.org>,
         Tiziano Müller <dev-zero@gentoo.org>
 Type: Standards Track
-Status: Accepted
+Status: Replaced
 Version: 1
 Created: 2005-12-26
-Last-Modified: 2014-01-23
+Last-Modified: 2017-10-13
 Post-History: 2005-12-26, 2006-03-05, 2008-01-24, 2008-05-10
 Content-Type: text/x-rst
 Replaced-By: 68

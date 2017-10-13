@@ -3,10 +3,10 @@ GLEP: 56
 Title: USE flag descriptions in metadata
 Author: Doug Goldstein <cardoe@gentoo.org>
 Type: Standards Track
-Status: Final
+Status: Replaced
 Version: 1
 Created: 2008-06-03
-Last-Modified: 2016-07-30
+Last-Modified: 2017-10-13
 Post-History: 2008-06-05, 2008-06-13
 Content-Type: text/x-rst
 Replaced-By: 68
