@@ -3,10 +3,10 @@ GLEP: 27
 Title: Portage Management of UIDs/GIDs
 Author: Mike Frysinger <vapier@gentoo.org>
 Type: Standards Track
-Status: Accepted
+Status: Deferred
 Version: 1
 Created: 2004-05-29
-Last-Modified: 2014-01-17
+Last-Modified: 2017-10-13
 Post-History: 2004-05-29, 2004-07-20
 Content-Type: text/x-rst
 ---
@@ -16,6 +16,10 @@ Status
 ======
 
 This GLEP was approved as-is on 14-Jun-2004.
+
+Implementation not completed. Marked deferred by GLEP editor Michał Górny
+on 2017-10-13.
+
 
 Abstract
 ========
