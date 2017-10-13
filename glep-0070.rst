@@ -3,13 +3,20 @@ GLEP: 70
 Title: Addition of distribution environment variables
 Author: A\. Wilcox <awilfox@adelielinux.org>
 Type: Standards Track
-Status: Draft
+Status: Deferred
 Version: 1
 Created: 2016-12-15
-Last-Modified: 2016-12-15
+Last-Modified: 2017-10-13
 Post-History: 
 Content-Type: text/x-rst
 ---
+
+Status
+======
+
+No progress made for over 60 days. Marked deferred by GLEP editor Michał Górny
+on 2017-10-13.
+
 
 Abstract
 ========
