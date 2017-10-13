@@ -260,7 +260,7 @@ All other headers are required.
     Post-History: <dates of postings to mailing lists>
     Content-Type: <text/x-rst>
   * Requires: <glep numbers>
-  * Replaces: <glep number>
+  * Replaces: <glep numbers>
   * Replaced-By: <glep number>
     ---
 
