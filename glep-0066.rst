@@ -6,11 +6,9 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2017-07-24
-Last-Modified: 2017-10-09
+Last-Modified: 2017-10-14
 Post-History: 2017-07-25, 2017-09-28, 2017-10-11
 Content-Type: text/x-rst
-Requires: 
-Replaces: 
 ---
 
 Abstract
