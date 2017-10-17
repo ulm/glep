@@ -4,22 +4,23 @@ Title: Post-install QA checks
 Author: Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
 Status: Draft
-Version: 1
+Version: 2
 Created: 2014-10-26
-Last-Modified: 2014-12-14
-Post-History: 2014-10-30
+Last-Modified: 2017-10-17
+Post-History: 2014-10-30, 2017-10-17
 Content-Type: text/x-rst
 ---
 
 Abstract
 ========
 
-This GLEP provides a mechanism for running QA checks on installation image
-after ``src_install`` phase exits. The checks can be provided by the Package
-Manager, repositories, packages (installed system-wide) and the system
-administrator. The QA checks can inspect the installation image, output and
-store both user- and machine-oriented QA warning logs, manipulate the files
-and abort the install, as necessary.
+This GLEP provides two kinds of QA check: checks run on the installation image
+once ``src_install`` returns, and checks run on the live system once
+``pkg_postinst`` returns. The checks can be provided by the Package Manager,
+repositories, packages (installed system-wide) and the system administrator.
+The QA checks can inspect the installation image or live system respectively,
+output and store both user- and machine-oriented QA warning logs, manipulate
+the files and abort the install, as necessary.
 
 
 Motivation
@@ -39,7 +40,7 @@ eclass uses. Some of the checks depend on external tools being present.
 Keeping those checks directly in Portage sources has two major disadvantages:
 
 1. The checks can not be properly updated without Portage upgrade.
-   In particular, a change in QA check becomes fully effective when
+   In particular, a change in a QA check becomes fully effective when
    the relevant Portage version becomes stable and the user upgrades.
    There is no easy way to keep QA checks in sync with eclasses.
 
@@ -50,14 +51,41 @@ Keeping those checks directly in Portage sources has two major disadvantages:
 Specification
 =============
 
-QA check format & locations
----------------------------
+QA check types
+--------------
+
+There are two kinds of QA checks defined in this specification:
+
+1. Post-install QA checks (``install-qa-check.d``),
+
+2. Post-merge (postinst) QA checks (``postinst-qa-check.d``).
+
+The post-install QA checks are are executed after the ``src_install`` ebuild
+phase finishes but before the binary package is built or the ``pkg_preinst``
+phase is executed. They can use the same commands as are permitted
+in ``src_install``, and access the installation image ``${D}``
+and the temporary directory ``${T}``.
+
+In case of severe QA issues, the checks are allowed to alter the contents of
+the installation image in order to sanitize them, or call the ``die`` function
+to abort the build.
+
+The post-merge QA checks are executed after the ``pkg_postinst`` ebuild phase
+finishes. They can use the same commands as are permitted in ``pkg_postinst``,
+and access the installed system location ``${ROOT}`` and the temporary
+directory ``${T}``.
+
+The checks are allowed to alter the contents of the filesystem to the same
+degree as ``pkg_postinst`` phase is. They must not call ``die``.
+
+QA check file format & locations
+--------------------------------
 
 QA checks are stored as bash scripts. The checks are identified and ordered
 by file name. If files with same names are present in multiple locations,
 the file in location with the highest priority is used.
 
-The specification defines four types of QA checks, listed in the order
+The specification defines four sources of QA checks, listed in the order
 of increasing priority:
 
 1. internal checks included in the Package Manager,
@@ -71,13 +99,15 @@ generic checks are included in the Package Manager and not checks specific to
 Gentoo policies, packages or eclasses included in Gentoo.
 
 Repository-specific QA checks are included in ``metadata/install-qa-check.d``
-directory of a repository. For an ebuild in question, the repository
-containing it and its masters are traversed for QA checks, with priority
-decreasing with each inheritance level.
+and ``metadata/postinst-qa-check.d`` directories of a repository.
+For an ebuild in question, the repository containing it and its masters are
+traversed for QA checks, with priority decreasing with each inheritance level.
 
 The package-installed QA checks are located in ``/usr/lib/install-qa-check.d``
-and are intended to be installed by packages. The sysadmin-defined QA checks
-are located in ``/usr/local/lib/install-qa-check.d``.
+and ``/usr/lib/postinst-qa-check.d``, and are intended to be installed
+by packages. The sysadmin-defined QA checks are located
+in ``/usr/local/lib/install-qa-check.d``
+and ``/usr/local/lib/postinst-qa-check.d``.
 
 QA check script format
 ----------------------
@@ -87,18 +117,10 @@ run in an isolated subshell, and therefore can safely alter the environment
 and change the working directory. QA scripts must always end with a command
 terminating with a successful exit code.
 
-The QA checks are executed after the ``src_install`` ebuild phase finishes
-and before the binary package is built or the ``pkg_preinst`` phase is
-executed. They can use the same commands as allowed in ``src_install``,
-and use the installation image ``${D}`` and the temporary directory ``${T}``.
-Aside to standard PMS functions, two additional commands are provided:
+Aside to the standard PMS functions, two additional commands are provided:
 
 1. ``eqawarn`` to output QA warnings to user,
 2. ``eqatag`` to store machine-readable information about QA issues.
-
-In case of severe QA issues, the checks are allowed to alter the contents of
-the installation image in order to sanitize them, or call the ``die`` function
-to abort the build.
 
 Repository-defined QA checks are allowed to ``inherit`` eclasses from
 the repository providing the check or any of its masters. The same
@@ -147,37 +169,54 @@ the tags used by ``60bash-completion`` check would be named
 Rationale
 =========
 
-QA check format & locations
----------------------------
+QA check types
+--------------
+
+The two types of QA checks were created to account for different kinds
+of common mistakes in ebuilds.
+
+Post-install QA checks can be used to verify the installation image before
+it is merged to a live system or published as a binary package. They can
+account for various problems caused by the ebuild code up to and including
+``src_install``, the upstream code executed as part of any of those phases
+and the supplied files.
+
+Post-postinst QA checks can be used to verify the state of system after
+the package is merged and its ``pkg_postinst`` phase is executed. They mostly
+aim to detect missing postinst actions but can do other live system integrity
+checks.
+
+QA check file format & locations
+--------------------------------
 
 The multiple locations for QA checks aim to get the best coverage for various
 requirements.
 
-The checks installed along with the Package Manager are meant to cover the
-generic cases and other checks that rely on Package Manager internals. Unlike
-other categories of QA checks, those checks apply to a single Package Manager
-only and can therefore use internal API. However, it is recommended that this
-category is used scarcely.
+The checks installed along with the Package Manager are meant to cover
+the generic cases and other checks that rely on Package Manager internals.
+Unlike other categories of QA checks, those checks apply to a single Package
+Manager only and can therefore use internal API. However, it is recommended
+that this category is used scarcely.
 
 Storing checks in the repository allows developers to strictly bind them to
 a specific version of the distribution and update them along with the relevant
-policies and/or eclasses. In particular, rules enforced by Gentoo policies and
-eclasses don't have to apply to other distributions using Portage.
+policies and/or eclasses. In particular, rules enforced by Gentoo policies
+and eclasses don't have to apply to other distributions using Portage.
 
 The QA checks are applied to sub-repositories (via ``masters`` attribute)
-likewise eclasses. This makes sure that the common repositories don't lose QA
-checks. The QA checks related to eclasses are inherited the same way as
-eclasses are. Similarly to eclasses, sub-repositories can override (or
-disable) QA checks.
+likewise eclasses. This makes sure that the majority of repositories don't
+lose QA checks. The QA checks related to eclasses are inherited the same way
+as eclasses are. Similarly to eclasses, sub-repositories can override
+(or disable) QA checks.
 
 System-wide QA checks present the opportunity of installing QA checks along
 with packages. In the past, some QA checks were run only conditionally
-depending on existence of external checker software. Instead, the software can
-install its own QA checks directly.
+depending on existence of external checker software. Instead, the software
+packages can install their own QA checks directly.
 
-The administrative override via ``/usr/local`` is a natural extension of
-system-wide QA checks. Additionally, it can be used by the sysadmin to
-override or disable practically any other QA check, either internal Portage
+The administrative override via ``/usr/local`` is a natural extension
+of system-wide QA checks. Additionally, it can be used by the sysadmin
+to override or disable practically any other QA check, either internal Portage
 or repository-wide.
 
 Sharing the QA checks has the additional advantage of having unified QA tools
@@ -186,9 +225,8 @@ for all Package Managers.
 QA check script format
 ----------------------
 
-Use of bash is aimed to match the ebuild format at ''src_install'' phase.
-The choice of functions aims at providing portability between Package
-Managers.
+Use of bash is aimed to match the ebuild format.  The choice of functions aims
+at portability between Package Managers.
 
 The scripts are run in isolated subshell to simplify the checks and reduce
 the risk of accidental cross-script issues.
@@ -289,8 +327,9 @@ be used from the repository anyway.
 Reference implementation
 ========================
 
-The reference implementation is available in Portage starting with version
-2.2.15 (released 2014-12-04).
+The reference implementation of ``install-qa-check.d`` is available in Portage
+starting with version 2.2.15 (released 2014-12-04). The support
+for ``postinst-qa-check.d`` was added in 2.3.9 (released 2017-09-19).
 
 
 Copyright
