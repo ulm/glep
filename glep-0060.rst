@@ -3,7 +3,7 @@ GLEP: 60
 Title: Manifest2 filetypes
 Author: Robin Hugh Johnson <robbat2@gentoo.org>
 Type: Standards Track
-Status: Draft
+Status: Accepted
 Version: 1
 Created: 2008-10-22
 Last-Modified: 2014-01-23

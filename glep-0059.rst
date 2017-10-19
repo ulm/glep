@@ -3,7 +3,7 @@ GLEP: 59
 Title: Manifest2 hash policies and security implications
 Author: Robin Hugh Johnson <robbat2@gentoo.org>,
 Type: Standards Track
-Status: Draft
+Status: Accepted
 Version: 1
 Created: 2008-10-22
 Last-Modified: 2014-01-23
