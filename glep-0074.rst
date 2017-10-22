@@ -1,0 +1,749 @@
+---
+GLEP: 74
+Title: Full-tree verification using Manifest files
+Author: Michał Górny <mgorny@gentoo.org>,
+        Robin Hugh Johnson <robbat2@gentoo.org>,
+        Ulrich Müller <ulm@gentoo.org>
+Type: Standards Track
+Status: Draft
+Version: 1
+Created: 2017-10-21
+Last-Modified: 2017-10-26
+Post-History: 2017-10-26
+Content-Type: text/x-rst
+Requires: 59, 61
+Replaces: 44, 58, 60
+---
+
+Abstract
+========
+
+This GLEP extends the Manifest file format to cover full-tree file
+integrity and authenticity checks.The format aims to be future-proof,
+efficient and provide means of backwards compatibility.
+
+
+Motivation
+==========
+
+The Manifest files as defined by GLEP 44 [#GLEP44]_ provide the current
+means of verifying the integrity of distfiles and package files
+in Gentoo. Combined with OpenPGP signatures, they provide means to
+ensure the authenticity of the covered files. However, as noted
+in GLEP 57 [#GLEP57]_ they lack the ability to provide full-tree
+authenticity verification as they do not cover any files outside
+the package directory. In particular, they provide multiple ways
+for a third party to inject malicious code into the ebuild environment.
+
+Historically, the topic of providing authenticity coverage for the whole
+repository has been mentioned multiple times. The most noteworthy effort
+are GLEPs 58 [#GLEP58]_ and 60 [#GLEP60]_ by Robin H. Johnson from 2008.
+They were accepted by the Council in 2010 but have never been
+implemented. When potential implementation work started in 2017, a new
+discussion about the specification arose. It prompted the creation
+of a competing GLEP that would provide a redesigned alternative to
+the old GLEPs.
+
+This specification is designed with the following goals in mind:
+
+1. It should provide means to ensure the authenticity of the complete
+   repository, including preventing the injection of additional files.
+
+2. Alike the original Manifest2, the files should be split into two
+   groups — files whose authenticity is critical, and those whose
+   mismatch may be accepted in non-strict mode. The same classification
+   should apply both to files listed in Manifests, and to stray files
+   present only in the repository.
+
+3. The format should be universal enough to work both for the Gentoo
+   repository and third-party repositories of different characteristics.
+
+4. The Manifest files should be verifiable stand-alone, that is without
+   knowing any details about the underlying repository format.
+
+
+Specification
+=============
+
+Manifest file format
+--------------------
+
+This specification reuses and extends the Manifest file format defined
+in GLEP 44 [#GLEP44]_. For the purpose of it, the *file type* field is
+repurposed as a generic *tag* that could also indicate additional
+(non-checksum) metadata. Appropriately, those tags can be followed by
+other space-separated values.
+
+Unless specified otherwise, the paths used in the Manifest files
+are relative to the directory containing the Manifest file. The paths
+must not reference the parent directory (``..``).
+
+
+Manifest file locations and nesting
+-----------------------------------
+
+The ``Manifest`` file located in the root directory of the repository
+is called top-level Manifest, and it is used to perform the full-tree
+verification. In order to verify the authenticity, it must be signed
+using OpenPGP, using the armored cleartext format.
+
+The top-level Manifest may reference sub-Manifests contained
+in subdirectories of the repository. The sub-Manifests are traditionally
+named ``Manifest``; however, the implementation must support arbitrary
+names, including the possibility of multiple (split) Manifests
+for a single directory. The sub-Manifest can only cover the files inside
+the directory tree where it resides.
+
+The sub-Manifest can also be signed using OpenPGP armored cleartext
+format. However, the signature verification can be omitted if it is
+covered by a signed top-level Manifest.
+
+The Manifest files can also specify ``IGNORE`` entries to skip Manifest
+verification of subdirectories and/or files. Files and directories
+starting with a dot are always implicitly ignored. All files that
+are not ignored must be covered by at least one of the Manifests.
+
+A single file may be matched by multiple identical or equivalent
+Manifest entries, if and only if the entries have the same semantics,
+specify the same size and the checksums common to both entries match.
+It is an error for a single file to be matched by multiple entries
+of different semantics, file size or checksum values. It is an error
+to specify another entry for a file matching ``IGNORE``, or one of its
+subdirectories.
+
+The file entries (except for ``IGNORE``) can be specified for regular
+files only. Symbolic links are followed when opening files. It is
+an error to specify an entry for a different file type.
+
+All the files covered by a Manifest tree must reside on the same
+filesystem. It is an error to specify entries applying to files
+on another filesystem. If subdirectories of the Manifest tree reside
+on a different filesystem, they must be explicitly excluded
+via ``IGNORE``.
+
+
+File verification
+-----------------
+
+When verifying a file against the Manifest, the following rules are
+used:
+
+- if a file listed in Manifest is not present, then the verification
+  for the file fails,
+
+- if a file listed in Manifest is present but has a different size
+  or one of the checksums does not match, the verification fails,
+
+- if a file is present but not listed in Manifest, the verification
+  fails,
+
+- otherwise, the verification succeeds.
+
+Unless specified otherwise, the package manager must not allow using
+any files for which the verification failed. The package manager may
+reject any package or even the whole repository if it may refer to files
+for which the verification failed.
+
+
+New Manifest tags
+-----------------
+
+The Manifest files can specify the following tags:
+
+``TIMESTAMP <iso8601>``
+  Specifies a timestamp of when the Manifest file was last updated.
+  The timestamp must be a valid second-precision ISO8601 extended format
+  combined date and time in UTC timezone, i.e. using the following
+  ``strftime()`` format string: ``%Y-%m-%dT%H:%M:%SZ``. Optionally used
+  in the top-level Manifest file. The package manager can use it
+  to detect an outdated repository checkout.
+
+``MANIFEST <path> <size> <checksums>…``
+  Specifies a sub-Manifest. The sub-Manifest must be verified like
+  a regular file. If the verification succeeds, the entries from
+  the sub-Manifest are included for verification as described
+  in `Manifest file locations and nesting`_.
+
+``IGNORE <path>``
+  Ignores a subdirectory or file from Manifest checks. If the specified
+  path is present, it and its contents are omitted from the Manifest
+  verification (always pass).
+
+``DATA <path> <size> <checksums>…``
+  Specifies a file subject to obligatory Manifest verification.
+  The file is required to pass verification. Used for all files directly
+  affecting package manager operation (ebuilds, eclasses, profiles).
+
+``MISC <path> <size> <checksums>…``
+  Specifies a file subject to non-obligatory Manifest verification.
+  The package manager may ignore a verification failure if operating
+  in non-strict mode. Used for files that do not affect the installed
+  packages (``metadata.xml``, ``use.desc``).
+
+``OPTIONAL <path>``
+  Specifies a file that would be subject to non-obligatory Manifest
+  verification if it existed. The package may ignore a stray file
+  matching this entry if operating in non-strict mode. Used for paths
+  that would match ``MISC`` if they existed.
+
+``DIST <filename> <size> <checksums>…``
+  Specifies a distfile entry used to verify files fetched as part
+  of ``SRC_URI``. The filename must match the filename used to store
+  the fetched file as specified in the PMS [#PMS-FETCH]_. The package
+  manager must reject the fetched file if it fails verification.
+  ``DIST`` entries apply to all packages below the Manifest file
+  specifying them.
+
+
+Deprecated Manifest tags
+------------------------
+
+For backwards compatibility, the following tags are additionally
+allowed at the package directory level:
+
+``EBUILD <filename> <size> <checksums>…``
+  Equivalent to the ``DATA`` type.
+
+``AUX <filename> <size> <checksums>…``
+  Equivalent to the ``DATA`` type, except that the filename is relative
+  to ``files/`` subdirectory.
+
+
+Algorithm for full-tree verification
+------------------------------------
+
+In order to perform full-tree verification, the following algorithm
+can be used:
+
+1. Collect all files present in the repository into *present* set.
+
+2. Start at the top-level Manifest file. Verify its OpenPGP signature.
+   Optionally verify the ``TIMESTAMP`` entry if present. Remove
+   the top-level Manifest from the *present* set.
+
+3. Process all ``MANIFEST`` entries, recursively. Verify the Manifest
+   files according to `file verification`_ section, and include their
+   entries in the current Manifest entry list (using paths relative
+   to directories containing the Manifests).
+
+4. Process all ``IGNORE`` entries. Remove any paths matching them
+   from the *present* set.
+
+5. Collect all files covered by ``DATA``, ``MISC``, ``OPTIONAL``,
+   ``EBUILD`` and ``AUX`` entries into the *covered* set.
+
+6. Verify all the files in the union of the *present* and *covered*
+   sets, according to `file verification`_ section.
+
+
+Algorithm for finding parent Manifests
+--------------------------------------
+
+In order to find the top-level Manifest from the current directory
+the following algorithm can be used:
+
+1. Store the current directory as *original* and the device ID
+   of the containing filesystem (``st_dev``) as *startdev*,
+
+2. If the device ID of the containing filesystem (``st_dev``)
+   of the current directory is different than *startdev*, stop.
+
+3. If the current directory contains a ``Manifest`` file:
+
+   a. If a ``IGNORE`` entry in the ``Manifest`` file covers
+      the *original* directory (or one of the parent directories), stop.
+
+   b. Otherwise, store the current directory as *last_found*.
+
+4. If the current directory is the root system directory (``/``), stop.
+
+5. Otherwise, enter the parent directory and jump to step 2.
+
+Once the algorithm stops, *last_found* will contain the relevant
+top-level Manifest. If *last_found* is null, then the directory tree
+does not contain any valid top-level Manifest candidates and one should
+be created in the *original* directory.
+
+Once the top-level Manifest is found, its ``MANIFEST`` entries should
+be used to find any sub-Manifests below the top-level Manifest,
+up to and including the *original* directory. Note that those
+sub-Manifests can use different filenames than ``Manifest``.
+
+
+Checksum algorithms
+-------------------
+
+This section is informational only. Specifying the exact set
+of supported algorithms is outside the scope of this specification.
+
+The algorithm names reserved at the time of writing are:
+
+- ``MD5`` [#MD5]_,
+- ``RMD160`` — RIPEMD-160 [#RIPEMD160]_,
+- ``SHA1`` [#SHS]_,
+- ``SHA256`` and ``SHA512`` — SHA-2 family of hashes [#SHS]_,
+- ``WHIRLPOOL`` [#WHIRLPOOL]_,
+- ``BLAKE2B`` and ``BLAKE2S`` — BLAKE2 family of hashes [#BLAKE2]_,
+- ``SHA3_256`` and ``SHA3_512`` — SHA-3 family of hashes [#SHA3]_,
+- ``STREEBOG256`` and ``STREEBOG512`` — Streebog family of hashes
+  [#STREEBOG]_.
+
+The method of introducing new hashes is defined by GLEP 59 [#GLEP59]_.
+It is recommended that any new hashes are named after the Python
+``hashlib`` module algorithm names, transformed into uppercase.
+
+
+Manifest compression
+--------------------
+
+The topic of Manifest file compression is covered by GLEP 61 [#GLEP61]_.
+This section merely addresses interoperability issues between Manifest
+compression and this specification.
+
+The compressed Manifest files are required to be suffixed for their
+compression algorithm. This suffix should be used to recognize
+the compression and decompress Manifests transparently. The exact list
+of algorithms and their corresponding suffixes are outside the scope
+of this specification.
+
+Whenever this specification refers to top-level Manifest file,
+the implementation should account for compressed variants of this file
+with appropriate suffixes (e.g. ``Manifest.gz``).
+
+Whenever this specification refers to sub-Manifests, they can use any
+names but are also required to use a specific compression suffix.
+The ``MANIFEST`` entries are required to specify the full name including
+compression suffix, and the verification is performed on the compressed
+file.
+
+The specification permits uncompressed Manifests to exist alongside
+their compressed counterparts, and multiple compressed formats
+to coexist. If that is the case, the files must have the same
+uncompressed content and the specification is free to choose either
+of the files using the same base name.
+
+
+Rationale
+=========
+
+Stand-alone format
+------------------
+
+The first question that needed to be asked before proceeding with
+the design was whether the Manifest file format was supposed to be
+stand-alone, or tightly bound to the repository format.
+
+The stand-alone format has been selected because of its three
+advantages:
+
+1. It is more future-proof. If an incompatible change to the repository
+   format is introduced, only developers need to be upgrade the tools
+   they use to generate the Manifests. The tools used to verify
+   the updated Manifests will continue to work.
+
+2. It is more flexible and universal. With a dedicated tool,
+   the Manifest files can be used to sign and verify arbitrary file
+   sets.
+
+3. It keeps the verification tool simpler. In particular, we can easily
+   write an independent verification tool that could work on any
+   distribution without needing to depend on a package manager
+   implementation or rewrite parts of it.
+
+Designing a stand-alone format requires that the Manifest carries enough
+information to perform the verification following all the rules specific
+to the Gentoo repository.
+
+
+Tree design
+-----------
+
+The second important point of the design was determining whether
+the Manifest files should be structured hierarchically, or independent.
+Both options have their advantages.
+
+In the hierarchical model, each sub-Manifest file is covered by a higher
+level Manifest. As a result, only the top-level Manifest has to be
+OpenPGP-signed, and subsequent Manifests need to be only verified by
+checksum stored in the parent Manifest. This has the following
+implications:
+
+- Verifying any set of files in the repository requires using checksums
+  from the most relevant Manifests and the parent Manifests.
+
+- The OpenPGP signature of the top-level Manifest needs to be verified
+  only once per process.
+
+- Altering any set of files requires updating the relevant Manifests,
+  and their parent Manifests up to the top-level Manifest, and signing
+  the last one.
+
+- As a result, the top-level Manifest changes on every commit,
+  and various middle-level Manifests change (and need to be transferred)
+  frequently.
+
+In the independent model, each sub-Manifest file is independent
+of the parent Manifests. As a result, each of them needs to be signed
+and verified independently. However, the parent Manifests still need
+to list sub-Manifests (albeit without verification data) in order
+to detect removal or replacement of subdirectories. This has
+the following implications:
+
+- Verifying any set of files in the repository requires using checksums
+  and verifying signatures of the most relevant Manifest files.
+
+- Altering any set of files requires updating the relevant Manifests
+  and signing them again.
+
+- Parent Manifests are updated only when Manifests are added or removed
+  from subdirectories. As a result, they change infrequently.
+
+While both models have their advantages, the hierarchical model was
+selected because it reduces the number of OpenPGP operations
+which are comparatively costly to the minimum.
+
+
+Tree layout restrictions
+------------------------
+
+The algorithm is meant to work primarily with ebuild repositories which
+normally contain only files and directories. Directories provide
+no useful metadata for verification, and specifying special entries
+for additional file types is purposeless. Therefore, the specification
+is restricted to dealing with regular files.
+
+The Gentoo repository does not use symbolic links. Some Gentoo
+repositories do, however. To provide a simple solution for dealing with
+symlinks without having to take care to implement special handling for
+them, the common behavior of implicitly resolving them is used.
+Therefore, symbolic links to files are stored as if they were regular
+files, and symbolic links to directories are followed as if they were
+regular directories.
+
+Dotfiles are implicitly ignored as that is a common notion used
+in software written for POSIX systems. All other filenames require
+explicit ``IGNORE`` lines.
+
+The algorithm is restricted to work on a single filesystem. This is
+mostly relevant when scanning for top-level Manifest — we do not want
+to cross filesystem boundaries then. However, to ensure consistent
+bidirectional behavior we need to also ban them when operating downwards
+the tree.
+
+The directories and files on different filesystems needs to be ignored
+explicitly as implicitly skipping them would cause confusion.
+In particular, tools might then claim that a file does not exist when
+it clearly does because it was skipped due to filesystem boundaries.
+
+
+File verification model
+-----------------------
+
+The verification model aims to provide full coverage against different
+forms of attack. In particular, three different kinds of manipulation
+are considered:
+
+1. Alteration of the file content.
+
+2. Removal of a file.
+
+3. Addition of a new file.
+
+In order to prevent against all three, the system requires that all
+files in the repository are listed in Manifests and verified against
+them.
+
+As a special case, ignores are allowed to account for directories
+that are not part of the repository but were traditionally placed inside
+it. Those directories were ``distfiles``, ``local`` and ``packages``. It
+could be also used to ignore VCS directories such as ``CVS``.
+
+
+Non-obligatory Manifest verification
+------------------------------------
+
+While this specification recommends all tools to use strict verification
+by default, it allows declaring some files as non-obligatory like
+the original Manifest2 format did. This could be used on files that do
+not affect the normal package manager operation.
+
+It aims to account for two use cases:
+
+1. Stripping down files that are not strictly required to install
+   packages from repository checkouts.
+
+2. Accounting for automatically generated files that might be updated
+   by standard tooling.
+
+The traditional ``MISC`` type is amended with a complementary
+``OPTIONAL`` tag to account for files that are not provided
+in the specific repository. It aims to ensure that the same path would
+be non-fatal when provided by the repository but fatal when created
+by the user tooling.
+
+
+Timestamp field
+---------------
+
+The top-level Manifests optionally allows using a ``TIMESTAMP`` tag
+to include a generation timestamp in the Manifest. A similar feature
+was originally proposed in GLEP 58 [#GLEP58]_.
+
+The timestamp can be used to detect delay or replay attacks against
+Gentoo mirrors.
+
+Strictly speaking, this is already provided by the various
+``metadata/timestamp.*`` files provided already by Gentoo which are also
+covered by the Manifest. However, including the value in the Manifest
+itself has a little cost and provides the ability to perform
+the verification stand-alone.
+
+
+New vs deprecated tags
+----------------------
+
+Out of the four types defined by Manifest2, two are reused and two are
+marked deprecated.
+
+The ``DIST`` and ``MISC`` tags are reused since they can be relatively
+clearly marked into the new concept.
+
+The ``EBUILD`` tag could potentially be reused for generic file
+verification data. However, it would be confusing if all the different
+data files were marked as ``EBUILD``. Therefore, an equivalent ``DATA``
+type was introduced as a replacement.
+
+The ``AUX`` tag is deprecated as it is redundant to ``DATA``, and has
+the limiting property of implicit ``files/`` path prefix.
+
+
+Finding top-level Manifest
+--------------------------
+
+The development of a reference implementation for this GLEP has brought
+the following problem: how to find all the relevant Manifests when
+the Manifest tool is run inside a subdirectory of the repository?
+
+One of the options would be to provide a bi-directional linking
+of Manifests via a ``PARENT`` tag. However, that would not solve
+the problem when a new Manifest file is being created.
+
+Instead, an algorithm for iterating over parent directories is proposed.
+Since there is no obligatory explicit indicator for the top-level
+Manifest, the algorithm assumes that the top-level Manifest
+is the highest ``Manifest`` in the directory hierarchy that can cover
+the current directory. This generally makes sense since the Manifest
+files are required to provide coverage for all subdirectories, so all
+Manifests starting from that one need to be updated.
+
+If independent Manifest trees are nested in the directory structure,
+then an ``IGNORE`` entry needs to be used to separate them.
+
+Since sub-Manifests can use any filenames, the Manifest finding
+algorithm must not short-cut the procedure by storing all ``Manifest``
+files along the parent directories. Instead, it needs to retrace
+the relevant sub-Manifest files along ``MANIFEST`` entries
+in the top-level Manifest.
+
+
+Injecting ChangeLogs into the checkout
+--------------------------------------
+
+One of the problems considered in the new Manifest format was that
+of injecting historical and autogenerated ChangeLog into the repository.
+Normally we are not including those files to reduce the checkout size.
+However, some users have shown interest in them and Infra is working
+on providing them via an additional rsync module.
+
+If such files were injected into the repository, they would cause strict
+verification failures of Manifests. To account for this, Infra could
+provide either ``OPTIONAL`` entries for the Manifest files to allow them
+in non-strict verification mode, or ``IGNORE`` entries to allow them
+in the strict mode.
+
+
+Splitting distfile checksums from file checksums
+------------------------------------------------
+
+Another problem with the current Manifest format is that the checksums
+for fetched files are combined with checksums for local files
+in a single file inside the package directory. It has been specifically
+pointed out that:
+
+- since distfiles are sometimes reused across different packages,
+  the repeating checksums are redundant,
+
+- mirror admins were interested in the possibility of verifying all
+  the distfiles with a single tool.
+
+This specification does not provide a clean solution to this problem.
+It technically permits moving ``DIST`` entries to higher-level Manifests
+but the usefulness of such a solution is doubtful.
+
+However, for the second problem we will probably deliver a dedicated
+tool working with this Manifest format.
+
+
+Hash algorithms
+---------------
+
+While maintaining a consistent supported hash set is important
+for interoperability, it is no good fit for the generic layout of this
+GLEP. Furthermore, it would require updating the GLEP in the future
+every time the used algorithms change.
+
+Instead, the specification focuses on listing the currently used
+algorithm names for interoperability, and sets a recommendation
+for consistent naming of algorithms in the future. The Python
+``hashlib`` module is used as a reference since it is used
+as the provider of hash functions for most of the Python software,
+including Portage and PkgCore.
+
+The basic rules for changing hash algorithms are defined in GLEP 59
+[#GLEP59]_. The implementations can focus only on those algorithms
+that are actually used or planned on being used. It may be feasible
+to devise a new GLEP that specifies the currently used hashes (or update
+GLEP 59 accordingly).
+
+
+Manifest compression
+--------------------
+
+The support for Manifest compression is introduced with minimal changes
+to the file format. The ``MANIFEST`` entries are required to provide
+the real (compressed) file path for compatibility with other file
+entries and to avoid confusion.
+
+The existence of additional entries for uncompressed Manifest checksums
+was debated. However, plain entries for the uncompressed file would
+be confusing if only compressed file existed, and conflicting if both
+uncompressed and compressed variants existed. Furthermore, it has been
+pointed out that ``DIST`` entries do not have uncompressed variant
+either.
+
+
+Performance considerations
+--------------------------
+
+Performing a full-tree verification on every sync raises some
+performance concerns for end-user systems. The initial testing has shown
+that a cold-cache verification on a btrfs file system can take up around
+4 minutes, with the process being mostly I/O bound. On the other hand,
+it can be expected that the verification will be performed directly
+after syncing, taking advantage of warm filesystem cache.
+
+To improve speed on I/O and/or CPU-restrained systems even further,
+the algorithms can be easily extended to perform incremental
+verification. Given that rsync does not preserve mtimes by default,
+the tool can take advantage of mtime and Manifest comparisons to recheck
+only the parts of the repository that have changed.
+
+Furthermore, the package manager implementations can restrict checking
+only to the parts of the repository that are actually being used.
+
+
+Backwards Compatibility
+=======================
+
+This GLEP provides optional means of preserving backwards compatibility.
+To preserve the backwards compatibility, the following needs to be
+ensured:
+
+- all files within the package directory must be covered by ``Manifest``
+  file inside that package directory,
+
+- all distfiles used by the package must be covered by ``Manifest``
+  file inside the package directory,
+
+- all files inside the ``files/`` subdirectory of a package directory
+  need to be use the deprecated ``AUX`` tag (rather than ``DATA``),
+
+- all ``.ebuild`` files inside the package directory need to use
+  the deprecated ``EBUILD`` tag (rather than ``DATA``),
+
+- the Manifest files inside the package directory can be signed
+  to provide authenticity verification.
+
+Once the backwards compatibility is no longer a concern, the above
+no longer needs to hold and the deprecated tags can be removed.
+
+
+Reference Implementation
+========================
+
+The reference implementation for this GLEP is being developed
+as the gemato project [#GEMATO]_.
+
+
+Credits
+=======
+
+Thanks to all the people whose contributions were invaluable
+to the creation of this GLEP. This includes but is not limited to:
+
+- Robin Hugh Johnson,
+- Ulrich Müller.
+
+Additionally, thanks to Robin Hugh Johnson for the original
+MataManifest GLEP series which served both as inspiration and source
+of many concepts used in this GLEP. Recursively, also thanks to all
+the people who contributed to the original GLEPs.
+
+
+References
+==========
+
+.. [#GLEP44] GLEP 44: Manifest2 format
+   (https://www.gentoo.org/glep/glep-0044.html)
+
+.. [#GLEP57] GLEP 57: Security of distribution of Gentoo software
+   - Overview
+   (https://www.gentoo.org/glep/glep-0057.html)
+
+.. [#GLEP58] GLEP 58: Security of distribution of Gentoo software
+   - Infrastructure to User distribution - MetaManifest
+   (https://www.gentoo.org/glep/glep-0058.html)
+
+.. [#GLEP59] GLEP 59: Manifest2 hash policies and security implications
+   (https://www.gentoo.org/glep/glep-0059.html)
+
+.. [#GLEP60] GLEP 60: Manifest2 filetypes
+   (https://www.gentoo.org/glep/glep-0060.html)
+
+.. [#GLEP61] GLEP 61: Manifest2 compression
+   (https://www.gentoo.org/glep/glep-0061.html)
+
+.. [#PMS-FETCH] Package Manager Specification: Dependency Specification
+   Format - SRC_URI
+   (https://projects.gentoo.org/pms/6/pms.html#x1-940008.2.10)
+
+.. [#MD5] RFC1321: The MD5 Message-Digest Algorithm
+   (https://www.ietf.org/rfc/rfc1321.txt)
+
+.. [#RIPEMD160] The hash function RIPEMD-160
+   (https://homes.esat.kuleuven.be/~bosselae/ripemd160.html)
+
+.. [#SHS] FIPS PUB 180-4: Secure Hash Standard (SHS)
+   (http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf)
+
+.. [#WHIRLPOOL] The WHIRLPOOL Hash Function
+   (http://www.larc.usp.br/~pbarreto/WhirlpoolPage.html)
+
+.. [#BLAKE2] BLAKE2 — fast secure hashing
+   (https://blake2.net/)
+
+.. [#SHA3] FIPS PUB 202: SHA-3 Standard: Permutation-Based Hash
+   and Extendable-Output Functions
+   (http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf)
+
+.. [#STREEBOG] GOST R 34.11-2012: Streebog Hash Function
+   (https://www.streebog.net/)
+
+.. [#GEMATO] gemato: Gentoo Manifest Tool
+   (https://github.com/mgorny/gemato/)
+
+Copyright
+=========
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License. To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
