@@ -18,9 +18,9 @@ This GLEP provides two kinds of QA check: checks run on the installation image
 once ``src_install`` returns, and checks run on the live system once
 ``pkg_postinst`` returns. The checks can be provided by the Package Manager,
 repositories, packages (installed system-wide) and the system administrator.
-The QA checks can inspect the installation image or live system respectively,
-output and store both user- and machine-oriented QA warning logs, manipulate
-the files and abort the install, as necessary.
+The QA checks can inspect the installation image or live system, output
+and store both user- and machine-oriented QA warning logs, manipulate files
+and abort the install.
 
 
 Motivation
@@ -34,8 +34,9 @@ the installed files. This is where post-install QA checks become useful.
 
 Over time, many different QA checks have been added to Portage. That includes
 checks corresponding to generic Gentoo rules (like filesystem hierarchy,
-security requirements), checks enforcing Gentoo team policies and correct
-eclass uses. Some of the checks depend on external tools being present.
+security requirements), checks enforcing Gentoo team policies, and checks
+enforcing correct eclass usage. Some of the checks depend on external tools
+being present.
 
 Keeping those checks directly in Portage sources has two major disadvantages:
 
@@ -58,7 +59,7 @@ There are two kinds of QA checks defined in this specification:
 
 1. Post-install QA checks (``install-qa-check.d``),
 
-2. Post-merge (postinst) QA checks (``postinst-qa-check.d``).
+2. Post-merge QA checks (``postinst-qa-check.d``).
 
 The post-install QA checks are are executed after the ``src_install`` ebuild
 phase finishes but before the binary package is built or the ``pkg_preinst``
@@ -117,7 +118,7 @@ run in an isolated subshell, and therefore can safely alter the environment
 and change the working directory. QA scripts must always end with a command
 terminating with a successful exit code.
 
-Aside to the standard PMS functions, two additional commands are provided:
+Aside from the standard PMS functions, two additional commands are provided:
 
 1. ``eqawarn`` to output QA warnings to user,
 2. ``eqatag`` to store machine-readable information about QA issues.
@@ -150,8 +151,8 @@ Synopsis
 Tag the package with specific QA issues. The *tag* parameter is
 a well-defined name identifying specific QA issue. The tag can be additionally
 associated with some data in key-value form and/or one or more *files*.
-The file paths are relative to installation image (``${D}``), and need to
-start with a leading slash.
+The file paths are relative to the installation root (``${D}`` in post-install
+checks or ``${ROOT}`` in post-merge), and need to start with a leading slash.
 
 If ``-v`` (verbose) parameter is passed, the function will also output
 newline-delimited list of files using ``eqawarn``. This is intended
@@ -181,7 +182,7 @@ account for various problems caused by the ebuild code up to and including
 ``src_install``, the upstream code executed as part of any of those phases
 and the supplied files.
 
-Post-postinst QA checks can be used to verify the state of system after
+Post-merge QA checks can be used to verify the state of system after
 the package is merged and its ``pkg_postinst`` phase is executed. They mostly
 aim to detect missing postinst actions but can do other live system integrity
 checks.
