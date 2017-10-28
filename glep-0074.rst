@@ -8,7 +8,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2017-10-21
-Last-Modified: 2017-10-26
+Last-Modified: 2017-10-29
 Post-History: 2017-10-26
 Content-Type: text/x-rst
 Requires: 59, 61
@@ -49,7 +49,7 @@ This specification is designed with the following goals in mind:
 1. It should provide means to ensure the authenticity of the complete
    repository, including preventing the injection of additional files.
 
-2. Alike the original Manifest2, the files should be split into two
+2. Like the original Manifest2, the files should be split into two
    groups — files whose authenticity is critical, and those whose
    mismatch may be accepted in non-strict mode. The same classification
    should apply both to files listed in Manifests, and to stray files
@@ -115,11 +115,11 @@ The file entries (except for ``IGNORE``) can be specified for regular
 files only. Symbolic links are followed when opening files. It is
 an error to specify an entry for a different file type.
 
-All the files covered by a Manifest tree must reside on the same
-filesystem. It is an error to specify entries applying to files
-on another filesystem. If subdirectories of the Manifest tree reside
-on a different filesystem, they must be explicitly excluded
-via ``IGNORE``.
+All the local (non-``DIST``) files covered by a Manifest tree must
+reside on the same filesystem. It is an error to specify entries
+applying to files on another filesystem. If subdirectories
+of the Manifest tree reside on a different filesystem, they must
+be explicitly excluded via ``IGNORE``.
 
 
 File verification
@@ -156,7 +156,8 @@ The Manifest files can specify the following tags:
   combined date and time in UTC timezone, i.e. using the following
   ``strftime()`` format string: ``%Y-%m-%dT%H:%M:%SZ``. Optionally used
   in the top-level Manifest file. The package manager can use it
-  to detect an outdated repository checkout.
+  to detect an outdated repository checkout as described in `Timestamp
+  verification`_.
 
 ``MANIFEST <path> <size> <checksums>…``
   Specifies a sub-Manifest. The sub-Manifest must be verified like
@@ -209,6 +210,28 @@ allowed at the package directory level:
   to ``files/`` subdirectory.
 
 
+Timestamp verification
+----------------------
+
+The Manifest file can contain a ``TIMESTAMP`` entry to account
+for attacks against tree update distribution. If such an entry
+is present, it should be updated every time at least one
+of the Manifests changes. Every unique timestamp value must correspond
+to a single tree state.
+
+During the verification process, the client should compare the timestamp
+against the update time obtained from a local clock or a trusted time
+source. If the comparison result indicates that the Manifest at the time
+of receiving was already significantly outdated, the client should
+either fail the verification or require manual confirmation from user.
+
+Furthermore, the Manifest provider may employ additional methods
+of distributing the timestamps of recently generated Manifests
+using a secure channel from a trusted source for exact comparison.
+The exact details of such a solution are outside the scope of this
+specification.
+
+
 Algorithm for full-tree verification
 ------------------------------------
 
@@ -218,8 +241,9 @@ can be used:
 1. Collect all files present in the repository into *present* set.
 
 2. Start at the top-level Manifest file. Verify its OpenPGP signature.
-   Optionally verify the ``TIMESTAMP`` entry if present. Remove
-   the top-level Manifest from the *present* set.
+   Optionally verify the ``TIMESTAMP`` entry if present as specified
+   in `timestamp verification`. Remove the top-level Manifest
+   from the *present* set.
 
 3. Process all ``MANIFEST`` entries, recursively. Verify the Manifest
    files according to `file verification`_ section, and include their
@@ -232,7 +256,11 @@ can be used:
 5. Collect all files covered by ``DATA``, ``MISC``, ``OPTIONAL``,
    ``EBUILD`` and ``AUX`` entries into the *covered* set.
 
-6. Verify all the files in the union of the *present* and *covered*
+6. Verify the entries in *covered* set for incompatible duplicates
+   and collisions with ignored files as explained in `Manifest file
+   locations and nesting`_.
+
+7. Verify all the files in the union of the *present* and *covered*
    sets, according to `file verification`_ section.
 
 
@@ -489,8 +517,15 @@ The top-level Manifests optionally allows using a ``TIMESTAMP`` tag
 to include a generation timestamp in the Manifest. A similar feature
 was originally proposed in GLEP 58 [#GLEP58]_.
 
-The timestamp can be used to detect delay or replay attacks against
-Gentoo mirrors.
+A malicious third-party may use the principles of exclusion and replay
+to deny an update to clients, while at the same time recording
+the identity of clients to attack. The timestamp field can be used
+to detect that.
+
+In order to provide a more complete protection, the Gentoo
+Infrastructure should provide an ability to obtain the timestamps
+of all Manifests from a recent timeframe over a secure channel
+from a trusted source for comparison.
 
 Strictly speaking, this is already provided by the various
 ``metadata/timestamp.*`` files provided already by Gentoo which are also
@@ -662,7 +697,10 @@ ensured:
   the deprecated ``EBUILD`` tag (rather than ``DATA``),
 
 - the Manifest files inside the package directory can be signed
-  to provide authenticity verification.
+  to provide authenticity verification,
+
+- if the Manifest files inside the package directory are compressed,
+  a uncompressed file of identical content must coexist.
 
 Once the backwards compatibility is no longer a concern, the above
 no longer needs to hold and the deprecated tags can be removed.
