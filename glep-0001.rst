@@ -8,7 +8,7 @@ Type: Informational
 Status: Active
 Version: 3
 Created: 2003-05-31
-Last-Modified: 2017-09-17
+Last-Modified: 2017-10-28
 Post-History: 2003-06-01, 2003-07-02, 2008-01-19, 2008-06-05, 2011-03-09,
               2013-12-14, 2017-09-17
 Content-Type: text/x-rst
@@ -225,11 +225,11 @@ Each GLEP should have the following parts:
 GLEP Formating and Template
 ===========================
 
-GLEPs are written in ReStructuredText markup [#ReSTHOME]_ that is then
-converted to HTML using Docutils [#DOCUTILS]_.  Using ReStructuredText GLEPs
-allows for rich markup that is still quite easy to read, but results in much
-better-looking and more functional HTML.  GLEP 2 contains a boilerplate
-template [#GLEP2]_ for use with ReStructuredText GLEPs.
+GLEPs are UTF-8 encoded text files written in ReStructuredText markup
+[#ReSTHOME]_ that is then converted to HTML using Docutils [#DOCUTILS]_.
+ReStructuredText allows for rich markup that is still quite easy to read,
+but also results in good-looking and functional HTML.  GLEP 2 contains
+a boilerplate template [#GLEP2]_ for use with ReStructuredText GLEPs.
 
 For best interoperability, the GLEPs using ReStructuredText format must use
 ``.rst`` file suffix.
