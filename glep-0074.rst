@@ -163,8 +163,30 @@ reject any package or even the whole repository if it may refer to files
 for which the verification failed.
 
 
-New Manifest tags
------------------
+Timestamp verification
+----------------------
+
+The Manifest file can contain a ``TIMESTAMP`` entry to account
+for attacks against tree update distribution. If such an entry
+is present, it should be updated every time at least one
+of the Manifests changes. Every unique timestamp value must correspond
+to a single tree state.
+
+During the verification process, the client should compare the timestamp
+against the update time obtained from a local clock or a trusted time
+source. If the comparison result indicates that the Manifest at the time
+of receiving was already significantly outdated, the client should
+either fail the verification or require manual confirmation from user.
+
+Furthermore, the Manifest provider may employ additional methods
+of distributing the timestamps of recently generated Manifests
+using a secure channel from a trusted source for exact comparison.
+The exact details of such a solution are outside the scope of this
+specification.
+
+
+Modern Manifest tags
+--------------------
 
 The Manifest files can specify the following tags:
 
@@ -226,28 +248,6 @@ allowed at the package directory level:
 ``AUX <filename> <size> <checksums>…``
   Equivalent to the ``DATA`` type, except that the filename is relative
   to ``files/`` subdirectory.
-
-
-Timestamp verification
-----------------------
-
-The Manifest file can contain a ``TIMESTAMP`` entry to account
-for attacks against tree update distribution. If such an entry
-is present, it should be updated every time at least one
-of the Manifests changes. Every unique timestamp value must correspond
-to a single tree state.
-
-During the verification process, the client should compare the timestamp
-against the update time obtained from a local clock or a trusted time
-source. If the comparison result indicates that the Manifest at the time
-of receiving was already significantly outdated, the client should
-either fail the verification or require manual confirmation from user.
-
-Furthermore, the Manifest provider may employ additional methods
-of distributing the timestamps of recently generated Manifests
-using a secure channel from a trusted source for exact comparison.
-The exact details of such a solution are outside the scope of this
-specification.
 
 
 Algorithm for full-tree verification
