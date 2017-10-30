@@ -8,7 +8,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2017-10-21
-Last-Modified: 2017-10-29
+Last-Modified: 2017-10-30
 Post-History: 2017-10-26
 Content-Type: text/x-rst
 Requires: 59, 61
@@ -99,9 +99,12 @@ format. However, the signature verification can be omitted if it is
 covered by a signed top-level Manifest.
 
 The Manifest files can also specify ``IGNORE`` entries to skip Manifest
-verification of subdirectories and/or files. Files and directories
-starting with a dot are always implicitly ignored. All files that
-are not ignored must be covered by at least one of the Manifests.
+verification of subdirectories and/or files. The package manager can
+support injecting ignore paths to account for additional files created,
+modified or removed by user's processes that would not be ignored
+by existing rules. Files and directories starting with a dot are always
+implicitly ignored. All files that are not ignored must be covered
+by at least one of the Manifests.
 
 A single file may be matched by multiple identical or equivalent
 Manifest entries, if and only if the entries have the same semantics,
@@ -517,21 +520,25 @@ The top-level Manifests optionally allows using a ``TIMESTAMP`` tag
 to include a generation timestamp in the Manifest. A similar feature
 was originally proposed in GLEP 58 [#GLEP58]_.
 
-A malicious third-party may use the principles of exclusion and replay
-to deny an update to clients, while at the same time recording
-the identity of clients to attack. The timestamp field can be used
-to detect that.
+A malicious third-party may use the principles of exclusion or replay
+[#C08]_ to deny an update to clients, while at the same time recording
+the identity of clients to attack. The timestamp field can be used to
+detect that.
 
 In order to provide a more complete protection, the Gentoo
 Infrastructure should provide an ability to obtain the timestamps
 of all Manifests from a recent timeframe over a secure channel
 from a trusted source for comparison.
 
-Strictly speaking, this is already provided by the various
-``metadata/timestamp.*`` files provided already by Gentoo which are also
-covered by the Manifest. However, including the value in the Manifest
-itself has a little cost and provides the ability to perform
-the verification stand-alone.
+Strictly speaking, this information is already provided by the various
+``metadata/timestamp*`` files that are already present. However,
+including the value in the Manifest itself has a little cost
+and provides the ability to perform the verification stand-alone.
+
+Furthermore, some of the timestamp files are added very late
+in the distribution process, past the Manifest generation phase. Those
+files will most likely receive ``IGNORE`` entries and therefore
+be not suitable to safe use.
 
 
 New vs deprecated tags
@@ -699,8 +706,8 @@ ensured:
 - the Manifest files inside the package directory can be signed
   to provide authenticity verification,
 
-- if the Manifest files inside the package directory are compressed,
-  a uncompressed file of identical content must coexist.
+- an uncompressed Manifest file must exist in the package directory,
+  and a compressed Manifest of identical content may be present.
 
 Once the backwards compatibility is no longer a concern, the above
 no longer needs to hold and the deprecated tags can be removed.
@@ -776,6 +783,9 @@ References
 
 .. [#STREEBOG] GOST R 34.11-2012: Streebog Hash Function
    (https://www.streebog.net/)
+
+.. [#C08] Cappos, J et al. (2008). "Attacks on Package Managers"
+   (https://www2.cs.arizona.edu/stork/packagemanagersecurity/attacks-on-package-managers.html)
 
 .. [#GEMATO] gemato: Gentoo Manifest Tool
    (https://github.com/mgorny/gemato/)
