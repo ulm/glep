@@ -135,16 +135,27 @@ File verification
 When verifying a file against the Manifest, the following rules are
 used:
 
-- if a file listed in Manifest is not present, then the verification
-  for the file fails,
+1. If the file is covered directly or indirectly by an entry
+   of the ``IGNORE`` type, the verification always succeeds.
 
-- if a file listed in Manifest is present but has a different size
-  or one of the checksums does not match, the verification fails,
+2. If the file is covered by an entry of the ``MANIFEST``, ``DATA``,
+   ``MISC``, ``EBUILD`` or ``AUX`` type:
 
-- if a file is present but not listed in Manifest, the verification
-  fails,
+   a. if the file is not present, then the verification fails,
 
-- otherwise, the verification succeeds.
+   b. if the file is present but has a different size or one
+      of the checksums does not match, the verification fails,
+
+   c. otherwise, the verification succeeds.
+
+3. If the file is covered by an entry of the ``OPTIONAL`` type:
+
+   a. if the file is present, then the verification fails,
+
+   b. otherwise, the verification succeeds.
+
+4. If the file is present but not listed in Manifest, the verification
+   fails.
 
 Unless specified otherwise, the package manager must not allow using
 any files for which the verification failed. The package manager may
