@@ -369,6 +369,34 @@ uncompressed content and the specification is free to choose either
 of the files using the same base name.
 
 
+An example Manifest file (informational)
+----------------------------------------
+
+An example top-level Manifest file for the Gentoo repository would have
+the following content::
+
+    TIMESTAMP 2017-10-30T10:11:12Z
+    IGNORE distfiles
+    IGNORE local
+    IGNORE lost+found
+    IGNORE packages
+    MANIFEST app-accessibility/Manifest 14821 SHA256 1b5f.. SHA512 f7eb..
+    ...
+    MANIFEST eclass/Manifest.gz 50812 SHA256 8c55.. SHA512 2915..
+    ...
+
+An example modern Manifest (disregarding backwards compatibility)
+for a package directory would have the following content::
+
+    DATA SphinxTrain-0.9.1-r1.ebuild 932 SHA256 3d3b.. SHA512 be4d..
+    DATA SphinxTrain-1.0.8.ebuild 912 SHA256 f681.. SHA512 0749..
+    DATA files/gcc.patch 816 SHA256 b56e.. SHA512 2468..
+    DATA files/gcc34.patch 333 SHA256 c107.. SHA512 9919..
+    DIST SphinxTrain-0.9.1-beta.tar.gz 469617 SHA256 c1a4.. SHA512 1b33..
+    DIST sphinxtrain-1.0.8.tar.gz 8925803 SHA256 548e.. SHA512 465d..
+    MISC metadata.xml 664 SHA256 97c6.. SHA512 1175..
+
+
 Rationale
 =========
 
