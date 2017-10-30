@@ -222,10 +222,11 @@ The Manifest files can specify the following tags:
   packages (``metadata.xml``, ``use.desc``).
 
 ``OPTIONAL <path>``
-  Specifies a file that would be subject to non-obligatory Manifest
-  verification if it existed. The package may ignore a stray file
-  matching this entry if operating in non-strict mode. Used for paths
-  that would match ``MISC`` if they existed.
+  Specifies a file that does not exist in the distribution but if it
+  did, it would be marked as ``MISC``. In the strict mode, the file
+  must not exist for the verification to pass. The package manager
+  may ignore a stray file matching this entry if operating in non-strict
+  mode.
 
 ``DIST <filename> <size> <checksums>…``
   Specifies a distfile entry used to verify files fetched as part
