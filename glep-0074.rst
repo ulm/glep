@@ -98,6 +98,10 @@ The sub-Manifest can also be signed using OpenPGP armored cleartext
 format. However, the signature verification can be omitted if it is
 covered by a signed top-level Manifest.
 
+
+Directory tree coverage
+-----------------------
+
 The Manifest files can also specify ``IGNORE`` entries to skip Manifest
 verification of subdirectories and/or files. The package manager can
 support injecting ignore paths to account for additional files created,
