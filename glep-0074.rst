@@ -49,16 +49,10 @@ This specification is designed with the following goals in mind:
 1. It should provide means to ensure the authenticity of the complete
    repository, including preventing the injection of additional files.
 
-2. Like the original Manifest2, the files should be split into two
-   groups — files whose authenticity is critical, and those whose
-   mismatch may be accepted in non-strict mode. The same classification
-   should apply both to files listed in Manifests, and to stray files
-   present only in the repository.
-
-3. The format should be universal enough to work both for the Gentoo
+2. The format should be universal enough to work both for the Gentoo
    repository and third-party repositories of different characteristics.
 
-4. The Manifest files should be verifiable stand-alone, that is without
+3. The Manifest files should be verifiable stand-alone, that is without
    knowing any details about the underlying repository format.
 
 
@@ -205,15 +199,9 @@ The Manifest files can specify the following tags:
   verification (always pass).
 
 ``DATA <path> <size> <checksums>…``
-  Specifies a file subject to obligatory Manifest verification.
-  The file is required to pass verification. Used for all files directly
-  affecting package manager operation (ebuilds, eclasses, profiles).
-
-``MISC <path> <size> <checksums>…``
-  Specifies a file subject to non-obligatory Manifest verification.
-  The package manager may ignore a verification failure if operating
-  in non-strict mode. Used for files that do not affect the installed
-  packages (``metadata.xml``, ``use.desc``).
+  Specifies a regular file subject to Manifest verification. The file
+  is required to pass verification. Used for all files that do not match
+  any other type.
 
 ``DIST <filename> <size> <checksums>…``
   Specifies a distfile entry used to verify files fetched as part
@@ -232,6 +220,11 @@ allowed at the package directory level:
 
 ``EBUILD <filename> <size> <checksums>…``
   Equivalent to the ``DATA`` type.
+
+``MISC <path> <size> <checksums>…``
+  Equivalent to the ``DATA`` type. Historically indicated that
+  the package manager may ignore a verification failure if operating
+  in non-strict mode. However, that behavior is deprecated.
 
 ``AUX <filename> <size> <checksums>…``
   Equivalent to the ``DATA`` type, except that the filename is relative
@@ -378,11 +371,11 @@ for a package directory would have the following content::
 
     DATA SphinxTrain-0.9.1-r1.ebuild 932 SHA256 3d3b.. SHA512 be4d..
     DATA SphinxTrain-1.0.8.ebuild 912 SHA256 f681.. SHA512 0749..
+    DATA metadata.xml 664 SHA256 97c6.. SHA512 1175..
     DATA files/gcc.patch 816 SHA256 b56e.. SHA512 2468..
     DATA files/gcc34.patch 333 SHA256 c107.. SHA512 9919..
     DIST SphinxTrain-0.9.1-beta.tar.gz 469617 SHA256 c1a4.. SHA512 1b33..
     DIST sphinxtrain-1.0.8.tar.gz 8925803 SHA256 548e.. SHA512 465d..
-    MISC metadata.xml 664 SHA256 97c6.. SHA512 1175..
 
 
 Rationale
@@ -521,21 +514,48 @@ it. Those directories were ``distfiles``, ``local`` and ``packages``. It
 could be also used to ignore VCS directories such as ``CVS``.
 
 
-Non-obligatory Manifest verification
-------------------------------------
+Non-strict Manifest verification
+--------------------------------
 
-While this specification recommends all tools to use strict verification
-by default, it allows declaring some files as non-obligatory like
-the original Manifest2 format did. This could be used on files that do
-not affect the normal package manager operation.
+Originally the Manifest2 format provided a special ``MISC`` tag that
+was used for ``metadata.xml`` and ``ChangeLog`` files. This tag
+indicated that the Manifest verification failures could be ignored for
+those files unless the package manager was working in strict mode.
 
-It aims to account for two use cases:
+The first versions of this specification continued the use of this tag.
+However, after a long debate it was decided to deprecate it along with
+the non-strict behavior, and require all files to strictly match.
 
-1. Stripping down files that are not strictly required to install
-   packages from repository checkouts.
+Two arguments were mentioned for the usefulness of a ``MISC`` type:
 
-2. Accounting for automatically generated files that might be updated
-   by standard tooling.
+1. being able to reduce the checkout size by stripping unnecessary
+   files out, and
+
+2. being able to run update automatically generated files locally
+   without causing unnecessary verification failures.
+
+However, the usefulness of ``MISC`` in both cases is doubtful.
+
+The cases for stripping unnecessary files mostly focused around space
+savings. For this purpose, stripping ``metadata.xml`` and similar files
+has little value. It is much more common for users to strip whole
+categories which can not be handled via the ``MISC`` type, and needs
+a dedicated package manager mechanism. The same mechanism can also
+handle files that used the ``MISC`` type.
+
+The cases for autogenerated files involve such cache files
+as ``use.local.desc``. However, we can not include ``md5-cache`` there
+due to security concerns which results in inconsistent cache handling.
+Furthermore, the tools were historically modified to provide stable
+output which means that their content can not change without
+a non-``MISC`` content being changed first. This practically defeats
+the purpose of using ``MISC``.
+
+Finally, the non-strict mode could be used as means to an attack.
+The allowance of missing or modified documentation file could be used
+to spread misinformation, resulting in bad decisions made by the user.
+A modified file could also be used e.g. to exploit vulnerabilities
+of an XML parser.
 
 
 Timestamp field
@@ -569,16 +589,21 @@ be not suitable to safe use.
 New vs deprecated tags
 ----------------------
 
-Out of the four types defined by Manifest2, two are reused and two are
-marked deprecated.
+Out of the four types defined by Manifest2, only one is reused
+and the remaining three is replaced by a single, universal ``DATA``
+type.
 
-The ``DIST`` and ``MISC`` tags are reused since they can be relatively
-clearly marked into the new concept.
+The ``DIST`` tag is reused since the specification does not change
+anything with regard to distfile handling.
 
 The ``EBUILD`` tag could potentially be reused for generic file
 verification data. However, it would be confusing if all the different
 data files were marked as ``EBUILD``. Therefore, an equivalent ``DATA``
 type was introduced as a replacement.
+
+The ``MISC`` tag and the relevant non-strict mode has been removed
+as being of little value, as detailed in the `Non-strict Manifest
+verification`_ section.
 
 The ``AUX`` tag is deprecated as it is redundant to ``DATA``, and has
 the limiting property of implicit ``files/`` path prefix.
@@ -622,7 +647,7 @@ Normally we are not including those files to reduce the checkout size.
 However, some users have shown interest in them and Infra is working
 on providing them via an additional rsync module.
 
-If such files were injected into the repository, they would cause strict
+If such files were injected into the repository, they would cause
 verification failures of Manifests. To account for this, Infra could
 provide ``IGNORE`` entries to allow them to exist.
 
