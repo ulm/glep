@@ -96,13 +96,17 @@ covered by a signed top-level Manifest.
 Directory tree coverage
 -----------------------
 
-The Manifest files can also specify ``IGNORE`` entries to skip Manifest
-verification of subdirectories and/or files. The package manager can
-support injecting ignore paths to account for additional files created,
-modified or removed by user's processes that would not be ignored
-by existing rules. Files and directories starting with a dot are always
-implicitly ignored. All files that are not ignored must be covered
-by at least one of the Manifests.
+The specification provides three ways of skipping Manifest verification
+of specific files and directories (recursively):
+
+1. explicit ``IGNORE`` entries in Manifest files,
+
+2. injected ignore paths via package manager configuration,
+
+3. using names starting with a dot (``.``) which are always skipped.
+
+All files that are not ignored must be covered by at least one
+of the Manifests.
 
 A single file may be matched by multiple identical or equivalent
 Manifest entries, if and only if the entries have the same semantics,
@@ -113,14 +117,17 @@ to specify another entry for a file matching ``IGNORE``, or one of its
 subdirectories.
 
 The file entries (except for ``IGNORE``) can be specified for regular
-files only. Symbolic links are followed when opening files. It is
-an error to specify an entry for a different file type.
+files only. Symbolic links are followed when opening files
+and traversing directories. It is an error to specify an entry for
+a different file type. If the tree contain files of other types
+that are not otherwise ignored, they need to be covered by an explicit
+``IGNORE``.
 
 All the local (non-``DIST``) files covered by a Manifest tree must
 reside on the same filesystem. It is an error to specify entries
 applying to files on another filesystem. If subdirectories
-of the Manifest tree reside on a different filesystem, they must
-be explicitly excluded via ``IGNORE``.
+that are not otherwise ignored reside on a different filesystem, they
+must be explicitly excluded via ``IGNORE``.
 
 
 File verification
@@ -196,7 +203,8 @@ The Manifest files can specify the following tags:
 ``IGNORE <path>``
   Ignores a subdirectory or file from Manifest checks. If the specified
   path is present, it and its contents are omitted from the Manifest
-  verification (always pass).
+  verification (always pass). *Path* must be a plain file or directory
+  path without a trailing slash, and must not contain wildcards.
 
 ``DATA <path> <size> <checksums>…``
   Specifies a regular file subject to Manifest verification. The file
@@ -362,9 +370,9 @@ the following content::
     IGNORE lost+found
     IGNORE packages
     MANIFEST app-accessibility/Manifest 14821 SHA256 1b5f.. SHA512 f7eb..
-    ...
+    …
     MANIFEST eclass/Manifest.gz 50812 SHA256 8c55.. SHA512 2915..
-    ...
+    …
 
 An example modern Manifest (disregarding backwards compatibility)
 for a package directory would have the following content::
@@ -476,8 +484,12 @@ files, and symbolic links to directories are followed as if they were
 regular directories.
 
 Dotfiles are implicitly ignored as that is a common notion used
-in software written for POSIX systems. All other filenames require
-explicit ``IGNORE`` lines.
+in software written for POSIX systems. All other common filenames
+require explicit ``IGNORE`` lines.
+
+An ability to inject additional ignore entries is provided to account
+for site configuration affecting the repository tree — placing
+additional files in it, skipping some of the categories from syncing.
 
 The algorithm is restricted to work on a single filesystem. This is
 mostly relevant when scanning for top-level Manifest — we do not want
@@ -485,7 +497,7 @@ to cross filesystem boundaries then. However, to ensure consistent
 bidirectional behavior we need to also ban them when operating downwards
 the tree.
 
-The directories and files on different filesystems needs to be ignored
+The directories and files on different filesystems need to be ignored
 explicitly as implicitly skipping them would cause confusion.
 In particular, tools might then claim that a file does not exist when
 it clearly does because it was skipped due to filesystem boundaries.
@@ -736,26 +748,25 @@ Backwards Compatibility
 =======================
 
 This GLEP provides optional means of preserving backwards compatibility.
-To preserve the backwards compatibility, the following needs to be
-ensured:
+To preserve the backwards compatibility, the following needs to hold
+for the ``Manifest`` file in every package directory:
 
-- all files within the package directory must be covered by ``Manifest``
-  file inside that package directory,
+- all files must be covered by the single ``Manifest`` file,
 
-- all distfiles used by the package must be covered by ``Manifest``
-  file inside the package directory,
+- all distfiles used by the package must be included,
 
-- all files inside the ``files/`` subdirectory of a package directory
-  need to be use the deprecated ``AUX`` tag (rather than ``DATA``),
+- all files inside the ``files/`` subdirectory need to use
+  the ``AUX`` tag (rather than ``DATA``),
 
-- all ``.ebuild`` files inside the package directory need to use
-  the deprecated ``EBUILD`` tag (rather than ``DATA``),
+- all ``.ebuild`` files need to use the ``EBUILD`` tag,
 
-- the Manifest files inside the package directory can be signed
-  to provide authenticity verification,
+` the ``metadata.xml`` and ``ChangeLog`` files need to use
+  the ``MISC`` tag,
 
-- an uncompressed Manifest file must exist in the package directory,
-  and a compressed Manifest of identical content may be present.
+- the Manifest can be signed to provide authenticity verification,
+
+- an uncompressed Manifest must always exist, and a compressed Manifest
+  of identical content may be present.
 
 Once the backwards compatibility is no longer a concern, the above
 no longer needs to hold and the deprecated tags can be removed.
