@@ -7,13 +7,10 @@ Type: Standards Track
 Status: Deferred
 Version: 1
 Created: 2004-02-09
-Last-Modified: 2017-10-13
+Last-Modified: 2017-11-03
 Post-History: 2004-02-21, 2004-11-11
 Content-Type: text/x-rst
 ---
-
-Note: This document needs to be relicensed to CC-BY-SA 3.0 after consulting
-with the original author
 
 Status
 ======
@@ -176,5 +173,6 @@ layout to reduce the amount of effort required to support both options.
 Copyright
 =========
 
-This document is licensed under the Creative Commons - Attribution / Share
-Alike license. (http://creativecommons.org/licenses/by-sa/1.0)
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
