@@ -149,8 +149,10 @@ References
 
 Copyright
 =========
-Copyright (c) 2008-2010 by Robin Hugh Johnson. This material may be
-distributed only subject to the terms and conditions set forth in the
-Open Publication License, v1.0.
+Copyright (c) 2005-2010 by Robin Hugh Johnson.
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
 
 .. vim: tw=72 ts=2 expandtab:
