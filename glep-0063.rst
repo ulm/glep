@@ -195,6 +195,7 @@ References
 
 Copyright
 =========
+Copyright (c) 2013 by Robin Hugh Johnson, Andreas K. Hüttel, Marissa Fischer.
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
 Unported License.  To view a copy of this license, visit
