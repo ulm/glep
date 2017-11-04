@@ -1,18 +1,15 @@
 ---
 GLEP: 49
 Title: Alternative Package Manager requirements
-Author: Paul de Vrieze <pauldv@gentoo.org>,
+Author: Paul de Vrieze <pauldv@gentoo.org>
 Type: Standards Track
 Status: Rejected
 Version: 1
 Created: 2006-05-18
-Last-Modified: 2014-01-23
+Last-Modified: 2017-11-04
 Post-History: 2006-05-19, 2006-09-06
 Content-Type: text/x-rst
 ---
-
-Note: This document needs to be relicensed to CC-BY-SA 3.0 after consulting
-with the original author
 
 Status
 ======
@@ -307,13 +304,11 @@ References
 
 .. _paludis: http://paludis.berlios.de/
 .. _pkgcore: http://gentooexperimental.org/~ferringb/bzr/pkgcore/
-.. _Open Publication License: http://www.opencontent.org/openpub/
 
 
 Copyright
 =========
 
 This document is copyright 2006 by Paul de Vrieze and licensed under the
-`Open Publication License`_.
-
-
+Creative Commons Attribution-ShareAlike 3.0 Unported License.  To view a copy
+of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.
