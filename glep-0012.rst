@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Rejected
 Version: 1
 Created: 2003-08-10
-Last-Modified: 2014-01-17
+Last-Modified: 2017-11-04
 Post-History: 2003-08-11
 Content-Type: text/x-rst
 ---
@@ -190,4 +190,6 @@ References
 Copyright
 =========
 
-This document is released under the Open Publication License.
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
