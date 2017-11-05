@@ -8,7 +8,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2017-10-21
-Last-Modified: 2017-10-30
+Last-Modified: 2017-11-06
 Post-History: 2017-10-26
 Content-Type: text/x-rst
 Requires: 59, 61
@@ -125,9 +125,10 @@ that are not otherwise ignored, they need to be covered by an explicit
 
 All the local (non-``DIST``) files covered by a Manifest tree must
 reside on the same filesystem. It is an error to specify entries
-applying to files on another filesystem. If subdirectories
-that are not otherwise ignored reside on a different filesystem, they
-must be explicitly excluded via ``IGNORE``.
+applying to files on another filesystem. If files or directories that
+are not otherwise ignored reside on a different filesystem, or symbolic
+links point to targets on a different filesystem, they must
+be explicitly excluded via ``IGNORE``.
 
 
 File verification
@@ -194,7 +195,7 @@ The Manifest files can specify the following tags:
   to detect an outdated repository checkout as described in `Timestamp
   verification`_.
 
-``MANIFEST <path> <size> <checksums>…``
+``MANIFEST <path> <size> <checksums>...``
   Specifies a sub-Manifest. The sub-Manifest must be verified like
   a regular file. If the verification succeeds, the entries from
   the sub-Manifest are included for verification as described
@@ -206,12 +207,12 @@ The Manifest files can specify the following tags:
   verification (always pass). *Path* must be a plain file or directory
   path without a trailing slash, and must not contain wildcards.
 
-``DATA <path> <size> <checksums>…``
+``DATA <path> <size> <checksums>...``
   Specifies a regular file subject to Manifest verification. The file
   is required to pass verification. Used for all files that do not match
   any other type.
 
-``DIST <filename> <size> <checksums>…``
+``DIST <filename> <size> <checksums>...``
   Specifies a distfile entry used to verify files fetched as part
   of ``SRC_URI``. The filename must match the filename used to store
   the fetched file as specified in the PMS [#PMS-FETCH]_. The package
@@ -226,15 +227,15 @@ Deprecated Manifest tags
 For backwards compatibility, the following tags are additionally
 allowed at the package directory level:
 
-``EBUILD <filename> <size> <checksums>…``
+``EBUILD <filename> <size> <checksums>...``
   Equivalent to the ``DATA`` type.
 
-``MISC <path> <size> <checksums>…``
+``MISC <path> <size> <checksums>...``
   Equivalent to the ``DATA`` type. Historically indicated that
   the package manager may ignore a verification failure if operating
   in non-strict mode. However, that behavior is deprecated.
 
-``AUX <filename> <size> <checksums>…``
+``AUX <filename> <size> <checksums>...``
   Equivalent to the ``DATA`` type, except that the filename is relative
   to ``files/`` subdirectory.
 
@@ -314,13 +315,13 @@ of supported algorithms is outside the scope of this specification.
 The algorithm names reserved at the time of writing are:
 
 - ``MD5`` [#MD5]_,
-- ``RMD160`` — RIPEMD-160 [#RIPEMD160]_,
+- ``RMD160`` -- RIPEMD-160 [#RIPEMD160]_,
 - ``SHA1`` [#SHS]_,
-- ``SHA256`` and ``SHA512`` — SHA-2 family of hashes [#SHS]_,
+- ``SHA256`` and ``SHA512`` -- SHA-2 family of hashes [#SHS]_,
 - ``WHIRLPOOL`` [#WHIRLPOOL]_,
-- ``BLAKE2B`` and ``BLAKE2S`` — BLAKE2 family of hashes [#BLAKE2]_,
-- ``SHA3_256`` and ``SHA3_512`` — SHA-3 family of hashes [#SHA3]_,
-- ``STREEBOG256`` and ``STREEBOG512`` — Streebog family of hashes
+- ``BLAKE2B`` and ``BLAKE2S`` -- BLAKE2 family of hashes [#BLAKE2]_,
+- ``SHA3_256`` and ``SHA3_512`` -- SHA-3 family of hashes [#SHA3]_,
+- ``STREEBOG256`` and ``STREEBOG512`` -- Streebog family of hashes
   [#STREEBOG]_.
 
 The method of introducing new hashes is defined by GLEP 59 [#GLEP59]_.
@@ -370,9 +371,9 @@ the following content::
     IGNORE lost+found
     IGNORE packages
     MANIFEST app-accessibility/Manifest 14821 SHA256 1b5f.. SHA512 f7eb..
-    …
+    ...
     MANIFEST eclass/Manifest.gz 50812 SHA256 8c55.. SHA512 2915..
-    …
+    ...
 
 An example modern Manifest (disregarding backwards compatibility)
 for a package directory would have the following content::
@@ -484,15 +485,17 @@ files, and symbolic links to directories are followed as if they were
 regular directories.
 
 Dotfiles are implicitly ignored as that is a common notion used
-in software written for POSIX systems. All other common filenames
-require explicit ``IGNORE`` lines.
+in software written for POSIX systems. All other filenames require
+explicit ``IGNORE`` lines.
 
 An ability to inject additional ignore entries is provided to account
-for site configuration affecting the repository tree — placing
+for site configuration affecting the repository tree -- placing
 additional files in it, skipping some of the categories from syncing.
+This configuration can extend beyond the limits of this GLEP,
+e.g. by allowing wildcards or regular expressions.
 
 The algorithm is restricted to work on a single filesystem. This is
-mostly relevant when scanning for top-level Manifest — we do not want
+mostly relevant when scanning for top-level Manifest -- we do not want
 to cross filesystem boundaries then. However, to ensure consistent
 bidirectional behavior we need to also ban them when operating downwards
 the tree.
@@ -551,9 +554,12 @@ However, the usefulness of ``MISC`` in both cases is doubtful.
 The cases for stripping unnecessary files mostly focused around space
 savings. For this purpose, stripping ``metadata.xml`` and similar files
 has little value. It is much more common for users to strip whole
-categories which can not be handled via the ``MISC`` type, and needs
-a dedicated package manager mechanism. The same mechanism can also
-handle files that used the ``MISC`` type.
+packages or categories. The ``MISC`` type is not suitable for that,
+and so a dedicated package manager mechanism needs to be developed
+instead. The same mechanism can also handle files that historically used
+the ``MISC`` type. As an example, the package manager may choose
+to generate both the rsync exclusion list and Manifest ignore list
+using a single source list.
 
 The cases for autogenerated files involve such cache files
 as ``use.local.desc``. However, we can not include ``md5-cache`` there
@@ -673,8 +679,8 @@ in a single file inside the package directory. It has been specifically
 pointed out that:
 
 - since distfiles are sometimes reused across different packages,
-  the repeating checksums are redundant,
-
+  the repeating checksums are redundant [#DIST]_.
+  
 - mirror admins were interested in the possibility of verifying all
   the distfiles with a single tool.
 
@@ -833,7 +839,7 @@ References
 .. [#WHIRLPOOL] The WHIRLPOOL Hash Function
    (http://www.larc.usp.br/~pbarreto/WhirlpoolPage.html)
 
-.. [#BLAKE2] BLAKE2 — fast secure hashing
+.. [#BLAKE2] BLAKE2 -- fast secure hashing
    (https://blake2.net/)
 
 .. [#SHA3] FIPS PUB 202: SHA-3 Standard: Permutation-Based Hash
@@ -845,6 +851,10 @@ References
 
 .. [#C08] Cappos, J et al. (2008). "Attacks on Package Managers"
    (https://www2.cs.arizona.edu/stork/packagemanagersecurity/attacks-on-package-managers.html)
+
+.. [#DIST] According to Robin H. Johnson, 8.4% of all DIST entries
+   at the time of writing are duplicate, representing a 2 MiB
+   out of 25 MiB of DIST entries altogether.
 
 .. [#GEMATO] gemato: Gentoo Manifest Tool
    (https://github.com/mgorny/gemato/)
