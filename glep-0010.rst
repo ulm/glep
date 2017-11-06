@@ -3,7 +3,7 @@ GLEP: 10
 Title: Localized Gentoo Sites
 Author: Tobias Scherbaum <dertobi123@gentoo.org>,
         Sven Vermeulen <swift@gentoo.org>
-Type: Informational
+Type: Standards Track
 Status: Deferred
 Version: 1
 Created: 2003-08-04
