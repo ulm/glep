@@ -1,12 +1,12 @@
 ---
 GLEP: 35
 Title: Automated consistency check for ebuilds
-Author: Adrian Lambeck <adrian@basicsedv.de>,
+Author: Adrian Lambeck <adrian@basicsedv.de>
 Type: Standards Track
 Status: Deferred
 Version: 1
 Created: 2005-03-12
-Last-Modified: 2014-01-19
+Last-Modified: 2017-11-09
 Post-History: 2005-03-12
 Content-Type: text/x-rst
 ---
@@ -134,3 +134,11 @@ Backwards Compatibility
 =======================
 
 Not a problem for this GLEP.
+
+
+Copyright
+=========
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
