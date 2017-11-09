@@ -6,7 +6,7 @@ Type: Informational
 Status: Replaced
 Version: 1
 Created: 2003-06-24
-Last-Modified: 2014-02-28
+Last-Modified: 2017-11-09
 Post-History: 2003-06-30
 Content-Type: text/x-rst
 Replaced-By: 39
@@ -370,3 +370,11 @@ References and Footnotes
 ========================
 
 .. [#Hardened] http://www.gentoo.org/proj/en/hardened/
+
+
+Copyright
+=========
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License.  To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
