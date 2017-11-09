@@ -1,7 +1,7 @@
 ---
 GLEP: 51
 Title: Gentoo Knowledge Base
-Author: Sven Vermeulen <swift@gentoo.org>,
+Author: Sven Vermeulen <swift@gentoo.org>
 Type: Standards Track
 Status: Withdrawn
 Version: 1

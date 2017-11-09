@@ -1,7 +1,7 @@
 ---
 GLEP: 15
 Title: Gentoo Script Repository
-Author: James Harlow <hythloday@gentoo.org>,
+Author: James Harlow <hythloday@gentoo.org>
 Type: Standards Track
 Status: Deferred
 Version: 1

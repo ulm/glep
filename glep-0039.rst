@@ -2,7 +2,7 @@
 GLEP: 39
 Title: An "old-school" metastructure proposal with "boot for being a slacker"
 Author: Grant Goodyear <g2boojum@gentoo.org>,
-        Ciaran McCreesh <ciaranm@gentoo.org>,
+        Ciaran McCreesh <ciaranm@gentoo.org>
 Type: Informational
 Status: Final
 Version: 2

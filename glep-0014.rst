@@ -1,7 +1,7 @@
 ---
 GLEP: 14
 Title: security updates based on GLSA
-Author: Marius Mauch <genone@genone.de>,
+Author: Marius Mauch <genone@genone.de>
 Type: Standards Track
 Status: Accepted
 Version: 1

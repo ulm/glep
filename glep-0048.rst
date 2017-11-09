@@ -1,7 +1,7 @@
 ---
 GLEP: 48
 Title: QA Team's Role and Purpose
-Author: Mark Loeser <halcy0n@gentoo.org>,
+Author: Mark Loeser <halcy0n@gentoo.org>
 Type: Standards Track
 Status: Final
 Version: 2

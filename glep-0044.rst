@@ -1,7 +1,7 @@
 ---
 GLEP: 44
 Title: Manifest2 format
-Author: Marius Mauch <genone@gentoo.org>,
+Author: Marius Mauch <genone@gentoo.org>
 Type: Standards Track
 Status: Final
 Version: 1

@@ -1,7 +1,7 @@
 ---
 GLEP: 58
 Title: Security of distribution of Gentoo software - Infrastructure to User distribution - MetaManifest
-Author: Robin Hugh Johnson <robbat2@gentoo.org>,
+Author: Robin Hugh Johnson <robbat2@gentoo.org>
 Type: Standards Track
 Status: Accepted
 Version: 1

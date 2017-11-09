@@ -1,7 +1,7 @@
 ---
 GLEP: 16
 Title: Gentoo Menu System
-Author: Heinrich Wendel <lanius@gentoo.org>,
+Author: Heinrich Wendel <lanius@gentoo.org>
 Type: Standards Track
 Status: Deferred
 Version: 1
