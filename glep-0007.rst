@@ -3,17 +3,19 @@ GLEP: 7
 Title: New ombudsman position
 Author: Grant Goodyear <g2boojum@gentoo.org>
 Type: Standards Track
-Status: Final
+Status: Moribund
 Version: 1
 Created: 2003-07-06
-Last-Modified: 2014-01-15
+Last-Modified: 2017-11-12
 Post-History: 
 Content-Type: text/x-rst
 ---
 
 Status
 ======
+
 Obsolete, this function is now handled by comrel.
+Marked as Moribund by decision of the Gentoo Council on 2017-11-12.
 
 Abstract
 ========
