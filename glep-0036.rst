@@ -3,13 +3,18 @@ GLEP: 36
 Title: Subversion/CVS for Gentoo Hosted Projects
 Author: Aaron Walker <ka0ttic@gentoo.org>
 Type: Standards Track
-Status: Final
+Status: Moribund
 Version: 1
 Created: 2004-11-11
-Last-Modified: 2014-01-21
+Last-Modified: 2017-11-12
 Post-History: 2005-03-13, 2005-03-21
 Content-Type: text/x-rst
 ---
+
+Status
+======
+
+Marked as Moribund by decision of the Gentoo Council on 2017-11-12.
 
 Abstract
 ========
