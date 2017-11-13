@@ -3,13 +3,20 @@ GLEP: 65
 Title: Post-install QA checks
 Author: Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
-Status: Draft
+Status: Accepted
 Version: 2
 Created: 2014-10-26
-Last-Modified: 2017-10-17
+Last-Modified: 2017-11-13
 Post-History: 2014-10-30, 2017-10-17
 Content-Type: text/x-rst
 ---
+
+Status
+======
+
+This GLEP has been accepted on the 2017-11-12 Council meeting. However,
+full tree signing needs to be deployed before it is implemented.
+
 
 Abstract
 ========
