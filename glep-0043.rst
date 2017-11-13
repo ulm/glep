@@ -20,8 +20,7 @@ sample code) associated with GLEPs.
 Status
 ======
 
-This GLEP has been approved by the GLEP editor and marked Final on
-13 Nov. 2005.
+This GLEP has been approved by the GLEP editor and marked Final on 2005-11-13.
 
 Motivation
 ==========

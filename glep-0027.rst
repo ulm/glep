@@ -15,7 +15,7 @@ Content-Type: text/x-rst
 Status
 ======
 
-This GLEP was approved as-is on 14-Jun-2004.
+This GLEP was approved as-is on 2004-06-14.
 
 Implementation not completed. Marked deferred by GLEP editor Michał Górny
 on 2017-10-13.

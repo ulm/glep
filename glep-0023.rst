@@ -18,7 +18,7 @@ Status Update
 
 Repoman has been updated to check for the LICENSE syntax.  Portage now handles
 ACCEPT_LICENSE and license groups, with NON-MUST-HAVE-READ's role handled
-by @EULA.  Marking as Final as of 1/16/2014.
+by @EULA.  Marking as Final as of 2014-01-16.
 
 Abstract
 ========

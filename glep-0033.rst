@@ -15,7 +15,7 @@ Content-Type: text/x-rst
 Status
 ======
 
-Approved by the Gentoo Council on 15 September 2005.  As of Sept. 2006
+Approved by the Gentoo Council on 2005-09-15.  As of September 2006
 this GLEP is on hold, pending future revisions.
 
 Abstract

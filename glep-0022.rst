@@ -19,7 +19,7 @@ After withdrawing this GLEP temporarily, a rewritten version has
 now been resubmitted.  This version no longer tries to prevent a
 keyword explosion, but merely tries to make it manageable.  
 
-This version was approved on 14-Jun-2004, with the amendment that cascading
+This version was approved on 2004-06-14, with the amendment that cascading
 profiles should be used. 
 
 Credits

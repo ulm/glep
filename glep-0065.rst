@@ -290,7 +290,7 @@ Reference implementation
 ========================
 
 The reference implementation is available in Portage starting with version
-2.2.15 (released 4 Dec 2014).
+2.2.15 (released 2014-12-04).
 
 
 Copyright

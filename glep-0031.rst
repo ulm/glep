@@ -20,7 +20,7 @@ portage tree and how they should be encoded is required.
 Status
 ======
 
-Approved on 8-Nov-2004 assuming that implementation will include 
+Approved on 2004-11-08 assuming that implementation will include
 documentation for correctly encoding files within nano.
 
 Motivation

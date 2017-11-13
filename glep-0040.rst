@@ -14,8 +14,8 @@ Content-Type: text/x-rst
 Status
 ======
 
-Approved by the Gentoo Council on 15 September 2005.  As of 20060903
-we have a robust x86 arch team, so this GLEP is final
+Approved by the Gentoo Council on 2005-09-15.  As of 2006-09-03 we have
+a robust x86 arch team, so this GLEP is final.
 
 Credits
 =======

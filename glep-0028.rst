@@ -15,7 +15,7 @@ Content-Type: text/x-rst
 Status
 ======
 
-This GLEP was approved on 14-Jun-2004 and marked as final on 1/16/2014.
+This GLEP was approved on 2004-06-14 and marked as final on 2014-01-16.
 
 Abstract
 ========

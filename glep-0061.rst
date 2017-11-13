@@ -64,7 +64,7 @@ compression.
 
 Example Results with a 32KiB cut-off, gzip algorithm
 ====================================================
-As of 2010/01/30, the suggested cut-off would impact the following 21 existing
+As of 2010-01-30, the suggested cut-off would impact the following 21 existing
 Manifests, for a saving of nearly 900KiB::
 
   Size   Path

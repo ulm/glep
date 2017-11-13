@@ -16,7 +16,7 @@ Replaces: 4
 Status
 ======
 
-Implemented. GLEP amended on 09 Feb 2006 to add the final bullet point to
+Implemented. GLEP amended on 2006-02-09 to add the final bullet point to
 list B in `Specification`_.
 
 Abstract
