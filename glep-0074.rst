@@ -89,8 +89,8 @@ for a single directory. The sub-Manifest can only cover the files inside
 the directory tree where it resides.
 
 The sub-Manifest can also be signed using OpenPGP armored cleartext
-format. However, the signature verification can be omitted if it is
-covered by a signed top-level Manifest.
+format. However, the signature verification can be omitted since it
+already is covered by the signed top-level Manifest.
 
 
 Directory tree coverage
