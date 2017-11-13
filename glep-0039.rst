@@ -166,42 +166,42 @@ Rationale
 So, does this proposal solve any of the previously-mentioned problems?  
 
 1. There is no longer any requirement that the project structure be
-complete.  Some devs work on very specific parts of the tree, while
-some work on practically everything; neither should be shoehorned into
-an ad-hoc project structure.  Moreover, it should be easy to create new
-projects where needed (and remove them when they are not), which this
-proposal should enable.
+   complete.  Some devs work on very specific parts of the tree, while
+   some work on practically everything; neither should be shoehorned into
+   an ad-hoc project structure.  Moreover, it should be easy to create new
+   projects where needed (and remove them when they are not), which this
+   proposal should enable.
 
 2. By having the members choose their project leads periodically, the
-project leads are necessarily at least somewhat responsible (and hopefully
-responsive) to the project members.  This proposal has removed the list of
-responsibilities that project leads were supposed to satisfy, since hardly
-anybody has ever looked at the original list since it was written.  Instead
-the practical responsibility of a lead is "whatever the members require", and
-if that isn't satisfied, the members can get a new lead (if they can find
-somebody to take the job!).
+   project leads are necessarily at least somewhat responsible (and
+   hopefully responsive) to the project members.  This proposal has
+   removed the list of responsibilities that project leads were supposed
+   to satisfy, since hardly anybody has ever looked at the original list
+   since it was written.  Instead the practical responsibility of a lead
+   is "whatever the members require", and if that isn't satisfied, the
+   members can get a new lead (if they can find somebody to take the job!).
 
 3. If the council does a lousy job handling global issues (or has no
-global vision), vote out the bums.  
+   global vision), vote out the bums.
 
 4. Since everybody gets to vote for the council members, at least in
-principle the council members represent all developers, not just a
-particular subset.
+   principle the council members represent all developers, not just a
+   particular subset.
 
 5. An appeal process should make disciplinary enforcement both less
-capricious and more palatable.
+   capricious and more palatable.
 
-6. This proposal doesn't help find inactive devs or projects.  It
-really should not be that much of a problem.  We already have a script for
-identifying devs who haven't made a CVS commit within a certain period of
-time.  As for moribund projects, if the project page isn't maintained, it's
-dead, and we should remove it.  That, too, could be automated.  A much bigger
-problem is understaffed herds, but more organization is not necessarily a
-solution.
+6. This proposal doesn't help find inactive devs or projects.  It really
+   should not be that much of a problem.  We already have a script
+   for identifying devs who haven't made a CVS commit within a certain
+   period of time.  As for moribund projects, if the project page isn't
+   maintained, it's dead, and we should remove it.  That, too, could be
+   automated.  A much bigger problem is understaffed herds, but more
+   organization is not necessarily a solution.
 
 7. The metabug project is a great idea.  Let's do that!  Adding a useful
-project shouldn't require "metastructure reform", although with the
-current system it does.  With this proposal it wouldn't.
+   project shouldn't require "metastructure reform", although with the
+   current system it does.  With this proposal it wouldn't.
 
 8. This proposal has nothing to say about GLEPs.
 
