@@ -342,9 +342,11 @@ the compression and decompress Manifests transparently. The exact list
 of algorithms and their corresponding suffixes are outside the scope
 of this specification.
 
-Whenever this specification refers to top-level Manifest file,
-the implementation should account for compressed variants of this file
-with appropriate suffixes (e.g. ``Manifest.gz``).
+The top-level Manifest file must not be compressed. Since the OpenPGP
+signature covers the uncompressed text and is compressed itself,
+the data would have to be decompressed without any prior verification.
+This could expose users e.g. to zip bombs or exploits on decompressor
+vulnerabilities.
 
 Whenever this specification refers to sub-Manifests, they can use any
 names but are also required to use a specific compression suffix.
@@ -721,6 +723,23 @@ The support for Manifest compression is introduced with minimal changes
 to the file format. The ``MANIFEST`` entries are required to provide
 the real (compressed) file path for compatibility with other file
 entries and to avoid confusion.
+
+The compression of top-level Manifest file has been prohibited
+as the specification currently does not provide any means of verifying
+the file prior to decompression. This would make it possibly for
+a malicious third party to provide a compressed Manifest exposing
+decompressor vulnerabilities, or being a zip bomb, and the tooling
+would have to unpack it before being able to verify the contents.
+
+The OpenPGP cleartext signature covers the contents of the Manifest,
+and is therefore compressed along with them. The possibility of using
+detached signature has been considered but it was rejected as
+unnecessary complexity for minor gain.
+
+Technically, a similar result could be effected via moving all the data
+into a compressed sub-Manifest in the top directory (e.g.
+``Manifest.sub.gz``), and including a ``MANIFEST`` entry for this file
+in a signed, uncompressed top-level Manifest.
 
 The existence of additional entries for uncompressed Manifest checksums
 was debated. However, plain entries for the uncompressed file would
