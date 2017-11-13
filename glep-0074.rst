@@ -162,7 +162,7 @@ for which the verification failed.
 Timestamp verification
 ----------------------
 
-The Manifest file can contain a ``TIMESTAMP`` entry to account
+The top-level Manifest file can contain a ``TIMESTAMP`` entry to account
 for attacks against tree update distribution. If such an entry
 is present, it should be updated every time at least one
 of the Manifests changes. Every unique timestamp value must correspond
@@ -180,6 +180,11 @@ using a secure channel from a trusted source for exact comparison.
 The exact details of such a solution are outside the scope of this
 specification.
 
+``TIMESTAMP`` entries may also be present in sub-Manifests. Those
+timestamps must not be newer than the timestamp of the top-level
+Manifest (if present). This specification does not define any specific
+use for them.
+
 
 Modern Manifest tags
 --------------------
@@ -190,10 +195,9 @@ The Manifest files can specify the following tags:
   Specifies a timestamp of when the Manifest file was last updated.
   The timestamp must be a valid second-precision ISO8601 extended format
   combined date and time in UTC timezone, i.e. using the following
-  ``strftime()`` format string: ``%Y-%m-%dT%H:%M:%SZ``. Optionally used
-  in the top-level Manifest file. The package manager can use it
-  to detect an outdated repository checkout as described in `Timestamp
-  verification`_.
+  ``strftime()`` format string: ``%Y-%m-%dT%H:%M:%SZ``. Optional.
+  The package manager can use it to detect an outdated repository
+  checkout as described in `Timestamp verification`_.
 
 ``MANIFEST <path> <size> <checksums>...``
   Specifies a sub-Manifest. The sub-Manifest must be verified like
@@ -604,6 +608,9 @@ Furthermore, some of the timestamp files are added very late
 in the distribution process, past the Manifest generation phase. Those
 files will most likely receive ``IGNORE`` entries and therefore
 be not suitable to safe use.
+
+The specification permits additional timestamps in sub-Manifest files
+for local use. A generic testing tool should ignore them.
 
 
 New vs deprecated tags
