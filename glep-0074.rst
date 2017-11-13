@@ -8,8 +8,8 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2017-10-21
-Last-Modified: 2017-11-06
-Post-History: 2017-10-26
+Last-Modified: 2017-11-16
+Post-History: 2017-10-26, 2017-11-16
 Content-Type: text/x-rst
 Requires: 59, 61
 Replaces: 44, 58, 60
@@ -363,6 +363,34 @@ their compressed counterparts, and multiple compressed formats
 to coexist. If that is the case, the files must have the same
 uncompressed content and the specification is free to choose either
 of the files using the same base name.
+
+
+Combining multiple Manifest trees (informational)
+-------------------------------------------------
+
+This specification permits nesting multiple hierarchical Manifest trees.
+In this layout, the specific directories of the Manifest tree can
+be verified both as a part of another top-level Manifest,
+and as an independent Manifest tree (when obtained without the parent
+directory).
+
+For this to work, the sub-Manifest file in the directory must also
+satisfy the requirements for the top-level Manifest file. That is:
+
+- it must be named ``Manifest`` and not compressed,
+
+- it must cover all the files in this directory and its subdirectories
+  (i.e. no files from the directory tree can be covered by parent
+  Manifest),
+
+- if authenticity verification is desired, it must be OpenPGP-signed.
+
+It should be noted that if such a directory is a subdirectory of a valid
+Manifest tree, the sub-Manifest needs to be valid according
+to the top-level Manifest and the OpenPGP signature is disregarded
+as detailed in `Manifest file locations and nesting`_. The top-level
+behavior is exhibited only when the directory is obtained without parent
+directories.
 
 
 An example Manifest file (informational)
@@ -792,7 +820,7 @@ for the ``Manifest`` file in every package directory:
 
 - all ``.ebuild`` files need to use the ``EBUILD`` tag,
 
-` the ``metadata.xml`` and ``ChangeLog`` files need to use
+- the ``metadata.xml`` and ``ChangeLog`` files need to use
   the ``MISC`` tag,
 
 - the Manifest can be signed to provide authenticity verification,
