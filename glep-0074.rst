@@ -72,6 +72,8 @@ Unless specified otherwise, the paths used in the Manifest files
 are relative to the directory containing the Manifest file. The paths
 must not reference the parent directory (``..``).
 
+The Manifest files use UTF-8 encoding.
+
 
 Manifest file locations and nesting
 -----------------------------------
