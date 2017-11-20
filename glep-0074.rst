@@ -132,6 +132,13 @@ are not otherwise ignored reside on a different filesystem, or symbolic
 links point to targets on a different filesystem, they must
 be explicitly excluded via ``IGNORE``.
 
+All paths specified in the Manifest file must consist of characters
+corresponding to valid UTF-8 code points excluding the NULL character
+(``U+0000``) and characters classified as whitespace in the current
+version of the Unicode standard [#UNICODE]_. It is an error to use
+Manifest files in directories containing files whose names contain
+the disallowed characters.
+
 
 File verification
 -----------------
@@ -542,6 +549,45 @@ In particular, tools might then claim that a file does not exist when
 it clearly does because it was skipped due to filesystem boundaries.
 
 
+Filename character set restriction
+----------------------------------
+
+The valid set of filename characters for the Gentoo repository
+is restricted by the devmanual 'File Naming Rules' section
+[#FILE-NAMING-RULES]_, and enforced via a git hook. The valid distfile
+names are not restricted explicitly -- however, the PMS dependency
+specification syntax [#PMS-FETCH]_ implicitly makes it impossible to use
+filenames containing whitespace.
+
+This specification aims to avoid arbitrary restrictions. For this
+reason, the filename characters are only restricted by excluding two
+technically problematic groups:
+
+1. The NULL character (``U+0000``) is normally used to indicate the end
+   of a null-terminated string. Its use could therefore break programs
+   written using C. Furthermore, it is not allowed in any known
+   filesystem.
+
+2. The whitespace characters are used to separate Manifest fields. While
+   technically it would be enough to restrict space (``U+0020``)
+   character that is normally used as the separator, all whitespace
+   characters are forbidden to avoid confusion and implementation
+   errors.
+
+While the specification could be extended to allow such filenames
+by using some form of escaping, there is currently no apparent need
+for such a feature.
+
+Historically, Portage attempted to overcome the whitespace limitation
+by attempting to locate the size field and take everything before it
+as filename. This was terribly fragile and even if it worked, it would
+solve the problem only partially.
+
+Since the same restrictions apply to ``IGNORE`` rules, it is currently
+not possible to either list or ignore the file using whitespace
+characters. Therefore, the presence of such files is forbidden entirely.
+
+
 File verification model
 -----------------------
 
@@ -880,9 +926,15 @@ References
 .. [#GLEP61] GLEP 61: Manifest2 compression
    (https://www.gentoo.org/glep/glep-0061.html)
 
+.. [#UNICODE] The Unicode standard
+   (https://unicode.org/versions/latest/)
+
 .. [#PMS-FETCH] Package Manager Specification: Dependency Specification
    Format - SRC_URI
    (https://projects.gentoo.org/pms/6/pms.html#x1-940008.2.10)
+
+.. [#FILE-NAMING-RULES] Ebuild File Format -- Gentoo Development Guide
+   (https://devmanual.gentoo.org/ebuild-writing/file-format/#file-naming-rules)
 
 .. [#MD5] RFC1321: The MD5 Message-Digest Algorithm
    (https://www.ietf.org/rfc/rfc1321.txt)
