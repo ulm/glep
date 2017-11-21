@@ -134,10 +134,11 @@ be explicitly excluded via ``IGNORE``.
 
 All paths specified in the Manifest file must consist of characters
 corresponding to valid UTF-8 code points excluding the NULL character
-(``U+0000``) and characters classified as whitespace in the current
-version of the Unicode standard [#UNICODE]_. It is an error to use
-Manifest files in directories containing files whose names contain
-the disallowed characters.
+(``U+0000``), the backwards slash (``\``) and characters classified
+as whitespace in the current version of the Unicode standard
+[#UNICODE]_. It is an error to use Manifest files in directories
+containing files whose names contain the disallowed characters.
+The forward slash (``/``) must be used as path separator.
 
 
 File verification
@@ -570,7 +571,14 @@ technically problematic groups:
    written using C. Furthermore, it is not allowed in any known
    filesystem.
 
-2. Whitespace characters are used to separate Manifest fields
+2. The backwards slash character (``\``) is frequently used as an escape
+   character, in particular in the languages derived from C and in shell
+   script. Furthermore, it is used as path separator on Windows systems.
+   It is forbidden to avoid implementation mistakes (in particular,
+   attempting to use it to escape whitespace or as path separator
+   on Windows) but also reserved for possible future extension.
+
+3. Whitespace characters are used to separate Manifest fields
    and entries. While technically it would be enough to restrict space
    (``U+0020``) character that is normally used as the separator
    and newline (``U+000A``) character that is used to separate lines,
