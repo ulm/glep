@@ -181,7 +181,8 @@ During the verification process, the client should compare the timestamp
 against the update time obtained from a local clock or a trusted time
 source. If the comparison result indicates that the Manifest at the time
 of receiving was already significantly outdated, the client should
-either fail the verification or require manual confirmation from user.
+either fail the verification or require manual confirmation from
+the user.
 
 Furthermore, the Manifest provider may employ additional methods
 of distributing the timestamps of recently generated Manifests
@@ -202,11 +203,11 @@ The Manifest files can specify the following tags:
 
 ``TIMESTAMP <iso8601>``
   Specifies a timestamp of when the Manifest file was last updated.
-  The timestamp must be a valid second-precision ISO8601 extended format
-  combined date and time in UTC timezone, i.e. using the following
-  ``strftime()`` format string: ``%Y-%m-%dT%H:%M:%SZ``. Optional.
-  The package manager can use it to detect an outdated repository
-  checkout as described in `Timestamp verification`_.
+  The timestamp must be a valid second-precision ISO 8601 extended
+  format combined date and time in UTC timezone, i.e. using
+  the following ``strftime()`` format string: ``%Y-%m-%dT%H:%M:%SZ``.
+  Optional. The package manager can use it to detect an outdated
+  repository checkout as described in `Timestamp verification`_.
 
 ``MANIFEST <path> <size> <checksums>...``
   Specifies a sub-Manifest. The sub-Manifest must be verified like
@@ -218,7 +219,8 @@ The Manifest files can specify the following tags:
   Ignores a subdirectory or file from Manifest checks. If the specified
   path is present, it and its contents are omitted from the Manifest
   verification (always pass). *Path* must be a plain file or directory
-  path without a trailing slash, and must not contain wildcards.
+  path without a trailing slash. Wildcards are not supported
+  and wildcard characters are interpreted literally.
 
 ``DATA <path> <size> <checksums>...``
   Specifies a regular file subject to Manifest verification. The file
@@ -250,7 +252,7 @@ allowed at the package directory level:
 
 ``AUX <filename> <size> <checksums>...``
   Equivalent to the ``DATA`` type, except that the filename is relative
-  to ``files/`` subdirectory.
+  to the ``files/`` subdirectory.
 
 
 Algorithm for full-tree verification
@@ -267,9 +269,9 @@ can be used:
    from the *present* set.
 
 3. Process all ``MANIFEST`` entries, recursively. Verify the Manifest
-   files according to `file verification`_ section, and include their
-   entries in the current Manifest entry list (using paths relative
-   to directories containing the Manifests).
+   files according to the `file verification`_ section, and include
+   their entries in the current Manifest entry list (using paths
+   relative to directories containing the Manifests).
 
 4. Process all ``IGNORE`` entries. Remove any paths matching them
    from the *present* set.
@@ -277,12 +279,12 @@ can be used:
 5. Collect all files covered by ``DATA``, ``MISC``, ``EBUILD``
    and ``AUX`` entries into the *covered* set.
 
-6. Verify the entries in *covered* set for incompatible duplicates
+6. Verify the entries in the *covered* set for incompatible duplicates
    and collisions with ignored files as explained in `Manifest file
    locations and nesting`_.
 
 7. Verify all the files in the union of the *present* and *covered*
-   sets, according to `file verification`_ section.
+   sets, according to the `file verification`_ section.
 
 
 Algorithm for finding parent Manifests
@@ -299,7 +301,7 @@ the following algorithm can be used:
 
 3. If the current directory contains a ``Manifest`` file:
 
-   a. If a ``IGNORE`` entry in the ``Manifest`` file covers
+   a. If an ``IGNORE`` entry in the ``Manifest`` file covers
       the *original* directory (or one of the parent directories), stop.
 
    b. Otherwise, store the current directory as *last_found*.
@@ -560,7 +562,7 @@ specification syntax [#PMS-FETCH]_ implicitly makes it impossible to use
 filenames containing whitespace.
 
 This specification aims to avoid arbitrary restrictions. For this
-reason, the filename characters are only restricted by excluding two
+reason, filename characters are only restricted by excluding two
 technically problematic groups:
 
 1. The NULL character (``U+0000``) is normally used to indicate the end
@@ -568,7 +570,7 @@ technically problematic groups:
    written using C. Furthermore, it is not allowed in any known
    filesystem.
 
-2. The whitespace characters are used to separate Manifest fields. While
+2. Whitespace characters are used to separate Manifest fields. While
    technically it would be enough to restrict space (``U+0020``)
    character that is normally used as the separator, all whitespace
    characters are forbidden to avoid confusion and implementation
@@ -628,7 +630,7 @@ Two arguments were mentioned for the usefulness of a ``MISC`` type:
 1. being able to reduce the checkout size by stripping unnecessary
    files out, and
 
-2. being able to run update automatically generated files locally
+2. being able to update automatically generated files locally
    without causing unnecessary verification failures.
 
 However, the usefulness of ``MISC`` in both cases is doubtful.
@@ -675,7 +677,7 @@ should provide an ability to obtain the timestamps of all Manifests
 from a recent timeframe over a secure channel from a trusted source
 for comparison.
 
-Strictly speaking, this information is already provided by the various
+Strictly speaking, this information is provided by the various
 ``metadata/timestamp*`` files that are already present. However,
 including the value in the Manifest itself has a little cost
 and provides the ability to perform the verification stand-alone.
@@ -817,7 +819,7 @@ exposes decompressor vulnerabilities, or a zip bomb.
 
 The OpenPGP cleartext signature covers the contents of the Manifest,
 and is therefore compressed along with them. The possibility of using
-detached signature has been considered but it was rejected as
+a detached signature has been considered but it was rejected as
 unnecessary complexity for minor gain.
 
 Technically, a similar result could be effected via moving all the data
@@ -829,8 +831,8 @@ The existence of additional entries for uncompressed Manifest checksums
 was debated. However, plain entries for the uncompressed file would
 be confusing if only the compressed file existed, and conflicting
 if both uncompressed and compressed variants existed. Furthermore,
-it has been pointed out that ``DIST`` entries do not have uncompressed
-variant either.
+it has been pointed out that ``DIST`` entries do not have
+an uncompressed variant either.
 
 
 Performance considerations
@@ -962,11 +964,12 @@ References
    (https://www2.cs.arizona.edu/stork/packagemanagersecurity/attacks-on-package-managers.html)
 
 .. [#DIST] According to Robin H. Johnson, 8.4% of all DIST entries
-   at the time of writing are duplicate, representing a 2 MiB
+   at the time of writing are duplicate, representing 2 MiB
    out of 25 MiB of DIST entries altogether.
 
 .. [#GEMATO] gemato: Gentoo Manifest Tool
    (https://github.com/mgorny/gemato/)
+
 
 Copyright
 =========
