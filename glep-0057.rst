@@ -44,19 +44,19 @@ number of security shortcomings. The last discussion on the gentoo-dev
 mailing list [http://thread.gmane.org/gmane.linux.gentoo.devel/38363]
 contains a good overview of most of the issues. Summarized here:
 
- - Unverifiable executable code distributed:
-   The most obvious instance are eclasses, but there are many other bits
-   of the tree that are not signed at all right now. Modifying that data
-   is trivial.
- - Shortcomings of existing Manifest verification
-   A lack and enforcement of policies, combined with suboptimal support
-   in portage, makes it trivial to modify or replace the existing
-   Manifests. 
- - Vulnerability of existing infrastructure to attacks.
-   The previous two items make it possible for a skilled attacker to
-   design an attack and then execute it against specific portions of
-   existing infrastructure (e.g.: Compromise a country-local rsync
-   mirror, and totally replace a package and its Manifest).
+- Unverifiable executable code distributed:
+  The most obvious instance are eclasses, but there are many other bits
+  of the tree that are not signed at all right now. Modifying that data
+  is trivial.
+- Shortcomings of existing Manifest verification.
+  A lack and enforcement of policies, combined with suboptimal support
+  in portage, makes it trivial to modify or replace the existing
+  Manifests.
+- Vulnerability of existing infrastructure to attacks.
+  The previous two items make it possible for a skilled attacker to
+  design an attack and then execute it against specific portions of
+  existing infrastructure (e.g.: Compromise a country-local rsync
+  mirror, and totally replace a package and its Manifest).
 
 Specification
 =============
@@ -67,18 +67,19 @@ previous shortcomings.
 System Elements
 ---------------
 There are a few entities to be considered:
- - Upstream. The people who provide the program(s) or data we wish to
-   distribute.
- - Gentoo Developers. The people that package and test the things
-   provided by Upstream.
- - Gentoo Infrastructure. The people and hardware that allow the revision
-   control of metadata and distribution of the data and metadata provided
-   by Developers and Upstream.
- - Gentoo Mirrors. Hardware provided by external contributors that is not
-   or only marginally controlled by Gentoo Infrastructure. Needed to
-   achieve the scalability and performance needed for the substantial
-   Gentoo user base.
- - Gentoo Users. The people that use the Gentoo MetaDistribution.
+
+- Upstream. The people who provide the program(s) or data we wish to
+  distribute.
+- Gentoo Developers. The people that package and test the things
+  provided by Upstream.
+- Gentoo Infrastructure. The people and hardware that allow the revision
+  control of metadata and distribution of the data and metadata provided
+  by Developers and Upstream.
+- Gentoo Mirrors. Hardware provided by external contributors that is not
+  or only marginally controlled by Gentoo Infrastructure. Needed to
+  achieve the scalability and performance needed for the substantial
+  Gentoo user base.
+- Gentoo Users. The people that use the Gentoo MetaDistribution.
 
 The data described here is usually programs and data files provided by
 upstream; as this is a rather large amount of data it is usually
@@ -102,10 +103,10 @@ Processes
 There are two major processes in the distribution of Gentoo, where
 security needs to be implemented:
 
- - Developer commits to version control systems controlled by
-   Infrastructure.
- - Tree and distfile distribution from Infrastructure to Users, via the
-   mirrors (this includes both HTTP and rsync distribution).
+- Developer commits to version control systems controlled by
+  Infrastructure.
+- Tree and distfile distribution from Infrastructure to Users, via the
+  mirrors (this includes both HTTP and rsync distribution).
 
 Both processes need their security improved. In [GLEPxx2] we will discuss
 how to improve the security of the first process. The relatively
