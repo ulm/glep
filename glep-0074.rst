@@ -570,11 +570,12 @@ technically problematic groups:
    written using C. Furthermore, it is not allowed in any known
    filesystem.
 
-2. Whitespace characters are used to separate Manifest fields. While
-   technically it would be enough to restrict space (``U+0020``)
-   character that is normally used as the separator, all whitespace
-   characters are forbidden to avoid confusion and implementation
-   errors.
+2. Whitespace characters are used to separate Manifest fields
+   and entries. While technically it would be enough to restrict space
+   (``U+0020``) character that is normally used as the separator
+   and newline (``U+000A``) character that is used to separate lines,
+   all whitespace characters are forbidden to avoid confusion
+   and implementation errors.
 
 While the specification could be extended to allow such filenames
 by using some form of escaping, there is currently no apparent need
