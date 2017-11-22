@@ -70,7 +70,8 @@ other space-separated values.
 
 Unless specified otherwise, the paths used in the Manifest files
 are relative to the directory containing the Manifest file. The paths
-must not reference the parent directory (``..``).
+must not reference the parent directory (``..``). Forward slash (``/``)
+is used as path component separator.
 
 The Manifest files use UTF-8 encoding.
 
@@ -132,13 +133,35 @@ are not otherwise ignored reside on a different filesystem, or symbolic
 links point to targets on a different filesystem, they must
 be explicitly excluded via ``IGNORE``.
 
-All paths specified in the Manifest file must consist of characters
+
+Path and filename encoding
+--------------------------
+
+The path fields in the Manifest file must consist of characters
 corresponding to valid UTF-8 code points excluding the NULL character
 (``U+0000``), the backwards slash (``\``) and characters classified
 as whitespace in the current version of the Unicode standard
-[#UNICODE]_. It is an error to use Manifest files in directories
-containing files whose names contain the disallowed characters.
-The forward slash (``/``) must be used as path separator.
+[#UNICODE]_.
+
+Any of the excluded characters that are present in path must be encoded
+using one of the following escape sequences:
+
+- characters in the ``U+0000`` to ``U+007F`` range can be encoded
+  as ``\xHH`` where ``HH`` specifies the zero-padded, hexadecimal
+  character code,
+
+- characters in the ``U+0000`` to ``U+FFFF`` range can be encoded
+  as ``\uHHHH`` where ``HHHH`` specifies the zero-padded, hexadecimal
+  character code,
+
+- characters in the UCS-4 range can be encoded as ``\UHHHHHHHH``
+  where ``HHHHHHHH`` specifies the zero-padded, hexadecimal character
+  code.
+
+It is invalid for backwards slash to be used in any other context,
+and a backwards slash present in filename must be encoded. Backwards
+slash used as path component separator should be replaced by forward
+slash instead.
 
 
 File verification
@@ -563,7 +586,7 @@ specification syntax [#PMS-FETCH]_ implicitly makes it impossible to use
 filenames containing whitespace.
 
 This specification aims to avoid arbitrary restrictions. For this
-reason, filename characters are only restricted by excluding two
+reason, filename characters are only restricted by excluding three
 technically problematic groups:
 
 1. The NULL character (``U+0000``) is normally used to indicate the end
@@ -571,12 +594,10 @@ technically problematic groups:
    written using C. Furthermore, it is not allowed in any known
    filesystem.
 
-2. The backwards slash character (``\``) is frequently used as an escape
-   character, in particular in the languages derived from C and in shell
-   script. Furthermore, it is used as path separator on Windows systems.
-   It is forbidden to avoid implementation mistakes (in particular,
-   attempting to use it to escape whitespace or as path separator
-   on Windows) but also reserved for possible future extension.
+2. The backwards slash character (``\``) is used as path separator
+   on Windows systems, so it's extremely unlikely to be used in real
+   filenames. For this reason it is used to implement character
+   encoding with minimal risk of breaking backwards compatibility.
 
 3. Whitespace characters are used to separate Manifest fields
    and entries. While technically it would be enough to restrict space
@@ -585,18 +606,34 @@ technically problematic groups:
    all whitespace characters are forbidden to avoid confusion
    and implementation errors.
 
-While the specification could be extended to allow such filenames
-by using some form of escaping, there is currently no apparent need
-for such a feature.
-
 Historically, Portage attempted to overcome the whitespace limitation
 by attempting to locate the size field and take everything before it
 as filename. This was terribly fragile and even if it worked, it would
 solve the problem only partially.
 
-Since the same restrictions apply to ``IGNORE`` rules, it is currently
-not possible to either list or ignore the file using whitespace
-characters. Therefore, the presence of such files is forbidden entirely.
+The character encoding method provides means to overcome the character
+restrictions to extend the tool usability beyond immediate Gentoo uses.
+The backslash escape form based on Python unicode strings is used
+since it can encode all characters within the Unicode range, the syntax
+is familiar to many programmers and the backwards slash character
+is extremely unlikely to appear in real filenames.
+
+Syntax is limited to the minimum necessary to implement the encoding.
+Shorthand forms (e.g. ``\t`` or ``\\``) are omitted to avoid unnecessary
+complexity, and to reduce the risk of shell users using backslash
+to escape space directly. The ``\x`` form is limited to ``\x00..\x7F``
+range to avoid ambiguity of higher values which might be interpreted
+either as UCS-2 code points or part of a UTF-8 encoded character.
+
+Encoding stores UCS-2/UCS-4 characters directly rather than hex-encoded
+UTF-8 string to simplify the implementation. In particular, it makes it
+possible to process the Manifest file as UTF-8 encoded text without
+having to perform additional UTF-8 decoding (and verification)
+of the escaped data.
+
+URL-encoding was considered as an alternative. However, it could collide
+with ``DIST`` entries that are implicitly named after the URL filename
+part where URL-encoding is pretty common.
 
 
 File verification model
