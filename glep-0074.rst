@@ -163,6 +163,10 @@ and a backwards slash present in filename must be encoded. Backwards
 slash used as path component separator should be replaced by forward
 slash instead.
 
+The encoding can be used for other characters as well. In particular,
+escaping control characters is recommended to ensure that the file
+works correctly in text editors.
+
 
 File verification
 -----------------
