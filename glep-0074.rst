@@ -115,8 +115,8 @@ Manifest entries, if and only if the entries have the same semantics,
 specify the same size and the checksums common to both entries match.
 It is an error for a single file to be matched by multiple entries
 of different semantics, file size or checksum values. It is an error
-to specify another entry for a file matching ``IGNORE``, or one of its
-subdirectories.
+to specify another entry for a file that matches ``IGNORE``, or that
+is located inside an ignored directory.
 
 The file entries (except for ``IGNORE``) can be specified for regular
 files only. Symbolic links are followed when opening files
