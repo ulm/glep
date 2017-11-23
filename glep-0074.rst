@@ -142,8 +142,15 @@ corresponding to valid UTF-8 code points excluding the backwards slash
 (``\``) and characters classified as control characters and whitespace
 in the current version of the Unicode standard [#UNICODE]_.
 
-Any of the excluded characters that are present in path must be encoded
-using one of the following escape sequences:
+The implementation can optionally support extended filename encoding
+to support those paths. If the encoding is not supported,
+the implementation must reject directories containing any files using
+non-compliant names, as well as Manifest files whose filename field
+contains such filenames.
+
+If the encoding is supported, then all of the excluded characters that
+are present in path must be encoded using one of the following escape
+sequences:
 
 - characters in the ``U+0000`` to ``U+007F`` range can be encoded
   as ``\xHH`` where ``HH`` specifies the zero-padded, hexadecimal
@@ -614,6 +621,13 @@ Historically, Portage attempted to overcome the whitespace limitation
 by attempting to locate the size field and take everything before it
 as filename. This was terribly fragile and even if it worked, it would
 solve the problem only partially.
+
+To preserve compatibility with the current implementations and given
+that all of the listed characters are not allowed for the foreseeable
+Gentoo uses, the extended encoding support is optional. If such support
+is not provided, the implementation must unconditionally reject any
+such files. Ignoring them implicitly would be confusing, and it is
+not possible to use them in explicit ``IGNORE`` entries.
 
 The character encoding method provides means to overcome the character
 restrictions to extend the tool usability beyond immediate Gentoo uses.
