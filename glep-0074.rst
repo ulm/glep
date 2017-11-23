@@ -138,10 +138,9 @@ Path and filename encoding
 --------------------------
 
 The path fields in the Manifest file must consist of characters
-corresponding to valid UTF-8 code points excluding the NULL character
-(``U+0000``), the backwards slash (``\``) and characters classified
-as whitespace in the current version of the Unicode standard
-[#UNICODE]_.
+corresponding to valid UTF-8 code points excluding the backwards slash
+(``\``) and characters classified as control characters and whitespace
+in the current version of the Unicode standard [#UNICODE]_.
 
 Any of the excluded characters that are present in path must be encoded
 using one of the following escape sequences:
@@ -164,8 +163,7 @@ slash used as path component separator should be replaced by forward
 slash instead.
 
 The encoding can be used for other characters as well. In particular,
-escaping control characters is recommended to ensure that the file
-works correctly in text editors.
+escaping non-printable characters might be desirable.
 
 
 File verification
@@ -593,15 +591,17 @@ This specification aims to avoid arbitrary restrictions. For this
 reason, filename characters are only restricted by excluding three
 technically problematic groups:
 
-1. The NULL character (``U+0000``) is normally used to indicate the end
-   of a null-terminated string. Its use could therefore break programs
-   written using C. Furthermore, it is not allowed in any known
-   filesystem.
-
-2. The backwards slash character (``\``) is used as path separator
+1. The backwards slash character (``\``) is used as path separator
    on Windows systems, so it's extremely unlikely to be used in real
    filenames. For this reason it is used to implement character
    encoding with minimal risk of breaking backwards compatibility.
+
+2. The control characters can trigger special behavior in various
+   programs and confuse them from recognizing text files. In particular,
+   the NULL character (``U+0000``) is normally used to indicate the end
+   of a null-terminated string. Its use could therefore break
+   implementations written in the C language. Other control characters
+   could trigger various formatting routines, garbling text output.
 
 3. Whitespace characters are used to separate Manifest fields
    and entries. While technically it would be enough to restrict space
