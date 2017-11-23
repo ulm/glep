@@ -8,7 +8,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2017-10-21
-Last-Modified: 2017-11-16
+Last-Modified: 2017-11-23
 Post-History: 2017-10-26, 2017-11-16
 Content-Type: text/x-rst
 Requires: 59, 61
@@ -139,17 +139,16 @@ Path and filename encoding
 
 The path fields in the Manifest file must consist of characters
 corresponding to valid UTF-8 code points excluding the backwards slash
-(``\``) and characters classified as control characters and whitespace
+(``\``) and characters classified as control characters or as whitespace
 in the current version of the Unicode standard [#UNICODE]_.
 
 The implementation can optionally support extended filename encoding
-to support those paths. If the encoding is not supported,
-the implementation must reject directories containing any files using
-non-compliant names, as well as Manifest files whose filename field
-contains such filenames.
+to support those paths. If encoding is not supported, the implementation
+must reject directories containing any files using non-compliant names,
+as well as Manifest files whose filename field contains such filenames.
 
-If the encoding is supported, then all of the excluded characters that
-are present in path must be encoded using one of the following escape
+If encoding is supported, then all of the excluded characters that
+are present in paths must be encoded using one of the following escape
 sequences:
 
 - characters in the ``U+0000`` to ``U+007F`` range can be encoded
@@ -164,9 +163,9 @@ sequences:
   where ``HHHHHHHH`` specifies the zero-padded, hexadecimal character
   code.
 
-It is invalid for backwards slash to be used in any other context,
-and a backwards slash present in filename must be encoded. Backwards
-slash used as path component separator should be replaced by forward
+It is invalid for the backwards slash to be used in any other context,
+and a backwards slash present in filename must be encoded. A backwards
+slash used as a path component separator should be replaced by a forward
 slash instead.
 
 The encoding can be used for other characters as well. In particular,
@@ -624,7 +623,7 @@ solve the problem only partially.
 
 To preserve compatibility with the current implementations and given
 that all of the listed characters are not allowed for the foreseeable
-Gentoo uses, the extended encoding support is optional. If such support
+Gentoo uses, extended encoding support is optional. If such support
 is not provided, the implementation must unconditionally reject any
 such files. Ignoring them implicitly would be confusing, and it is
 not possible to use them in explicit ``IGNORE`` entries.
