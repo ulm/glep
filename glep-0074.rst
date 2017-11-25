@@ -8,7 +8,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2017-10-21
-Last-Modified: 2017-11-23
+Last-Modified: 2017-11-25
 Post-History: 2017-10-26, 2017-11-16
 Content-Type: text/x-rst
 Requires: 59, 61
@@ -434,6 +434,29 @@ to the top-level Manifest and the OpenPGP signature is disregarded
 as detailed in `Manifest file locations and nesting`_. The top-level
 behavior is exhibited only when the directory is obtained without parent
 directories.
+
+
+Package manager integration (informational)
+-------------------------------------------
+
+A package manager supporting full-tree Manifest verification should
+enable it by default when using the Gentoo repository via rsync,
+and require every location affecting its operation to verify
+successfully before using it.
+
+Full-tree verification can only be disabled explicitly by the user
+(e.g. using configuration files). For security reasons, the package
+manager must not ever attempt to disable it based on any data from
+the repository. In particular, it is wrong to control it via
+``metadata/layout.conf`` or based on the presence of top-level Manifest,
+as it allows a malicious third-party to easily bypass verification.
+
+Furthermore, none of the files present in the repository can be
+processed before being verified against the Manifest files. This
+includes ``metadata/layout.conf`` and ``profiles/repo_name`` files.
+If the top-level Manifest is not present or those files do not pass
+verification, the package manager with full-tree verification enabled
+must reject the repository immediately.
 
 
 An example Manifest file (informational)
