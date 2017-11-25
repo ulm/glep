@@ -353,8 +353,8 @@ up to and including the *original* directory. Note that those
 sub-Manifests can use different filenames than ``Manifest``.
 
 
-Checksum algorithms
--------------------
+Checksum algorithms (informational)
+-----------------------------------
 
 This section is informational only. Specifying the exact set
 of supported algorithms is outside the scope of this specification.
