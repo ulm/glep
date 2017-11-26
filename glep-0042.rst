@@ -179,7 +179,9 @@ form ``yyyy-mm-dd-short-name``, where ``yyyy`` is the year (e.g. ``2005``),
 ``mm`` is the month (``01`` through ``12``) and dd is the day of the month
 (``01`` through ``31``). The ``short-name`` is a very short name describing the
 news item (e.g. ``yoursql-updates``), consisting only of the characters ``a-z``,
-``0-9``, ``+`` (plus), ``-`` (hyphen) and ``_`` (underscore).
+``0-9``, ``+`` (plus), ``-`` (hyphen) and ``_`` (underscore). While there
+is no hard restriction for the length of ``short-name``, it is strongly
+recommended to limit it to at most 20 characters.
 
 News Item Directories
 ---------------------
@@ -191,8 +193,8 @@ The directory will contain a file named ``yyyy-mm-dd-short-name.en.txt``, which
 contains the text of the news item, in English, in the format described below.
 
 If a news item is translated, other files named ``yyyy-mm-dd-short-name.xx.txt``
-(where ``xx`` is the ISO 639 [#iso-639]_ two letter language code, and the date
-remains the same as the original news item) will also be provided. However, only
+(where ``xx`` is a valid IETF language tag [#bcp-47]_, and the date remains
+the same as the original news item) will also be provided. However, only
 the English version of a news item is authoritative.  This anglocentricity is
 justified by precedent [#glep-34]_.
 
@@ -475,6 +477,8 @@ Example Files
 References
 ==========
 
+.. [#bcp-47] BCP 47: "Tags for identifying languages",
+     https://tools.ietf.org/rfc/bcp/bcp47.txt
 .. [#bug-11359] Bugzilla Bug 11359
    "[NEW FEATURE] pkg_postinst/pkg_preinst ewarn/einfo logging",
    https://bugs.gentoo.org/show_bug.cgi?id=11359
@@ -500,7 +504,6 @@ References
 .. [#glep-74] GLEP 74: "Full-tree verification using Manifest files",
      Michał Górny, Robin Hugh Johnson, Ulrich Müller,
      https://www.gentoo.org/glep/glep-0074.html
-.. [#iso-639] ISO 639 "Code for the representation of names of languages"
 .. [#ramereth-repo] "Re: [gentoo-dev] GLEP ??: Critical News Reporting", Lance
      Albertson,
      https://archives.gentoo.org/gentoo-dev/message/4204839d4091758c3bad1dbd18ed16f7
