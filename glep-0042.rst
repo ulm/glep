@@ -9,7 +9,7 @@ Type: Standards Track
 Status: Final
 Version: 3
 Created: 2005-10-31
-Last-Modified: 2016-03-18
+Last-Modified: 2017-11-26
 Post-History: 2005-11-01, 2005-11-05, 2005-11-07, 2005-12-11, 2005-12-13,
               2005-12-18, 2006-01-05, 2006-03-02, 2006-03-06, 2006-06-12,
               2006-09-05, 2016-03-10
@@ -203,18 +203,15 @@ A news item file is a text file, encoded using UTF-8 [#rfc-3629]_ for
 compatibility with and for the same reasons as existing Gentoo documentation
 [#docs-policy]_ and the tree [#glep-31]_.
 
-News items must be signed with a detached GPG signature.::
-
-    gpg --armour --detach-sign ????-??-??-*.??.txt
-
-This GLEP does not specify the type or strength of signature to be used, nor
-does it discuss how, if at all, a centralised keychain will be provided. These
-issues should be handled as part of the signing policy discussions.
-
 A news item file's content will consist of an RFC 822 style header [#rfc-822]_
 followed by the main body of the message as plain text. This GLEP defines
 various optional and mandatory headers. Future GLEPs may propose new headers —
 tools handling these news items must ignore any unrecognised header.
+
+.. Note:: A previous version of this GLEP had required that news items must
+   be signed with a detached OpenPGP signature. This was no longer deemed
+   necessary after moving news items to a Git repository with commit signing,
+   and deployment of full-tree verification per GLEP 74 [#glep-74]_.
 
 News Item Headers
 '''''''''''''''''
@@ -500,6 +497,9 @@ References
      https://www.gentoo.org/glep/glep-0034.html
 .. [#glep-45] GLEP 45: "GLEP date format", Henrik Brix Andersen,
      https://www.gentoo.org/glep/glep-0045.html
+.. [#glep-74] GLEP 74: "Full-tree verification using Manifest files",
+     Michał Górny, Robin Hugh Johnson, Ulrich Müller,
+     https://www.gentoo.org/glep/glep-0074.html
 .. [#iso-639] ISO 639 "Code for the representation of names of languages"
 .. [#ramereth-repo] "Re: [gentoo-dev] GLEP ??: Critical News Reporting", Lance
      Albertson,
