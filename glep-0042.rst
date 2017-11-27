@@ -179,9 +179,9 @@ form ``yyyy-mm-dd-short-name``, where ``yyyy`` is the year (e.g. ``2005``),
 ``mm`` is the month (``01`` through ``12``) and dd is the day of the month
 (``01`` through ``31``). The ``short-name`` is a very short name describing the
 news item (e.g. ``yoursql-updates``), consisting only of the characters ``a-z``,
-``0-9``, ``+`` (plus), ``-`` (hyphen) and ``_`` (underscore). While there
-is no hard restriction for the length of ``short-name``, it is strongly
-recommended to limit it to at most 20 characters.
+``0-9``, ``+`` (plus), ``-`` (hyphen) and ``_`` (underscore). While there is no
+hard restriction on the length of ``short-name``, limiting it to 20 characters
+is strongly recommended.
 
 News Item Directories
 ---------------------
@@ -211,7 +211,7 @@ various optional and mandatory headers. Future GLEPs may propose new headers —
 tools handling these news items must ignore any unrecognised header.
 
 .. Note:: A previous version of this GLEP had required that news items must
-   be signed with a detached OpenPGP signature. This was no longer deemed
+   be signed with a detached OpenPGP signature. This was deemed no longer
    necessary after moving news items to a Git repository with commit signing,
    and deployment of full-tree verification per GLEP 74 [#glep-74]_.
 
