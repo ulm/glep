@@ -51,27 +51,27 @@ things aren't really so different now.
 Synopsis of the current system
 ------------------------------
 
-  *  There are 13-15 top-level projects (TLPs).  Top-level projects are
-     comprised of sub-projects, and the goal was that every Gentoo
-     project would be a sub-project of one of the TLPs.  Supposedly each
-     dev therefore belongs to one or more TLPs.
-  *  Each TLP has at least a "strategic" manager, and potentially also an
-     "operational" manager.  Only the strategic managers vote on global
-     Gentoo issues.
-  *  The managers of each TLP were appointed by drobbins, the other
-     TLP managers, or elected by their project members.  These managers
-     have no set term.
-  *  Within each TLP the managers are responsible for making decisions
-     about the project, defining clear goals, roadmaps, and timelines
-     for the project, and solving problems that arise within the TLP
-     (see GLEP 4 for the specific list).
-  *  The strategic TLP managers are also responsible for deciding issues that
-     affect Gentoo across project lines.  The primary mechanism for
-     handling global-scope issues is the managers' meetings.
-  *  Disciplinary action taken against erring devs is handled by the
-     "devrel" TLP, unless the dev is a strategic TLP manager.  In that
-     case disciplinary action must be enacted by the other strategic TLP
-     managers.
+*  There are 13-15 top-level projects (TLPs).  Top-level projects are
+   comprised of sub-projects, and the goal was that every Gentoo
+   project would be a sub-project of one of the TLPs.  Supposedly each
+   dev therefore belongs to one or more TLPs.
+*  Each TLP has at least a "strategic" manager, and potentially also an
+   "operational" manager.  Only the strategic managers vote on global
+   Gentoo issues.
+*  The managers of each TLP were appointed by drobbins, the other
+   TLP managers, or elected by their project members.  These managers
+   have no set term.
+*  Within each TLP the managers are responsible for making decisions
+   about the project, defining clear goals, roadmaps, and timelines
+   for the project, and solving problems that arise within the TLP
+   (see GLEP 4 for the specific list).
+*  The strategic TLP managers are also responsible for deciding issues that
+   affect Gentoo across project lines.  The primary mechanism for
+   handling global-scope issues is the managers' meetings.
+*  Disciplinary action taken against erring devs is handled by the
+   "devrel" TLP, unless the dev is a strategic TLP manager.  In that
+   case disciplinary action must be enacted by the other strategic TLP
+   managers.
 
 Problems with the existing system
 ---------------------------------
@@ -106,59 +106,58 @@ Additional problems identified by the current metastructure reform proposals
 Specification
 =============
 
+A. A project is a group of developers working towards a goal (or a set
+   of goals).
 
-A.  A project is a group of developers working towards a goal (or a set
-    of goals).
+   *  A project exists if it has a maintained Wiki
+      project page as described below.  ("Maintained" means
+      that the information on the page is factually correct and not
+      out-of-date.)  If the Wiki page isn't maintained, it is presumed
+      dead.
+   *  It may have one or many leads, and the leads are
+      selected by the members of the project.  This selection must
+      occur at least once every 12 months, and may occur at any
+      time.
+   *  It may have zero or more sub-projects.  Sub-projects are
+      just projects that provide some additional structure, and their
+      Wiki pages are defined as sub-projects of the parent project.
+   *  Not everything (or everyone) needs a project.
+   *  Projects need not be long-term.
+   *  Projects may well conflict with other projects.  That's okay.
+   *  Any dev may create a new project just by creating a new project
+      page on the wiki.gentoo.org (see [#Project_pages]_) and sending
+      a Request For Comments (RFC) e-mail to gentoo-dev.  Note that
+      this GLEP does not provide for a way for the community at large
+      to block a new project, even if the comments are wholly negative.
 
-      *  A project exists if it has a maintained Wiki
-         project page as described below.  ("Maintained" means
-         that the information on the page is factually correct and not
-         out-of-date.)  If the Wiki page isn't maintained, it is presumed
-         dead.
-      *  It may have one or many leads, and the leads are
-         selected by the members of the project.  This selection must
-         occur at least once every 12 months, and may occur at any
-         time.
-      *  It may have zero or more sub-projects.  Sub-projects are
-         just projects that provide some additional structure, and their
-         Wiki pages are defined as sub-projects of the parent project.
-      *  Not everything (or everyone) needs a project.  
-      *  Projects need not be long-term.
-      *  Projects may well conflict with other projects.  That's okay.
-      *  Any dev may create a new project just by creating a new project
-         page on the wiki.gentoo.org (see [#Project_pages]_) and sending
-         a Request For Comments (RFC) e-mail to gentoo-dev.  Note that
-         this GLEP does not provide for a way for the community at large
-         to block a new project, even if the comments are wholly negative.
+B. Global issues will be decided by an elected Gentoo council.
 
-B.  Global issues will be decided by an elected Gentoo council.
-
-      *  There will be a set number of council members.  (For the
-         first election that number was set to 7 by acclamation.)
-      *  Council members will be chosen by a general election of all
-         devs once per year.
-      *  The council must hold an open meeting at least once per month.
-      *  Council decisions are by majority vote of those who show up (or
-         their proxies).
-      *  If a council member (or their appointed proxy) fails to show up for
-         two consecutive meetings, they are marked as a slacker.
-      *  If a council member who has been marked a slacker misses any further
-         meeting (or their appointed proxy doesn't show up), they lose their
-         position and a new election is held to replace that person. The newly
-         elected council member gets a 'reduced' term so that the yearly
-         elections still elect a full group.
-      *  Council members who have previously been booted for excessive slacking
-         may stand for future elections, including the election for their
-         replacement. They should, however, justify their slackerness, and
-         should expect to have it pointed out if they don't do so themselves.
-      *  The 'slacker' marker is reset when a member is elected.
-      *  If any meeting has less than 50% attendance by council members, a new
-         election for *all* places must be held within a month. The 'one year'
-         is then reset from that point.
-      *  Disciplinary actions may be appealed to the council.
-      *  A proxy must not be an existing council member, and any single person
-         may not be a proxy for more than one council member at any given
-         meeting.
+   *  There will be a set number of council members.  (For the
+      first election that number was set to 7 by acclamation.)
+   *  Council members will be chosen by a general election of all
+      devs once per year.
+   *  The council must hold an open meeting at least once per month.
+   *  Council decisions are by majority vote of those who show up (or
+      their proxies).
+   *  If a council member (or their appointed proxy) fails to show up for
+      two consecutive meetings, they are marked as a slacker.
+   *  If a council member who has been marked a slacker misses any further
+      meeting (or their appointed proxy doesn't show up), they lose their
+      position and a new election is held to replace that person. The newly
+      elected council member gets a 'reduced' term so that the yearly
+      elections still elect a full group.
+   *  Council members who have previously been booted for excessive slacking
+      may stand for future elections, including the election for their
+      replacement. They should, however, justify their slackerness, and
+      should expect to have it pointed out if they don't do so themselves.
+   *  The 'slacker' marker is reset when a member is elected.
+   *  If any meeting has less than 50% attendance by council members, a new
+      election for *all* places must be held within a month. The 'one year'
+      is then reset from that point.
+   *  Disciplinary actions may be appealed to the council.
+   *  A proxy must not be an existing council member, and any single person
+      may not be a proxy for more than one council member at any given
+      meeting.
 
 Rationale
 =========
