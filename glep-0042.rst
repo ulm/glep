@@ -9,7 +9,7 @@ Type: Standards Track
 Status: Final
 Version: 4
 Created: 2005-10-31
-Last-Modified: 2017-11-27
+Last-Modified: 2017-11-29
 Post-History: 2005-11-01, 2005-11-05, 2005-11-07, 2005-12-11, 2005-12-13,
               2005-12-18, 2006-01-05, 2006-03-02, 2006-03-06, 2006-06-12,
               2006-09-05, 2016-03-10, 2017-11-27
@@ -192,9 +192,9 @@ news item's identifier.
 The directory will contain a file named ``yyyy-mm-dd-short-name.en.txt``, which
 contains the text of the news item, in English, in the format described below.
 
-If a news item is translated, other files named ``yyyy-mm-dd-short-name.xx.txt``
-(where ``xx`` is a valid IETF language tag [#bcp-47]_, and the date remains
-the same as the original news item) will also be provided. However, only
+Any translations of a news item will be provided in additional files. Their
+name ``yyyy-mm-dd-short-name.lang.txt`` is obtained from the original filename
+by replacing ``en`` with another IETF language tag [#bcp-47]_. However, only
 the English version of a news item is authoritative.  This anglocentricity is
 justified by precedent [#glep-34]_.
 
