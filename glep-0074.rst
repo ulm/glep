@@ -8,7 +8,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2017-10-21
-Last-Modified: 2017-11-25
+Last-Modified: 2017-11-29
 Post-History: 2017-10-26, 2017-11-16
 Content-Type: text/x-rst
 Requires: 59, 61
@@ -137,10 +137,10 @@ be explicitly excluded via ``IGNORE``.
 Path and filename encoding
 --------------------------
 
-The path fields in the Manifest file must consist of characters
-corresponding to valid UTF-8 code points excluding the backwards slash
-(``\``) and characters classified as control characters or as whitespace
-in the current version of the Unicode standard [#UNICODE]_.
+The path fields in the Manifest file must consist of Unicode characters
+excluding the backwards slash (``\``) and characters classified
+as control characters or as whitespace in the current version
+of the Unicode standard [#UNICODE]_.
 
 The implementation can optionally support extended filename encoding
 to support those paths. If encoding is not supported, the implementation
