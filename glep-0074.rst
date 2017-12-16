@@ -5,10 +5,10 @@ Author: Michał Górny <mgorny@gentoo.org>,
         Robin Hugh Johnson <robbat2@gentoo.org>,
         Ulrich Müller <ulm@gentoo.org>
 Type: Standards Track
-Status: Draft
+Status: Final
 Version: 1
 Created: 2017-10-21
-Last-Modified: 2017-11-29
+Last-Modified: 2017-12-16
 Post-History: 2017-10-26, 2017-11-16
 Content-Type: text/x-rst
 Requires: 59, 61
