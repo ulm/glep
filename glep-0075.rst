@@ -70,11 +70,11 @@ is intended to account for future extensions.
 
 This specification currently defines one section: ``[structure]``.
 This section defines one or more repository structure definitions
-using sequential integer keys.  The definition keyed as ``0``
-is the most preferred structure.  The package manager should use
-the first structure format it recognizes as supported, and ignore any
-it does not recognize.  If this section is not present, the package
-manager should behave as if only ``flat`` structure were supported.
+using non-negative sequential integer keys.  The definition with
+the ``0`` key is the most preferred structure.  The package manager
+should ignore any formats it does not recognize.  If this section
+is not present, the package manager should behave as if only ``flat``
+structure were specified.
 
 The following structure definitions are supported:
 
