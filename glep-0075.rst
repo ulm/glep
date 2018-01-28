@@ -205,7 +205,7 @@ to split them further.
 
 The alternate option of using file hash has the advantage of having
 a more balanced split.  Furthermore, since hashes are stored
-in Manifests using them is zero-cost.  However, this solution has two
+in Manifests using them is zero-cost.  However, this solution has three
 significant disadvantages:
 
 1. The hash values are unknown for newly-downloaded distfiles, so
@@ -215,6 +215,9 @@ significant disadvantages:
 2. User-provided distfiles (e.g. for fetch-restricted packages) with
    hash mismatches would be placed in the wrong subdirectory,
    potentially causing confusing errors.
+
+3. Not all files in the distfiles tree are covered by package Manifests
+   --- there are additional files that are injected into distfiles.
 
 Using filename hashes has proven to provide a similar balance
 to using file hashes.  Furthermore, since filenames are known up front
