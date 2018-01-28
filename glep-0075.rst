@@ -228,6 +228,7 @@ cause any performance problems.
 .. figure:: glep-0075-extras/by-filename.png
 
    Distribution of distfiles by first character of filenames
+   (note: y axis is on log scale)
 
 .. figure:: glep-0075-extras/by-csum.png
 
