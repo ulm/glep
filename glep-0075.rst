@@ -30,7 +30,7 @@ specifically designed for that purpose.
 According to the Gentoo repository state at 2018-01-26 16:23, there
 was a total of 62652 unique distfiles in the repository.  While
 the users realistically hit around 10% of that, distfile mirrors often
-hold even more files --- more so if old distfiles are not wiped
+hold even more files — more so if old distfiles are not wiped
 immediately.
 
 While all filesystems used on Linux boxes should be able to cope with
@@ -65,7 +65,7 @@ how to use the mirror.  If the file is not present, the package manager
 should behave as if it were empty.
 
 The package manager should recognize the sections and keys listed below.
-It should ignore any unrecognized sections or keys --- the format
+It should ignore any unrecognized sections or keys — the format
 is intended to account for future extensions.
 
 This specification currently defines one section: ``[structure]``.
@@ -288,12 +288,12 @@ relatively low complexity and being reasonably future-proof.
 .. figure:: glep-0075-extras/by-csum.png
 
    Distribution of distfiles by first hex-digit of checksum
-   (x --- content checksum, + --- filename checksum)
+   (x — content checksum, + — filename checksum)
 
 .. figure:: glep-0075-extras/by-csum2.png
 
    Distribution of distfiles by two first hex-digits of checksum
-   (x --- content checksum, + --- filename checksum)
+   (x — content checksum, + — filename checksum)
 
 
 Layout file
