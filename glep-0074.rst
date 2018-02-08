@@ -6,10 +6,10 @@ Author: Michał Górny <mgorny@gentoo.org>,
         Ulrich Müller <ulm@gentoo.org>
 Type: Standards Track
 Status: Final
-Version: 1
+Version: 1.1
 Created: 2017-10-21
-Last-Modified: 2017-12-16
-Post-History: 2017-10-26, 2017-11-16
+Last-Modified: 2018-03-11
+Post-History: 2017-10-26, 2017-11-16, 2018-02-08
 Content-Type: text/x-rst
 Requires: 59, 61
 Replaces: 44, 58, 60
@@ -125,13 +125,6 @@ and traversing directories. It is an error to specify an entry for
 a different file type. If the tree contain files of other types
 that are not otherwise ignored, they need to be covered by an explicit
 ``IGNORE``.
-
-All the local (non-``DIST``) files covered by a Manifest tree must
-reside on the same filesystem. It is an error to specify entries
-applying to files on another filesystem. If files or directories that
-are not otherwise ignored reside on a different filesystem, or symbolic
-links point to targets on a different filesystem, they must
-be explicitly excluded via ``IGNORE``.
 
 
 Path and filename encoding
@@ -325,22 +318,18 @@ Algorithm for finding parent Manifests
 In order to find the top-level Manifest from the current directory
 the following algorithm can be used:
 
-1. Store the current directory as *original* and the device ID
-   of the containing filesystem (``st_dev``) as *startdev*,
+1. Store the current directory as *original*,
 
-2. If the device ID of the containing filesystem (``st_dev``)
-   of the current directory is different than *startdev*, stop.
-
-3. If the current directory contains a ``Manifest`` file:
+2. If the current directory contains a ``Manifest`` file:
 
    a. If an ``IGNORE`` entry in the ``Manifest`` file covers
       the *original* directory (or one of the parent directories), stop.
 
    b. Otherwise, store the current directory as *last_found*.
 
-4. If the current directory is the root system directory (``/``), stop.
+3. If the current directory is the root system directory (``/``), stop.
 
-5. Otherwise, enter the parent directory and jump to step 2.
+4. Otherwise, enter the parent directory and jump to step 2.
 
 Once the algorithm stops, *last_found* will contain the relevant
 top-level Manifest. If *last_found* is null, then the directory tree
@@ -594,16 +583,39 @@ additional files in it, skipping some of the categories from syncing.
 This configuration can extend beyond the limits of this GLEP,
 e.g. by allowing wildcards or regular expressions.
 
-The algorithm is restricted to work on a single filesystem. This is
-mostly relevant when scanning for top-level Manifest -- we do not want
-to cross filesystem boundaries then. However, to ensure consistent
-bidirectional behavior we need to also ban them when operating downwards
-the tree.
 
-The directories and files on different filesystems need to be ignored
-explicitly as implicitly skipping them would cause confusion.
-In particular, tools might then claim that a file does not exist when
-it clearly does because it was skipped due to filesystem boundaries.
+Cross-filesystem Manifests
+--------------------------
+
+The first version of this specification had an additional requirement
+that all files covered by the Manifest tree must reside on a single
+filesystem. This requirement has been removed in version 1.1 for
+the reasons outlined in this section.
+
+The original rationale stated that this restriction aims to prevent
+crossing filesystem boundaries in the top-level Manifest lookup
+algorithm. While that seemed a good idea at the time, there is no real
+reason to prevent that and this particular method worked correctly only
+if the files were placed in a dedicated filesystem.
+
+Worse than that, the original rationale did not anticipate the use
+of overlayfs which combines multiple filesystems while preserving their
+original metadata, including device and inode numbers. As a result,
+if the repository was checked out to an overlayfs, it was quite possible
+that different files had different device numbers, and the Manifest
+checks failed due to crossing filesystem boundaries.
+
+Given no clear solution to that and no good reason to reject use
+of overlayfs, the restriction was lifted.
+
+The only potential drawback of this is that the implementation may now
+follow maliciously placed symbolic links pointing outside the tree.
+If a regular file was replaced by such a symlink, the user could
+be tricked into reporting the verification failure with the report
+containing the checksums of the target file. However, for this to happen
+the client would have to use rsync with ``--links`` option but without
+``--safe-links`` which is neither the default behavior of rsync nor
+the default configuration used by Portage.
 
 
 Filename character set restriction
