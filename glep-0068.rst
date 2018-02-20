@@ -4,10 +4,10 @@ Title: Package and category metadata
 Author: Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
 Status: Final
-Version: 1
+Version: 1.1
 Created: 2016-03-14
-Last-Modified: 2017-05-05
-Post-History: 2016-03-16
+Last-Modified: 2018-03-11
+Post-History: 2018-02-20, 2016-03-16
 Content-Type: text/x-rst
 Requires: 67
 Replaces: 34, 46, 56
@@ -146,6 +146,13 @@ element can contain, in any order:
 - zero or more ``<slots/>`` elements containing slot descriptions in different
   languages (at most one for each language), as detailed
   in `Slot descriptions`_.
+
+- zero or more ``<stabilize-allarches/>`` elements, possibly restricted
+  to specific package versions (at most one for each version) whose presence
+  indicates that the appropriate ebuilds are suitable for simultaneously
+  marking stable on all architectures where a previous version is stable
+  after arch testing on one of them (i.e. if the package is known to be fully
+  arch-independent).
 
 - zero or more ``<use/>`` elements containing USE flag descriptions
   in different languages (at most one for each language), as detailed
