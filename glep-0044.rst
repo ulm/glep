@@ -3,12 +3,13 @@ GLEP: 44
 Title: Manifest2 format
 Author: Marius Mauch <genone@gentoo.org>
 Type: Standards Track
-Status: Final
+Status: Replaced
 Version: 1
 Created: 2005-12-04
-Last-Modified: 2014-01-23
+Last-Modified: 2018-04-07
 Post-History: 2005-12-06, 2006-01-23, 2006-09-03
 Content-Type: text/x-rst
+Replaced-By: 74
 ---
 
 
