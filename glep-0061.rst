@@ -3,14 +3,19 @@ GLEP: 61
 Title: Manifest2 compression
 Author: Robin Hugh Johnson <robbat2@gentoo.org>
 Type: Standards Track
-Status: Accepted
+Status: Final
 Version: 1
 Created: 2008-10-22
-Last-Modified: 2014-01-23
+Last-Modified: 2018-04-08
 Post-History: 2009-12-01, 2010-01-31
 Content-Type: text/x-rst
 Requires: 44
 ---
+
+Status
+======
+Implementation is complete. Marked as Final by decision of the Gentoo
+Council on 2018-04-08.
 
 Abstract
 ========
