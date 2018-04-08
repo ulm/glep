@@ -2,7 +2,7 @@
 GLEP: 45
 Title: GLEP date format
 Author: Henrik Brix Andersen <brix@gentoo.org>
-Type: Standards Track
+Type: Informational
 Status: Final
 Version: 1
 Created: 2005-12-13
