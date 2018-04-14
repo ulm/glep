@@ -8,7 +8,7 @@ Type: Informational
 Status: Active
 Version: 3
 Created: 2003-05-31
-Last-Modified: 2017-10-13
+Last-Modified: 2018-04-14
 Post-History: 2003-06-02, 2013-12-17, 2017-09-17
 Content-Type: text/x-rst
 ---
@@ -78,7 +78,7 @@ directions below.
 - Make a copy of this file (``.rst`` file, **not** HTML!) and perform
   the following edits.
 
-- Replace the "GLEP: 2" header with "GLEP: XXX" since you don't yet have
+- Replace the "GLEP: 2" header with "GLEP: 9999" since you don't yet have
   a GLEP number assignment.
 
 - Change the Title header to the title of your GLEP.
