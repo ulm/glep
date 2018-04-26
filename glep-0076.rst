@@ -234,15 +234,21 @@ Key dates in Gentoo copyright history
   <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/skel.ebuild?revision=1.1&view=markup>`_.
   (``skel.ebuild``) in CVS
 
-* 2004-01-20: Copyright assignment document added to CVS, with an
-  assignee of *Gentoo Technologies, Inc.*, in both `text
+* 2003-12-09: Copyright assignment document added to CVS, with an
+  assignee of *Gentoo Technologies, Inc.*, in `text
+  <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/xml/htdocs/proj/en/devrel/assignment.txt?hideattic=0&view=log>`_
+  format.  Later the document was `moved
   <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/xml/htdocs/proj/en/devrel/copyright/assignment.txt?hideattic=0&view=log>`_
-  and `PDF
+  and a version in `PDF
   <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/xml/htdocs/proj/en/devrel/copyright/assignment.pdf?hideattic=0&view=log>`_
-  formats.  A related GuideXML page is `included
+  format was added.  A related GuideXML page is `included
   <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/xml/htdocs/proj/en/devrel/copyright-assignment/index.xml?hideattic=0&view=log>`_.
 
 * 2004-05-28: *Gentoo Foundation, Inc.* established in New Mexico.
+
+* 2004-06-24: First CVS commit `changing
+  <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/app-accessibility/at-poke/at-poke-0.2.1.ebuild?hideattic=0&revision=1.3&view=markup>`_
+  copyright header to *Gentoo Foundation*.
 
 * 2004-07-12 or earlier: The recruiters stopped requiring the
   assignment document.  **TODO: document when/who/where recruiters were
@@ -270,10 +276,6 @@ Key dates in Gentoo copyright history
     of these individuals associated with that contract.  As of this
     date any provision of that contract requiring any future duties is
     hereby nullified.
-
-* 2005-06-25: First CVS commit `changing
-  <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/header.txt?revision=1.10&view=markup>`_
-  copyright header to *Gentoo Foundation*.
 
 * 2006-08-23: Copyright assignment document assignee `updated
   <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/xml/htdocs/proj/en/devrel/copyright/assignment.txt?hideattic=0&r1=1.1&r2=1.2>`_
