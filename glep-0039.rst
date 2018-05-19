@@ -7,7 +7,7 @@ Type: Informational
 Status: Final
 Version: 2
 Created: 2005-09-01
-Last-Modified: 2016-07-30
+Last-Modified: 2018-05-19
 Post-History: 2005-09-01, 2006-02-09, 2007-10-12, 2008-01-19
 Content-Type: text/x-rst
 Replaces: 4
@@ -16,8 +16,10 @@ Replaces: 4
 Status
 ======
 
-Implemented. GLEP amended on 2006-02-09 to add the final bullet point to
-list B in `Specification`_.
+Implemented.  The metastructure proposal was accepted by a vote of all
+Gentoo developers on 2005-06-14 [#Metastructure_vote]_.
+GLEP amended on 2006-02-09 to add the final bullet point to list B in
+`Specification`_.
 
 Abstract
 ========
@@ -206,6 +208,10 @@ So, does this proposal solve any of the previously-mentioned problems?
 
 References
 ==========
+
+.. [#Metastructure_vote] Grant Goodyear, "Metastructure vote preliminary
+   results", posted to ``gentoo-dev`` mailing list on 2005-06-14
+   (https://archives.gentoo.org/gentoo-dev/message/f5ab9ccca62a5d5e0b7b7ab0156f19b3)
 
 .. [#Project_pages] https://wiki.gentoo.org/wiki/Gentoo_Wiki:Developer_Central/Project_pages
 
