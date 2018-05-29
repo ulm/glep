@@ -194,7 +194,7 @@ Trustees.
 Licensing to the Gentoo Foundation
 ----------------------------------
 
-All are welcome and encouraged (but NOT required) to assign copyright
+All are welcome and encouraged (but *not* required) to assign copyright
 for their contributions to the Gentoo Foundation.  Doing so makes
 compliance with this policy easier (fewer copyright holders to list),
 and allows the Foundation to enforce copyrights and re-license content
