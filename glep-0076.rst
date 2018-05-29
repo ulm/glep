@@ -183,7 +183,7 @@ contributors can be listed, but this is neither required nor
 recommended.  The "and others" text may be omitted if the explicitly
 listed contributors hold copyright to the entire file.
 
-Anyone finding a file out of compliance should log a bug against the
+Anyone finding a file out of compliance should file a bug against the
 associated project/package providing as much information as possible.
 Files that are not brought into compliance within 60 days or upon a
 request for removal by a aggrieved copyright holder will be removed.
