@@ -54,7 +54,8 @@ policy, and continues to exist to this day.  Some files also still
 contain or have in the past contained additional copyright headers,
 attributing ownership to other parties.
 
-A detailed historical timeline is provided below [TODO: link]
+A detailed historical timeline is provided in the `key dates in Gentoo
+copyright history`_ section.
 
 The policy to have copyright notices ascribing copyright ownership to
 the Gentoo Foundation caused an issue when Gentoo developers forked
