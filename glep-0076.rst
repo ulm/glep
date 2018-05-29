@@ -216,6 +216,25 @@ attributing copyright.
 Rationale
 =========
 
+This document aims to provide a single consistent copyright policy for
+all Gentoo projects.  It is explicitly enforced for all official Gentoo
+projects in order to protect the interests of Gentoo as a whole,
+including its contributors, developers and users.  Additionally, it is
+enforced for all other projects hosted on Gentoo infrastructure in order
+to protect the Gentoo infrastructure owners and improve consistency.
+
+The copyright model is built on a combination of DCO model used
+by the Linux kernel with FLA model used by different open source
+projects.  It requires all contributors to certify the legitimacy
+of their contributions; however, they can freely choose whether to
+assign the copyright to Gentoo, or not.
+
+Ideally, all major contributors to Gentoo would choose to sign the FLA.
+However, enforcing it for all contributors would only create unnecessary
+bureaucracy for trivial contributions and discourage a number of users
+from actually contributing to Gentoo.  The mixed model allows users to
+choose a way of contributing that is appropriate to them.
+
 
 Key dates in Gentoo copyright history
 =====================================
