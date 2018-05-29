@@ -86,7 +86,9 @@ Purpose / Scope
 This policy documents how Gentoo contributors comply and document
 copyright for any contributions made to Gentoo.  Anyone committing
 documentation or sources to any repository hosted on Gentoo
-infrastructure must comply with this policy.
+infrastructure or to any official Gentoo project (independently
+of hosting) must comply with this policy.  Unofficial Gentoo projects
+are also recommended to use this policy.
 
 Questions regarding this policy should be directed to the trustees or
 the -project list.  Any concerns over possible copyright violations
@@ -121,7 +123,7 @@ on the wiki page at [#PROJECTS]_.
 Certificate of Origin
 ---------------------
 
-All commits to Gentoo-hosted repositories shall be accompanied by a
+All commits to Gentoo project repositories shall be accompanied by a
 certificate of origin.  The purpose of the certificate is to declare
 that the contribution can be modified and redistributed in accordance
 with the project's license.
@@ -168,8 +170,8 @@ Source Development Labs, Inc. in 2005 under a CC-BY-SA-2.5 License.
 Copyright Attribution
 ---------------------
 
-All files hosted by Gentoo must contain an appropriate copyright
-notice, as defined by this policy.
+All files included in Gentoo projects must contain an appropriate
+copyright notice, as defined by this policy.
 
 A proper copyright notice appears near the top of the file, and reads::
 
