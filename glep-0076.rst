@@ -216,6 +216,9 @@ attributing copyright.
 Rationale
 =========
 
+Policy
+------
+
 This document aims to provide a single consistent copyright policy for
 all Gentoo projects.  It is explicitly enforced for all official Gentoo
 projects in order to protect the interests of Gentoo as a whole,
@@ -234,6 +237,41 @@ However, enforcing it for all contributors would only create unnecessary
 bureaucracy for trivial contributions and discourage a number of users
 from actually contributing to Gentoo.  The mixed model allows users to
 choose a way of contributing that is appropriate to them.
+
+
+DCO Changes
+-----------
+
+The Gentoo DCO rev. 1 has been based on Linux Kernel DCO 1.1
+[#OSDL-DCO]_.  It features the following modifications from
+the original:
+
+1. The enumeration has been modified to use numeric points.
+
+2. Additional point (3) has been inserted::
+
+       (3) The contribution is a license text (or a file of similar nature),
+       and verbatim distribution is allowed; or
+
+3. The original point (c) has shifted to become point (4), and has been
+   updated to account for the additional point (3).
+
+4. The original point (d) has been transformed into a stand-alone
+   paragraph following the enumeration.
+
+The new point was deemed necessary to allow committing license files
+into the Gentoo repository, since those files usually do not permit
+modification.  It has been established that adding a clear provision
+for this case is better than excluding those commits from DCO
+compliance.  Debian was facing a similar problem [#DEBIAN-LICENSE]_.
+
+The update of point (c) was necessary to allow the new clause being
+certified by the person providing the contribution.
+
+The remaining changes were merely editorial.  It has been established
+that the last point is really separate from the other points, so it is
+more appropriate to separate it from the enumeration by putting it
+in a separate paragraph.
 
 
 Key dates in Gentoo copyright history
@@ -333,6 +371,9 @@ References
 
 .. [#GFLA] Gentoo Fiduciary License Agreement,
    https://dev.gentoo.org/~rich0/fla.pdf
+
+.. [#DEBIAN-LICENSE] [debian-legal] License of the GPL license,
+   https://lists.debian.org/debian-legal/2018/04/msg00006.html
 
 
 Copyright
