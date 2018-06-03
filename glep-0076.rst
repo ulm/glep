@@ -4,7 +4,8 @@ Title: Copyright Policy
 Author: Richard Freeman <rich0@gentoo.org>,
         Alice Ferrazzi <alicef@gentoo.org>,
         Ulrich Müller <ulm@gentoo.org>,
-        Robin H. Johnson <robbat2@gentoo.org>
+        Robin H. Johnson <robbat2@gentoo.org>,
+        Michał Górny <mgorny@gentoo.org>
 Type: Informational
 Status: Draft
 Version: 1
