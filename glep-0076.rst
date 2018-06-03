@@ -259,6 +259,9 @@ the original:
 4. The original point (d) has been transformed into a stand-alone
    paragraph following the enumeration.
 
+5. The term "open source" has been replaced by "free software"
+   throughout.
+
 The new point was deemed necessary to allow committing license files
 into the Gentoo repository, since those files usually do not permit
 modification.  It has been established that adding a clear provision
@@ -267,6 +270,9 @@ compliance.  Debian was facing a similar problem [#DEBIAN-LICENSE]_.
 
 The update of point (c) was necessary to allow the new clause being
 certified by the person providing the contribution.
+
+The term "free software" is used for consistency with the language
+of the Gentoo Social Contract [#SOCIAL-CONTRACT]_.
 
 The remaining changes were merely editorial.  It has been established
 that the last point is really separate from the other points, so it is
