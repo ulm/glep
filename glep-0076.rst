@@ -127,7 +127,9 @@ with the project's license.
 
 For commits made using a VCS, the committer shall certify agreement
 to the Gentoo DCO by adding ``Signed-off-by: Name <e-mail>`` to the
-commit message as a separate line.
+commit message as a separate line.  Committers must use their real
+name, i.e., the name that would appear in an official document like
+a passport.
 
 The following is the current Gentoo DCO::
 
@@ -203,7 +205,9 @@ to protect the Gentoo infrastructure owners and improve consistency.
 
 The copyright model is built on the DCO model used by the Linux kernel
 and requires all contributors to certify the legitimacy of their
-contributions.
+contributions.  This also requires that they use their real name for
+signing; an anonymous certification or one under a pseudonym would not
+mean anything.
 
 In the future, a second stage of this policy may use a combination of
 the DCO model and an FLA model [#FLA]_ as it is used by different open
