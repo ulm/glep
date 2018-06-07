@@ -55,9 +55,6 @@ policy, and continues to exist to this day.  Some files also still
 contain or have in the past contained additional copyright headers,
 attributing ownership to other parties.
 
-A detailed historical timeline is provided in the `key dates in Gentoo
-copyright history`_ section.
-
 The policy to have copyright notices ascribing copyright ownership to
 the Gentoo Foundation caused an issue when Gentoo developers forked
 another project and hosted the fork on Gentoo infrastructure.  To
@@ -253,77 +250,6 @@ The remaining changes were merely editorial.  It has been established
 that the last point is really separate from the other points, so it is
 more appropriate to separate it from the enumeration by putting it
 in a separate paragraph.
-
-
-Key dates in Gentoo copyright history
-=====================================
-
-* 2000-01-03: *Gentoo Technologies, Inc.* established in New Mexico.
-
-* 2000-07-28: `Earliest known CVS commit
-  <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/header.txt?revision=1.1&view=markup>`_
-  in the Gentoo CVS repositories.  Made by Daniel Robbins to
-  ``gentoo-x86/header.txt``
-  ::
-
-    # Copyright 1999-2000 Gentoo Technologies, Inc.
-    # Distributed under the terms of the GNU General Public License, v2 or later
-    # $header$
-
-
-* 2000-10-09: `Earliest known version of the ebuild skeleton
-  <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/skel.ebuild?revision=1.1&view=markup>`_.
-  (``skel.ebuild``) in CVS
-
-* 2003-12-09: Copyright assignment document added to CVS, with an
-  assignee of *Gentoo Technologies, Inc.*, in `text
-  <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/xml/htdocs/proj/en/devrel/assignment.txt?hideattic=0&view=log>`_
-  format.  Later the document was `moved
-  <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/xml/htdocs/proj/en/devrel/copyright/assignment.txt?hideattic=0&view=log>`_
-  and a version in `PDF
-  <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/xml/htdocs/proj/en/devrel/copyright/assignment.pdf?hideattic=0&view=log>`_
-  format was added.  A related GuideXML page is `included
-  <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/xml/htdocs/proj/en/devrel/copyright-assignment/index.xml?hideattic=0&view=log>`_.
-
-* 2004-05-28: *Gentoo Foundation, Inc.* established in New Mexico.
-
-* 2004-06-24: First CVS commit `changing
-  <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/app-accessibility/at-poke/at-poke-0.2.1.ebuild?hideattic=0&revision=1.3&view=markup>`_
-  copyright header to *Gentoo Foundation*.
-
-* 2004-07-01: The recruiters `stopped requiring the assignment form
-  <https://archives.gentoo.org/gentoo-trustees/message/d860d16f85dc6cea23077b0ff8b979c0>`_
-  after discussion in the ``gentoo-trustees`` mailing list.
-
-* 2005-05-19: Gentoo Technologies, Inc. files an **Assignment of
-  Copyright** document, signed by Daniel Robbins, which transfers any
-  copyrights held by *Gentoo Technologies, Inc.* over `All files to
-  which Gentoo Technologies, Inc. may hold the copyright that existed
-  in the Gentoo Concurrent Versions System (CVS) Repositories as of 25
-  June 2004`.
-
-* 2005-06-13: *Gentoo Technologies, Inc.* files a **recordation of
-  copyright** with the United States Copyright Office, signed by
-  Daniel Robbins, President.  The copyright is asserted over `Gentoo
-  Concurrent Versions System (CVS) Repositories as of 25 June 2004`.
-
-* 2005-06-13: *Gentoo Technologies, Inc.* provides a **Release from
-  Contract Requirements** document, signed by Daniel Robbins.  The
-  complete body of the document is as follows:
-
-    Gentoo Technologies, Inc. does hereby release all individuals who
-    have signed the contract known as the "Gentoo Technologies, Inc.
-    Copyright Assignment Form" from any future duties and obligations
-    of these individuals associated with that contract.  As of this
-    date any provision of that contract requiring any future duties is
-    hereby nullified.
-
-* 2006-08-23: Copyright assignment document assignee `updated
-  <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/xml/htdocs/proj/en/devrel/copyright/assignment.txt?hideattic=0&r1=1.1&r2=1.2>`_
-  to *Gentoo Foundation, Inc.*
-
-* 2007-01-27: Copyright assignment document `removed
-  <https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/xml/htdocs/proj/en/devrel/copyright/assignment.txt?view=log&hideattic=0>`_.
 
 
 References
