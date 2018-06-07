@@ -35,7 +35,7 @@ certificate of origin.
 Motivation
 ==========
 
-The copyright ownership of Gentoo materials is ambigious due to
+The copyright ownership of Gentoo materials is ambiguous due to
 historical factors, and this GLEP attempts to improve the process
 going forward.
 
@@ -49,7 +49,7 @@ for becoming a developer, but it was not applied to pre-existing
 developers, or those that objected.
 
 Later, the *Gentoo Foundation* was established, and copyrights were
-formally transfered (including nullifying original developer
+formally transferred (including nullifying original developer
 assignments to *Gentoo Technologies, Inc.*), and the copyright header
 was updated.  The formal assignment document text was updated in 2006,
 but the formal assignment process had already been abandoned in
