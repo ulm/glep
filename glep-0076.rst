@@ -10,7 +10,7 @@ Type: Informational
 Status: Draft
 Version: 1
 Created: 2013-04-23
-Last-Modified: 2018-06-03
+Last-Modified: 2018-06-07
 Post-History: 
 Content-Type: text/x-rst
 ---
@@ -72,10 +72,9 @@ License Agreement [#FLA]_, which takes a copyleft approach to
 copyright licensing, while also better complying with copyright laws
 in nations that have author's rights.
 
-The goal here was to create a policy that was both flexible enough to
-cover forks and situations where Gentoo would not own the majority of
-the copyright in a file, while also preserving our ability to formally
-own copyrights on as much of our works as possible.
+The goal here was to create a policy that was flexible enough to cover
+forks and situations where Gentoo would not own the majority of the
+copyright in a file.
 
 
 Specification
@@ -192,28 +191,6 @@ Any concerns not addressed by a maintainer can be appealed to the
 Trustees.
 
 
-Licensing to the Gentoo Foundation
-----------------------------------
-
-All are welcome and encouraged (but *not* required) to assign copyright
-for their contributions to the Gentoo Foundation.  Doing so makes
-compliance with this policy easier (fewer copyright holders to list),
-and allows the Foundation to enforce copyrights and re-license content
-if appropriate (this will only be done in accordance with the social
-contract and the Gentoo FLA).
-
-Copyright is assigned to the Foundation by electronically signing the
-Gentoo Fiduciary License Agreement (FLA) [#GFLA]_.
-
-The agreement may be signed BY **TODO...**  If the scope of the signed
-agreement included future contributions, the contributor may document
-their wish to stop assigning copyright by **TODO...**
-
-A list of those who have signed this agreement and the scope of their
-assignments may be found at **LINK**.  This list may be useful when
-attributing copyright.
-
-
 Rationale
 =========
 
@@ -227,17 +204,14 @@ including its contributors, developers and users.  Additionally, it is
 enforced for all other projects hosted on Gentoo infrastructure in order
 to protect the Gentoo infrastructure owners and improve consistency.
 
-The copyright model is built on a combination of DCO model used
-by the Linux kernel with FLA model used by different open source
-projects.  It requires all contributors to certify the legitimacy
-of their contributions; however, they can freely choose whether to
-assign the copyright to Gentoo, or not.
+The copyright model is built on the DCO model used by the Linux kernel
+and requires all contributors to certify the legitimacy of their
+contributions.
 
-Ideally, all major contributors to Gentoo would choose to sign the FLA.
-However, enforcing it for all contributors would only create unnecessary
-bureaucracy for trivial contributions and discourage a number of users
-from actually contributing to Gentoo.  The mixed model allows users to
-choose a way of contributing that is appropriate to them.
+In the future, a second stage of this policy may use a combination of
+the DCO model and an FLA model [#FLA]_ as it is used by different open
+source projects.  Contributors would be able to freely choose whether
+they sign the FLA document or not.
 
 
 DCO Changes
@@ -375,9 +349,6 @@ References
 
 .. [#FLA] FSFE Legal: Fiduciary Licence Agreement (FLA),
    https://fsfe.org/activities/ftf/fla.en.html
-
-.. [#GFLA] Gentoo Fiduciary License Agreement,
-   https://dev.gentoo.org/~rich0/fla.pdf
 
 .. [#DEBIAN-LICENSE] [debian-legal] License of the GPL license,
    https://lists.debian.org/debian-legal/2018/04/msg00006.html
