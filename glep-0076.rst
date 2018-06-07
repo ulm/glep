@@ -26,6 +26,11 @@ for discussion, not final versions.
 Abstract
 ========
 
+This GLEP introduces a copyright and licensing policy for Gentoo
+projects.  It requires all contributions of software or documentation
+to be released under a free license, and to be accompanied by a
+certificate of origin.
+
 
 Motivation
 ==========
