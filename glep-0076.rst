@@ -10,7 +10,7 @@ Type: Informational
 Status: Draft
 Version: 1
 Created: 2013-04-23
-Last-Modified: 2018-06-07
+Last-Modified: 2018-06-10
 Post-History: 
 Content-Type: text/x-rst
 ---
@@ -220,6 +220,31 @@ source projects.  Contributors would be able to freely choose whether
 they sign the FLA document or not.
 
 
+Licensing of Projects
+---------------------
+
+The Social Contract mentions GPL-2 and CC-BY-SA-2.0, both with the
+option to use them in a later version ("at our discretion").  In order
+to facilitate interchange of software between different projects, we
+aim for uniformity of their licensing.  Therefore, items a) and b)
+explicitly recommend the use of GPL-2+ and CC-BY-SA-3.0.  The latter
+is restricted to be used for documentation, because Creative Commons
+themselves recommend against using their licenses for software
+[#CC-SOFTWARE]_.
+
+Other GPL-compatible free software licenses that are not explicitly
+listed are allowed by item c).  This covers cases where compatibility
+to licenses used by upstream projects is necessary.  (For example,
+the Gentoo BSD project may want to use the 2-clause or 3-clause BSD
+license).
+
+By default, GPL-incompatible licenses (e.g., the CDDL) are not
+allowed, because their use would hinder interchange of code between
+Gentoo projects.  However, the Foundation can grant exceptions to
+this, as long as the license in question is a free software or open
+source license.
+
+
 DCO Changes
 -----------
 
@@ -284,6 +309,9 @@ References
 
 .. [#FLA] FSFE Legal: Fiduciary Licence Agreement (FLA),
    https://fsfe.org/activities/ftf/fla.en.html
+
+.. [#CC-SOFTWARE] Can I apply a Creative Commons license to software?
+   https://creativecommons.org/faq/#can-i-apply-a-creative-commons-license-to-software
 
 .. [#DEBIAN-LICENSE] [debian-legal] License of the GPL license,
    https://lists.debian.org/debian-legal/2018/04/msg00006.html
