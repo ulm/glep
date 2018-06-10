@@ -286,6 +286,15 @@ more appropriate to separate it from the enumeration by putting it
 in a separate paragraph.
 
 
+Acknowledgements
+================
+
+Many people have participated in invaluable discussions on this GLEP.
+In particular, the authors would like to thank David Abbott,
+Roy Bamford, Kristian Fiskerstrand, Andreas K. Hüttel, Matija Šuklje,
+Matthew Thode, and Alec Warner for their input.
+
+
 References
 ==========
 
