@@ -200,6 +200,18 @@ Any concerns not addressed by a maintainer can be appealed to the
 Trustees.
 
 
+Simplified Attribution
+----------------------
+
+Alternatively, projects are welcome to use a simplified form of the
+copyright notice, which reads::
+
+    Copyright YEARS The Gentoo Authors
+
+Projects using this scheme must track authorship in a VCS, unless they
+list all authors of copyrightable contributions in an ``AUTHORS`` file.
+
+
 Rationale
 =========
 
@@ -291,6 +303,17 @@ more appropriate to separate it from the enumeration by putting it
 in a separate paragraph.
 
 
+Copyright Notice
+----------------
+
+Especially for ebuild repositories, constantly keeping track of the
+main copyright holder of any file would be rather inconvenient and
+tedious.  Therefore, projects are free to use either a traditional
+copyright notice listing the individual author(s), or a simplified
+notice with an attribution to "The Gentoo Authors".  The latter
+resembles the scheme used by the Chromium project [#CHROMIUM]_.
+
+
 Acknowledgements
 ================
 
@@ -329,6 +352,9 @@ References
 
 .. [#DEBIAN-LICENSE] [debian-legal] License of the GPL license,
    https://lists.debian.org/debian-legal/2018/04/msg00006.html
+
+.. [#CHROMIUM] Chromium: Contributing Code,
+   https://www.chromium.org/developers/contributing-code#TOC-Legal-stuff
 
 
 Copyright
