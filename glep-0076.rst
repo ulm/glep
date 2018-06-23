@@ -108,9 +108,9 @@ following:
 a) The GNU General Public License, version 2 or later (GPL-2+)
    [#GPL-2]_.
 
-b) The Creative Commons Attribution-ShareAlike 3.0 License
-   (CC-BY-SA-3.0, only for documentation) [#CC-BY-SA-3.0]_.
-   *[Note: or version 4.0, to be decided]*
+b) The Creative Commons Attribution-ShareAlike 4.0 License
+   (CC-BY-SA-4.0, only for documentation) [#CC-BY-SA-4.0]_.
+   Existing projects may also stay with CC-BY-SA-3.0 [#CC-BY-SA-3.0]_.
 
 c) A license approved as GPL compatible by the Free Software
    Foundation [#GPL-COMPAT]_.
@@ -244,7 +244,7 @@ The Social Contract mentions GPL-2 and CC-BY-SA-2.0, both with the
 option to use them in a later version ("at our discretion").  In order
 to facilitate interchange of software between different projects, we
 aim for uniformity of their licensing.  Therefore, items a) and b)
-explicitly recommend the use of GPL-2+ and CC-BY-SA-3.0.  The latter
+explicitly recommend the use of GPL-2+ and CC-BY-SA-4.0.  The latter
 is restricted to be used for documentation, because Creative Commons
 themselves recommend against using their licenses for software
 [#CC-SOFTWARE]_.
@@ -331,6 +331,9 @@ References
 
 .. [#GPL-2] GNU General Public License, version 2 or later,
    https://www.gnu.org/licenses/gpl-2.0.html
+
+.. [#CC-BY-SA-4.0] Creative Commons Attribution-ShareAlike 4.0
+   International License, https://creativecommons.org/licenses/by-sa/4.0/
 
 .. [#CC-BY-SA-3.0] Creative Commons Attribution-ShareAlike 3.0
    Unported License, https://creativecommons.org/licenses/by-sa/3.0/
