@@ -10,7 +10,7 @@ Type: Informational
 Status: Draft
 Version: 1
 Created: 2013-04-23
-Last-Modified: 2018-06-17
+Last-Modified: 2018-06-23
 Post-History: 2018-06-10, 2018-06-19
 Content-Type: text/x-rst
 ---
@@ -92,10 +92,10 @@ infrastructure or to any official Gentoo project (independently
 of hosting) must comply with this policy.  Unofficial Gentoo projects
 are also recommended to use this policy.
 
-Questions regarding this policy should be directed to the trustees or
-the -project list.  Any concerns over possible copyright violations
-should be directed to the Trustees if they cannot be worked out to
-anyone's satisfaction with the appropriate maintainer.
+Questions regarding this policy should be directed to the Trustees
+or the ``gentoo-project`` mailing list.  Any concerns over possible
+copyright violations should be directed to the Trustees if they cannot
+be worked out with the appropriate maintainer.
 
 
 Licensing of Gentoo Projects
@@ -206,7 +206,7 @@ Simplified Attribution
 Alternatively, projects are welcome to use a simplified form of the
 copyright notice, which reads::
 
-    Copyright YEARS The Gentoo Authors
+    Copyright YEARS Gentoo Authors
 
 Projects using this scheme must track authorship in a VCS, unless they
 list all authors of copyrightable contributions in an ``AUTHORS`` file.
@@ -310,7 +310,7 @@ Especially for ebuild repositories, constantly keeping track of the
 main copyright holder of any file would be rather inconvenient and
 tedious.  Therefore, projects are free to use either a traditional
 copyright notice listing the individual author(s), or a simplified
-notice with an attribution to "The Gentoo Authors".  The latter
+notice with an attribution to the "Gentoo Authors".  The latter
 resembles the scheme used by the Chromium project [#CHROMIUM]_.
 
 
@@ -330,10 +330,10 @@ References
    https://www.gentoo.org/get-started/philosophy/social-contract.html
 
 .. [#GPL-2] GNU General Public License, version 2 or later,
-   http://www.gnu.org/licenses/gpl-2.0.html
+   https://www.gnu.org/licenses/gpl-2.0.html
 
 .. [#CC-BY-SA-3.0] Creative Commons Attribution-ShareAlike 3.0
-   Unported License, http://creativecommons.org/licenses/by-sa/3.0/
+   Unported License, https://creativecommons.org/licenses/by-sa/3.0/
 
 .. [#GPL-COMPAT] GPL-compatible free software licenses,
    https://www.gnu.org/licenses/license-list.en.html#GPLCompatibleLicenses
