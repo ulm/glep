@@ -50,7 +50,7 @@ Bare minimum requirements
 
    a. DSA, 2048-bit
 
-   b. RSA, >=2048 bits, RSAv4 or later only
+   b. RSA, >=2048 bits (OpenPGP v4 key format or later only)
 
 3. Key expiry: 5 years maximum
 
@@ -102,7 +102,7 @@ Recommendations
        # when making an OpenPGP certification, use a stronger digest than the default SHA1:
        cert-digest-algo SHA256
 
-2. Root key type RSA, 4096 bits, RSAv4 or later
+2. Root key type RSA, 4096 bits (OpenPGP v4 key format or later)
 
    This may require creating an entirely new key.
 
