@@ -7,7 +7,7 @@ Author: Robin H. Johnson <robbat2@gentoo.org>,
         Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
 Status: Final
-Version: 1
+Version: 1.1
 Created: 2013-02-18
 Last-Modified: 2018-07-07
 Post-History: 2013-11-10
@@ -24,6 +24,15 @@ Abstract
 
 This GLEP provides both a minimum requirement and a recommended set of
 OpenPGP key management policies for the Gentoo Linux distribution.
+
+Changes
+=======
+
+v1.1
+  The recommended RSA key size has been changed from 4096 bits
+  to 2048 bits to match the GnuPG recommendations [#GNUPG-FAQ-11-4]_.
+  The larger recommendation was unjustified and resulted in people
+  unnecessarily replacing their RSA-2048 keys.
 
 Motivation
 ==========
@@ -113,15 +122,13 @@ their primary key).
        # when making an OpenPGP certification, use a stronger digest than the default SHA1:
        cert-digest-algo SHA256
 
-2. Primary key type RSA, 4096 bits (OpenPGP v4 key format or later)
-
-   This may require creating an entirely new key.
+2. Primary key type RSA, 2048 bits (OpenPGP v4 key format or later)
 
 3. The signing subkey of EITHER:
 
    a. DSA 2048 bits exactly.
 
-   b. RSA 4096 bits exactly.
+   b. RSA 2048 bits exactly.
 
 4. Key expiry:
 
@@ -173,6 +180,9 @@ Much of the above was driven by the following:
 
 References
 ==========
+
+.. [#GNUPG-FAQ-11-4] GnuPG FAQ: Why doesn’t GnuPG default to using RSA-4096?
+   (https://www.gnupg.org/faq/gnupg-faq.html#no_default_of_rsa4096)
 
 .. [#DEBIANGPG] Debian GPG documentation
    (https://wiki.debian.org/Keysigning)
