@@ -1,14 +1,15 @@
 ---
 GLEP: 63
-Title: Gentoo GPG key policies
+Title: Gentoo OpenPGP policies
 Author: Robin H. Johnson <robbat2@gentoo.org>,
         Andreas K. Hüttel <dilfridge@gentoo.org>,
-        Marissa Fischer <blogtodiffer@gmail.com>
+        Marissa Fischer <blogtodiffer@gmail.com>,
+        Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
 Status: Final
 Version: 1
 Created: 2013-02-18
-Last-Modified: 2015-08-25
+Last-Modified: 2018-07-07
 Post-History: 2013-11-10
 Content-Type: text/x-rst
 ---
@@ -21,22 +22,22 @@ Many developers and external sources helped in this GLEP.
 Abstract
 ========
 
-This GLEP provides both a minimum requirement and a recommended set of GPG
-key management policies for the Gentoo Linux distribution.
+This GLEP provides both a minimum requirement and a recommended set of
+OpenPGP key management policies for the Gentoo Linux distribution.
 
 Motivation
 ==========
 
 Given the increasing use and importance of cryptographic protocols in internet
-transactions of any kind, unified requirements for GnuPG keys used in Gentoo
+transactions of any kind, unified requirements for OpenPGP keys used in Gentoo
 Linux development are sorely needed.  This document provides both a set of
 bare minimum requirements and a set of best practice recommendations for
-the use of GnuPG by Gentoo Linux developers.  It is intended to provide
-a basis for future improvements such as, e.g., consistent ebuild or package
-signing and verifying by end users.
+the use of GnuPG (or other OpenPGP providers) by Gentoo Linux developers.
+It is intended to provide a basis for future improvements such as, e.g.,
+consistent ebuild or package signing and verifying by end users.
 
-Specifications for GnuPG keys
-=============================
+Specifications for OpenPGP keys
+===============================
 
 Bare minimum requirements
 -------------------------
@@ -125,7 +126,7 @@ Recommendations
 Gentoo LDAP
 ===========
 
-All Gentoo developers must list the complete GPG fingerprint for their root
+All Gentoo developers must list the complete fingerprint for their root
 keys in the "``gpgfingerprint``" LDAP field. It must be exactly 40 hex digits,
 uppercase, with optional spaces every 8 hex digits. Regular expression for
 validation::
@@ -195,7 +196,8 @@ References
 
 Copyright
 =========
-Copyright (c) 2013 by Robin Hugh Johnson, Andreas K. Hüttel, Marissa Fischer.
+Copyright (c) 2013-2018 by Robin Hugh Johnson, Andreas K. Hüttel,
+Marissa Fischer, Michał Górny.
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
 Unported License.  To view a copy of this license, visit
