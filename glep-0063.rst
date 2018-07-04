@@ -33,6 +33,10 @@ v2
   by a single requirement. The rules have been simplified to use
   the same maximum time of 900 days for both the primary key and subkeys.
 
+  An additional rule requesting key renewal 2 weeks before expiration
+  has been added. This is in order to give services and other developers time
+  to refresh the key.
+
 v1.1
   The recommended RSA key size has been changed from 4096 bits
   to 2048 bits to match the GnuPG recommendations [#GNUPG-FAQ-11-4]_.
@@ -83,7 +87,10 @@ not be used to commit.
 4. Expiration date on key and all subkeys set to no more than 900 days
    into the future
 
-5. Upload your key to the SKS keyserver rotation before usage!
+5. Key expiration date renewed at least 2 weeks before the previous
+   expiration date
+
+6. Upload your key to the SKS keyserver rotation before usage!
 
 Recommendations
 ---------------
