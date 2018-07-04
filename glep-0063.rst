@@ -7,7 +7,7 @@ Author: Robin H. Johnson <robbat2@gentoo.org>,
         Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
 Status: Final
-Version: 1.1
+Version: 2
 Created: 2013-02-18
 Last-Modified: 2018-07-07
 Post-History: 2013-11-10
@@ -27,6 +27,11 @@ OpenPGP key management policies for the Gentoo Linux distribution.
 
 Changes
 =======
+
+v2
+  The distinct minimal and recommended expirations have been replaced
+  by a single requirement. The rules have been simplified to use
+  the same maximum time of 900 days for both the primary key and subkeys.
 
 v1.1
   The recommended RSA key size has been changed from 4096 bits
@@ -75,7 +80,8 @@ not be used to commit.
 
    c. ECC curve 25519
 
-4. Key expiry: 5 years maximum
+4. Expiration date on key and all subkeys set to no more than 900 days
+   into the future
 
 5. Upload your key to the SKS keyserver rotation before usage!
 
@@ -132,11 +138,7 @@ their primary key).
 2. Primary key and the signing subkey are both of type RSA, 2048 bits
    (OpenPGP v4 key format or later)
 
-3. Key expiry:
-
-   a. Primary key: 3 years maximum, expiry date renewed annually.
-
-   b. Signing subkey: 1 year maximum, expiry date renewed every 6 months.
+3. Key expiration renewed annually to a fixed day of the year
 
 4. Create a revocation certificate & store it hardcopy offsite securely
    (it's about ~300 bytes).
