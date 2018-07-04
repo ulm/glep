@@ -36,6 +36,9 @@ v1.1
 
   Minimal specification has been amended to allow for ECC keys.
 
+  The option of using DSA subkey has been removed from recommendations.
+  The section now specifies a single recommendation of using RSA.
+
 Motivation
 ==========
 
@@ -126,24 +129,19 @@ their primary key).
        # when making an OpenPGP certification, use a stronger digest than the default SHA1:
        cert-digest-algo SHA256
 
-2. Primary key type RSA, 2048 bits (OpenPGP v4 key format or later)
+2. Primary key and the signing subkey are both of type RSA, 2048 bits
+   (OpenPGP v4 key format or later)
 
-3. The signing subkey of EITHER:
-
-   a. DSA 2048 bits exactly.
-
-   b. RSA 2048 bits exactly.
-
-4. Key expiry:
+3. Key expiry:
 
    a. Primary key: 3 years maximum, expiry date renewed annually.
 
    b. Signing subkey: 1 year maximum, expiry date renewed every 6 months.
 
-5. Create a revocation certificate & store it hardcopy offsite securely
+4. Create a revocation certificate & store it hardcopy offsite securely
    (it's about ~300 bytes).
 
-6. Encrypted backup of your secret keys.
+5. Encrypted backup of your secret keys.
 
 Gentoo LDAP
 ===========
