@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2018-06-22
-Last-Modified: 2018-06-28
+Last-Modified: 2018-07-04
 Post-History: 2018-06-28
 Content-Type: text/x-rst
 ---
@@ -278,6 +278,16 @@ Reference Implementation
 ========================
 
 n/a
+
+
+Credits
+=======
+
+- Matthias Maier proposed the initial idea and proofread this GLEP
+  thoroughly.
+
+- Ulrich Müller provided an early review of this GLEP and discovered
+  that the original quorum proposal violated the monotonicity criterion.
 
 
 References
