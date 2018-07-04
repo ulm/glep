@@ -41,6 +41,10 @@ Specifications for OpenPGP keys
 
 Bare minimum requirements
 -------------------------
+This section specifies obligatory requirements for all OpenPGP keys used
+to commit to Gentoo. Keys that do not conform to those requirements can
+not be used to commit.
+
 1. SHA2-series output digest (SHA1 digests internally permitted),
    256bit or more::
 
@@ -61,6 +65,10 @@ Bare minimum requirements
 
 Recommendations
 ---------------
+This section specifies the best practices for Gentoo developers.
+The developers should follow those practices unless there is a strong
+technical reason not to (e.g. hardware limitations, necessity of replacing
+their primary key).
 
 1. Copy ``/usr/share/gnupg/gpg-conf.skel`` to ``~/.gnupg/gpg.conf``, append
    the following block::
