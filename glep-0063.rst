@@ -37,6 +37,8 @@ v2
   has been added. This is in order to give services and other developers time
   to refresh the key.
 
+  The usage of DSA keys has been disallowed.
+
 v1.1
   The recommended RSA key size has been changed from 4096 bits
   to 2048 bits to match the GnuPG recommendations [#GNUPG-FAQ-11-4]_.
@@ -78,11 +80,9 @@ not be used to commit.
 
 3. Primary key and the signing subkey are both of type EITHER:
 
-   a. DSA, 2048-bit
+   a. RSA, >=2048 bits (OpenPGP v4 key format or later only)
 
-   b. RSA, >=2048 bits (OpenPGP v4 key format or later only)
-
-   c. ECC curve 25519
+   b. ECC curve 25519
 
 4. Expiration date on key and all subkeys set to no more than 900 days
    into the future
