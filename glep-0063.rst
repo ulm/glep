@@ -34,6 +34,8 @@ v1.1
   The larger recommendation was unjustified and resulted in people
   unnecessarily replacing their RSA-2048 keys.
 
+  Minimal specification has been amended to allow for ECC keys.
+
 Motivation
 ==========
 
@@ -67,6 +69,8 @@ not be used to commit.
    a. DSA, 2048-bit
 
    b. RSA, >=2048 bits (OpenPGP v4 key format or later only)
+
+   c. ECC curve 25519
 
 4. Key expiry: 5 years maximum
 
