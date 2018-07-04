@@ -116,7 +116,7 @@ Recommendations
 
    a. Root key: 3 years maximum, expiry date renewed annually.
 
-   b. Gentoo subkey: 1 year maximum, expiry date renewed every 6 months.
+   b. Signing subkey: 1 year maximum, expiry date renewed every 6 months.
 
 5. Create a revocation certificate & store it hardcopy offsite securely
    (it's about ~300 bytes).
