@@ -46,15 +46,18 @@ Bare minimum requirements
 
        personal-digest-preferences SHA256
 
-2. Primary key and signing subkey of EITHER:
+2. Signing subkey that is different from the primary key, and does not
+   have any other capabilities enabled
+
+3. Primary key and the signing subkey are both of type EITHER:
 
    a. DSA, 2048-bit
 
    b. RSA, >=2048 bits (OpenPGP v4 key format or later only)
 
-3. Key expiry: 5 years maximum
+4. Key expiry: 5 years maximum
 
-4. Upload your key to the SKS keyserver rotation before usage!
+5. Upload your key to the SKS keyserver rotation before usage!
 
 Recommendations
 ---------------
@@ -106,7 +109,7 @@ Recommendations
 
    This may require creating an entirely new key.
 
-3. Dedicated signing subkey of EITHER:
+3. The signing subkey of EITHER:
 
    a. DSA 2048 bits exactly.
 
