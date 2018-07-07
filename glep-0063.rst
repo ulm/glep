@@ -39,6 +39,9 @@ v2
 
   The usage of DSA keys has been disallowed.
 
+  The ``gpgfingerprint`` LDAP field has been altered to remove optional
+  whitespace.
+
 v1.1
   The recommended RSA key size has been changed from 4096 bits
   to 2048 bits to match the GnuPG recommendations [#GNUPG-FAQ-11-4]_.
@@ -157,10 +160,7 @@ Gentoo LDAP
 
 All Gentoo developers must list the complete fingerprint for their primary
 keys in the "``gpgfingerprint``" LDAP field. It must be exactly 40 hex digits,
-uppercase, with optional spaces every 8 hex digits. Regular expression for
-validation::
-
-    ^([[:space:]]*[[:xdigit:]]{8}){5}$
+uppercase, without whitespace.
 
 The prior "``gpgkey``" field will be removed, as it is a subset
 of the fingerprint field. In any place that presently displays
