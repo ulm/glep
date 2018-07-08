@@ -45,6 +45,9 @@ v2
   The ``gpg.conf`` contents have been removed as they were seriously
   outdated and decreased security over the modern defaults.
 
+  The requirement of SHA-2 digest has been extended to apply to self-
+  signatures made on subkeys.
+
 v1.1
   The recommended RSA key size has been changed from 4096 bits
   to 2048 bits to match the GnuPG recommendations [#GNUPG-FAQ-11-4]_.
@@ -77,7 +80,7 @@ to commit to Gentoo. Keys that do not conform to those requirements can
 not be used to commit.
 
 1. SHA-2 series output digest (SHA-1 digests internally permitted),
-   at least 256-bit.
+   at least 256-bit.  All subkey self-signatures must use this digest.
 
 2. Signing subkey that is different from the primary key, and does not
    have any other capabilities enabled
