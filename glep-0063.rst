@@ -83,19 +83,19 @@ not be used to commit.
    at least 256-bit.  All subkey self-signatures must use this digest.
 
 2. Signing subkey that is different from the primary key, and does not
-   have any other capabilities enabled
+   have any other capabilities enabled.
 
 3. Primary key and the signing subkey are both of type EITHER:
 
-   a. RSA, >=2048 bits (OpenPGP v4 key format or later only)
+   a. RSA, >=2048 bits (OpenPGP v4 key format or later only),
 
-   b. ECC curve 25519
+   b. ECC curve 25519.
 
 4. Expiration date on key and all subkeys set to no more than 900 days
-   into the future
+   into the future.
 
 5. Key expiration date renewed at least 2 weeks before the previous
-   expiration date
+   expiration date.
 
 6. Upload your key to the SKS keyserver rotation before usage!
 
@@ -107,9 +107,9 @@ technical reason not to (e.g. hardware limitations, necessity of replacing
 their primary key).
 
 1. Primary key and the signing subkey are both of type RSA, 2048 bits
-   (OpenPGP v4 key format or later)
+   (OpenPGP v4 key format or later).
 
-2. Key expiration renewed annually to a fixed day of the year
+2. Key expiration renewed annually to a fixed day of the year.
 
 3. Create a revocation certificate & store it hardcopy offsite securely
    (it's about ~300 bytes).
@@ -142,13 +142,13 @@ External documentation
 
 Much of the above was driven by the following:
 
-* NIST SP 800-57 recommendations [#NISTSP800571]_, [#NISTSP800572]_
+* NIST SP 800-57 recommendations [#NISTSP800571]_, [#NISTSP800572]_,
 
-* Debian GPG documentation [#DEBIANGPG]_
+* Debian GPG documentation [#DEBIANGPG]_,
 
-* RiseUp.net OpenPGP best practices [#RISEUP]_
+* RiseUp.net OpenPGP best practices [#RISEUP]_,
 
-* ENISA Algorithms, Key Sizes and Parameters Report 2013 [#ENISA2013]_
+* ENISA Algorithms, Key Sizes and Parameters Report 2013 [#ENISA2013]_.
 
 References
 ==========
