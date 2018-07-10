@@ -8,9 +8,9 @@ Type: Informational
 Status: Active
 Version: 3
 Created: 2003-05-31
-Last-Modified: 2017-10-28
+Last-Modified: 2018-07-10
 Post-History: 2003-06-01, 2003-07-02, 2008-01-19, 2008-06-05, 2011-03-09,
-              2013-12-14, 2017-09-17
+              2013-12-14, 2017-09-17, 2018-07-10
 Content-Type: text/x-rst
 ---
 
@@ -109,12 +109,11 @@ the form of code, patch, or URL to same -- before it can be considered Final.
 
 GLEP authors are responsible for collecting community feedback on a GLEP
 before submitting it for review.  A GLEP that has not been discussed on
-the mailing lists and the Gentoo Linux forums [#FORUMS]_ will not be
-accepted.  However, wherever possible, long open-ended discussions on public
-mailing lists should be avoided.  Strategies to keep the discussions efficient
-include setting up a specific forums thread for the topic, having the GLEP
-author accept private comments in the early design phases, etc.  GLEP authors
-should use their discretion here.
+the mailing lists will not be accepted.  However, wherever possible, long
+open-ended discussions on public mailing lists should be avoided.  Strategies
+to keep the discussions efficient include setting up a specific forums thread
+for the topic, having the GLEP author accept private comments in the early
+design phases, etc.  GLEP authors should use their discretion here.
 
 Once the authors have completed a GLEP, they must inform the Gentoo Council
 [#COUNCIL]_ that it is ready for review by way of the appropriate mailing
