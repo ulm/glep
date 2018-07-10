@@ -117,7 +117,7 @@ design phases, etc.  GLEP authors should use their discretion here.
 
 Once the authors have completed a GLEP, they must inform the Gentoo Council
 [#COUNCIL]_ that it is ready for review by way of the appropriate mailing
-list.  GLEPs are then reviewed at a Council meeting where the may be approved
+list.  GLEPs are then reviewed at a Council meeting where they may be approved
 or rejected outright, or sent back to the author(s) for revision.  This
 generally should be done a few weeks in advance of the actual review so as to
 avoid the appearance of "slipping" a GLEP in without proper public review
