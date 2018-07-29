@@ -3,7 +3,7 @@ GLEP: 77
 Title: Gentoo General Resolution
 Author: Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
-Status: Draft
+Status: Final
 Version: 1
 Created: 2018-06-22
 Last-Modified: 2018-07-04
