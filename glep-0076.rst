@@ -130,14 +130,13 @@ certificate of origin.  The purpose of the certificate is to declare
 that the contribution can be modified and redistributed in accordance
 with the project's license.
 
-For commits made using a VCS, the committer shall certify agreement
-to the Gentoo DCO by adding ``Signed-off-by: Name <e-mail>`` to the
-commit message as a separate line.  Committers must use their real
-name, i.e., the name that would appear in an official document like
-a passport.
+For commits made using a VCS, the committer shall certify agreement to
+the Certificate of Origin by adding ``Signed-off-by: Name <e-mail>``
+to the commit message as a separate line.  Committers must use their
+real name, i.e., the name that would appear in an official document
+like a passport.
 
-The following is the current Gentoo Developer's Certificate of Origin,
-revision 1:
+The following is the current Gentoo Certificate of Origin, revision 1:
 
     By making a contribution to this project, I certify that:
 
@@ -166,7 +165,7 @@ revision 1:
     maintained indefinitely and may be redistributed consistent with
     this project or the free software license(s) involved.
 
-The Gentoo DCO is licensed under a Creative Commons
+The Gentoo Certificate of Origin is licensed under a Creative Commons
 Attribution-ShareAlike 3.0 Unported License [#CC-BY-SA-3.0]_.
 It is based on the Linux Kernel DCO [#OSDL-DCO]_, released by Open
 Source Development Labs, Inc. in 2005 under a CC-BY-SA-2.5 License.
@@ -263,11 +262,11 @@ this, as long as the license in question is a free software or open
 source license.
 
 
-DCO Changes
------------
+Changes to the Certificate of Origin
+------------------------------------
 
-The Gentoo DCO rev. 1 has been based on Linux Kernel DCO 1.1
-[#OSDL-DCO]_.  It features the following modifications from
+The Gentoo Certificate of Origin rev. 1 has been based on Linux Kernel
+DCO 1.1 [#OSDL-DCO]_.  It features the following modifications from
 the original:
 
 i.   The enumeration has been modified to use numeric points.
@@ -289,8 +288,9 @@ v.   The term "open source" has been replaced by "free software"
 The new point was deemed necessary to allow committing license files
 into the Gentoo repository, since those files usually do not permit
 modification.  It has been established that adding a clear provision
-for this case is better than excluding those commits from DCO
-compliance.  Debian was facing a similar problem [#DEBIAN-LICENSE]_.
+for this case is better than excluding those commits from compliance
+with the Certificate of Origin.  Debian was facing a similar problem
+[#DEBIAN-LICENSE]_.
 
 The update of point (c) was necessary to allow the new clause being
 certified by the person providing the contribution.
@@ -345,7 +345,8 @@ References
 .. [#PROJECTS] Licensing of Gentoo projects,
    https://wiki.gentoo.org/wiki/Project:Licenses/Licensing_of_Gentoo_projects
 
-.. [#OSDL-DCO] Developer's Certificate of Origin 1.1,
+.. [#OSDL-DCO] Open Source Development Labs, Inc.,
+   Developer's Certificate of Origin 1.1,
    https://web.archive.org/web/20060524185355/http://www.osdlab.org/newsroom/press_releases/2004/2004_05_24_dco.html
 
 .. [#FLA] FSFE Legal: Fiduciary Licence Agreement (FLA),
