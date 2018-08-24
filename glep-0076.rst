@@ -10,7 +10,7 @@ Type: Informational
 Status: Draft
 Version: 1
 Created: 2013-04-23
-Last-Modified: 2018-06-23
+Last-Modified: 2018-08-24
 Post-History: 2018-06-10, 2018-06-19
 Content-Type: text/x-rst
 ---
@@ -269,21 +269,21 @@ The Gentoo DCO rev. 1 has been based on Linux Kernel DCO 1.1
 [#OSDL-DCO]_.  It features the following modifications from
 the original:
 
-1. The enumeration has been modified to use numeric points.
+i.   The enumeration has been modified to use numeric points.
 
-2. Additional point (3) has been inserted::
+ii.  Additional point (3) has been inserted::
 
-       (3) The contribution is a license text (or a file of similar nature),
-       and verbatim distribution is allowed; or
+         (3) The contribution is a license text (or a file of similar nature),
+         and verbatim distribution is allowed; or
 
-3. The original point (c) has shifted to become point (4), and has been
-   updated to account for the additional point (3).
+iii. The original point (c) has shifted to become point (4), and has
+     been updated to account for the additional point (3).
 
-4. The original point (d) has been transformed into a stand-alone
-   paragraph following the enumeration.
+iv.  The original point (d) has been transformed into a stand-alone
+     paragraph following the enumeration.
 
-5. The term "open source" has been replaced by "free software"
-   throughout.
+v.   The term "open source" has been replaced by "free software"
+     throughout.
 
 The new point was deemed necessary to allow committing license files
 into the Gentoo repository, since those files usually do not permit
