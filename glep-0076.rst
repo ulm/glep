@@ -136,34 +136,35 @@ commit message as a separate line.  Committers must use their real
 name, i.e., the name that would appear in an official document like
 a passport.
 
-The following is the current Gentoo DCO::
-
-    Gentoo Developer's Certificate of Origin, revision 1
+The following is the current Gentoo Developer's Certificate of Origin,
+revision 1:
 
     By making a contribution to this project, I certify that:
 
-    (1) The contribution was created in whole or in part by me, and I have
-        the right to submit it under the free software license indicated
-        in the file; or
+    1. The contribution was created in whole or in part by me, and I
+       have the right to submit it under the free software license
+       indicated in the file; or
 
-    (2) The contribution is based upon previous work that, to the best
-        of my knowledge, is covered under an appropriate free software
-        license, and I have the right under that license to submit that
-        work with modifications, whether created in whole or in part by
-        me, under the same free software license (unless I am permitted
-        to submit under a different license), as indicated in the file; or
+    2. The contribution is based upon previous work that, to the best
+       of my knowledge, is covered under an appropriate free software
+       license, and I have the right under that license to submit that
+       work with modifications, whether created in whole or in part by
+       me, under the same free software license (unless I am permitted
+       to submit under a different license), as indicated in the file;
+       or
 
-    (3) The contribution is a license text (or a file of similar nature),
-        and verbatim distribution is allowed; or
+    3. The contribution is a license text (or a file of similar nature),
+       and verbatim distribution is allowed; or
 
-    (4) The contribution was provided directly to me by some other person
-        who certified (1), (2), (3), or (4), and I have not modified it.
+    4. The contribution was provided directly to me by some other
+       person who certified 1., 2., 3., or 4., and I have not modified
+       it.
 
-    I understand and agree that this project and the contribution are
-    public and that a record of the contribution (including all personal
-    information I submit with it, including my sign-off) is maintained
-    indefinitely and may be redistributed consistent with this project or
-    the free software license(s) involved.
+    I understand and agree that this project and the contribution
+    are public and that a record of the contribution (including all
+    personal information I submit with it, including my sign-off) is
+    maintained indefinitely and may be redistributed consistent with
+    this project or the free software license(s) involved.
 
 The Gentoo DCO is licensed under a Creative Commons
 Attribution-ShareAlike 3.0 Unported License [#CC-BY-SA-3.0]_.
@@ -271,13 +272,13 @@ the original:
 
 i.   The enumeration has been modified to use numeric points.
 
-ii.  Additional point (3) has been inserted::
+ii.  Additional point 3. has been inserted:
 
-         (3) The contribution is a license text (or a file of similar nature),
-         and verbatim distribution is allowed; or
+         3. The contribution is a license text (or a file of similar
+            nature), and verbatim distribution is allowed; or
 
-iii. The original point (c) has shifted to become point (4), and has
-     been updated to account for the additional point (3).
+iii. The original point (c) has shifted to become point 4., and has
+     been updated to account for the additional point 3.
 
 iv.  The original point (d) has been transformed into a stand-alone
      paragraph following the enumeration.
