@@ -304,10 +304,9 @@ certified by the person providing the contribution.
 The term "free software" is used for consistency with the language
 of the Gentoo Social Contract [#SOCIAL-CONTRACT]_.
 
-The remaining changes were merely editorial.  It has been established
-that the last point is really separate from the other points, so it is
-more appropriate to separate it from the enumeration by putting it
-in a separate paragraph.
+The remaining changes were merely editorial.  The original point (d)
+is not part of the *or* statement joining the other points, so keeping
+it in a paragraph separate from the enumeration is more appropriate.
 
 
 Copyright Notice
