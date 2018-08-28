@@ -308,6 +308,12 @@ The remaining changes were merely editorial.  The original point (d)
 is not part of the *or* statement joining the other points, so keeping
 it in a paragraph separate from the enumeration is more appropriate.
 
+Addition of another point for public domain material was also
+considered.  However, it is preferred if all contributions carry
+an explicit license notice that allows their certification under
+point 1. or 2.  If necessary, license tools like Creative Commons
+CC0 [#CC0-1.0]_ or Public Domain Mark [#CC-PDM-1.0]_ can be used.
+
 
 Copyright Notice
 ----------------
@@ -362,6 +368,12 @@ References
 
 .. [#DEBIAN-LICENSE] [debian-legal] License of the GPL license,
    https://lists.debian.org/debian-legal/2018/04/msg00006.html
+
+.. [#CC0-1.0] Creative Commons: CC0 1.0 Universal,
+   https://creativecommons.org/publicdomain/zero/1.0/
+
+.. [#CC-PDM-1.0] Creative Commons: Public Domain Mark 1.0,
+   https://creativecommons.org/publicdomain/mark/1.0/
 
 .. [#CHROMIUM] Chromium: Contributing Code,
    https://www.chromium.org/developers/contributing-code#TOC-Legal-stuff
