@@ -10,7 +10,7 @@ Type: Informational
 Status: Draft
 Version: 1
 Created: 2013-04-23
-Last-Modified: 2018-08-24
+Last-Modified: 2018-08-28
 Post-History: 2018-06-10, 2018-06-19
 Content-Type: text/x-rst
 ---
@@ -169,6 +169,12 @@ The Gentoo Certificate of Origin is licensed under a Creative Commons
 Attribution-ShareAlike 3.0 Unported License [#CC-BY-SA-3.0]_.
 It is based on the Linux Kernel DCO [#OSDL-DCO]_, released by Open
 Source Development Labs, Inc. in 2005 under a CC-BY-SA-2.5 License.
+
+Alternatively, and if it is applicable, committers are allowed to
+certify their commits with the Linux Kernel DCO 1.1.  This shall be
+clearly indicated by adding ``(Linux DCO 1.1)`` at the end of the
+``Signed-off-by`` line.  Using the Gentoo Certificate of Origin is
+strongly preferred, though.
 
 
 Copyright Attribution
