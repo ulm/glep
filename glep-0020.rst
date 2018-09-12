@@ -63,13 +63,13 @@ the software under the /srv directory.
 All packages configured to support the srvdir USE flag will support
 this breakdown of /srv:
 
-	/srv/<fqdn>/<service>/<service-specific tree>
+    /srv/<fqdn>/<service>/<service-specific tree>
 
 where
 
-	<fqdn> is the fully-qualified domain name
-	<service> is the name of the service
-	<service-specific tree> is unique to the package
+    | <fqdn> is the fully-qualified domain name
+    | <service> is the name of the service
+    | <service-specific tree> is unique to the package
 
 Ebuilds that install anything into /srv will install into /srv/localhost.
 /srv/localhost - or any of the <service> directories underneath it - may be
