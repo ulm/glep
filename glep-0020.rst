@@ -7,7 +7,7 @@ Type: Standards Track
 Status: Deferred
 Version: 1
 Created: 2004-02-09
-Last-Modified: 2017-11-03
+Last-Modified: 2018-09-12
 Post-History: 2004-02-21, 2004-11-11
 Content-Type: text/x-rst
 ---
@@ -64,15 +64,16 @@ All packages configured to support the srvdir USE flag will support
 this breakdown of /srv:
 
 	/srv/<fqdn>/<service>/<service-specific tree>
-	
+
 where
+
 	<fqdn> is the fully-qualified domain name
 	<service> is the name of the service
 	<service-specific tree> is unique to the package
 
-Ebuilds that install anything into /srv will install into /srv/localhost. 
+Ebuilds that install anything into /srv will install into /srv/localhost.
 /srv/localhost - or any of the <service> directories underneath it - may be
-symlinks created by the local administrator.  
+symlinks created by the local administrator.
 
 Examples
 ========
@@ -106,7 +107,7 @@ groups of Gentoo users.
   /srv provides an optional alternative for packages that install writable
   files into /usr.
 
-* Users who wish to isoloate services from /home utilisation
+* Users who wish to isolate services from /home utilisation
 
   Services stop working when real users fill /home.  As many packages cannot
   detect or robustly cope with this situation, services that write files
@@ -129,13 +130,13 @@ groups of Gentoo users.
 
   Grouping all the storage (web, ftp, databases, IMAP, etc etc) under one
   location greatly simplifies managing disk quotas on that host.
-  
+
   It is common practice for shared hosted systems to place web sites,
   ftp sites and so on under a user's actual home directory.  This practice
   requires the user's home directory to be world-readable, which does not
   promote strong security!
 
-* Users who wish to store service-orientated files onto a single logical 
+* Users who wish to store service-orientated files onto a single logical
   volume to support future growth
 
 The Gentoo Philosophy clearly states that Gentoo Linux will be a
@@ -156,7 +157,7 @@ support the srvdir USE flag through the work being carried out under GLEP #11)
 There has been some debate about whether the /srv directory should be provided
 by the basesystem package or not.  Because this support is optional, and
 because different sites will have different storage requirements, we believe
-that it should be left to the local Gentoo system administrator to manually 
+that it should be left to the local Gentoo system administrator to manually
 create the /srv directory.
 
 If baselayout feels that it must install a /srv, then we propose that
