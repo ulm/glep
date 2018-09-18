@@ -4,10 +4,10 @@ Title: Gentoo Git Workflow
 Author: Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
 Status: Final
-Version: 1
+Version: 1.1
 Created: 2017-07-24
-Last-Modified: 2017-11-13
-Post-History: 2017-07-25, 2017-09-28, 2017-10-11
+Last-Modified: 2018-09-18
+Post-History: 2017-07-25, 2017-09-28, 2017-10-11, 2018-09-18
 Content-Type: text/x-rst
 ---
 
@@ -16,6 +16,13 @@ Abstract
 This GLEP specifies basic standards and recommendations for using git
 with the Gentoo ebuild repository.  It covers only Gentoo-specific
 policies, and is not meant to be a complete guide.
+
+
+Change log
+==========
+v1.1
+  Updated the ``Signed-off-by`` footer tag description to account
+  for newly-approved copyright policy.
 
 
 Motivation
@@ -188,8 +195,8 @@ A few tags of common use are:
   - ``Reported-by: Full Name <email@example.com>``,
   - ``Reviewed-by: Full Name <email@example.com>`` — usually indicates
     full review,
-  - ``Signed-off-by: Full Name <email@example.com>`` — DCO approval (not
-    used in Gentoo right now),
+  - ``Signed-off-by: Full Name <email@example.com>`` — GCO/DCO approval
+    (defined by GLEP 76 [#GLEP76]_),
   - ``Suggested-by: Full Name <email@example.com>``,
   - ``Tested-by: Full Name <email@example.com>``.
 
@@ -364,8 +371,9 @@ tags collected from various projects (the Linux kernel, X.org).  Those
 tags can be used interchangeably with plaintext explanation in the body.
 
 The only tag defined by git itself is the ``Signed-off-by`` line,
-that is created by ``git commit -s``.  However, Gentoo does not
-currently enforce a DCO consistently, and therefore it is meaningless.
+that is created by ``git commit -s``.  While git does not define
+the precise meaning of it, it is commonly used to reference Certificate
+of Origin sign-off.
 
 The tags subject to machine processing are the ``Bug`` and ``Closes``
 lines.  Both are used by git.gentoo.org to handle Gentoo Bugzilla
@@ -444,6 +452,9 @@ References
 
 .. [#GLEP63] GLEP 63: Gentoo GPG key policies
    (https://www.gentoo.org/glep/glep-0063.html)
+
+.. [#GLEP76] GLEP 76: Copyright policy
+   (https://www.gentoo.org/glep/glep-0076.html)
 
 .. [#REPOMAN_PKG_NAME_COMMIT]
    (https://gitweb.gentoo.org/proj/portage.git/commit/?id=46dafadff58da0220511f20480b73ad09f913430)
