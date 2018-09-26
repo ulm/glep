@@ -10,7 +10,7 @@ Type: Informational
 Status: Accepted
 Version: 1
 Created: 2013-04-23
-Last-Modified: 2018-09-15
+Last-Modified: 2018-09-26
 Post-History: 2018-06-10, 2018-06-19, 2018-08-31
 Content-Type: text/x-rst
 ---
@@ -133,9 +133,9 @@ with the project's license.
 
 For commits made using a VCS, the committer shall certify agreement to
 the Certificate of Origin by adding ``Signed-off-by: Name <e-mail>``
-to the commit message as a separate line.  Committers must use their
-real name, i.e., the name that would appear in an official document
-like a passport.
+to the commit message as a separate line.  The sign-off must contain
+the committer's legal name as a natural person, i.e., the name that
+would appear in a government issued document.
 
 The following is the current Gentoo Certificate of Origin, revision 1:
 
@@ -197,6 +197,9 @@ author, or the contributor holding copyright to the largest portion
 of the file.  Additional copyright holders can be listed, but this is
 normally not required.  The "and others" text may be omitted if the
 explicitly listed contributors hold copyright to the entire file.
+In some jurisdictions, the copyright holder can also be a company or
+other legal entity, and therefore be different from the original
+author.
 
 Anyone finding a file out of compliance should file a bug against the
 associated project/package providing as much information as possible.
@@ -235,7 +238,8 @@ The copyright model is built on the DCO model used by the Linux kernel
 and requires all contributors to certify the legitimacy of their
 contributions.  This also requires that they use their real name for
 signing; an anonymous certification or one under a pseudonym would not
-mean anything.
+mean anything.  This policy is derived from the Linux project's policy
+[#SUBMITTING-PATCHES]_.
 
 In the future, a second stage of this policy may use a combination of
 the DCO model and an FLA model [#FLA]_ as it is used by different open
@@ -362,6 +366,11 @@ References
 
 .. [#DCO-1.1] Developer's Certificate of Origin 1.1,
    https://developercertificate.org/
+
+.. [#SUBMITTING-PATCHES] Submitting patches: the essential guide to
+   getting your code into the kernel,
+   https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?h=v4.18#n460
+   https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=af45f32d25cc1e374184675eadc9f740221d8392
 
 .. [#FLA] FSFE Legal: Fiduciary Licence Agreement (FLA),
    https://fsfe.org/activities/ftf/fla.en.html
