@@ -8,9 +8,9 @@ Author: Richard Freeman <rich0@gentoo.org>,
         Michał Górny <mgorny@gentoo.org>
 Type: Informational
 Status: Accepted
-Version: 1
+Version: 1.1
 Created: 2013-04-23
-Last-Modified: 2018-09-26
+Last-Modified: 2018-10-21
 Post-History: 2018-06-10, 2018-06-19, 2018-08-31, 2018-09-26
 Content-Type: text/x-rst
 ---
@@ -20,7 +20,8 @@ Status
 ======
 
 Accepted by the Gentoo Council on 2018-09-09 and approved by the
-Gentoo Board of Trustees on 2018-09-15.  Implementation in tools
+Gentoo Board of Trustees on 2018-09-15.  Reapproved with clarified
+real name requirement on 2018-10-19.  Implementation in tools
 (e.g., repoman) is pending.
 
 
