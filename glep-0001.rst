@@ -8,7 +8,7 @@ Type: Informational
 Status: Active
 Version: 3
 Created: 2003-05-31
-Last-Modified: 2018-07-10
+Last-Modified: 2018-10-27
 Post-History: 2003-06-01, 2003-07-02, 2008-01-19, 2008-06-05, 2011-03-09,
               2013-12-14, 2017-09-17, 2018-07-10
 Content-Type: text/x-rst
@@ -265,7 +265,7 @@ All other headers are required.
 
 The Author header lists the names, and optionally the email addresses
 of all the authors/owners of the GLEP.  Anybody who submits changes to
-the GLEP should be added to this field.The format of the Author header
+the GLEP should be added to this field.  The format of the Author header
 value must be
 
     Random J. User <address@dom.ain>
@@ -274,7 +274,7 @@ if the email address is included, and just
 
     Random J. User
 
-if the address is not given.  
+if the address is not given.
 
 If there are multiple authors, each should be on a separate line
 following RFC 2822 continuation line conventions.
