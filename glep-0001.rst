@@ -268,7 +268,7 @@ of all the authors/owners of the GLEP.  Anybody who submits changes to
 the GLEP should be added to this field.  The format of the Author header
 value must be
 
-    Random J. User <address@dom.ain>
+    Random J. User <address@example.org>
 
 if the email address is included, and just
 
