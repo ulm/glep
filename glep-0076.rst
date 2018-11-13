@@ -10,7 +10,7 @@ Type: Informational
 Status: Active
 Version: 1.1
 Created: 2013-04-23
-Last-Modified: 2018-10-21
+Last-Modified: 2018-11-13
 Post-History: 2018-06-10, 2018-06-19, 2018-08-31, 2018-09-26
 Content-Type: text/x-rst
 ---
@@ -132,7 +132,10 @@ that the contribution can be modified and redistributed in accordance
 with the project's license.
 
 For commits made using a VCS, the committer shall certify agreement to
-the Certificate of Origin by adding ``Signed-off-by: Name <e-mail>``
+the Certificate of Origin by adding ::
+
+    Signed-off-by: Name <e-mail>
+
 to the commit message as a separate line.  The sign-off must contain
 the committer's legal name as a natural person, i.e., the name that
 would appear in a government issued document.
