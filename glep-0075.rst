@@ -104,7 +104,7 @@ For example, the list of ``2:4`` would indicate that top-level directory
 names are formed using 2 most significant bits of the hash (resulting
 in 2² = 4 directories), and each of this directories would have
 subdirectories formed using the next 4 bits of the hash (resulting
-in 2⁴ = 8 subdirectories each).
+in 2⁴ = 16 subdirectories each).
 
 The exact algorithm for determining the distfile location follows:
 
