@@ -7,7 +7,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2018-01-26
-Last-Modified: 2018-01-27
+Last-Modified: 2018-12-01
 Post-History: 2018-01-27
 Content-Type: text/x-rst
 ---
@@ -114,13 +114,13 @@ The exact algorithm for determining the distfile location follows:
 
 3. For each integer **C** in cutoff list:
 
-   a. Take **C** most significant bits of **H** and store them as **V**.
+   a. Remove the **C** most significant bits from **H** and store them
+      as **V**.
 
-   b. Convert **V** into hexadecimal integer, left padded with zeros
-      to **C/4** digits (rounded up) and append it to the path, followed
-      by the path separator.
-
-   c. Shift **H** left **C** bits.
+   b. Convert **V** into hexadecimal notation (digits ``0`` to ``9``
+      and lowercase letters ``a`` to ``f``), left padded with zeros
+      to **C/4** digits (rounded up), and append it to the path,
+      followed by the path separator.
 
 4. Finally, append **F** to the obtained path.
 
