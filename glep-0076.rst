@@ -10,7 +10,7 @@ Type: Informational
 Status: Active
 Version: 1.1
 Created: 2013-04-23
-Last-Modified: 2018-11-13
+Last-Modified: 2018-12-09
 Post-History: 2018-06-10, 2018-06-19, 2018-08-31, 2018-09-26
 Content-Type: text/x-rst
 ---
@@ -203,6 +203,9 @@ explicitly listed contributors hold copyright to the entire file.
 In some jurisdictions, the copyright holder can also be a company or
 other legal entity, and therefore be different from the original
 author.
+
+Any requirement (e.g., by law, or by the file's license) to keep
+existing copyright notices intact is not affected by this policy.
 
 Anyone finding a file out of compliance should file a bug against the
 associated project/package providing as much information as possible.
