@@ -7,10 +7,10 @@ Author: Robin H. Johnson <robbat2@gentoo.org>,
         Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
 Status: Final
-Version: 2
+Version: 2.1
 Created: 2013-02-18
-Last-Modified: 2018-07-21
-Post-History: 2013-11-10, 2018-07-03, 2018-07-21
+Last-Modified: 2019-05-02
+Post-History: 2013-11-10, 2018-07-03, 2018-07-21, 2019-02-24
 Content-Type: text/x-rst
 ---
 
@@ -27,6 +27,13 @@ OpenPGP key management policies for the Gentoo Linux distribution.
 
 Changes
 =======
+
+v2.1
+  A requirement for an encryption key has been added, in order to extend
+  the GLEP beyond commit signing and into use of OpenPGP for dev-to-dev
+  and user-to-dev communications.
+
+  A recommendation for primary key to be certify-only has been added.
 
 v2
   The distinct minimal and recommended expirations have been replaced
@@ -70,22 +77,28 @@ Linux development are sorely needed.  This document provides both a set of
 bare minimum requirements and a set of best practice recommendations for
 the use of GnuPG (or other OpenPGP providers) by Gentoo Linux developers.
 It is intended to provide a basis for future improvements such as, e.g.,
-consistent ebuild or package signing and verifying by end users.
+consistent ebuild or package signing and verification by end users,
+and providing secure and authenticated communication channel between users
+and developers.
 
 Specifications for OpenPGP keys
 ===============================
 
 Bare minimum requirements
 -------------------------
-This section specifies obligatory requirements for all OpenPGP keys used
-to commit to Gentoo. Keys that do not conform to those requirements can
-not be used to commit.
+This section specifies obligatory requirements for all OpenPGP keys that
+are used in the context of Gentoo developer actions.  All developers
+are required to have at least one key conforming to those requirements.
+Keys that do not conform to them can not be used to commit.
 
 1. SHA-2 series output digest (SHA-1 digests internally permitted),
    at least 256-bit.  All subkey self-signatures must use this digest.
 
-2. Signing subkey that is different from the primary key, and does not
-   have any other capabilities enabled.
+2. a. Signing subkey that is different from the primary key, and does
+      not have any other capabilities enabled.
+
+   b. Encryption subkey that is different from the primary key, and does
+      not have any other capabilities enabled.
 
 3. Primary key and the signing subkey are both of type EITHER:
 
@@ -110,15 +123,17 @@ The developers should follow those practices unless there is a strong
 technical reason not to (e.g. hardware limitations, necessity of replacing
 their primary key).
 
-1. Primary key and the signing subkey are both of type RSA, 2048 bits
+1. Primary key has only ``certify`` capability enabled.
+
+2. Primary key and the signing subkey are both of type RSA, 2048 bits
    (OpenPGP v4 key format or later).
 
-2. Key expiration renewed annually to a fixed day of the year.
+3. Key expiration renewed annually to a fixed day of the year.
 
-3. Create a revocation certificate & store it hardcopy offsite securely
+4. Create a revocation certificate & store it hardcopy offsite securely
    (it's about ~300 bytes).
 
-4. Encrypted backup of your secret keys.
+5. Encrypted backup of your secret keys.
 
 Gentoo LDAP
 ===========
@@ -193,7 +208,7 @@ References
 
 Copyright
 =========
-Copyright (c) 2013-2018 by Robin Hugh Johnson, Andreas K. Hüttel,
+Copyright (c) 2013-2019 by Robin Hugh Johnson, Andreas K. Hüttel,
 Marissa Fischer, Michał Górny.
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
