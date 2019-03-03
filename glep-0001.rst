@@ -375,7 +375,7 @@ References and Footnotes
 
 .. [#COUNCIL] https://www.gentoo.org/glep/glep-0039.html
 
-.. [#CC-BY-SA3.0] http://creativecommons.org/licenses/by-sa/3.0/
+.. [#CC-BY-SA3.0] https://creativecommons.org/licenses/by-sa/3.0/
 
 .. [#ReSTHOME] http://docutils.sourceforge.net/rst.html
 
@@ -391,4 +391,4 @@ Copyright
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
 Unported License.  To view a copy of this license, visit
-http://creativecommons.org/licenses/by-sa/3.0/.
+https://creativecommons.org/licenses/by-sa/3.0/.
