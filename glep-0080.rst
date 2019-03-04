@@ -1,0 +1,291 @@
+---
+GLEP: 80
+Title: Identity verification via OpenPGP WoT
+Author: Michał Górny <mgorny@gentoo.org>
+Type: Standards Track
+Status: Draft
+Version: 1
+Created: 2019-03-04
+Last-Modified: 2019-04-02
+Post-History: 2019-03-04
+Content-Type: text/x-rst
+Requires:
+Replaces:
+---
+
+Abstract
+========
+This GLEP proposes establishing a non-obligatory, distributed identity
+verification procedure that is compatible with OpenPGP web of trust.  It
+could be used whenever an explicit need for verifying the real name
+occurs, enforced on groups of developers with elevated privileges
+via a separate policy or serve as guidelines for building web of trust.
+Three methods of verifying the identity are proposed: face-to-face,
+via webcam or via government-controlled identification services.
+
+
+Motivation
+==========
+GLEP 76 (Copyright Policy) specifies that all commits made to Gentoo
+repositories must include a sign-off with a person's real name.
+However, it does not specify any particular method of verifying it.
+It is a standing policy that it is sufficient for contributor to
+acknowledge the legitimacy of the provided name.  [#GLEP76]_
+
+At the same time, developers are asked not to accept contributions
+if they have justified concerns as to the authenticity of the name
+provided.  In particular, this could happen if the developer happens
+to know the contributor personally, the contributor indicated that he
+is using a pseudonym or arbitrarily changed his name under the policy.
+In this case, we lack a clear policy allowing the contributor
+to reattain trust.
+
+Furthermore, enforcing higher standards for identity verification may
+make sense for groups having elevated privileges or specific legal
+responsibility, e.g. the Infrastructure team or Trustees.
+
+If a centralized identity verification model was to be introduced
+in Gentoo, it would probably be necessary to perform most
+of the verifications remotely.  This would require transferring
+sensitive personal data to a single entity which is undesirable.
+
+On the other hand, a distributed identity verification model is readily
+provided by OpenPGP Web of Trust.  In this case, verification can be
+performed between individual pairs of developers, reducing the amount of
+sensitive information at the disposal of a single entity and increasing
+the chances of performing the verification face-to-face.
+
+
+Specification
+=============
+Purpose and scope
+-----------------
+This specification does not enforce identity verification anywhere.
+Instead, it aims to provide clear rules for whenever developers
+establish such a process is necessary.  Identity verification may be
+enforced in specific groups of developers separately, via internal
+project policies or Council-approved policies.
+
+If a identity is verified according to this specification, this fact
+should be recorded via signing UIDs matching the verified data
+on the person's OpenPGP key.  Such signature cryptographically confirms
+that the signer has verified that the specific signee's UID provides
+legitimate real name and e-mail address of the key owner.  Furthermore,
+it is recommended that the signer includes the URL of this GLEP
+as the certification policy URL (``--cert-policy-url`` in *gpg(1)*),
+and appropriately indicates certification level (see
+``--default-cert-level`` in *gpg(1)*).
+
+The certification level of signatures following this specification must
+be either 2 or 3, depending on how minutely the signer verified signee's
+identification documents.
+
+
+Identity verification
+---------------------
+Face-to-face verification
+~~~~~~~~~~~~~~~~~~~~~~~~~
+The recommended procedure for identity verification is for the signer
+to meet signee face-to-face.  The signer must:
+
+1. Obtain the signee's OpenPGP key fingerprint, the complete public key
+   data or a stronger digest of it over a tamper-resistant channel
+   (preferably on paper).  The signer must reliably compare this data to
+   verify the authenticity of the key being signed.
+
+2. Verify the signee's identity using a government-issued identification
+   document with a photograph.  The verification must include,
+   to the best of signer's abilities:
+
+   a. Verifying that the counter-forgery features of the verified
+      document are present and are correct.
+
+   b. Verifying that the signee's face resembles the photograph
+      on the document.
+
+   c. Verifying that the signee is able to issue a signature similar
+      to the one on the document (if present).
+
+3. Verify the signee's e-mail address(es), through sending an e-mail
+   encrypted using signee's OpenPGP key, containing either randomly
+   generated data, or an exported signature for the UID in question.
+   Each mail sent must contain unique data.
+
+Only once all three factors are positively verified may the particular
+UID be signed according to this policy.
+
+
+Remote webcam verification
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+Alternatively to face-to-face verification, it is acceptable to perform
+the verification using high-resolution real-time video stream.  In this
+case, the signee should perform all the actions necessary for the signer
+to be able to verify the identity document in front of the camera.
+
+
+Verification via government identity services
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Finally, it is acceptable to use one of the identity proof forms that
+are considered legally meaningful in a particular country, and guarantee
+the signee's identity has been verified by an official.  This could
+include e.g.:
+
+- public notaries,
+
+- government identity services (provided that the signer is able to
+  obtain a cryptographically secured proof of identity),
+
+- bank wire transfers.
+
+
+GnuPG command line (informational)
+----------------------------------
+In order to create a signature following this specification,
+the following command-line arguments can be used::
+
+    gpg --cert-policy-url 'https://www.gentoo.org/glep/glep-9999.rst' \
+        --ask-cert-level --cert-digest-algo SHA512 \
+        --edit-key <key-fingerprint>
+
+Alternatively, if those options should bapply to all certifications
+made, they can be included in the configuration file
+``~/.gnupg/gpg.conf``::
+
+    cert-policy-url https://www.gentoo.org/glep/glep-9999.rst
+    ask-cert-level
+    cert-digest-algo SHA512
+
+.. TODO: update URL when number is assigned
+
+``cert-policy-url`` specifies the policy to which the certification
+complies (as recommended above).  ``ask-cert-level`` requests GnuPG
+to query certification level interactively when signing every key.
+``cert-digest-algo`` enables stronger SHA-2 512-bit digests
+on certifications.
+
+
+Rationale
+=========
+Non-obligatory nature
+---------------------
+The previous WoT proposal made signatures obligatory.  This has met with
+resistance of developers, including claims that there are individuals
+within Gentoo who are unable to get their key signed using any of
+the proposed methods and outright rejection of real name verification.
+[#WOT-JAN2019]_
+
+Therefore, this proposal avoids making keysigning obligatory for
+everyone.  However, it does aim to provide official rule set for
+keysigning that can be used by developers at their discretion, or
+whenever there is a valid need of verifying contributor's identity.
+
+The GLEP also makes provisions for enforcing identity verification
+separately, as a matter of policy.  While it could propose establishing
+such a policy for particular projects such as Infra, it makes little
+sense to maintain a list of such projects in a GLEP, and update it
+whenever it changes.  Instead, individual projects can enforce name
+verification on their members, or Council can enforce wider policies
+if there is an agreement on them.
+
+
+Face-to-face verification rules
+-------------------------------
+The verification rules follow common keysigning practices.  Notably,
+they are based on assumption that a single signature confirms
+the combination of three elements: the signee's primary key, real name
+and an e-mail address.
+
+Verifying the primary key fingerprint is important to ensure that
+the authentic key belonging to the signee is being used.  Otherwise,
+a malicious third party could create a key with matching UID and signer
+could sign it instead of the authentic key.
+
+Verifying the real name is the specific purpose of this GLEP, as well
+as a standard practice for OpenPGP web of trust.  The name should be
+verified against documents that are expectedly hard to forge, and that
+include photograph that could be used to verify the owner.  Since
+photograph verification is non-trivial and in some cases documents
+contain outdated photos, it is supplemented with signature verification
+whenever possible.  In any case, this part is considered best effort.
+
+Verifying the e-mail address is necessary since OpenPGP does not provide
+any proof of address ownership, and arbitrary user identifiers can be
+added to a key.  Unique data needs to be used in order to verify each
+address separately.  The data is encrypted to additionally confirm
+that the e-mail address' owner actually has access to the key,
+and to avoid accidental mistakes.
+
+Traditionally, it is considered sufficient to export a signature for
+each e-mail address, and send it.  Then, the signee can decrypt it,
+import and publish the update to his key afterwards without
+the necessity of any further action from the signer.  Doing this
+manually is non-trivial; the caff tool can help.  [#CAFF]_
+
+Alternatively, a simple encrypted e-mail exchange with random data
+can be used instead.  Afterwards, the signer signs all confirmed UIDs
+and publishes the signature.  This method does not require special
+tooling and has the additional advantage of verifying that the signee
+can send mail from claimed address.
+
+
+Allowing webcam identification
+------------------------------
+There are conflicting opinions as to whether remote identity
+verification is valid.  However, this method can prove helpful whenever
+the signee does not live near any developer.
+
+The use of live, high-resolution stream aims to both reduce the risk of
+forgery and copying signee's identification documents.  The ability to
+move freely is also necessary to provide at least partial verification
+of counter-forgery measures.
+
+
+Allowing government identification services
+-------------------------------------------
+Finally, whenever direct verification is inconvenient, it could be
+acceptable to rely on government officials and institutions that are
+expected to verify the identity of citizens.  The most common case of
+this are public notaries who can provide appropriate proofs of identity
+for a fee.
+
+Besides those, if the signer and signee live in the same country,
+additional national verification mechanisms may be used as long
+as special care is taken to perform an authenticated exchange.
+
+In some cases, randomly-generated data exchange via wire transfer may be
+considered sufficient, provided that the signee's bank is known to
+verify identity of its customers.
+
+
+Backwards Compatibility
+=======================
+The policy is non-obligatory, and therefore does not affect existing
+developers.
+
+Existing developer signatures may be incompatible with the policy.
+In order to make policy conformance clear, the GLEP recommends including
+appropriate policy URL in signatures.
+
+
+Reference Implementation
+========================
+n/a
+
+
+References
+==========
+.. [#GLEP76] GLEP 76: Copyright Policy
+   (https://www.gentoo.org/glep/glep-0076.html)
+
+.. [#WOT-JAN2019] [gentoo-project] pre-GLEP: Gentoo OpenPGP web of trust
+   (https://archives.gentoo.org/gentoo-project/message/d05ae93cac6fbac0eea07fc597519382)
+
+.. [#CAFF] caff - Debian Wiki
+   (https://wiki.debian.org/caff)
+
+
+Copyright
+=========
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported License. To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/.
