@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2019-02-24
-Last-Modified: 2019-03-03
+Last-Modified: 2019-03-10
 Post-History: 2019-02-24
 Content-Type: text/x-rst
 Requires: 63
@@ -84,9 +84,10 @@ recruitment.
 Whenever a developer account is created, reactivated, renamed or has
 a new key fingerprint added, a signature is automatically created
 on the appropriate ``@gentoo.org`` UIDs and pushed to the keyservers.
-Whenever an old signature expires, a new one is automatically created.
-Whenever a developer account is disabled, renamed or has a fingerprint
-removed, the signatures from obsolete UIDs are automatically revoked.
+Whenever an old signature is about to expire, a new one is automatically
+created.  Whenever a developer account is disabled, renamed or has
+a fingerprint removed, the signatures from obsolete UIDs are
+automatically revoked.
 
 The signatures are issued only on the UIDs matching the Gentoo
 developer's ``@gentoo.org`` mailbox address, on keys whose primary key
