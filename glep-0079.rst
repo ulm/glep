@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2019-02-24
-Last-Modified: 2019-03-10
+Last-Modified: 2019-03-11
 Post-History: 2019-02-24
 Content-Type: text/x-rst
 Requires: 63
@@ -92,8 +92,8 @@ automatically revoked.
 The signatures are issued only on the UIDs matching the Gentoo
 developer's ``@gentoo.org`` mailbox address, on keys whose primary key
 fingerprints are listed in Gentoo LDAP ``gpgfingerprint`` records.  Keys
-missing such an UID are ignored.  **Names on the relevant user
-identifiers are not verified**.  The signatures are issued with
+missing such an UID are ignored.  *Names on the relevant user
+identifiers are not being verified*.  The signatures are issued with
 an expiration date of 1 year from being issued.
 
 
