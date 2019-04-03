@@ -143,7 +143,7 @@ GnuPG command line (informational)
 In order to create a signature following this specification,
 the following command-line arguments can be used::
 
-    gpg --cert-policy-url 'https://www.gentoo.org/glep/glep-9999.rst' \
+    gpg --cert-policy-url 'https://www.gentoo.org/glep/glep-0080.rst' \
         --ask-cert-level --cert-digest-algo SHA512 \
         --edit-key <key-fingerprint>
 
@@ -151,7 +151,7 @@ Alternatively, if those options should bapply to all certifications
 made, they can be included in the configuration file
 ``~/.gnupg/gpg.conf``::
 
-    cert-policy-url https://www.gentoo.org/glep/glep-9999.rst
+    cert-policy-url https://www.gentoo.org/glep/glep-0080.rst
     ask-cert-level
     cert-digest-algo SHA512
 
