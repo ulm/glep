@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2019-03-04
-Last-Modified: 2019-04-02
+Last-Modified: 2019-04-14
 Post-History: 2019-03-04
 Content-Type: text/x-rst
 Requires:
@@ -147,7 +147,7 @@ the following command-line arguments can be used::
         --ask-cert-level --cert-digest-algo SHA512 \
         --edit-key <key-fingerprint>
 
-Alternatively, if those options should bapply to all certifications
+Alternatively, if those options should apply to all certifications
 made, they can be included in the configuration file
 ``~/.gnupg/gpg.conf``::
 
