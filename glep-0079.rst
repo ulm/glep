@@ -3,10 +3,10 @@ GLEP: 79
 Title: Gentoo OpenPGP Authority Keys
 Author: Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
-Status: Draft
+Status: Final
 Version: 1
 Created: 2019-02-24
-Last-Modified: 2019-03-11
+Last-Modified: 2019-05-13
 Post-History: 2019-02-24
 Content-Type: text/x-rst
 Requires: 63
