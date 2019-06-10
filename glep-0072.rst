@@ -3,13 +3,20 @@ GLEP: 72
 Title: Architecture stability status file
 Author: Andreas K. Hüttel <dilfridge@gentoo.org>
 Type: Standards Track
-Status: Draft
+Status: Deferred
 Version: 1
 Created: 2017-05-06
-Last-Modified: 2017-05-05
+Last-Modified: 2019-06-10
 Post-History: 2017-05-06
 Content-Type: text/x-rst
 ---
+
+Status
+======
+
+Marked as deferred by GLEP editor Ulrich Müller on 2019-06-10, due to
+inactivity.
+
 
 Abstract
 ========
