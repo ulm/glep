@@ -108,10 +108,10 @@ security needs to be implemented:
 - Tree and distfile distribution from Infrastructure to Users, via the
   mirrors (this includes both HTTP and rsync distribution).
 
-Both processes need their security improved. In [GLEPxx2] we will discuss
+Both processes need their security improved. In [GLEPxx2]_ we will discuss
 how to improve the security of the first process. The relatively
 speaking simpler process of file distribution will be described in
-[GLEP58]. Since it can be implemented without having to change the
+[GLEP58]_. Since it can be implemented without having to change the
 workflow and behaviour of developers we hope to get it done in a
 reasonably short timeframe.
 
@@ -142,7 +142,7 @@ protection against this class of attacks is very easy to implement with
 little added cost. 
 
 At the level of mirrors, addition of malicious content is not the only
-attack. As discussed by Cappos et al [C08a,C08b], an attacker may use
+attack. As discussed by Cappos et al [C08a]_, [C08b]_, an attacker may use
 exclusion and replay attacks, possibly only on a specific subset of
 user to extend the window of opportunity on another exploit.
 
@@ -153,7 +153,7 @@ modifications to our development process), as a malicious developer is
 fully authorized to provide materials for distribution. Partial
 protection can be gained by Portage and Infrastructure changes, but the
 real improvements needed are developer education and continued
-vigilance. This is further discussed in [GLEPxx2].
+vigilance. This is further discussed in [GLEPxx2]_.
 
 This security is still limited in scope - protection against compromised
 developers is very expensive, and even complex systems like peer review
@@ -168,7 +168,7 @@ cannot be complete (as the User may be attacked directly), we can ensure
 that Gentoo infrastructure and the mirrors are not a weak point. This
 objective is actually much closer than it seems already - most of the
 work has been completed for other things! This is further discussed in
-[GLEP58]. As this process has the most to gain in security, and the
+[GLEP58]_. As this process has the most to gain in security, and the
 most immediate impact, it should be implemented before or at the same
 time as any changes to process #1. Security at this layer is already
 available in the signed daily snapshots, but we can extend it to cover

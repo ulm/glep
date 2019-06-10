@@ -34,7 +34,7 @@ security of the tree - and a comprehensive security plan is needed.
 
 This GLEP is not mandatory for the tree-signing specification, but
 instead aims to improve the security of the hashes used in Manifest2
-[GLEP44]. As such, it is also able to stand on its own.
+[GLEP44]_. As such, it is also able to stand on its own.
 
 Specification
 =============
@@ -48,20 +48,20 @@ is that multiple checksums would be an increase in security, but we
 could not provably quantify the amount of security this added.
 The really bad news, is that this position is completely and utterly
 wrong. Many of you will be aghast at this. There is extremely little
-added security in multiple checksums as noted by Joux [J04]. For any set
+added security in multiple checksums as noted by Joux [J04]_. For any set
 of checksums, the actual strength lies in that of the strongest
 checksum.
 
-Wang et al [W04] extended Joux's [J04] work on SHA-0 to cover MD4, MD5,
+Wang et al [W04]_ extended Joux's [J04]_ work on SHA-0 to cover MD4, MD5,
 HAVAL-128 and RIPEMD families of hashes.
 
 How fast can MD5 be broken?
 ---------------------------
 For a general collision, not a pre-image attack, since the announcement
-by Wang et al [W04], the time required to break MD5 has been massively
+by Wang et al [W04]_, the time required to break MD5 has been massively
 reduced. Originally at 1 hour on a near-supercomputer (IBM P690) and
 estimated at 64 hours with a Pentium-3 1.7Ghz. This has gone down to
-less than in two years, to 17 seconds [K06a].
+less than in two years, to 17 seconds [K06a]_.
 
 - 08/2004 - 1 hour, IBM pSeries 690 (32x 1.7Ghz POWER4+) = 54.4 GHz-Hours
 
@@ -78,11 +78,11 @@ may be broken over the course of 2 years (MD5 using the above data is
 >2000x), then existing checksums do not stand a significant chance of
 survival in the future. We should thus accept that whatever checksums we
 are using today, will be broken in the near future, and plan as best as
-possible. (A brief review [H04] of the SHA1 attacks indicates an
+possible. (A brief review [H04]_ of the SHA1 attacks indicates an
 improvement of ~600x in the same timespan).
 
 And for those that claim implementation of these procedures is not yet
-feasible, see [K06b] for an application that can produce two
+feasible, see [K06b]_ for an application that can produce two
 self-extracting EXE files, with identical MD5s, and whatever payload you
 want.
 
@@ -91,7 +91,7 @@ The good news
 Of the checksums presently used by Manifest2 (SHA1, SHA256, RIPEMD160),
 one stands close to being completely broken: SHA1; and another is
 significantly weakened: RIPEMD160. The SHA2 series has suffered some
-attacks, but still remains reasonably solid [G07],[K08]. 
+attacks, but still remains reasonably solid [G07]_, [K08]_.
 
 To reduce the potential for future problems and any single checksum
 break leading to a rapid decrease in security, we should incorporate the
@@ -111,7 +111,7 @@ as long as the depreciation process is followed (see below).
 
 As soon as feasible, we should add the SHA512 and WHIRLPOOL algorithms.
 In future, as stream-based checksums are developed (in response to the
-development by NIST [AHS]), they should be considered and used.
+development by NIST [AHS]_), they should be considered and used.
 
 The SHA512 algorithm is available in Python 2.5, which has been a
 dependency of Portage since approximately Portage 2.1.6.13.
