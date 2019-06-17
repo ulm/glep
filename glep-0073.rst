@@ -3,13 +3,20 @@ GLEP: 73
 Title: Automated enforcing of REQUIRED_USE constraints
 Author: Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
-Status: Draft
+Status: Deferred
 Version: 1
 Created: 2017-06-11
-Last-Modified: 2017-07-15
+Last-Modified: 2019-06-17
 Post-History: 2017-07-08
 Content-Type: text/x-rst
 ---
+
+Status
+======
+
+Marked as deferred by GLEP editor Ulrich Müller on 2019-06-17, due to
+inactivity.
+
 
 Abstract
 ========
