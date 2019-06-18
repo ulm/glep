@@ -204,7 +204,7 @@ expensive in terms of I/O, and fragile.
 This GLEP follows the best practice of leaving obsolete user/groups
 accounts while ensuring that they are locked out properly.  This
 guarantees that no files with stale ownership are left 
-e.g. on unmounted filesystems) and that the same UID/GID is not reused
+(e.g. on unmounted filesystems) and that the same UID/GID is not reused
 for another user/group.
 
 
