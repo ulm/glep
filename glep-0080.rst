@@ -9,8 +9,6 @@ Created: 2019-03-04
 Last-Modified: 2019-04-14
 Post-History: 2019-03-04
 Content-Type: text/x-rst
-Requires:
-Replaces:
 ---
 
 Abstract
