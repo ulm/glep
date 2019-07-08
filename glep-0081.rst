@@ -7,8 +7,8 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2019-05-29
-Last-Modified: 2019-06-18
-Post-History: 2019-05-29
+Last-Modified: 2019-07-08
+Post-History: 2019-05-29, 2019-07-08
 Content-Type: text/x-rst
 Replaces: 27
 ---
@@ -224,8 +224,9 @@ applies to fixed UIDs/GIDs.
 Reference Implementation
 ========================
 
-The reference implementation has been submitted to review on gentoo-dev
-mailing list.  The version at the time of writing is v4.  [#REFIMPL]_
+The reference implementation has been committed to the Gentoo repository
+in the form of ``acct-user.eclass`` and ``acct-group.eclass``.  Initial
+user and group packages have been created in order to test the concept.
 
 
 References
@@ -233,9 +234,6 @@ References
 
 .. [#GLEP27] GLEP 27: Portage Management of UIDs/GIDs
    (https://www.gentoo.org/glep/glep-0027.html)
-
-.. [#REFIMPL] [gentoo-dev] [PATCH v4 0/9] User/group packages
-   (https://archives.gentoo.org/gentoo-dev/message/527b343890c1280cb64efce2e941fdae)
 
 
 Copyright
