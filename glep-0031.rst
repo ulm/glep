@@ -65,8 +65,8 @@ screen (for example, einfo messages) or given to portage (for example any
 of the standard global variables) must not use anything outside the
 regular ASCII 0..127 range for compatibility purposes.
 
-files/Entries Character Sets
-----------------------------
+files/ Entries Character Sets
+-----------------------------
 
 Patches must clearly be in the same character set as the file they are
 patching. For other files/ entries (for example, GNOME desktop files),
