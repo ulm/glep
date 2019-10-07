@@ -4,10 +4,10 @@ Title: User and group management via dedicated packages
 Author: Michał Górny <mgorny@gentoo.org>,
         Michael Orlitzky <mjo@gentoo.org>
 Type: Standards Track
-Status: Accepted
+Status: Final
 Version: 1
 Created: 2019-05-29
-Last-Modified: 2019-07-22
+Last-Modified: 2019-10-07
 Post-History: 2019-05-29, 2019-07-08
 Content-Type: text/x-rst
 Replaces: 27
