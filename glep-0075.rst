@@ -7,8 +7,8 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2018-01-26
-Last-Modified: 2018-12-01
-Post-History: 2018-01-27
+Last-Modified: 2019-10-25
+Post-History: 2018-01-27, 2019-10-24
 Content-Type: text/x-rst
 ---
 
@@ -100,11 +100,14 @@ and the policies for introducing new hashes are covered by GLEP 59
 The cutoffs list specifies one or more integers separated by colons
 (``:``), indicating the number of bits (starting with the most
 significant bit) of the hash used to form subsequent subdirectory names.
-For example, the list of ``2:4`` would indicate that top-level directory
-names are formed using 2 most significant bits of the hash (resulting
-in 2² = 4 directories), and each of this directories would have
-subdirectories formed using the next 4 bits of the hash (resulting
-in 2⁴ = 16 subdirectories each).
+For example, the list of ``4:8`` would indicate that top-level directory
+names are formed using 4 most significant bits of the hash (resulting
+in 2⁴ = 16 directories), and each of these directories would have
+subdirectories formed using the next 8 bits of the hash (resulting
+in 2⁸ = 256 subdirectories each).
+
+Implementations are only required to support cutoffs being multiples
+of 4.  Support for other values is optional.
 
 The exact algorithm for determining the distfile location follows:
 
@@ -296,6 +299,16 @@ relatively low complexity and being reasonably future-proof.
    (x — content checksum, + — filename checksum)
 
 
+Cutoff values
+-------------
+The original draft allowed any cutoff values.  This was changed since
+multiples of 4 are much easier to implement — they can be trivially cut
+from hexadecimal representation of the hash value.  This representation
+is commonly used by hash function implementations, including the Portage
+utility functions, pkgcore utility functions (snakeoil) and ``b2sum``
+utility from coreutils.
+
+
 Layout file
 -----------
 The presence of control file has been suggested in the original
@@ -363,7 +376,14 @@ to an appropriate subdirectory.
 
 Reference Implementation
 ========================
-TODO.
+The support for this specification has been implemented in Portage,
+as of version 2.3.77.  This includes both fetching distfiles,
+and maintaining mirrors via ``emirrordist``.  The implementation
+supports both listed layouts, with all hash functions supported
+by Portage and cutoffs being multiples of 4.
+
+As of 2019-10-18, the Gentoo Infrastructure team has successfully
+deployed the ``filename-hash BLAKE2B 8`` layout on Gentoo mirrors.
 
 
 References
@@ -389,7 +409,7 @@ References
    for each directory computed in a way to have the files distributed evenly'
    (https://archives.gentoo.org/gentoo-dev/message/611bdaa76be049c1d650e8995748e7b8)
 
-.. [#PKGNAME] Jason Zamal's reply including 'using the same dir layout
+.. [#PKGNAME] Jason Zaman's reply including 'using the same dir layout
    as the packages themselves)
    (https://archives.gentoo.org/gentoo-dev/message/f26ed870c3a6d4ecf69a821723642975)
 
