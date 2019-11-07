@@ -7,7 +7,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2018-01-26
-Last-Modified: 2019-10-25
+Last-Modified: 2019-11-07
 Post-History: 2018-01-27, 2019-10-24
 Content-Type: text/x-rst
 ---
@@ -402,15 +402,20 @@ References
    of DISTDIR
    (https://bugs.gentoo.org/534528)
 
-.. [#ML1] [gentoo-dev] [pre-GLEP] Split distfile mirror directory structure
+.. [#ML1] Michał Górny.  "[pre-GLEP] Split distfile mirror directory
+   structure".  gentoo-dev mailing list, 2018-01-26,
+   Message-ID 1517009079.31015.3.camel\@gentoo.org
    (https://archives.gentoo.org/gentoo-dev/message/cfc4f8595df2edf9a25ba9ecae2463ba)
 
 .. [#ADAPTIVE_FILENAME] Andrew Barchuk's reply on 'using character ranges
-   for each directory computed in a way to have the files distributed evenly'
+   for each directory computed in a way to have the files distributed evenly',
+   gentoo-dev mailing list, 2018-01-28,
+   Message-ID 1517172228.2114973.1251027256.0A9C8F3C\@webmail.messagingengine.com
    (https://archives.gentoo.org/gentoo-dev/message/611bdaa76be049c1d650e8995748e7b8)
 
 .. [#PKGNAME] Jason Zaman's reply including 'using the same dir layout
-   as the packages themselves)
+   as the packages themselves), gentoo-dev mailing list, 2018-01-28,
+   Message-ID 20180128070111.GA17078\@meriadoc.perfinion.com
    (https://archives.gentoo.org/gentoo-dev/message/f26ed870c3a6d4ecf69a821723642975)
 
 

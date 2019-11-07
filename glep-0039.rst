@@ -7,7 +7,7 @@ Type: Informational
 Status: Final
 Version: 2
 Created: 2005-09-01
-Last-Modified: 2018-05-19
+Last-Modified: 2019-11-07
 Post-History: 2005-09-01, 2006-02-09, 2007-10-12, 2008-01-19
 Content-Type: text/x-rst
 Replaces: 4
@@ -210,7 +210,8 @@ References
 ==========
 
 .. [#Metastructure_vote] Grant Goodyear, "Metastructure vote preliminary
-   results", posted to ``gentoo-dev`` mailing list on 2005-06-14
+   results", posted to ``gentoo-dev`` mailing list on 2005-06-14,
+   Message-ID 20050614035141.GC15256\@dst.grantgoodyear.org
    (https://archives.gentoo.org/gentoo-dev/message/f5ab9ccca62a5d5e0b7b7ab0156f19b3)
 
 .. [#Project_pages] https://wiki.gentoo.org/wiki/Gentoo_Wiki:Developer_Central/Project_pages

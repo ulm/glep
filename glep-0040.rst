@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Final
 Version: 1
 Created: 2005-09-03
-Last-Modified: 2014-01-22
+Last-Modified: 2019-11-07
 Post-History: 2005-09-06, 2005-09-15, 2006-09-03
 Content-Type: text/x-rst
 ---
@@ -20,13 +20,15 @@ a robust x86 arch team, so this GLEP is final.
 Credits
 =======
 
-This GLEP originated from a rather contentious discussion_ on gentoo-dev
+This GLEP originated from a rather contentious discussion [#GG]_ on gentoo-dev
 about combining the x86 and amd64 keywords.  This GLEP attempts to get at the
 heart of that discontent.  The proposed stable-keyword guidelines have been
-lifted verbatim from `The Doc`_.
+lifted verbatim from [#Devmanual]_.
 
-.. _discussion: https://groups.google.com/forum/?hl=en#!topic/linux.gentoo.dev/EwjbOaNLFio
-.. _The Doc: http://dev.gentoo.org/~plasmaroo/devmanual
+.. [#GG] Grant Goodyear.  "Combining x86 and amd64".  gentoo-dev mailing list,
+   2005-09-01, Message-ID 20050901171028.GW18440\@bmb24.uth.tmc.edu,
+   https://archives.gentoo.org/gentoo-dev/message/c8ae985881502e2ff9a523b1db57fb55
+.. [#Devmanual] https://devmanual.gentoo.org/
 
 Abstract
 ========
@@ -109,11 +111,14 @@ involved?  Here are the arguments for enduring the pain involved:
    effect, though, is that it is rare for ``x86`` packages to be stabled in
    the context of a full ``x86`` tree, so the big picture of a stable
    *system*, not just a stable package, is lost.  This approach of stabling
-   in the context of a full stable ``arch`` tree, it has been argued_, is
-   the fundamental reason why the non-x86 archs have notably better QA
+   in the context of a full stable ``arch`` tree, it has been argued [#OC]_,
+   is the fundamental reason why the non-x86 archs have notably better QA
    than does the x86 arch.
 
-.. _argued: http://thread.gmane.org/gmane.linux.gentoo.devel/30369
+.. [#OC] Olivier Crête.  "imlate x86 Editon and more x86 fun".
+   gentoo-dev mailing list, 2005-08-12,
+   Message-ID 1123816517.8746.18.camel\@TesterBox.tester.ca,
+   https://archives.gentoo.org/gentoo-dev/message/a072950ff62e9a5ddb791c88a2aca377
 
 Implementation
 ==============
@@ -125,8 +130,8 @@ existing x86 devs to go along with it.
 Alternative Ideas
 =================
 
-Stuart_ has suggested the creation of a new arch keyword: "[-]maint", which 
-would exist in tandem with the normal arch keywords, thereby making the
+Stuart [#SH]_ has suggested the creation of a new arch keyword: "[-]maint",
+which would exist in tandem with the normal arch keywords, thereby making the
 package maintainer's intention explicit.  Ciaranm has responded that by
 definition a package in ``~arch`` is a candidate for ``arch``, so a package's
 mere presence in the tree (without being in ``package.mask``) should indicate
@@ -146,7 +151,10 @@ to override a package maintainer when it comes to stabling a package.  Stuart
 has asserted that in those cases the arch team should be willing to take on
 the support burden for that package.
 
-.. _Stuart: http://thread.gmane.org/gmane.linux.gentoo.devel/31060
+.. [#SH] Stuart Herbert.  "Re: tentative x86 arch team glep".
+   gentoo-dev mailing list, 2005-09-04,
+   Message-ID 1125863332.11366.89.camel\@mogheiden.gnqs.org,
+   https://archives.gentoo.org/gentoo-dev/message/d0c5ea28545059d9d5d0b27bdf778fa5
 
 Backwards Compatibility
 =======================

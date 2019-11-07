@@ -9,7 +9,7 @@ Type: Standards Track
 Status: Final
 Version: 4
 Created: 2005-10-31
-Last-Modified: 2017-11-29
+Last-Modified: 2019-11-07
 Post-History: 2005-11-01, 2005-11-05, 2005-11-07, 2005-12-11, 2005-12-13,
               2005-12-18, 2006-01-05, 2006-03-02, 2006-03-06, 2006-06-12,
               2006-09-05, 2016-03-10, 2017-11-27
@@ -504,8 +504,8 @@ References
 .. [#glep-74] GLEP 74: "Full-tree verification using Manifest files",
      Michał Górny, Robin Hugh Johnson, Ulrich Müller,
      https://www.gentoo.org/glep/glep-0074.html
-.. [#ramereth-repo] "Re: [gentoo-dev] GLEP ??: Critical News Reporting", Lance
-     Albertson,
+.. [#ramereth-repo] "Re: [gentoo-dev] GLEP ??: Critical News Reporting",
+     Lance Albertson, Message-ID 436B721C.20203\@gentoo.org,
      https://archives.gentoo.org/gentoo-dev/message/4204839d4091758c3bad1dbd18ed16f7
 .. [#rfc-822] RFC 822 "Standard for the format of ARPA Internet text messages"
 .. [#rfc-3629] RFC 3629: "UTF-8, a transformation format of ISO 10646"

@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Withdrawn
 Version: 1
 Created: 2004-08-19
-Last-Modified: 2014-01-17
+Last-Modified: 2019-11-07
 Post-History: 2004-08-21, 2004-10-18, 2004-10-25, 2005-07-24
 Content-Type: text/x-rst
 ---
@@ -257,8 +257,9 @@ References
 .. [1] GLEP 23: Portage handling of ACCEPT_LICENSE
        (https://www.gentoo.org/glep/glep-0023.html)
 .. [2] http://www.gentoo.org/dyn/use-index.xml
-.. [3] GLEP 29 discussion on the gentoo-dev mailing list
-       (http://marc.theaimsgroup.com/?l=gentoo-dev&m=109813990013812)
+.. [3] GLEP 29 discussion on the gentoo-dev mailing list,
+       Message-ID 20041018225119.GK26288\@mail.lieber.org
+       (https://archives.gentoo.org/gentoo-dev/message/aba918fc38f72ff332de08b5e01e20e5)
 
 Copyright
 =========

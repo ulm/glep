@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Replaced
 Version: 1
 Created: 2005-12-04
-Last-Modified: 2018-04-07
+Last-Modified: 2019-11-07
 Post-History: 2005-12-06, 2006-01-23, 2006-09-03
 Content-Type: text/x-rst
 Replaced-By: 74
@@ -311,14 +311,21 @@ problems.
 References
 ==========
 
-.. [#reorg-thread] http://thread.gmane.org/gmane.linux.gentoo.devel/21920
+.. [#reorg-thread] Marius Mauch. "Digest reorganization and enhancements".
+   gentoo-dev mailing list, 2004-10-08,
+   Message-ID 20041008184325.316fc227\@andy.genone.homeip.net,
+   https://archives.gentoo.org/gentoo-dev/message/4afc65da379b8570a4cec654976da862
 
-.. [#multi-hash-thread] http://thread.gmane.org/gmane.linux.gentoo.devel/33434
+.. [#multi-hash-thread] Marius Mauch. "Multi hash support in portage - status".
+   gentoo-dev mailing list, 2005-11-24,
+   Message-ID 20051124010432.33eecead\@sven.genone.homeip.net,
+   https://archives.gentoo.org/gentoo-dev/message/f97ff5732872ffe44ef05627b7a19cc1
 
-.. [#gpg-numbers] gentoo-core mailing list, topic "Gentoo key signing practices
-   and official Gentoo keyring", Message-ID <20051117075838.GB15734@curie-int.vc.shawcable.net>
+.. [#gpg-numbers] Robin H. Johnson. "Gentoo key signing practices and official
+   Gentoo keyring". gentoo-core mailing list, 2005-11-17,
+   Message-ID 20051117075838.GB15734\@curie-int.vc.shawcable.net
 
-.. [#manifest2-patch] http://thread.gmane.org/gmane.linux.gentoo.portage.devel/1374
+.. [#manifest2-patch] https://archives.gentoo.org/gentoo-portage-dev/message/f2b5be6629510343bd50418429912b1d
 
 .. [#manifest2-example] glep-0044-extras/manifest2-example.txt
 

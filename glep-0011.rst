@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Final
 Version: 1
 Created: 2003-08-02
-Last-Modified: 2014-01-15
+Last-Modified: 2019-11-07
 Post-History: 2003-08-07, 2003-08-12, 2003-08-13, 2006-09-03
 Content-Type: text/x-rst
 ---
@@ -221,7 +221,7 @@ application will be affected, see below for more details.
 
 To assist administration of multiple virtual hosts a "VHost Configuration Tool"
 needs to be developed and implemented.	Initial discussion regarding the VHost
-Config tool and proposed usage can be found at http://article.gmane.org/gmane.linux.gentoo.devel/10874.
+Config tool and proposed usage can be found at [#VHost-Config-Tool]_.
 
 It's the job of the VHost Config toolset to make a local instance of the web
 application run under a specific web server.
@@ -311,9 +311,25 @@ The main issues are:
 References
 ==========
 
-.. [#WebAppPost1] http://article.gmane.org/gmane.linux.gentoo.devel/10411
-.. [#WebAppPost2] http://news.gmane.org/onethread.php?group=gmane.linux.gentoo.devel&root=%3C1059843010.5023.80.camel%40carbon.internal.lan%3E
-.. [#WebAppPost3] http://news.gmane.org/onethread.php?group=gmane.linux.gentoo.devel&root=%3C86960000.1060038977%40valkyrie.lsit.ucsb.edu%3E
+.. [#WebAppPost1] Stuart Herbert.  "Poll: Where should web applications be
+   installed?"  gentoo-dev mailing list, 2003-07-23,
+   Message-ID 200307231512.51710.stuart\@gentoo.org,
+   https://archives.gentoo.org/gentoo-dev/message/18e8a6aacd202e117d1876d249d51af8
+
+.. [#WebAppPost2] Troy Dack.  "[GLEP] Web Application Installation".
+   gentoo-dev mailing list, 2003-08-02,
+   Message-ID 1059843010.5023.80.camel\@carbon.internal.lan,
+   https://archives.gentoo.org/gentoo-dev/message/a94608da1bd57f387fb1091764f5226c
+
+.. [#WebAppPost3] Max Kalika.  "Re: [GLEP] Web Application Installation".
+   gentoo-dev mailing list, 2003-08-04,
+   Message-ID 86960000.1060038977\@valkyrie.lsit.ucsb.edu,
+   https://archives.gentoo.org/gentoo-dev/message/523c8123b7e4a179f6ae3aab74db66e2
+
+.. [#VHost-Config-Tool] Robin H. Johnson.  "Re: [GLEP] Web Application
+   Installation.  Plotting a VHOST config tool".  gentoo-dev mailing list,
+   2003-08-06, Message-ID 20030806043741.GF27029\@cherenkov.orbis-terrarum.net,
+   https://archives.gentoo.org/gentoo-dev/message/1386ab5e25ee17f3a72490145877d124.
 
 Copyright
 =========

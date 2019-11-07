@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Deferred
 Version: 1
 Created: 2015-03-29
-Last-Modified: 2017-10-13
+Last-Modified: 2019-11-07
 Post-History: 2016-05-20
 Content-Type: text/x-rst
 ---
@@ -235,13 +235,16 @@ The path group support is work-in-progress.
 References
 ==========
 
-.. [#P1] portage.package.ebuild.config: Move FEATURES=no* handling there
+.. [#P1] portage.package.ebuild.config: Move FEATURES=no* handling there,
+   Message-ID 20160522065604.10593-2-mgorny\@gentoo.org,
    https://archives.gentoo.org/gentoo-portage-dev/message/bdce65377f162be398230c648d4f9712
 
-.. [#P2] portage.dbapi.vartree: Move INSTALL_MASK handling into merging
+.. [#P2] portage.dbapi.vartree: Move INSTALL_MASK handling into merging,
+   Message-ID 20160522065604.10593-3-mgorny\@gentoo.org,
    https://archives.gentoo.org/gentoo-portage-dev/message/c9b95dff7be46876d052ca13da675947
 
-.. [#P3] portage.dbapi.vartree: Support exclusions in INSTALL_MASK
+.. [#P3] portage.dbapi.vartree: Support exclusions in INSTALL_MASK,
+   Message-ID 20160522065604.10593-4-mgorny\@gentoo.org,
    https://archives.gentoo.org/gentoo-portage-dev/message/29e128a9f41122fa0420c1140f7b7f94
 
 

@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Final
 Version: 1.1
 Created: 2016-03-14
-Last-Modified: 2018-03-11
+Last-Modified: 2019-11-07
 Post-History: 2016-03-16, 2018-02-20
 Content-Type: text/x-rst
 Requires: 67
@@ -511,8 +511,11 @@ References
 .. [#METADATA-DTD] The original metadata.dtd file
    https://gitweb.gentoo.org/data/dtd.git/tree/metadata.dtd?id=a908a93b5afe295359e0a01814c9bef8b5268bcd
 
-.. [#ORIGINAL-METADATA-XML] The original metadata.xml proposal (gentoo-dev)
-   http://thread.gmane.org/gmane.linux.gentoo.devel/9663
+.. [#ORIGINAL-METADATA-XML] The original metadata.xml proposal:
+   Paul de Vrieze. "IMPORTANT: The proposal for the metadata.xml file".
+   gentoo-dev mailing list, 2003-06-27,
+   Message-ID 200306272248.38169.pauldv\@gentoo.org,
+   https://archives.gentoo.org/gentoo-dev/message/cbcc15e9906c0165976ad66d4343ba7a
 
 .. [#USE-FLAG-METADATA] Doug Goldstein: USE flag metadata
    https://cardoe.wordpress.com/2007/11/19/use-flag-metadata/

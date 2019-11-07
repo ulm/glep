@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2019-03-04
-Last-Modified: 2019-04-14
+Last-Modified: 2019-11-07
 Post-History: 2019-03-04
 Content-Type: text/x-rst
 ---
@@ -275,7 +275,9 @@ References
 .. [#GLEP76] GLEP 76: Copyright Policy
    (https://www.gentoo.org/glep/glep-0076.html)
 
-.. [#WOT-JAN2019] [gentoo-project] pre-GLEP: Gentoo OpenPGP web of trust
+.. [#WOT-JAN2019] Michał Górny.  "pre-GLEP: Gentoo OpenPGP web of trust".
+   gentoo-project mailing list, 2019-01-31,
+   Message-ID 1548943008.796.1.camel\@gentoo.org
    (https://archives.gentoo.org/gentoo-project/message/d05ae93cac6fbac0eea07fc597519382)
 
 .. [#CAFF] caff - Debian Wiki

@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Final
 Version: 1
 Created: 2018-06-22
-Last-Modified: 2018-07-04
+Last-Modified: 2019-11-07
 Post-History: 2018-06-28
 Content-Type: text/x-rst
 ---
@@ -300,8 +300,9 @@ References
 .. [#DEBIAN-CONSTITUTION] Debian Constitution
    (https://www.debian.org/devel/constitution.en.html)
 
-.. [#MAIER-20180403] Matthias Maier, Re: [gentoo-project] Call for
-   agenda items - Council meeting 2018-04-08
+.. [#MAIER-20180403] Matthias Maier.  "Re: Call for agenda items -
+   Council meeting 2018-04-08".  gentoo-project mailing list,
+   2018-04-03, Message-ID 87a7ulktqz.fsf\@gentoo.org
    (https://archives.gentoo.org/gentoo-project/message/973be0a662b3cc74aa118a1128dcac9e)
 
 

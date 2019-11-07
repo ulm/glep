@@ -8,7 +8,7 @@ Type: Informational
 Status: Final
 Version: 1
 Created: 2005-05-06
-Last-Modified: 2016-02-25
+Last-Modified: 2019-11-07
 Post-History: 2005-06-17, 2005-06-28, 2005-10-17
 Content-Type: text/x-rst
 ---
@@ -139,7 +139,7 @@ Reference Implementation
 ..  _Moderators handbook/FAQ: https://wiki.gentoo.org/wiki/Project:Forums/Forum_guide
 ..  _Becoming a developer: https://www.gentoo.org/get-involved/become-developer/
 ..  _Staff quiz: https://projects.gentoo.org/comrel/recruiters/quizzes/staff-quiz.txt
-..  _Thread on gentoo-dev: http://thread.gmane.org/gmane.linux.gentoo.devel/28985
+..  _Thread on gentoo-dev: https://archives.gentoo.org/gentoo-dev/message/df817579a5f741c02717fe238ff30661
 
 Copyright
 =========

@@ -6,7 +6,7 @@ Type: Informational
 Status: Final
 Version: 1
 Created: 2008-10-22
-Last-Modified: 2015-01-12
+Last-Modified: 2019-11-07
 Post-History: 2009-12-01
 Content-Type: text/x-rst
 ---
@@ -41,8 +41,8 @@ tainted data will be executed on user's systems.
 
 Gentoo's software distribution system as it presently stands, contains a
 number of security shortcomings. The last discussion on the gentoo-dev
-mailing list [http://thread.gmane.org/gmane.linux.gentoo.devel/38363]
-contains a good overview of most of the issues. Summarized here:
+mailing list [Lauer06]_ contains a good overview of most of the issues.
+Summarized here:
 
 - Unverifiable executable code distributed:
   The most obvious instance are eclasses, but there are many other bits
@@ -129,8 +129,8 @@ are very hard to discover unless all distributed data is transparently
 signed.
 
 A simple example of such an attack and a partial solution for eclasses
-is presented in [ http://thread.gmane.org/gmane.linux.gentoo.devel/24677
-]. It shows quite well that any non-Gentoo controlled rsync mirror can
+is presented in [Goller05]_.
+It shows quite well that any non-Gentoo controlled rsync mirror can
 modify executable code; as much of this code is per default run as root
 a malicious mirror could compromise hundreds of systems per day - if
 cloaked well enough, such an attack could run for weeks before being
@@ -198,11 +198,13 @@ referenced, but I can't find it anywhere.
 
 2002-06-06, gentoo-dev mailing list, users first ask about signing of
 ebuilds:
-[ http://thread.gmane.org/gmane.linux.gentoo.devel/1950 ]
+Message-ID 92340000.1023389790\@krabat.ahsoftware,
+https://archives.gentoo.org/gentoo-dev/message/c113c603ad9f8fa22ff13b1657cdb84c
 
 2003-01-13, gentoo-dev mailing list, "Re: Verifying portage is from
 Gentoo" - Paul de Vrieze (pauldv):
-[ http://thread.gmane.org/gmane.linux.gentoo.devel/6619/focus=6619 ]
+Message-ID 200301131124.26792.gentoo-user\@devrieze.net,
+https://archives.gentoo.org/gentoo-dev/message/7062d6765b35406b4b8ed6b7c6e8fc28
 
 2003-04, GWN articles announcing tree signing:
 [ http://www.gentoo.org/news/en/gwn/20030407-newsletter.xml#doc_chap1_sect3 ]
@@ -211,7 +213,7 @@ Gentoo" - Paul de Vrieze (pauldv):
 2003-04, gentoo-security mailing list, "The state of ebuild signing
 in portage" - Joshua Brindle (method), the first suggestion of signed Manifests,
 but also an unusual key-trust model:
-[ http://marc.theaimsgroup.com/?l=gentoo-security&m=105073449619892&w=2 ]
+https://marc.info/?l=gentoo-security&m=105073449619892&w=2
 
 2003-04, gentoo-core mailing list, "New Digests and Signing -- Attempted Explanation"
 
@@ -238,13 +240,15 @@ portage" - Kurt Lieber (klieber). Signing is nowhere near ready for
 and the problem is very large. Many arguments about the checking and
 verification side. First warning signs that MD5 might be broken in the
 near future.
-[ http://thread.gmane.org/gmane.linux.gentoo.devel/16876 ]
+Message-ID 20040323100824.GV26101\@mail.lieber.org,
+https://archives.gentoo.org/gentoo-dev/message/20968c7c86cd46458e0e3c2911a8dbd4
 
 2004-03-25, gentoo-dev mailing list, "Redux: 2004.1 will not include a
 secure portage" - Robin H. Johnson (robbat2). Yet another proposal,
 summarizing the points of the previous thread and this time trying to
 track the various weaknesses.
-http://marc.theaimsgroup.com/?l=gentoo-dev&m=108017986400698&w=2
+Message-ID 20040325014525.GC29558\@curie-int.orbis-terrarum.net,
+https://archives.gentoo.org/gentoo-dev/message/fc6fc1c97bfae66806a0bfd9a9cf146f
 
 2004-05-31, Gentoo managers meeting, portage team reports that
 FEATURES=sign is now available, but large questions still exist over
@@ -261,7 +265,8 @@ issues.
 (ferringb). A discussion on the ongoing lack of signing, and that
 eclasses and profiles need to be signed as well, but this seems to be
 hanging on GLEP33 in the meantime.
-[ http://thread.gmane.org/gmane.linux.gentoo.devel/25556/focus=25596 ] 
+Message-ID 20050220223340.GA3552\@freedom.wit.com,
+https://marc.info/?l=gentoo-dev&m=110893886214157&w=2
 
 2005-03-08, gentoo-core mailing list, "gpg manifest signing stats".
 Informal statistics show that 26% of packages in the tree include a
@@ -277,28 +282,33 @@ RPM-based distros.
 2005-11-19, gentoo-portage-dev mailing list, "Manifest signing" - Robin
 H. Johnson (robbat2) follows up the previous -core posting, discussion
 implementation issues.
-[ http://thread.gmane.org/gmane.linux.gentoo.portage.devel/1401 ]
+Message-ID 20051119060127.GA28413\@curie-int.vc.shawcable.net,
+https://archives.gentoo.org/gentoo-portage-dev/message/1ffa48adfce79105cca532c00533c298
 
 2006-05-18, gentoo-dev mailing list, "Signing everything, for fun and for
 profit" - Patrick Lauer (bonsaikitten). Later brings up that Manifest2 is needed for
 getting everything right.
-[ http://thread.gmane.org/gmane.linux.gentoo.devel/38363 ]
+Message-ID 1147988717.32416.51.camel\@localhost,
+https://archives.gentoo.org/gentoo-dev/message/91a60d78bb4822d89f6fcc7b19fd3588
 
 2006-05-19, gentoo-dev mailing list, "Re: Signing everything, for fun and for
 profit" - Robin H. Johnson (robbat2). An introduction into some of the
 OpenPGP standard, with a focus on how it affects file signing, key
 signing, management of keys, and revocation.
-[ http://thread.gmane.org/gmane.linux.gentoo.devel/38363/focus=38371 ]
+Message-ID 20060519042638.GB18243\@curie-int.vc.shawcable.net,
+https://archives.gentoo.org/gentoo-dev/message/5625b475f201639577cab33cdec58b47
 
 2007-04-11, gentoo-dev mailing list, "Re: *DEVELOPMENT* mail list,
 right?" - Robin H. Johnson (robbat2). A progress report on these very
 GLEPs.
-[ http://thread.gmane.org/gmane.linux.gentoo.devel/47752/focus=47908 ]
+Message-ID 20070411064055.GA4502\@curie-int.orbis-terrarum.net,
+https://archives.gentoo.org/gentoo-dev/message/cfb032f3a878bcacfa0c4c3d2a0d3e7a
 
 2007-07-02, gentoo-dev mailing list, "Re: Re: Nominations open for the
 Gentoo Council 2007/08" - Robin H. Johnson (robbat2). Another progress
 report.
-[ http://thread.gmane.org/gmane.linux.gentoo.devel/50029/focus=50043 ]
+Message-ID 20070702233407.GI18068\@curie-int.orbis-terrarum.net,
+https://archives.gentoo.org/gentoo-dev/message/b25efdb57f973e1f53b38eadc55de1ee
 
 2007-11-30, portage-dev alias, "Manifest2 and Tree-signing" - Robin H.
 Johnson (robbat2). First review thread for these GLEPs, many suggestions
@@ -308,18 +318,21 @@ from Marius Mauch (genone).
 Reminder for April" - Ciaran McCreesh (ciaranm). A thread in which
 Ciaran reminds everybody that simply making all the developers sign the
 tree is not sufficient to prevent all attacks.
-[ http://thread.gmane.org/gmane.linux.gentoo.devel/55508/focus=55542 ]
+Message-ID 20080403130151.12507f1a\@snowcone,
+https://archives.gentoo.org/gentoo-dev/message/8c492855d6e86b05fa399ad055ad6d18
 
 2008-07-01, gentoo-portage-dev mailing list, "proto-GLEPS for
 Tree-signing" - Robin H. Johnson (robbat2). Thread looking for review
 input from Portage developers.
-[ http://thread.gmane.org/gmane.linux.gentoo.portage.devel/2686 ]
+Message-ID 20080701091226.GN15101\@curie-int.orbis-terrarum.net,
+https://archives.gentoo.org/gentoo-portage-dev/message/0a4b602eb348ac5bf4940320c4f2f9c6
 
 2008-07-12, gentoo-portage-dev mailing list, "proto-GLEPS for
 Tree-signing, take 2" - Robin H. Johnson (robbat2). Integration of
 changes from previous review, and a prototype for the signing code.
 zmedico also posts a patch for a verification prototype.
-[ http://thread.gmane.org/gmane.linux.gentoo.portage.devel/2709 ]
+Message-ID 20080712084258.GC31199\@curie-int.orbis-terrarum.net,
+https://archives.gentoo.org/gentoo-portage-dev/message/8d867c110b99e3562736907fa0864877
 
 Thanks
 ======
@@ -346,6 +359,16 @@ References
 .. [GLEPxx2] Future GLEP on Developer Process security.
 
 .. [GLEPxx3] Future GLEP on GnuPG Policies and Handling.
+
+.. [Goller05] Daniel Goller (morfic). "[RFC] Versioned eclasses".
+   gentoo-dev mailing list, 2005-01-21,
+   Message-ID 41F08453.5070302\@gentoo.org,
+   https://marc.info/?l=gentoo-dev&m=110628152430403&w=2
+
+.. [Lauer06] Patrick Lauer (patrick). "Signing everything, for fun and
+   for profit". gentoo-dev mailing list, 2006-05-18,
+   Message-ID 1147988717.32416.51.camel\@localhost,
+   https://archives.gentoo.org/gentoo-dev/message/91a60d78bb4822d89f6fcc7b19fd3588
 
 Copyright
 =========
