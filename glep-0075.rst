@@ -4,10 +4,10 @@ Title: Split distfile mirror directory structure
 Author: Michał Górny <mgorny@gentoo.org>,
         Robin H. Johnson <robbat2@gentoo.org>
 Type: Standards Track
-Status: Draft
+Status: Final
 Version: 1
 Created: 2018-01-26
-Last-Modified: 2019-11-07
+Last-Modified: 2019-11-11
 Post-History: 2018-01-27, 2019-10-24
 Content-Type: text/x-rst
 ---
