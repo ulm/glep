@@ -414,7 +414,7 @@ References
    (https://archives.gentoo.org/gentoo-dev/message/611bdaa76be049c1d650e8995748e7b8)
 
 .. [#PKGNAME] Jason Zaman's reply including 'using the same dir layout
-   as the packages themselves), gentoo-dev mailing list, 2018-01-28,
+   as the packages themselves', gentoo-dev mailing list, 2018-01-28,
    Message-ID 20180128070111.GA17078\@meriadoc.perfinion.com
    (https://archives.gentoo.org/gentoo-dev/message/f26ed870c3a6d4ecf69a821723642975)
 
