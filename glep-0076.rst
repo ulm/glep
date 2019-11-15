@@ -269,7 +269,7 @@ Other GPL-compatible free software licenses that are not explicitly
 listed are allowed by item c).  This covers cases where compatibility
 to licenses used by upstream projects is necessary.  (For example,
 the Gentoo BSD project may want to use the 2-clause or 3-clause BSD
-license).
+license.)
 
 By default, GPL-incompatible licenses (e.g., the CDDL) are not
 allowed, because their use would hinder interchange of code between
