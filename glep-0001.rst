@@ -8,7 +8,7 @@ Type: Informational
 Status: Active
 Version: 3
 Created: 2003-05-31
-Last-Modified: 2018-10-27
+Last-Modified: 2019-11-24
 Post-History: 2003-06-01, 2003-07-02, 2008-01-19, 2008-06-05, 2011-03-09,
               2013-12-14, 2017-09-17, 2018-07-10
 Content-Type: text/x-rst
@@ -18,8 +18,7 @@ Credits
 =======
 
 The GLEP concept, and, in fact, much of the text of this document,
-is liberally stolen from Python's [#Python]_ PEPs
-[#PEPS]_, especially
+is liberally stolen from Python's [#Python]_ PEPs [#PEPS]_, especially
 PEP-0001 [#PEP1]_ by Barry A. Warsaw, Jeremy Hylton, and David Goodger.
 
 What is a GLEP?
@@ -357,21 +356,21 @@ decision (it's not like such decisions can't be reversed :).
 References and Footnotes
 ========================
 
-.. [#PYTHON] http://www.python.org
+.. [#PYTHON] https://www.python.org/
 
-.. [#PEPS] http://www.python.org/peps
+.. [#PEPS] https://www.python.org/dev/peps/
 
-.. [#PEP1] http://www.python.org/peps/pep-0001.html
+.. [#PEP1] https://www.python.org/dev/peps/pep-0001/
 
-.. [#VCS] https://gitweb.gentoo.org/proj/glep.git
+.. [#VCS] https://gitweb.gentoo.org/data/glep.git
 
 .. [#CVS] https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo/xml/htdocs/proj/en/glep/
 
 .. [#WIKI] https://wiki.gentoo.org/index.php?title=Special%3AAllPages&from=&to=&namespace=550
 
-.. [#BUGS] http://bugs.gentoo.org
+.. [#BUGS] https://bugs.gentoo.org/
 
-.. [#FORUMS] http://forums.gentoo.org
+.. [#FORUMS] https://forums.gentoo.org/
 
 .. [#COUNCIL] https://www.gentoo.org/glep/glep-0039.html
 
@@ -383,7 +382,7 @@ References and Footnotes
 
 .. [#GLEP2] https://www.gentoo.org/glep/glep-0002.html
 
-.. [#YAML] http://yaml.org/
+.. [#YAML] https://yaml.org/
 
 
 Copyright
