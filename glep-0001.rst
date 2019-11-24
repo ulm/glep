@@ -6,11 +6,11 @@ Author: Grant Goodyear <g2boojum@gentoo.org>,
         Ulrich Müller <ulm@gentoo.org>
 Type: Informational
 Status: Active
-Version: 3
+Version: 4
 Created: 2003-05-31
 Last-Modified: 2019-11-24
 Post-History: 2003-06-01, 2003-07-02, 2008-01-19, 2008-06-05, 2011-03-09,
-              2013-12-14, 2017-09-17, 2018-07-10
+              2013-12-14, 2017-09-17, 2018-07-10, 2019-11-24
 Content-Type: text/x-rst
 ---
 
@@ -211,13 +211,10 @@ Each GLEP should have the following parts:
    specification and rationale first and reach consensus on it before writing
    code or significantly modifying ebuilds.
 
-8. Copyright -- Every new GLEP must be explicitly labelled
-   as licensed under the Creative Commons Attribution-ShareAlike (CC-BY-SA)
-   license, version 3.0 [#CC-BY-SA3.0]_. Older GLEPs in the public domain
-   should be relicensed to CC-BY-SA 3.0 when they are updated.
-   GLEPs released under the Open Publication License (OPL) may remain
-   as-is, but are strongly encouraged to be relicensed under CC-BY-SA
-   3.0 with the consent of all authors.
+8. Copyright -- Every new GLEP must be explicitly labelled as licensed under
+   the Creative Commons Attribution-ShareAlike 4.0 International License
+   (CC-BY-SA-4.0) [#CC-BY-SA-4.0]_.  Older GLEPs released under CC-BY-SA-3.0
+   should be relicensed to CC-BY-SA-4.0 when they are updated.
 
 
 GLEP Formating and Template
@@ -374,7 +371,7 @@ References and Footnotes
 
 .. [#COUNCIL] https://www.gentoo.org/glep/glep-0039.html
 
-.. [#CC-BY-SA3.0] https://creativecommons.org/licenses/by-sa/3.0/
+.. [#CC-BY-SA-4.0] https://creativecommons.org/licenses/by-sa/4.0/
 
 .. [#ReSTHOME] http://docutils.sourceforge.net/rst.html
 
@@ -388,6 +385,6 @@ References and Footnotes
 Copyright
 =========
 
-This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
-Unported License.  To view a copy of this license, visit
-https://creativecommons.org/licenses/by-sa/3.0/.
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License.  To view a copy of this license, visit
+https://creativecommons.org/licenses/by-sa/4.0/.

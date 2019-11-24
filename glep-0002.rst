@@ -6,10 +6,10 @@ Author: Grant Goodyear <g2boojum@gentoo.org>,
         Ulrich Müller <ulm@gentoo.org>
 Type: Informational
 Status: Active
-Version: 3
+Version: 4
 Created: 2003-05-31
 Last-Modified: 2019-11-24
-Post-History: 2003-06-02, 2013-12-17, 2017-09-17
+Post-History: 2003-06-02, 2013-12-17, 2017-09-17, 2019-11-24
 Content-Type: text/x-rst
 ---
 
@@ -128,7 +128,7 @@ directions below.
 
 - Update your References section.  You should leave the Copyright section
   as-is, since all new GLEPs are to be licensed under the Creative Commons
-  Attribution-ShareAlike License, Version 3.0.
+  Attribution-ShareAlike 4.0 International License (CC-BY-SA-4.0).
 
 - Send your GLEP submission to the GLEP editors at glep@gentoo.org.
 
@@ -602,6 +602,6 @@ References
 Copyright
 =========
 
-This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
-Unported License.  To view a copy of this license, visit
-https://creativecommons.org/licenses/by-sa/3.0/.
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License.  To view a copy of this license, visit
+https://creativecommons.org/licenses/by-sa/4.0/.
