@@ -8,7 +8,7 @@ Type: Informational
 Status: Active
 Version: 3
 Created: 2003-05-31
-Last-Modified: 2018-04-14
+Last-Modified: 2019-11-24
 Post-History: 2003-06-02, 2013-12-17, 2017-09-17
 Content-Type: text/x-rst
 ---
@@ -406,7 +406,7 @@ Hyperlink targets begin with two periods and a space (the "explicit
 markup start"), followed by a leading underscore, the reference text,
 a colon, and the URL (absolute or relative)::
 
-    .. _Python web site: http://www.python.org/
+    .. _Python web site: https://www.python.org/
 
 The reference text and the target text must match (although the match
 is case-insensitive and ignores differences in whitespace).  Note that
@@ -584,16 +584,16 @@ list`_.  The `Docutils project web site`_ has more information.
 .. _post a message:
    mailto:docutils-users@lists.sourceforge.net?subject=GLEPs
 .. _Docutils-Users mailing list:
-   http://lists.sourceforge.net/lists/listinfo/docutils-users
+   https://sourceforge.net/projects/docutils/lists/docutils-users
 .. _Docutils project web site: http://docutils.sourceforge.net/
 
 
 References
 ==========
 
-.. [#PYTHON] http://www.python.org
+.. [#PYTHON] https://www.python.org/
 
-.. [#PEP12] http://www.python.org/peps/pep-0012.html
+.. [#PEP12] https://www.python.org/dev/peps/pep-0012/
 
 .. [#GLEP1] GLEP 1, GLEP Purpose and Guidelines, Goodyear, 
    (https://www.gentoo.org/glep/glep-0001.html)
