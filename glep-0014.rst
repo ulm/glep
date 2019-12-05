@@ -3,14 +3,24 @@ GLEP: 14
 Title: security updates based on GLSA
 Author: Marius Mauch <genone@genone.de>
 Type: Standards Track
-Status: Accepted
+Status: Deferred
 Version: 1
 Created: 2003-08-18
-Last-Modified: 2014-01-17
+Last-Modified: 2019-12-05
 Post-History: 2003-08-22, 2003-08-24, 2003-11-10, 2004-10-25
 Content-Type: text/x-rst
 Requires: 21
 ---
+
+Status
+======
+
+Preliminary implementation ``glsa-check`` in gentoolkit, now moved to
+sys-apps/portage.
+
+The implemented procedures differ from what is described in this GLEP.
+Therefore, this GLEP (in its current version) has been marked as deferred.
+
 
 Abstract
 ========
@@ -18,12 +28,6 @@ Abstract
 There is currently no automatic way to check a Gentoo system for identified
 security holes or auto-apply security fixes. This GLEP proposes a way to deal
 with this issue
-
-Status Update
-=============
-
-Preliminary implementation ``glsa-check`` in gentoolkit, final implementation 
-pending set support in portage (GLEP 21).
 
 
 Motivation
