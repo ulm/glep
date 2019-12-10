@@ -5,10 +5,10 @@ Author: Michał Górny <mgorny@gentoo.org>,
         Michael Orlitzky <mjo@gentoo.org>
 Type: Standards Track
 Status: Final
-Version: 1
+Version: 1.1
 Created: 2019-05-29
-Last-Modified: 2019-10-07
-Post-History: 2019-05-29, 2019-07-08
+Last-Modified: 2019-12-21
+Post-History: 2019-05-29, 2019-07-08, 2019-12-10
 Content-Type: text/x-rst
 Replaces: 27
 ---
@@ -20,6 +20,14 @@ A new approach for user/group management is proposed.  Regular packages
 in dedicated categories are used to represent and create user and group
 accounts.  Dependencies are used to request users and group from within
 regular packages, and to track their usage.
+
+
+Changes
+=======
+
+v1.1
+  The policy part was removed from the GLEP, in order to make it a tree
+  policy.  The GLEP is now purely technical specification.
 
 
 Motivation
@@ -61,22 +69,6 @@ manager.
 
 Specification
 =============
-
-Policy
-------
-
-Following the acceptance of this GLEP, all new users and groups must
-be created via user/group packages as defined in this GLEP.  The old
-method may still be used for existing users/groups, in existing
-packages.
-
-All new users and groups must have unique UIDs/GIDs assigned
-by developers.  The developer adding them is responsible for checking
-for collisions.
-
-Before adding a new user and/or group, the developer must send a RFC
-to the ``gentoo-dev`` mailing list.
-
 
 Logical structure
 -----------------
@@ -148,20 +140,6 @@ that.
 
 Rationale
 =========
-
-Requiring mailing list RFC
---------------------------
-
-The policy explicitly requires RFCs for new users and groups, as they
-have global scopes and effects of mistakes while adding them are hard
-to fix.  Wider review should decrease the risk of major design mistakes.
-
-To provide one example, right now we have two different packages
-creating ``git`` user and requiring a different home directory for
-the user.  As a result, the first package being installed defines
-the actual home directory, and both technically can not be installed
-at the same time.
-
 
 Satisfied goals
 ---------------
@@ -238,6 +216,6 @@ References
 
 Copyright
 =========
-This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
-Unported License. To view a copy of this license, visit
-https://creativecommons.org/licenses/by-sa/3.0/.
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License. To view a copy of this license, visit
+https://creativecommons.org/licenses/by-sa/4.0/.
