@@ -150,6 +150,20 @@ Testing means that the architecture does not use stable keywords at all.
 Presence of such keywords is considered an error.  Consistency is tested
 only for ``~arch``.
 
+arches.desc in slave repositories
+---------------------------------
+
+If ``arches.desc`` is present in several repositories, then each file affects
+packages in the repository in question.  If the file does not specify a value
+for given arch, the value from the master repository is used.  However, using
+it in multiple repositories is discouraged.
+
+Note that the stability status override affects only packages in the slave
+repository and their direct dependencies.  If an arch is set to ``testing``,
+then master repositories are still permitted to use stable keywords.  If it is
+set to ``stable``, then missing stable keywords in dependencies from the master
+repository will cause dependency graph inconsistency.
+
 
 Backwards Compatibility
 =======================
@@ -176,14 +190,6 @@ Arches are treated as "stable" by repoman (the current behaviour), with
 profile status according to profiles.desc. Gentoolkit and other tools trying
 to determine a list of stable arches shall fall back to the current method
 of determining stable arches by scanning profiles.desc for stable profiles.
-
-
-arches.desc in overlays
-=======================
-
-If arches.desc is present in several repositories, then the strictest setting
-for an architecture wins. Using arches.desc outside the gentoo (or
-alternative) master repository however is discouraged.
 
 
 Copyright
