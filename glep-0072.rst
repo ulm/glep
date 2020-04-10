@@ -56,7 +56,7 @@ a) An architecture loses its stable status (imagine c128), but
    about a broken stable dependency tree. If we do that, repoman does however
    also not check ~c128 consistency, meaning that the ~c128 dependency tree
    will soon be broken as well due to negligence.  Given arches.conf as
-   described below, one could set the architecture c128 to "testing" status
+   described below, one could set the architecture c128 to "transitional" status
    and keep stable profiles. This results in stable keywords being ignored,
    but consistency of the ~c128 dependency tree is still enforced.
 
@@ -66,7 +66,7 @@ b) An architecture prepares for becoming a stable architecture (think arm64).
    as the stable dependency tree is not complete yet, the profiles need to be
    set to dev/exp, and again this brings the danger of the ~arm64 dependency
    tree getting inadvertently broken. Again the combination of setting the
-   architecture to "testing" in arches.desc and profiles to stable helps.
+   architecture to "transitional" in arches.desc and profiles to stable helps.
 
 Finally, at the moment the "semi-official" algorithm to figure out if an
 architecture is stable in the colloquial sense (e.g., requires stabilization
@@ -91,7 +91,8 @@ are ignored.  Every blank line is ignored. Otherwise the file consists of two
 whitespace-separated columns:
 
 - first column: architecture name (keyword)
-- second column: one of the three values ``stable``, ``testing``, ``unstable``
+- second column: one of the three values ``stable``, ``transitional``,
+  ``unstable``
 
 Additional columns are ignored to allow for future revisions of this document.
 
@@ -99,16 +100,16 @@ An example arches.desc file might look as follows::
 
     # Example arches.desc file
     amd64   stable
-    x86     stable     # not for long
+    x86     stable        # not for long
 
-    mips    testing
-    m68k    unstable   outdated
+    sparc   transitional
+    m68k    unstable      outdated
 
 Initial value in the gentoo repository
 --------------------------------------
 
 On introduction, the setting will be ``stable`` for all stable architectures,
-``testing`` for all architectures where "inofficial" stable keywords are
+``transitional`` for all architectures where "inofficial" stable keywords are
 maintained and are present in the repository by the arch teams (sh, s390,
 ...), and ``unstable`` everywhere else.
 
@@ -125,8 +126,8 @@ by profiles.desc (and ``-d`` / ``-e`` switches).
 This is the current behaviour and shall be the default if nothing is specified
 for an architecture.
 
-testing
-~~~~~~~
+transitional
+~~~~~~~~~~~~
 When a profile of an architecture is tested, then repoman treats ``arch``
 in ebuilds as ``~arch``, and tests consistency only for ``~arch``.
 
@@ -134,8 +135,8 @@ Which profiles of the arch are tested is still controlled by profiles.desc
 (and ``-d`` / ``-e`` switches).
 
 A new switch for repoman may be provided to temporarily upgrade
-an architecture from ``testing`` to ``stable`` status (for architecture team
-work).
+an architecture from ``transitional`` to ``stable`` status (for architecture
+team work).
 
 unstable
 ~~~~~~~~
@@ -170,7 +171,7 @@ arches.desc present and old system
 Utilities ignore the unknown file.
 
 Repoman and other tools may emit surplus dependency errors when profiles are
-checked on arches that are ``testing`` (they check the consistency
+checked on arches that are ``transitional`` (they check the consistency
 of the stable tree alone, which may fail, since ``arch`` is supposed to be
 treated like ``~arch``). This affects only development work and can be fixed
 by updating repoman.
