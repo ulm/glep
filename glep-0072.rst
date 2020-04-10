@@ -112,49 +112,41 @@ On introduction, the setting will be ``stable`` for all architectures using
 stable keywords, and ``testing`` for those that do not (``alpha``, ``mips``,
 ``riscv``, Prefix profiles at the moment).
 
-Meaning of the values for repoman
----------------------------------
+Meaning of the values
+---------------------
 stable
 ~~~~~~
-When a profile of an architecture arch is tested, then repoman checks
-consistency of the dependency tree for ``arch`` and for ``~arch`` separately.
+Stable means that the architecture is actively maintaining stable keywords.
+When dependency graphs of packages with stable keywords are tested, they
+are tested separately for ``arch`` and ``~arch`` systems.
 
-Which profiles of the architecture are tested is still controlled
-by profiles.desc (and ``-d`` / ``-e`` switches).
+Stable architectures are listed first in keyword-relevant contexts (``eshowkw``,
+Bugzilla) and developers are expected to file stabilization requests on these
+arches.
 
 This is the current behaviour and shall be the default if nothing is specified
 for an architecture.
 
 transitional
 ~~~~~~~~~~~~
-When a profile of an architecture is tested, then repoman treats ``arch``
-in ebuilds as ``~arch``, and tests consistency only for ``~arch``.
+Transitional means that the architecture does not maintain a consistent stable
+dependency graph but uses stable keywords on some packages.  When dependency
+graphs of packages with stable keywords are tested, they are tested only
+for ``~arch`` systems, i.e. stable keywords are ignored.
 
-Which profiles of the arch are tested is still controlled by profiles.desc
-(and ``-d`` / ``-e`` switches).
+Transitional architectures are generally listed after stable architectures,
+possibly mixed with testing.  Developers are expected to file stabilization
+requests.
 
-A new switch for repoman may be provided to temporarily upgrade
+A new switch for linting tools may be provided to temporarily upgrade
 an architecture from ``transitional`` to ``stable`` status (for architecture
 team work).
 
 testing
 ~~~~~~~
-When a profile of an architecture is tested, then repoman treats ``arch``
-as an error and aborts. Consistency is only tested for ``~arch``.
-
-Which profiles of the arch are tested is still controlled by profiles.desc
-(and ``-d`` / ``-e`` switches).
-
-Meaning of the values for other tools
--------------------------------------
-
-All architectures with the value ``stable`` are considered as stable
-architectures, in the sense that
-
-- they require stabilization requests on bugzilla, which are handled
-  by an arch team
-- they may, e.g., be listed first by tools such as eshowkw
-- and similar, to the discretion of tool authors
+Testing means that the architecture does not use stable keywords at all.
+Presence of such keywords is considered an error.  Consistency is tested
+only for ``~arch``.
 
 
 Backwards Compatibility
