@@ -103,7 +103,7 @@ An example arches.desc file might look as follows::
     x86     stable        # not for long
 
     sparc   transitional
-    m68k    testing       outdated
+    m68k    testing
 
 Initial value in the gentoo repository
 --------------------------------------
