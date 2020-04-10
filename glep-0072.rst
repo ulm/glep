@@ -1,22 +1,16 @@
 ---
 GLEP: 72
 Title: Architecture stability status file
-Author: Andreas K. Hüttel <dilfridge@gentoo.org>
+Author: Andreas K. Hüttel <dilfridge@gentoo.org>,
+        Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
-Status: Deferred
+Status: Draft
 Version: 1
 Created: 2017-05-06
-Last-Modified: 2019-06-10
-Post-History: 2017-05-06
+Last-Modified: 2020-04-22
+Post-History: 2017-05-06, 2020-04-10
 Content-Type: text/x-rst
 ---
-
-Status
-======
-
-Marked as deferred by GLEP editor Ulrich Müller on 2019-06-10, due to
-inactivity.
-
 
 Abstract
 ========
@@ -195,6 +189,6 @@ of determining stable arches by scanning profiles.desc for stable profiles.
 Copyright
 =========
 
-This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
-Unported License.  To view a copy of this license, visit
-https://creativecommons.org/licenses/by-sa/3.0/.
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License. To view a copy of this license, visit
+https://creativecommons.org/licenses/by-sa/4.0/.
