@@ -96,6 +96,8 @@ whitespace-separated columns:
 
 Additional columns are ignored to allow for future revisions of this document.
 
+If the file does not exist, it is treated as if it were empty.
+
 An example arches.desc file might look as follows::
 
     # Example arches.desc file
