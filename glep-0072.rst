@@ -91,8 +91,7 @@ are ignored.  Every blank line is ignored. Otherwise the file consists of two
 whitespace-separated columns:
 
 - first column: architecture name (keyword)
-- second column: one of the four values ``stable``, ``testing``, ``unstable``,
-  ``broken``
+- second column: one of the three values ``stable``, ``testing``, ``unstable``
 
 Additional columns are ignored to allow for future revisions of this document.
 
@@ -145,11 +144,6 @@ as an error and aborts. Consistency is only tested for ``~arch``.
 
 Which profiles of the arch are tested is still controlled by profiles.desc
 (and ``-d`` / ``-e`` switches).
-
-broken
-~~~~~~
-Repoman is not testing any profiles of this architecture, irrespective
-of the settings in profiles.desc.
 
 Meaning of the values for other tools
 -------------------------------------
