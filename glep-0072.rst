@@ -108,10 +108,9 @@ An example arches.desc file might look as follows::
 Initial value in the gentoo repository
 --------------------------------------
 
-On introduction, the setting will be ``stable`` for all stable architectures,
-``transitional`` for all architectures where "inofficial" stable keywords are
-maintained and are present in the repository by the arch teams (sh, s390,
-...), and ``testing`` everywhere else.
+On introduction, the setting will be ``stable`` for all architectures using
+stable keywords, and ``testing`` for those that do not (``alpha``, ``mips``,
+``riscv``, Prefix profiles at the moment).
 
 Meaning of the values for repoman
 ---------------------------------
