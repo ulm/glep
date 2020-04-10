@@ -92,7 +92,7 @@ whitespace-separated columns:
 
 - first column: architecture name (keyword)
 - second column: one of the three values ``stable``, ``transitional``,
-  ``unstable``
+  ``testing``
 
 Additional columns are ignored to allow for future revisions of this document.
 
@@ -103,7 +103,7 @@ An example arches.desc file might look as follows::
     x86     stable        # not for long
 
     sparc   transitional
-    m68k    unstable      outdated
+    m68k    testing       outdated
 
 Initial value in the gentoo repository
 --------------------------------------
@@ -111,7 +111,7 @@ Initial value in the gentoo repository
 On introduction, the setting will be ``stable`` for all stable architectures,
 ``transitional`` for all architectures where "inofficial" stable keywords are
 maintained and are present in the repository by the arch teams (sh, s390,
-...), and ``unstable`` everywhere else.
+...), and ``testing`` everywhere else.
 
 Meaning of the values for repoman
 ---------------------------------
@@ -138,8 +138,8 @@ A new switch for repoman may be provided to temporarily upgrade
 an architecture from ``transitional`` to ``stable`` status (for architecture
 team work).
 
-unstable
-~~~~~~~~
+testing
+~~~~~~~
 When a profile of an architecture is tested, then repoman treats ``arch``
 as an error and aborts. Consistency is only tested for ``~arch``.
 
