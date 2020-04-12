@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Replaced
 Version: 1
 Created: 2008-06-03
-Last-Modified: 2017-10-13
+Last-Modified: 2020-04-12
 Post-History: 2008-06-05, 2008-06-13
 Content-Type: text/x-rst
 Replaced-By: 68
@@ -105,23 +105,23 @@ Steve Dibb (beandog), and Tiziano Müller (dev-zero)
 References
 ==========
 
-.. [#use-flag-metadata-bug] http://bugs.gentoo.org/show_bug.cgi?id=199788
+.. [#use-flag-metadata-bug] https://bugs.gentoo.org/199788
 
-.. [#use-flag-metadata-example1] http://sources.gentoo.org/viewcvs.py/gentoo-x86/sys-apps/hal/metadata.xml?view=markup
+.. [#use-flag-metadata-example1] https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/sys-apps/hal/metadata.xml?view=markup
 
-.. [#use-flag-metadata-example2] http://sources.gentoo.org/viewcvs.py/gentoo-x86/media-tv/mythtv/metadata.xml?view=markup 
+.. [#use-flag-metadata-example2] https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/media-tv/mythtv/metadata.xml?view=markup
 
 .. [#devhandbook] https://devmanual.gentoo.org/ebuild-writing/misc-files/metadata/index.html
 
-.. [#devmanual] http://devmanual.gentoo.org/ebuild-writing/file-format/index.html
+.. [#devmanual] https://devmanual.gentoo.org/ebuild-writing/file-format/index.html
 
-.. [#motivators1] http://blog.flameeyes.eu/articles/2007/11/19/lets-actually-get-some-metadata
+.. [#motivators1] https://flameeyes.blog/2007/11/19/lets-actually-get-some-metadata/
 
-.. [#motivators2] http://blog.cardoe.com/archives/2007/11/19/use-flag-metadata/
+.. [#motivators2] https://cardoe.wordpress.com/2007/11/19/use-flag-metadata/
 
-.. [#motivators3] http://blog.cardoe.com/archives/2007/11/23/metadataxml-updates-examples/
+.. [#motivators3] https://cardoe.wordpress.com/2007/11/23/metadataxml-updates-examples/
 
-.. [#motivators4] http://technicalpickles.com/posts/pidgin-idle-time
+.. [#motivators4] https://technicalpickles.com/posts/pidgin-idle-time
 
 
 Backwards Compatibility
@@ -149,8 +149,8 @@ in ``use.local.desc``.
 Copyright
 =========
 
-This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
-Unported License.  To view a copy of this license, visit
-https://creativecommons.org/licenses/by-sa/3.0/.
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License. To view a copy of this license, visit
+https://creativecommons.org/licenses/by-sa/4.0/.
 
 .. vim: set ft=glep tw=72 :
