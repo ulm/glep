@@ -7,7 +7,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2017-05-06
-Last-Modified: 2020-04-22
+Last-Modified: 2020-04-26
 Post-History: 2017-05-06, 2020-04-10
 Content-Type: text/x-rst
 ---
@@ -84,7 +84,7 @@ Every ``#`` starts a comment; the character and the rest of the line
 are ignored.  Every blank line is ignored. Otherwise the file consists of two
 whitespace-separated columns:
 
-- first column: architecture name (keyword)
+- first column: architecture name (keyword), which must be unique
 - second column: one of the three values ``stable``, ``transitional``,
   ``testing``
 
