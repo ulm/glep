@@ -4,10 +4,10 @@ Title: Architecture stability status file
 Author: Andreas K. Hüttel <dilfridge@gentoo.org>,
         Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
-Status: Draft
+Status: Accepted
 Version: 1
 Created: 2017-05-06
-Last-Modified: 2020-04-26
+Last-Modified: 2020-05-10
 Post-History: 2017-05-06, 2020-04-10
 Content-Type: text/x-rst
 ---
