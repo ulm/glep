@@ -7,10 +7,10 @@ Author: Robin H. Johnson <robbat2@gentoo.org>,
         Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
 Status: Final
-Version: 2.1
+Version: 2.2
 Created: 2013-02-18
-Last-Modified: 2019-11-07
-Post-History: 2013-11-10, 2018-07-03, 2018-07-21, 2019-02-24
+Last-Modified: 2020-12-17
+Post-History: 2013-11-10, 2018-07-03, 2018-07-21, 2019-02-24, 2020-12-17
 Content-Type: text/x-rst
 ---
 
@@ -27,6 +27,9 @@ OpenPGP key management policies for the Gentoo Linux distribution.
 
 Changes
 =======
+
+v2.2
+  Added information about the Gentoo keyserver.
 
 v2.1
   A requirement for an encryption key has been added, in order to extend
@@ -114,7 +117,7 @@ Keys that do not conform to them can not be used to commit.
 
 6. UID using your ``@gentoo.org`` e-mail included in the key.
 
-7. Upload your key to the SKS keyserver rotation before usage!
+7. Keys must be uploaded to the Gentoo keyserver.
 
 Recommendations
 ---------------
@@ -135,8 +138,13 @@ their primary key).
 
 5. Encrypted backup of your secret keys.
 
+6. Upload to SKS or another public keyserver pool.
+
+Gentoo Infrastructure
+=====================
+
 Gentoo LDAP
-===========
+-----------
 
 All Gentoo developers must list the complete fingerprint for their primary
 keys in the "``gpgfingerprint``" LDAP field. It must be exactly 40 hex digits,
@@ -146,6 +154,14 @@ The prior "``gpgkey``" field will be removed, as it is a subset
 of the fingerprint field. In any place that presently displays
 the "``gpgkey``" field, the last 16 hex digits of the fingerprint should
 be displayed instead.
+
+Gentoo Keyserver
+----------------
+
+Gentoo infrastructure uses a keyserver that is isolated from the SKS pool.
+This keyserver is restricted to accepting uploads from authorized Gentoo hosts.
+Instructions for uploading keys to this server may be found at
+https://keys.gentoo.org/.
 
 Backwards Compatibility
 =======================
@@ -212,6 +228,6 @@ Copyright
 Copyright (c) 2013-2019 by Robin Hugh Johnson, Andreas K. Hüttel,
 Marissa Fischer, Michał Górny.
 
-This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
-Unported License.  To view a copy of this license, visit
-https://creativecommons.org/licenses/by-sa/3.0/.
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License.  To view a copy of this license, visit
+https://creativecommons.org/licenses/by-sa/4.0/.
