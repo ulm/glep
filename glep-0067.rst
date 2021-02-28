@@ -4,10 +4,10 @@ Title: Package maintenance structure
 Author: Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
 Status: Final
-Version: 1
+Version: 1.1
 Created: 2015-12-13
-Last-Modified: 2016-01-13
-Post-History: 2015-11-03, 2016-05-29
+Last-Modified: 2021-02-28
+Post-History: 2015-11-03, 2016-05-29, 2021-02-28
 Content-Type: text/x-rst
 ---
 
@@ -21,6 +21,13 @@ maintainer types — people and projects. Herds are removed in favor
 of projects, and project member listings are provided in XML format.
 Maintainer listings in ``metadata.xml`` become uniform, and can be used
 directly to assign bugs.
+
+
+Change log
+==========
+
+v1.1
+  Added the ``proxied`` attribute to the package ``<maintainer/>``.
 
 
 Motivation
@@ -144,19 +151,35 @@ of the ``<maintainer/>`` element. The e-mail address, human-readable name
 and maintenance description are placed in ``<email/>``, ``<name/>``
 and ``<description/>`` sub-elements appropriately.
 
+Optionally, a ``proxied`` attribute can be specified having one
+of the three possible values:
+
+- ``yes`` indicating that the maintainer is a proxied maintainer
+  (i.e. is unable to push changes directly)
+
+- ``no`` indicating that the maintainer is a real maintainer (i.e. can
+  push changes directly)
+
+- ``proxy`` indicating that the listed developer is serving only
+  as a proxy for other maintainers
+
+If the attribute is not specified, the default value of ``no``
+is assumed.  If at least one maintainer is listed as a proxied
+maintainer (``proxied="yes"``), then at least one other maintainer
+should be listed as a proxy (``proxied="proxy"``), and vice versa.
+
 .. code:: xml
 
     <pkgmetadata>
-      <maintainer type="person">
+      <maintainer type="person" proxied="yes">
         <email>foo@example.com</email>
         <name>Foo Barsky</name>
-        <description>Proxied maintainer</description>
       </maintainer>
       <maintainer type="person">
         <email>example@gentoo.org</email>
         <name>Example Developer</name>
       </maintainer>
-      <maintainer type="project">
+      <maintainer type="project" proxied="proxy">
         <email>proxy-maint@gentoo.org</email>
       </maintainer>
     </pkgmetadata>
@@ -427,6 +450,24 @@ and the proxy-maintainer workflow harder. In particular, currently proxied
 maintainers can add themselves to ``metadata.xml`` in a single commit to
 the repository. If external database was used, the database would have to be
 updated in addition to the repository commit.
+
+Proxied maintainers
+-------------------
+
+As of version 1.1, an additional ``proxied`` attribute has been added
+to the ``<maintainer/>`` element for package maintainers.  This is used
+to explicitly distinguish regular developers, proxied maintainers
+and proxies.
+
+The primary purpose is to resolve false positives in the QA report used
+to report leftover proxy-maint project instances, as well as improve
+detection of maintainers without a proxy.  Currently, these checks
+unconditionally assume that all Gentoo developers have commit access,
+and everyone else is a proxied maintainer.  This does not account for
+developers without commit access that maintain packages via a proxy.
+
+The property is added as a separate attribute in order to ensure
+backwards compatibility.
 
 
 Backwards Compatibility
