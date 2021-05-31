@@ -3,13 +3,19 @@ GLEP: 80
 Title: Identity verification via OpenPGP WoT
 Author: Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
-Status: Draft
+Status: Deferred
 Version: 1
 Created: 2019-03-04
-Last-Modified: 2019-11-07
+Last-Modified: 2021-05-31
 Post-History: 2019-03-04
 Content-Type: text/x-rst
 ---
+
+Status
+======
+Marked as deferred by GLEP editor Ulrich Müller on 2021-05-31, due to
+inactivity.
+
 
 Abstract
 ========
