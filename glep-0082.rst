@@ -147,6 +147,7 @@ eapis-deprecated = <space-separated EAPI names>
   Specifies one or more EAPIs that are to be considered deprecated
   by the development tools for use in ebuilds, i.e. their use should
   trigger a warning.  If not specified, no EAPIs are deprecated.
+  This key does not apply to EAPI use in profiles.
 
   Example::
 
@@ -155,7 +156,8 @@ eapis-deprecated = <space-separated EAPI names>
 eapis-banned = <space-separated EAPI names>
   Specifies one or more EAPIs that are to be considered banned
   by the development tools for use in ebuilds, i.e. their use should
-  be blocked.  If not specified, no EAPIs are banned.
+  be blocked.  If not specified, no EAPIs are banned.  This key
+  does not apply to EAPI use in profiles.
 
 repo-name = <string>
   Specifies the repository name.  If specified, it must be equal
