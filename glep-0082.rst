@@ -4,10 +4,10 @@ Title: Repository configuration file (layout.conf)
 Author: Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
 Status: Draft
-Version: 1.0
+Version: 1.1
 Created: 2021-05-19
-Last-Modified: 2021-05-31
-Post-History: 2021-05-19
+Last-Modified: 2021-06-18
+Post-History: 2021-05-19, 2021-06-18
 Content-Type: text/x-rst
 ---
 
@@ -158,6 +158,11 @@ eapis-banned = <space-separated EAPI names>
   by the development tools for use in ebuilds, i.e. their use should
   be blocked.  If not specified, no EAPIs are banned.  This key
   does not apply to EAPI use in profiles.
+
+eapis-testing = <space-separated EAPI names>
+  Specifies one or more EAPIs that must not (yet) be used in ebuilds
+  with stable keywords, i.e. development tools should block their use
+  in such ebuilds.
 
 repo-name = <string>
   Specifies the repository name.  If specified, it must be equal
