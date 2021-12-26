@@ -10,7 +10,7 @@ Type: Informational
 Status: Active
 Version: 1.1
 Created: 2013-04-23
-Last-Modified: 2018-12-09
+Last-Modified: 2021-12-26
 Post-History: 2018-06-10, 2018-06-19, 2018-08-31, 2018-09-26
 Content-Type: text/x-rst
 ---
@@ -170,7 +170,7 @@ The following is the current Gentoo Certificate of Origin, revision 1:
     this project or the free software license(s) involved.
 
 The Gentoo Certificate of Origin is licensed under a Creative Commons
-Attribution-ShareAlike 3.0 Unported License [#CC-BY-SA-3.0]_.
+Attribution-ShareAlike 4.0 International License [#CC-BY-SA-4.0]_.
 It is based on the Linux Kernel DCO [#OSDL-DCO]_, released by Open
 Source Development Labs, Inc. in 2005 under a CC-BY-SA-2.5 License.
 
@@ -348,6 +348,9 @@ Matija Šuklje, Matthew Thode, and Alec Warner for their input.
 References
 ==========
 
+.. [#FLA] FSFE Legal: Fiduciary Licence Agreement (FLA),
+   https://fsfe.org/activities/fla/fla.en.html
+
 .. [#SOCIAL-CONTRACT] Gentoo Social Contract,
    https://www.gentoo.org/get-started/philosophy/social-contract.html
 
@@ -378,9 +381,6 @@ References
    https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?h=v4.18#n460
    https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=af45f32d25cc1e374184675eadc9f740221d8392
 
-.. [#FLA] FSFE Legal: Fiduciary Licence Agreement (FLA),
-   https://fsfe.org/activities/ftf/fla.en.html
-
 .. [#CC-SOFTWARE] Can I apply a Creative Commons license to software?
    https://creativecommons.org/faq/#can-i-apply-a-creative-commons-license-to-software
 
@@ -400,6 +400,6 @@ References
 Copyright
 =========
 
-This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
-Unported License.  To view a copy of this license, visit
-https://creativecommons.org/licenses/by-sa/3.0/.
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License.  To view a copy of this license, visit
+https://creativecommons.org/licenses/by-sa/4.0/.
