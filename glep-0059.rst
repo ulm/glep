@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Final
 Version: 1
 Created: 2008-10-22
-Last-Modified: 2017-11-16
+Last-Modified: 2022-04-06
 Post-History: 2009-12-01, 2010-01-31
 Content-Type: text/x-rst
 Requires: 44
@@ -107,7 +107,7 @@ by a preference list. Over time, the weaker checksums should be removed
 from Manifest2 files, once all old Portage installations have had
 sufficient time to upgrade. Stronger checksums shall be added as soon as
 an implementation is available in Portage. Weak checksums may be removed
-as long as the depreciation process is followed (see below).
+as long as the deprecation process is followed (see below).
 
 As soon as feasible, we should add the SHA512 and WHIRLPOOL algorithms.
 In future, as stream-based checksums are developed (in response to the
@@ -124,21 +124,21 @@ Python implementations available, ranging from pure Python to C-based
 The existence unsupported hash is not considered to be a failure unless
 no supported hashes are available for a given Manifest entry.
 
-Checksum depreciation timing
-----------------------------
+Checksum deprecation timing
+---------------------------
 General principles:
 ~~~~~~~~~~~~~~~~~~~
-A minimum set of depreciated checksums shall be maintained only to
+A minimum set of deprecated checksums shall be maintained only to
 support old package manager versions where needed by historically used
 trees:
 
-- New package manager versions should NOT use depreciated checksums in
+- New package manager versions should NOT use deprecated checksums in
 
-- New trees with that have never used the depreciated checksums may omit
+- New trees with that have never used the deprecated checksums may omit
   them for reasons of size, but are still strongly suggested to include
   them.
 
-- Removal of depreciated checksums shall happen after no less than 18
+- Removal of deprecated checksums shall happen after no less than 18
   months or one major Portage version cycle, whichever is greater.
 
 Immediate plans:
@@ -162,7 +162,7 @@ After the majority of Portage installations include SHA512 support:
 Backwards Compatibility
 =======================
 Old versions of Portage may support and expect only specific checksums.
-This is accounted for in the checksum depreciation discussion.
+This is accounted for in the checksum deprecation discussion.
 
 For maximum compatibility, we should only have to include each of the
 old algorithms that we are officially still supporting, as well as the
