@@ -6,7 +6,7 @@ Type: Informational
 Status: Final
 Version: 1
 Created: 2008-10-22
-Last-Modified: 2019-11-07
+Last-Modified: 2022-04-15
 Post-History: 2009-12-01
 Content-Type: text/x-rst
 ---
@@ -18,7 +18,7 @@ and problems in the Gentoo software distribution process, with a strong
 emphasis on security. The concepts thus developed, will then be used in
 the following GLEPs to describe a comprehensive security solution for
 this distribution process that prevents trivial attacks and increases
-the difficulty on more complex attacks. 
+the difficulty on more complex attacks.
 
 Motivation
 ==========
@@ -139,7 +139,7 @@ with the choice of either syncing from the sometimes slow or even
 unresponsive Gentoo-controlled rsync mirrors or risk being compromised
 by syncing from one of the community-provided mirrors. We will show that
 protection against this class of attacks is very easy to implement with
-little added cost. 
+little added cost.
 
 At the level of mirrors, addition of malicious content is not the only
 attack. As discussed by Cappos et al [C08a]_, [C08b]_, an attacker may use
@@ -211,13 +211,15 @@ https://archives.gentoo.org/gentoo-dev/message/7062d6765b35406b4b8ed6b7c6e8fc28
 [ http://www.gentoo.org/news/en/gwn/20030421-newsletter.xml#doc_chap1_sect2 ]
 
 2003-04, gentoo-security mailing list, "The state of ebuild signing
-in portage" - Joshua Brindle (method), the first suggestion of signed Manifests,
-but also an unusual key-trust model:
+in portage" - Joshua Brindle (method), the first suggestion of signed
+Manifests, but also an unusual key-trust model:
 Message-ID unknown
 https://marc.info/?l=gentoo-security&m=105073449619892&w=2
 
-2003-04, gentoo-core mailing list, "New Digests and Signing -- Attempted Explanation"
+2003-04, gentoo-core mailing list, "New Digests and Signing -- Attempted
+Explanation"
 ::
+
     Date: Wed, 2 Apr 2003 23:39:05 -0600
     From: Nick Jones <carpaski@gentoo.org>
     Message-ID: <20030402233905.A18948@twobit.net>
@@ -226,6 +228,7 @@ https://marc.info/?l=gentoo-security&m=105073449619892&w=2
 signing." - This overview was one of the first to help developers see
 how to use their devs, and was mainly intended for keysigning meetups.
 ::
+
     Date: Mon, 30 Jun 2003 14:32:09 +1000 (EST)
     From: Troy Dack <tad@gentoo.org>
     Message-ID: <33220.203.10.231.229.1056947529.squirrel@tkdack.bpa.nu>
@@ -234,18 +237,22 @@ how to use their devs, and was mainly intended for keysigning meetups.
 with an not very positive response, delayed by Nick Jones (carpaski)
 getting rooted and a safe cleanup taking a long time to affect.
 ::
+
     Date: 06 Aug 2003 15:36:34 -0500
     From: Chris PeBenito <pebenito@gentoo.org>
     Message-Id: <1060202193.1532.42.camel@chris.pebenito.net>
 
-2003-12-02, gentoo-core mailing list, "Report: rsync1.it.gentoo.org compromised"
+2003-12-02, gentoo-core mailing list, "Report: rsync1.it.gentoo.org
+compromised"
 ::
+
     Date: Tue, 2 Dec 2003 20:25:57 +0100
     From: Andrea Barisani <lcars@gentoo.org>
     Message-ID: <20031202192557.GA11676@sole.infis.univ.trieste.it>
 
 2003-12-03, gentoo-core mailing list, "Signing of ebuilds"
 ::
+
     Date: Wed, 3 Dec 2003 11:15:09 +0100
     From: Hanno Böck <hanno@gentoo.org>
     Message-Id: <20031203111509.6b2e414b.hanno@gentoo.org>
@@ -255,6 +262,7 @@ includes the first GnuPG signing prototype code, by Robin H. Johnson
 (robbat2). Andrew Cowie (rac) also produces a proof-of-concept around
 this time.
 ::
+
     Date: Sun, 7 Dec 2003 21:01:03 +0000
     From: Douglas Russell <puggy@gentoo.org>
     Message-Id: <200312072101.08245.puggy@gentoo.org>
@@ -286,6 +294,7 @@ tree-signing work. Problems at the time later in the thread show that
 the upstream gpg-agent is not ready, amongst other minor implementation
 issues.
 ::
+
     Date: Mon, 17 Jan 2005 11:04:50 +0100
     From: Thierry Carrez <koon@gentoo.org>
     Message-ID: <41EB8DC2.6050003@gentoo.org>
@@ -302,6 +311,7 @@ Informal statistics show that 26% of packages in the tree include a
 signed Manifest. Questions are raised regarding key types, and key
 policies.
 ::
+
     Date: Tue, 8 Mar 2005 12:21:55 +0100
     From: Torsten Veller <tove@gentoo.org>
     Message-ID: <20050308113947.GA4dd7c.tv@veller.net>
@@ -312,6 +322,7 @@ outstanding issues, also mentioning partial Manifests, as well as a
 comparision between the signing procedures used in Slackware, Debian and
 RPM-based distros.
 ::
+
     Date: Wed, 16 Nov 2005 12:29:46 -0800
     From: "Robin H. Johnson" <robbat2@gentoo.org>
     Message-ID: <20051116202946.GA9658@curie-int.vc.shawcable.net>
@@ -323,8 +334,8 @@ Message-ID 20051119060127.GA28413\@curie-int.vc.shawcable.net,
 https://archives.gentoo.org/gentoo-portage-dev/message/1ffa48adfce79105cca532c00533c298
 
 2006-05-18, gentoo-dev mailing list, "Signing everything, for fun and for
-profit" - Patrick Lauer (bonsaikitten). Later brings up that Manifest2 is needed for
-getting everything right.
+profit" - Patrick Lauer (bonsaikitten). Later brings up that Manifest2
+is needed for getting everything right.
 Message-ID 1147988717.32416.51.camel\@localhost,
 https://archives.gentoo.org/gentoo-dev/message/91a60d78bb4822d89f6fcc7b19fd3588
 
@@ -351,6 +362,7 @@ https://archives.gentoo.org/gentoo-dev/message/b25efdb57f973e1f53b38eadc55de1ee
 Johnson (robbat2). First review thread for these GLEPs, many suggestions
 from Marius Mauch (genone).
 ::
+
     Date: Fri, 30 Nov 2007 22:13:43 -0800
     From: "Robin H. Johnson" <robbat2@gentoo.org>
     Message-ID: <20071201061343.GG14557@curie-int.orbis-terrarum.net>
@@ -394,7 +406,8 @@ References
     Available online at:
     http://www.cs.arizona.edu/people/justin/packagemanagersecurity/
 
-.. [GLEP58] Security of distribution of Gentoo software - Infrastructure to User distribution - MetaManifest
+.. [GLEP58] Security of distribution of Gentoo software - Infrastructure
+   to User distribution - MetaManifest
    https://www.gentoo.org/glep/glep-0058.html
 
 .. [GLEPxx2] Future GLEP on Developer Process security.
