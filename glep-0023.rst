@@ -179,9 +179,9 @@ References
 ==========
 
 .. [1] Gentoo Linux Bug 17367
-       (http://bugs.gentoo.org/show_bug.cgi?id=17367)
+       (https://bugs.gentoo.org/17367)
 .. [2] Gentoo Linux Bug 34146
-       (http://bugs.gentoo.org/show_bug.cgi?id=34146)
+       (https://bugs.gentoo.org/34146)
 
 
 Copyright
