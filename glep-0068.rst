@@ -4,10 +4,10 @@ Title: Package and category metadata
 Author: Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
 Status: Final
-Version: 1.1
+Version: 1.2
 Created: 2016-03-14
-Last-Modified: 2021-09-11
-Post-History: 2016-03-16, 2018-02-20
+Last-Modified: 2022-05-22
+Post-History: 2016-03-16, 2018-02-20, 2022-05-22
 Content-Type: text/x-rst
 Requires: 67
 Replaces: 34, 46, 56
@@ -106,8 +106,8 @@ The following common attributes are allowed on multiple elements:
 
 Language specifiers are used whenever an element supports variants
 in different languages. In this case, each occurrence of the element may
-contain an optional ``lang=""`` attribute that contains a ISO 639-1 language
-code. In case no ``lang=""`` attribute is provided, an implicit default
+contain an optional ``lang=""`` attribute that contains an IETF language tag
+[#BCP-47]_. In case no ``lang=""`` attribute is provided, an implicit default
 of ``en`` is assumed.
 
 Restriction specifiers are used whenever an element supports restricting to
@@ -321,6 +321,9 @@ language identifier in any of the considered standards. Furthermore, since
 and no tools relied on the implicit default defined in the DTD, it was decided
 to change the implicit default to ``en``.
 
+Language identifiers were later updated to allow full IETF language tags,
+so that codes like ``pt-BR`` or ``zh-Hant`` can be represented.
+
 Package restrictions
 --------------------
 
@@ -513,6 +516,9 @@ References
 .. [#METADATA-DTD] The original metadata.dtd file
    https://gitweb.gentoo.org/data/dtd.git/tree/metadata.dtd?id=a908a93b5afe295359e0a01814c9bef8b5268bcd
 
+.. [#BCP-47] BCP 47: "Tags for identifying languages",
+   https://tools.ietf.org/rfc/bcp/bcp47.txt
+
 .. [#ORIGINAL-METADATA-XML] The original metadata.xml proposal:
    Paul de Vrieze. "IMPORTANT: The proposal for the metadata.xml file".
    gentoo-dev mailing list, 2003-06-27,
@@ -529,6 +535,6 @@ References
 Copyright
 =========
 
-This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
-Unported License.  To view a copy of this license, visit
-https://creativecommons.org/licenses/by-sa/3.0/.
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License.  To view a copy of this license, visit
+https://creativecommons.org/licenses/by-sa/4.0/.
