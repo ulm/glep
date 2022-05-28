@@ -2,12 +2,13 @@
 GLEP: 78
 Title: Gentoo binary package container format
 Author: Michał Górny <mgorny@gentoo.org>
+        Sheng Yu <syu.os@protonmail.com>
 Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2018-11-15
-Last-Modified: 2019-07-29
-Post-History: 2018-11-17, 2019-07-08
+Last-Modified: 2021-10-10
+Post-History: 2018-11-17, 2019-07-08, 2021-09-13, 2021-09-22, 2022-05-28
 Content-Type: text/x-rst
 ---
 
@@ -154,10 +155,15 @@ The following obligatory goals have been set for a replacement format:
    enough to let user inspect and manipulate it without special tooling
    or detailed knowledge.
 
-3. **The file format must provide support for OpenPGP signatures.**
+3. **The file format must be able to detect its own data corruption.**
+   In particular, it needs to contain the checksum of its own data for
+   package manager to be able to verify its integrity without relying
+   on additional files.
+
+4. **The file format must provide support for OpenPGP signatures.**
    Preferably, it should use standard OpenPGP message formats.
 
-4. **The file format must allow for efficient metadata updates.**
+5. **The file format must allow for efficient metadata updates.**
    In particular, it should be possible to update the metadata without
    having to recompress package files.
 
@@ -186,35 +192,39 @@ The container format
 The gpkg package container is an uncompressed .tar achive whose filename
 should use ``.gpkg.tar`` suffix.
 
-The archive contains a number of files, stored in a single directory
-whose name should match the basename of the package file.  However,
-the implementation must be able to process an archive where
-the directory name is mismatched.  There should be no explicit archive
-member entry for the directory.
+The archive contains a number of files.  All package-related files
+should be stored in a single directory whose name matches the basename
+of the package file.  However, the implementation must be able to
+process an archive where the directory name is mismatched.  There should
+be no explicit archive member entry for the directory.
 
 The package directory contains the following members, in order:
 
 1. The package format identifier file ``gpkg-1`` (required).
 
-2. A signature for the metadata archive: ``metadata.tar${comp}.sig``
-   (optional).
-
-3. The metadata archive ``metadata.tar${comp}``, optionally compressed
+2. The metadata archive ``metadata.tar${comp}``, optionally compressed
    (required).
 
-4. A signature for the filesystem image archive:
+3. A signature for the metadata archive: ``metadata.tar${comp}.sig``
+   (optional).
+
+4. The filesystem image archive ``image.tar${comp}``, optionally
+   compressed (required).
+
+5. A signature for the filesystem image archive:
    ``image.tar${comp}.sig`` (optional).
 
-5. The filesystem image archive ``image.tar${comp}``, optionally
-   compressed (required).
+6. The package Manifest data file ``Manifest``, optionally clear-text
+   signed (required)
 
 It is recommended that relative order of the archive members is
 preserved.  However, implementations must support archives with members
 out of order.
 
 The container may be extended with additional members in the future.
-The implementations should ignore unrecognized members and preserve
-them across package updates.
+If the Manifest is present, all files contained in the archive must
+be listed in it and verify successfully.  The package manager should
+ignore unknown files but preserve them across package updates.
 
 
 Permitted .tar format features
@@ -301,10 +311,29 @@ suffixed using the standard suffix for the particular compressed file
 type (e.g. ``.bz2`` for bzip2 format).
 
 
+The package Manifest file
+-------------------------
+
+The Manifest file must include digests of all files in the binary
+package container, except for itself.  The purpose of this file is
+to provide the package manager with an ability to detect corruption
+or alteration of the binary package before attempting to read the
+inner archive contents.  This file also provides protection against
+signature reuse/replacement attacks if the OpenPGP signatures are used.
+
+The implementation follows the Manifest specifications in GLEP 74
+[#GLEP74]_ and uses the DATA tag for files within the container.
+
+The implementation should be able to detect checksum mismatches,
+as well as missing, duplicate, or extraneous files within the
+container.  In the case of verification failure, no subsequent
+operations on the archive should be performed.
+
+
 OpenPGP member signatures
 -------------------------
 
-The archive members support optional OpenPGP signatures.
+The archive members and Manifest support optional OpenPGP signatures.
 The implementations must allow the user to specify whether OpenPGP
 signatures are to be expected in remotely fetched packages.
 
@@ -490,6 +519,38 @@ Debian has a similar guideline for the inner tar of their package
 format  [#DEB-FORMAT]_.
 
 
+.tar security issues
+--------------------
+
+Some of the original features of .tar are obsolete with the modern
+usage.
+
+Firstly, .tar permits duplicate files to exist [#TARDUP]_.  The
+later duplicate files overwrite the previously extracted files when
+extracting all files in order.  This is useful for incremental
+backups.  However, a general-purpose archiving tools may choose
+arbitrary files matching a path name, leading to checksum or
+signature bypass.  To prevent this, duplicate files are forbidden
+from existing.
+
+Secondly, .tar lacks integrity checks, except for the header
+self-check.  Data corruption can usually be detected through
+integrity checks in the additional compression layer.  However,
+this does not provide a way of verifying the integrity of the
+compressed data in advance.  For this reason, an additional
+Manifest file is included that provides checksums for other
+files in the archive.  A corrupted Manifest invalidates the whole
+package.
+
+Thirdly, many .tar implementations have various security problems,
+including the Python tarfile module [#ISSUE21109]_.  They provide
+multiple attack vectors, e.g. permitting overwriting files outside the
+destination directory using special filenames, symlinks, hard links or
+device files.  For this purpose, only regular files are permitted inside
+the container.  It is recommended to process the container data in place
+rather than extracting it.
+
+
 Member ordering
 ---------------
 
@@ -510,6 +571,14 @@ respectively, without having to invent custom mechanisms for combining
 them.  Covering the compressed archives helps to prevent zipbomb
 attacks.  Covering the individual members rather than the whole package
 provides for verification of partially fetched binary packages.
+
+However, signing individual files does not guarantee that all members
+are originating from the same binary package.  This opens up the
+possibility of a replacement/reuse attack, e.g. combining the signed
+metadata from foo-1.1 with signed image from foo-1.0.  The new binary
+package passes the signature check.  To prevent this type of attack,
+we need the additional Menifest file and its signature to verify the
+authenticity of the complete binary package.
 
 
 Format versioning
@@ -564,9 +633,18 @@ References
 .. [#TAR-PORTABILITY] Michał Górny, Portability of tar features
    (https://dev.gentoo.org/~mgorny/articles/portability-of-tar-features.html)
 
+.. [#GLEP74] GLEP 74: Full-tree verification using Manifest files
+   (https://www.gentoo.org/glep/glep-0074.html)
+
 .. [#XPAK2GPKG] xpak2gpkg: Proof-of-concept converter from tbz2/xpak
    to gpkg binpkg format
    (https://github.com/mgorny/xpak2gpkg)
+
+.. [#TARDUP] tar: Multiple Members with the Same Name
+   (https://www.gnu.org/software/tar/manual/html_node/multiple.html)
+
+.. [#ISSUE21109] Python tarfile: Traversal attack vulnerability
+   (https://bugs.python.org/issue21109)
 
 
 Copyright
