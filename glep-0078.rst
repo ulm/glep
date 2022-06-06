@@ -7,7 +7,7 @@ Type: Standards Track
 Status: Draft
 Version: 1
 Created: 2018-11-15
-Last-Modified: 2021-10-10
+Last-Modified: 2022-06-06
 Post-History: 2018-11-17, 2019-07-08, 2021-09-13, 2021-09-22, 2022-05-28
 Content-Type: text/x-rst
 ---
@@ -649,6 +649,7 @@ References
 
 Copyright
 =========
-This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
-Unported License. To view a copy of this license, visit
-https://creativecommons.org/licenses/by-sa/3.0/.
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License.  To view a copy of this license, visit
+https://creativecommons.org/licenses/by-sa/4.0/.
