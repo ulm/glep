@@ -1,7 +1,7 @@
 ---
 GLEP: 78
 Title: Gentoo binary package container format
-Author: Michał Górny <mgorny@gentoo.org>
+Author: Michał Górny <mgorny@gentoo.org>,
         Sheng Yu <syu.os@protonmail.com>
 Type: Standards Track
 Status: Draft
