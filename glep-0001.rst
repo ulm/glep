@@ -8,7 +8,7 @@ Type: Informational
 Status: Active
 Version: 4
 Created: 2003-05-31
-Last-Modified: 2019-11-24
+Last-Modified: 2022-06-06
 Post-History: 2003-06-01, 2003-07-02, 2008-01-19, 2008-06-05, 2011-03-09,
               2013-12-14, 2017-09-17, 2018-07-10, 2019-11-24
 Content-Type: text/x-rst
@@ -273,7 +273,8 @@ if the email address is included, and just
 if the address is not given.
 
 If there are multiple authors, each should be on a separate line
-following RFC 2822 continuation line conventions.
+following RFC 2822 continuation line conventions. The list of authors is
+comma-separated, i.e. all lines but the last must end with a comma.
 
 The Type header specifies the type of GLEP: Informational or Standards
 Track.
