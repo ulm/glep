@@ -10,7 +10,7 @@ Type: Informational
 Status: Active
 Version: 1.1
 Created: 2013-04-23
-Last-Modified: 2021-12-26
+Last-Modified: 2022-07-02
 Post-History: 2018-06-10, 2018-06-19, 2018-08-31, 2018-09-26
 Content-Type: text/x-rst
 ---
@@ -393,8 +393,8 @@ References
 .. [#CC-PDM-1.0] Creative Commons: Public Domain Mark 1.0,
    https://creativecommons.org/publicdomain/mark/1.0/
 
-.. [#CHROMIUM] Chromium: Contributing Code,
-   https://www.chromium.org/developers/contributing-code#TOC-Legal-stuff
+.. [#CHROMIUM] Contributing to Chromium,
+   https://chromium.googlesource.com/chromium/src/+/main/docs/contributing.md#Legal-stuff
 
 
 Copyright
