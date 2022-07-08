@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Replaced
 Version: 1
 Created: 2005-12-04
-Last-Modified: 2019-11-07
+Last-Modified: 2022-07-08
 Post-History: 2005-12-06, 2006-01-23, 2006-09-03
 Content-Type: text/x-rst
 Replaced-By: 74
@@ -326,8 +326,6 @@ References
    Message-ID 20051117075838.GB15734\@curie-int.vc.shawcable.net
 
 .. [#manifest2-patch] https://archives.gentoo.org/gentoo-portage-dev/message/f2b5be6629510343bd50418429912b1d
-
-.. [#manifest2-example] glep-0044-extras/manifest2-example.txt
 
 Copyright
 =========
