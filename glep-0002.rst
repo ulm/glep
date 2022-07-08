@@ -6,9 +6,9 @@ Author: Grant Goodyear <g2boojum@gentoo.org>,
         Ulrich Müller <ulm@gentoo.org>
 Type: Informational
 Status: Active
-Version: 4
+Version: 4.1
 Created: 2003-05-31
-Last-Modified: 2019-11-24
+Last-Modified: 2022-07-09
 Post-History: 2003-06-02, 2013-12-17, 2017-09-17, 2019-11-24
 Content-Type: text/x-rst
 ---
@@ -425,9 +425,6 @@ make a link to the Abstract section like this::
 Footnotes containing the URLs from external targets will be generated
 automatically at the end of the References section of the GLEP, along
 with footnote references linking the reference text to the footnotes.
-
-Text of the form "GLEP x" or "RFC x" (where "x" is a number) will be
-linked automatically to the appropriate URLs.
 
 
 Footnotes
