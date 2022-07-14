@@ -215,7 +215,7 @@ The package directory contains the following members, in order:
    ``image.tar${comp}.sig`` (optional).
 
 6. The package Manifest data file ``Manifest``, optionally clear-text
-   signed (required)
+   signed (required).
 
 It is recommended that relative order of the archive members is
 preserved.  However, implementations must support archives with members
@@ -317,16 +317,16 @@ The package Manifest file
 The Manifest file must include digests of all files in the binary
 package container, except for itself.  The purpose of this file is
 to provide the package manager with an ability to detect corruption
-or alteration of the binary package before attempting to read the
-inner archive contents.  This file also provides protection against
+or alteration of the binary package before attempting to read
+the inner archive contents.  This file also provides protection against
 signature reuse/replacement attacks if the OpenPGP signatures are used.
 
 The implementation follows the Manifest specifications in GLEP 74
 [#GLEP74]_ and uses the DATA tag for files within the container.
 
 The implementation should be able to detect checksum mismatches,
-as well as missing, duplicate, or extraneous files within the
-container.  In the case of verification failure, no subsequent
+as well as missing, duplicate, or extraneous files within
+the container.  In the case of verification failure, no subsequent
 operations on the archive should be performed.
 
 
@@ -337,9 +337,9 @@ The archive members and Manifest support optional OpenPGP signatures.
 The implementations must allow the user to specify whether OpenPGP
 signatures are to be expected in remotely fetched packages.
 
-If the signatures are expected and the archive member is unsigned, the
-package manager must reject processing it.  If the signature does not
-verify, the package manager must reject processing the corresponding
+If the signatures are expected and the archive member is unsigned,
+the package manager must reject processing it.  If the signature does
+not verify, the package manager must reject processing the corresponding
 archive member.  In particular, it must not attempt decompressing
 compressed members in those circumstances.
 
@@ -525,30 +525,30 @@ format  [#DEB-FORMAT]_.
 Some of the original features of .tar are obsolete with the modern
 usage.
 
-Firstly, .tar permits duplicate files to exist [#TARDUP]_.  The
-later duplicate files overwrite the previously extracted files when
+Firstly, .tar permits duplicate files to exist [#TARDUP]_.
+The later duplicate files overwrite the previously extracted files when
 extracting all files in order.  This is useful for incremental
 backups.  However, a general-purpose archiving tools may choose
-arbitrary files matching a path name, leading to checksum or
-signature bypass.  To prevent this, duplicate files are forbidden
+arbitrary files matching a path name, leading to checksum
+or signature bypass.  To prevent this, duplicate files are forbidden
 from existing.
 
 Secondly, .tar lacks integrity checks, except for the header
 self-check.  Data corruption can usually be detected through
 integrity checks in the additional compression layer.  However,
-this does not provide a way of verifying the integrity of the
-compressed data in advance.  For this reason, an additional
+this does not provide a way of verifying the integrity
+of the compressed data in advance.  For this reason, an additional
 Manifest file is included that provides checksums for other
 files in the archive.  A corrupted Manifest invalidates the whole
 package.
 
 Thirdly, many .tar implementations have various security problems,
 including the Python tarfile module [#ISSUE21109]_.  They provide
-multiple attack vectors, e.g. permitting overwriting files outside the
-destination directory using special filenames, symlinks, hard links or
-device files.  For this purpose, only regular files are permitted inside
-the container.  It is recommended to process the container data in place
-rather than extracting it.
+multiple attack vectors, e.g. permitting overwriting files outside
+the destination directory using special filenames, symlinks, hard links
+or device files.  For this purpose, only regular files are permitted
+inside the container.  It is recommended to process the container data
+in place rather than extracting it.
 
 
 Member ordering
@@ -573,12 +573,12 @@ attacks.  Covering the individual members rather than the whole package
 provides for verification of partially fetched binary packages.
 
 However, signing individual files does not guarantee that all members
-are originating from the same binary package.  This opens up the
-possibility of a replacement/reuse attack, e.g. combining the signed
+are originating from the same binary package.  This opens up
+the possibility of a replacement/reuse attack, e.g. combining the signed
 metadata from foo-1.1 with signed image from foo-1.0.  The new binary
 package passes the signature check.  To prevent this type of attack,
-we need the additional Menifest file and its signature to verify the
-authenticity of the complete binary package.
+we need the additional Menifest file and its signature to verify
+the authenticity of the complete binary package.
 
 
 Format versioning
