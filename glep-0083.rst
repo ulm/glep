@@ -22,17 +22,17 @@ Motivation
 ==========
 
 So far, old EAPIs were deprecated by the Gentoo Council in an ad-hoc
-manner. No fixed criteria were used, resulting in very different
-deprecation times after approval of newer EAPIs. Standardized criteria
-for deprecation and banning will make the life cycle of EAPIs more
-predictable.
+manner.  No fixed criteria were used, resulting in very different
+deprecation times after approval of newer EAPIs.  Standardized
+criteria for deprecation and banning will make the life cycle of EAPIs
+more predictable.
 
 
 Specification
 =============
 
 A *deprecated EAPI* is no longer required for the upgrade path of
-users' systems. Its use is discouraged, and tools like pkgcheck will
+users' systems.  Its use is discouraged, and tools like pkgcheck will
 warn about this [#COUNCIL-20130409]_.
 
 A *banned EAPI* must no longer be used, neither for new ebuilds, nor
@@ -60,8 +60,8 @@ complexity, e.g. in eclasses.
 
 On the other hand, an upgrade path to a stable system is guaranteed
 for one year, plus limited support for systems that are outdated more
-than a year [#COUNCIL-20091109]_. Therefore, previous EAPIs are still
-required during that time. A period of 24 months before deprecation
+than a year [#COUNCIL-20091109]_.  Therefore, previous EAPIs are still
+required during that time.  A period of 24 months before deprecation
 has been chosen, which is more than the required minimum and will
 allow projects to support a longer upgrade path.
 
@@ -70,8 +70,8 @@ are otherwise seldom updated to be bumped to the next but one EAPI
 immediately.
 
 A delay of 24 months between deprecation and ban will give ebuild
-authors enough time to update. This is especially relevant for
-overlays and downstream distributions. Since a banned EAPI is
+authors enough time to update.  This is especially relevant for
+overlays and downstream distributions.  Since a banned EAPI is
 sufficient reason for updating an ebuild, an additional threshold of
 5 % is required, in order to keep the number of such updates (and bug
 reports requesting them) manageable.
