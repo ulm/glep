@@ -6,7 +6,7 @@ Type: Informational
 Status: Draft
 Version: 1
 Created: 2022-06-30
-Last-Modified: 2022-07-11
+Last-Modified: 2022-07-20
 Post-History: 2022-07-11
 Content-Type: text/x-rst
 ---
@@ -38,13 +38,16 @@ warn about this [#COUNCIL-20130409]_.
 A *banned EAPI* must no longer be used, neither for new ebuilds, nor
 for updating of existing ebuilds [#COUNCIL-20140311]_.
 
-The Gentoo Council will deprecate an EAPI when two newer EAPIs are
-supported by the stable version of Portage, and one of them has been
-supported for 24 months.
+The Gentoo Council will deprecate an EAPI when
 
-The Gentoo Council will ban a deprecated EAPI when it is used by less
-than 5 % of ebuilds in the Gentoo repository, but no sooner than 24
-months after its deprecation.
+* two newer Council-approved EAPIs are supported by the stable version
+  of Portage, and
+* one of them has been supported for 24 months.
+
+The Gentoo Council will ban a deprecated EAPI when
+
+* 24 months have passed since its deprecation, and
+* it is used by less than 5 % of ebuilds in the Gentoo repository.
 
 EAPIs used in profiles are outside the scope of this GLEP.
 
