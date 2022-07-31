@@ -22,7 +22,7 @@ Motivation
 ==========
 
 So far, old EAPIs were deprecated by the Gentoo Council in an ad-hoc
-manner.  No fixed criteria were used, resulting in very different
+manner.  No fixed criteria were used, resulting in unpredictable
 deprecation times after approval of newer EAPIs.  Standardized
 criteria for deprecation and banning will make the life cycle of EAPIs
 more predictable.
@@ -47,7 +47,7 @@ The Gentoo Council will deprecate an EAPI when
 The Gentoo Council will ban a deprecated EAPI when
 
 * 24 months have passed since its deprecation, and
-* it is used by less than 5 % of ebuilds in the Gentoo repository.
+* it is used by fewer than 5 % of ebuilds in the Gentoo repository.
 
 EAPIs used in profiles are outside the scope of this GLEP.
 
@@ -74,10 +74,11 @@ immediately.
 
 A delay of 24 months between deprecation and ban will give ebuild
 authors enough time to update.  This is especially relevant for
-overlays and downstream distributions.  Since a banned EAPI is
-sufficient reason for updating an ebuild, an additional threshold of
-5 % is required, in order to keep the number of such updates (and bug
-reports requesting them) manageable.
+overlays and downstream distributions.  An additional requirement for
+banning an EAPI is that fewer than 5 % of ebuilds are using the EAPI
+in question.  This requirement is defined to help keep the number of
+ebuild updates (and bug reports requesting them) managable, as a
+banned EAPI is sufficient reason for updating an ebuild.
 
 
 Backwards Compatibility
