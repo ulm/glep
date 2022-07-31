@@ -77,7 +77,7 @@ authors enough time to update.  This is especially relevant for
 overlays and downstream distributions.  An additional requirement for
 banning an EAPI is that fewer than 5 % of ebuilds are using the EAPI
 in question.  This requirement is defined to help keep the number of
-ebuild updates (and bug reports requesting them) managable, as a
+ebuild updates (and bug reports requesting them) manageable, as a
 banned EAPI is sufficient reason for updating an ebuild.
 
 
