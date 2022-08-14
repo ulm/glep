@@ -4,10 +4,10 @@ Title: Gentoo binary package container format
 Author: Michał Górny <mgorny@gentoo.org>,
         Sheng Yu <syu.os@protonmail.com>
 Type: Standards Track
-Status: Draft
+Status: Accepted
 Version: 1
 Created: 2018-11-15
-Last-Modified: 2022-06-06
+Last-Modified: 2022-08-14
 Post-History: 2018-11-17, 2019-07-08, 2021-09-13, 2021-09-22, 2022-05-28
 Content-Type: text/x-rst
 ---
