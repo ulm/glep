@@ -3,10 +3,10 @@ GLEP: 83
 Title: EAPI deprecation
 Author: Ulrich Müller <ulm@gentoo.org>
 Type: Informational
-Status: Draft
+Status: Active
 Version: 1
 Created: 2022-06-30
-Last-Modified: 2022-07-31
+Last-Modified: 2022-08-14
 Post-History: 2022-07-11, 2022-07-31
 Content-Type: text/x-rst
 ---
