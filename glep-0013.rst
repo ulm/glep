@@ -23,7 +23,7 @@ Abstract
 
 This GLEP provides a vision on the evolution of the Gentoo Documentation,
 namely a handbook-like document that provides its readers documentation about
-every aspect of the Gentoo distribution: installation, administration, 
+every aspect of the Gentoo distribution: installation, administration,
 application usage, development etc.
 
 Motivation
@@ -32,7 +32,7 @@ Motivation
 Gentoo's current Installation Guide [#InstGuide]_ is rapidly growing, being
 extended with more and more features that the Gentoo users can help with their
 quest for the perfect installation. This increase is needed and a Good Thing,
-but it makes the guide less easy to read or use as reference. 
+but it makes the guide less easy to read or use as reference.
 
 There is no reason whatsoever that this evolution will stagnate, on the
 contrary: people start asking why the Alternative Installation Guide
@@ -55,7 +55,7 @@ To address the beforementioned problem, there are two ideas:
 
 - Merge all information into one Big Handbook. This is of course an idea that
   we borrow from our FreeBSD friends [#FBSDHandBook]_ who already have an
-  extensive handbook related to their BSD-distribution. 
+  extensive handbook related to their BSD-distribution.
 
 It is this second idea that this GLEP describes.
 
@@ -70,9 +70,9 @@ Implementation
 ==============
 
 To implement such a handbook, the Gentoo Documentation Project [#GDP]_ needs a
-rewritten stylesheet for its GuideXML [#GuideXML]_ format. Since there are no 
-problems with GuideXML itself, and since it is very flexible in its use, the 
-recommendation to stick with GuideXML is clear. We do need some extra features 
+rewritten stylesheet for its GuideXML [#GuideXML]_ format. Since there are no
+problems with GuideXML itself, and since it is very flexible in its use, the
+recommendation to stick with GuideXML is clear. We do need some extra features
 in GuideXML, without breaking the current GuideXML implementation.
 
 This last thing is important, since implementing this handbook-like document
@@ -89,14 +89,14 @@ Guides, etc.)
 Other chapters that need to be put in place are:
 
 - A chapter on Gentoo Development, which embraces all current
-  development-specific guides, such as the Gentoo Developer HOWTO, the Gentoo 
-  Policy, the Ebuild HOWTO, the Eclass HOWTO, etc. This has already been 
-  frequently asked by the Gentoo ebuild maintainers and several other Gentoo 
-  Developers. 
+  development-specific guides, such as the Gentoo Developer HOWTO, the Gentoo
+  Policy, the Ebuild HOWTO, the Eclass HOWTO, etc. This has already been
+  frequently asked by the Gentoo ebuild maintainers and several other Gentoo
+  Developers.
 
 - A chapter specific to System Administration, such as Mailserver
   Administration, User Administration, Printing Administration etc. We already
-  have several guides that describe parts of these items. 
+  have several guides that describe parts of these items.
 
 - A chapter specific to Gentoo Usage, including our popular Desktop
   Configuration Guide [#Desktop]_ and several Application-specific guides.
@@ -124,8 +124,8 @@ information-division::
 The ``<guide>`` tag is currently a one-time tag: it defines the start of the
 guide, and of course the guide ends with ``</guide>``.
 The ``<chapter>`` tag divides the document into separate chapters. However,
-most of our documents have small chapters, whereas normal books and documents 
-have chapters that encompasses several pages. 
+most of our documents have small chapters, whereas normal books and documents
+have chapters that encompasses several pages.
 The ``<section>`` tag further divides the chapter in which it resides.
 
 This means that our current installation guides have a division-depth of 2:
@@ -150,7 +150,7 @@ The final implementation is in-document references. Currently, the Gentoo
 Documentation Developers have so guess in what chapter a certain section
 resides, and what section we are actually discussing: ``#doc_chap4_sect3``
 provides us with a link to chapter 4, section 3. This is a workable
-implementation for small documents, but impossible for handbooks. 
+implementation for small documents, but impossible for handbooks.
 
 Implementing a more HTML-alike reference inside the division-tags would be
 preferable: ``<chapter name="installation">``, ``<section
@@ -169,14 +169,14 @@ referring to other sections throughout the handbook.
 
 In other words, a user that wants to install Gentoo Linux on his SPARC with
 ATA RAID should be able to do so following the instructions in the chapter
-*without* having to go forth and back between several pages. Creating such a 
-chapter is not that easy just because we don't want our users to be sent from 
+*without* having to go forth and back between several pages. Creating such a
+chapter is not that easy just because we don't want our users to be sent from
 left to right and over again.
 
 Developing this chapter should be done in parallel with the development of the
 current guides (who still have a higher priority since these are still the
 official installation instructions as long as the chapter in the handbook
-isn't finished and reviewed for accuracy). 
+isn't finished and reviewed for accuracy).
 
 System Administration
 ---------------------
@@ -235,7 +235,7 @@ Backwards Compatibility
 
 By making only small changes (actually extending) the GuideXML format, it is
 possible (and even advisable) to develop each chapter on its own parallel
-with the guides that are involved. 
+with the guides that are involved.
 
 By developing the handbook in a subdirectory of the current documentation
 directory (for instance ``http://www.gentoo.org/doc/en/handbook``) we maintain
@@ -259,7 +259,7 @@ This is a possible roadmap for the Gentoo Handbook::
 
   - Implement the Installation Instructions
 
-  - Develop a consistent layout, keeping the guides that are to be implemented 
+  - Develop a consistent layout, keeping the guides that are to be implemented
     in mind.
 
   - Include all referenced guides. Do *not* extend it yet.
