@@ -3,13 +3,20 @@ GLEP: 13
 Title: Providing the users with a Gentoo Handbook
 Author: Sven Vermeulen <swift@gentoo.org>
 Type: Standards Track
-Status: Final
+Status: Moribund
 Version: 1
 Created: 2003-08-15
-Last-Modified: 2015-01-12
+Last-Modified: 2022-08-14
 Post-History: 2003-08-19, 2004-10-25
 Content-Type: text/x-rst
 ---
+
+Status
+======
+
+The Handbook no longer uses GuideXML but moved to the wiki in 2014,
+and the Gentoo Documentation Project was decommissioned shortly after.
+Marked as Moribund by decision of the Gentoo Council on 2022-08-14.
 
 Abstract
 ========
