@@ -82,7 +82,8 @@ Manifest file locations and nesting
 The ``Manifest`` file located in the root directory of the repository
 is called top-level Manifest, and it is used to perform the full-tree
 verification. In order to verify the authenticity, it must be signed
-using OpenPGP, using the armored cleartext format.
+using OpenPGP, using the armored cleartext format as defined by RFC 4880
+§ 7 or a subsequent standard [#RFC4880]_.
 
 The top-level Manifest may reference sub-Manifests contained
 in subdirectories of the repository. The sub-Manifests are traditionally
@@ -1025,6 +1026,9 @@ References
 
 .. [#GLEP61] GLEP 61: Manifest2 compression
    (https://www.gentoo.org/glep/glep-0061.html)
+
+.. [#RFC4880] RFC 4880: OpenPGP Message Format
+   (https://www.rfc-editor.org/rfc/rfc4880)
 
 .. [#UNICODE] The Unicode standard
    (https://unicode.org/versions/latest/)
