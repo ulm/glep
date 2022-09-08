@@ -68,6 +68,12 @@ repurposed as a generic *tag* that could also indicate additional
 (non-checksum) metadata. Appropriately, those tags can be followed by
 other space-separated values.
 
+The Manifest file is a line-oriented text file. Every line comprises
+a single Manifest entry and consists of one or more fields separated
+by a single space character (``U+0020``). The tags and their
+corresponding fields are defined in the `modern Manifest tags`_
+and `deprecated Manifest tags`_ sections.
+
 Unless specified otherwise, the paths used in the Manifest files
 are relative to the directory containing the Manifest file. The paths
 must not reference the parent directory (``..``). Forward slash (``/``)
