@@ -6,7 +6,7 @@ Author: Michał Górny <mgorny@gentoo.org>,
         Ulrich Müller <ulm@gentoo.org>
 Type: Standards Track
 Status: Final
-Version: 1.1
+Version: 1.2
 Created: 2017-10-21
 Last-Modified: 2022-09-08
 Post-History: 2017-10-26, 2017-11-16, 2018-02-08, 2022-09-08
@@ -79,7 +79,10 @@ are relative to the directory containing the Manifest file. The paths
 must not reference the parent directory (``..``). Forward slash (``/``)
 is used as path component separator.
 
-The Manifest files use UTF-8 encoding.
+The Manifest files use UTF-8 encoding. Line feed (``U+000A``) is used
+to separate lines. For best compatibility, empty lines and any
+additional whitespace, including the carriage return character
+(``U+000D``) should be ignored by the implementation.
 
 
 Manifest file locations and nesting
@@ -514,6 +517,17 @@ advantages:
 Designing a stand-alone format requires that the Manifest carries enough
 information to perform the verification following all the rules specific
 to the Gentoo repository.
+
+
+Newline convention
+------------------
+
+Prior to version 1.2, the specification did not indicate the encoding
+to be used for newlines. Since the format is primarily used on Gentoo
+Linux systems, this has been changed to follow the Unix convention
+of using the line feed character. However, for best interoperability
+the implementation should be prepared to treat superfluous carriage
+return characters as whitespace and ignore them.
 
 
 Tree design
