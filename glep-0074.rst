@@ -109,8 +109,9 @@ of specific files and directories (recursively):
 
 3. using names starting with a dot (``.``) which are always skipped.
 
-All files that are not ignored must be covered by at least one
-of the Manifests.
+The top-level Manifest is skipped implicitly and it is an error to list
+it in Manifest files. All remaining files that are not ignored must
+be covered by at least one of the Manifests.
 
 A single file may be matched by multiple identical or equivalent
 Manifest entries, if and only if the entries have the same semantics,
