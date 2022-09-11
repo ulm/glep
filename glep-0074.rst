@@ -27,7 +27,8 @@ Changes
 =======
 
 v1.3
-  Formally specified the current set of hash algorithms supported.
+  Formally specified the current set of hash algorithms and compressed
+  Manifest formats supported.
 
 v1.2
   Specified the newline convention used for Manifests.
@@ -432,9 +433,8 @@ compression and this specification.
 
 The compressed Manifest files are required to be suffixed for their
 compression algorithm. This suffix should be used to recognize
-the compression and decompress Manifests transparently. The exact list
-of algorithms and their corresponding suffixes are outside the scope
-of this specification.
+the compression and decompress Manifests transparently. The supported
+formats are specified in `compressed file formats`_ section.
 
 The top-level Manifest file must not be compressed. Since the OpenPGP
 signature covers the uncompressed text and is compressed itself,
@@ -453,6 +453,46 @@ their compressed counterparts, and multiple compressed formats
 to coexist. If that is the case, the files must have the same
 uncompressed content and the specification is free to choose either
 of the files using the same base name.
+
+
+Compressed file formats
+-----------------------
+
+.. table:: Table 2. Defined compressed file formats
+   :widths: auto
+
+   ===========  ======  ====================  ===========
+   Tool name    Suffix  Specification         Notes
+   ===========  ======  ====================  ===========
+   bzip2        .bz2    (none known)
+   gzip         .gz     RFC 1952 [#RFC1952]_  Recommended
+   lz4          .lz4    (none known)
+   lzip         .lz     RFC draft [#LZIP]_
+   lzma         .lzma   (none known)          Deprecated
+   lzop         .lzo    (none known)
+   xz           .xz     xz [#XZ]_
+   zstd         .zst    RFC 8878 [#RFC8878]_
+   ===========  ======  ====================  ===========
+
+Any new formats must be added to this specification prior to being used
+for Manifest files. Adding a new compressed file format is considered
+a backwards-compatible change to the GLEP. It is recommended that new
+formats use their reference (most common) file suffixes.
+
+An implementation can implement an arbitrary subset of the listed
+formats. For best interoperability, it should implement at least
+the recommended formats. Using deprecated formats should be avoided.
+
+If multiple Manifest variants coexist using different compressed file
+formats, the implementation may choose to use an arbitrary subset
+of them. However, all of them must be verified against the hashes stored
+in the containing Manifest. Should they be decompressed, the resulting
+contents must be identical.
+
+If the compressed file format is unsupported and a variant using
+a supported format coexists, the other variant should be used. However,
+at least one supported variant must exist for the verification
+to succeed.
 
 
 Combining multiple Manifest trees (informational)
@@ -1033,12 +1073,19 @@ into a compressed sub-Manifest in the top directory (e.g.
 ``Manifest.sub.gz``), and including a ``MANIFEST`` entry for this file
 in a signed, uncompressed top-level Manifest.
 
-The existence of additional entries for uncompressed Manifest checksums
-was debated. However, plain entries for the uncompressed file would
-be confusing if only the compressed file existed, and conflicting
-if both uncompressed and compressed variants existed. Furthermore,
-it has been pointed out that ``DIST`` entries do not have
-an uncompressed variant either.
+The existence of additional entries for checksums of Manifest contents
+after uncompressing was debated. However, plain entries for
+the uncompressed file would be confusing if only the compressed file
+existed. Furthermore, it has been pointed out that ``DIST`` entries
+do not have an uncompressed variant either.
+
+The specification permits coexistence of multiple variants of the same
+Manifest file using different compression for historical compatibility.
+However, there does not seem to be any real benefit from including
+a compressed Manifest file if the uncompressed variant needs to exist
+anyway. Providing different compressed variants could technically
+improve interoperability, though the same result could probably
+be achieved by using a more commonly supported format (e.g. gzip).
 
 
 Performance considerations
@@ -1170,6 +1217,20 @@ References
 .. [#BARRETO] Paulo S. L. M. Barreto, The WHIRLPOOL Hash Function
    (archived at 2017-11-29)
    (https://web.archive.org/web/20171129084214/http://www.larc.usp.br/~pbarreto/WhirlpoolPage.html)
+
+.. [#RFC1952] RFC 1952: GZIP file format specification version 4.3
+   (https://www.rfc-editor.org/rfc/rfc1952)
+
+.. [#LZIP] RFC draft: Lzip Compressed Format and the 'application/lzip'
+   Media Type
+   (https://datatracker.ietf.org/doc/html/draft-diaz-lzip)
+
+.. [#XZ] The .xz File Format
+   (https://tukaani.org/xz/xz-file-format.txt)
+
+.. [#RFC8878] RFC 8878: Zstandard Compression and the 'application/zstd'
+   Media Type
+   (https://www.rfc-editor.org/rfc/rfc8878)
 
 .. [#C08] Cappos, J et al. (2008). "Attacks on Package Managers"
    (https://www2.cs.arizona.edu/stork/packagemanagersecurity/attacks-on-package-managers.html)
