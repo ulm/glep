@@ -6,7 +6,7 @@ Author: Michał Górny <mgorny@gentoo.org>,
         Ulrich Müller <ulm@gentoo.org>
 Type: Standards Track
 Status: Final
-Version: 1.2
+Version: 1.3
 Created: 2017-10-21
 Last-Modified: 2022-09-21
 Post-History: 2017-10-26, 2017-11-16, 2018-02-08, 2022-09-08, 2022-09-11
@@ -25,6 +25,9 @@ efficient and provide means of backwards compatibility.
 
 Changes
 =======
+
+v1.3
+  Formally specified the current set of hash algorithms supported.
 
 v1.2
   Specified the newline convention used for Manifests.
@@ -364,27 +367,60 @@ up to and including the *original* directory. Note that those
 sub-Manifests can use different filenames than ``Manifest``.
 
 
-Checksum algorithms (informational)
------------------------------------
+Checksum algorithms
+-------------------
 
-This section is informational only. Specifying the exact set
-of supported algorithms is outside the scope of this specification.
+.. table:: Table 1. Defined hash algorithms
+   :widths: auto
 
-The algorithm names reserved at the time of writing are:
+   +-----------------+-----------------------+------+------+-------------+
+   | Name            | Specification         | Bits | Enc. | Notes       |
+   +=================+=======================+======+======+=============+
+   | ``BLAKE2B``     |                       | 512  | Hex  | Recommended |
+   +-----------------+ RFC 7693 [#RFC7693]_  +------+------+-------------+
+   | ``BLAKE2S``     |                       | 256  | Hex  |             |
+   +-----------------+-----------------------+------+------+-------------+
+   | ``MD5``         | RFC 1321 [#RFC1321]_  | 128  | Hex  | Deprecated  |
+   +-----------------+-----------------------+------+------+-------------+
+   | ``RMD160``      | RIPEMD-160 [#RMD160]_ | 160  | Hex  |             |
+   +-----------------+-----------------------+------+------+-------------+
+   | ``SHA1``        |                       | 160  | Hex  | Deprecated  |
+   +-----------------+                       +------+------+-------------+
+   | ``SHA256``      | FIPS 180-4 [#SHS]_    | 256  | Hex  |             |
+   +-----------------+                       +------+------+-------------+
+   | ``SHA512``      |                       | 512  | Hex  | Recommended |
+   +-----------------+-----------------------+------+------+-------------+
+   | ``SHA3_256``    |                       | 256  | Hex  |             |
+   +-----------------+ FIPS 202 [#SHA3]_     +------+------+-------------+
+   | ``SHA3_512``    |                       | 512  | Hex  |             |
+   +-----------------+-----------------------+------+------+-------------+
+   | ``STREEBOG256`` |                       | 256  | Hex  |             |
+   +-----------------+ RFC 6986 [#RFC6986]_  +------+------+-------------+
+   | ``STREEBOG512`` |                       | 512  | Hex  |             |
+   +-----------------+-----------------------+------+------+-------------+
+   | ``WHIRLPOOL``   | Whirlpool [#BARRETO]_ | 512  | Hex  |             |
+   +-----------------+-----------------------+------+------+-------------+
 
-- ``MD5`` [#MD5]_,
-- ``RMD160`` -- RIPEMD-160 [#RIPEMD160]_,
-- ``SHA1`` [#SHS]_,
-- ``SHA256`` and ``SHA512`` -- SHA-2 family of hashes [#SHS]_,
-- ``WHIRLPOOL`` [#WHIRLPOOL]_,
-- ``BLAKE2B`` and ``BLAKE2S`` -- BLAKE2 family of hashes [#BLAKE2]_,
-- ``SHA3_256`` and ``SHA3_512`` -- SHA-3 family of hashes [#SHA3]_,
-- ``STREEBOG256`` and ``STREEBOG512`` -- Streebog family of hashes
-  [#STREEBOG]_.
+Any new hashes must be added to this specification prior to being used
+in Manifest files. Adding a new hash is considered
+a backwards-compatible change to the GLEP. It is recommended that new
+hashes are named after the Python ``hashlib`` module algorithm names,
+transformed into uppercase, with dashes replaced by underscores.
 
-The method of introducing new hashes is defined by GLEP 59 [#GLEP59]_.
-It is recommended that any new hashes are named after the Python
-``hashlib`` module algorithm names, transformed into uppercase.
+An implementation can implement an arbitrary subset of the listed
+hashes. For best interoperability, it should implement at least
+recommended hashes. If deprecated hashes are implemented, it is
+preferable to disallow their use by default.
+
+If an entry specifies multiple hashes using different algorithms,
+an implementation may choose to verify an arbitrary subset of them.
+However, should any tested hash yield a mismatch, the verification must
+fail.
+
+If a particular hash is either unsupported or unknown,
+the implementation can either ignore it or report a failure. However,
+at least one algorithm specified for a particular entry must be
+supported for the verification to succeed.
 
 
 Manifest compression
@@ -496,6 +532,43 @@ for a package directory would have the following content::
     DATA files/gcc34.patch 333 SHA256 c107.. SHA512 9919..
     DIST SphinxTrain-0.9.1-beta.tar.gz 469617 SHA256 c1a4.. SHA512 1b33..
     DIST sphinxtrain-1.0.8.tar.gz 8925803 SHA256 548e.. SHA512 465d..
+
+
+Security considerations (informational)
+---------------------------------------
+
+The Manifest files are text files that are transmitted as part of larger
+file sets in order to provide integrity and authenticity verification
+for other files. They are primarily intended to be processed locally
+to verify transferred files. They are commonly used along with the rsync
+protocol and inside tar archives.
+
+The format does not provide support for executable content,
+nor the ability to issue network requests. Its security is primarily
+considered in context of opening and reading local files for the purpose
+of computing hashes.
+
+Depending on the delivery method, it may be possible to include special
+files and symbolic links in the verified file set. Attempting to read
+special files (e.g. named pipes or devices like ``/dev/urandom``) could
+cause the tools to hang or enter an infinite loop. The specification
+explicitly requires implementations to verify the file type and reject
+processing non-regular files.
+
+The use of symbolic links permits computing checksums for arbitrary
+paths, including files with potentially sensitive content and files
+on special filesystems such as the ``/proc`` filesystem. Reading these
+files should not comprise an immediate risk, nor displaying checksum
+mismatches to the local risk. However, there is a risk of exposing
+sensitive information if the user reports checksum failures.
+Implementations can take steps to reduce the risk, e.g. by minimalizing
+the amount of information reported on checksum mismatches and warning
+about symbolic links.
+
+
+
+Portability considerations (informational)
+------------------------------------------
 
 
 Rationale
@@ -913,23 +986,25 @@ tool working with this Manifest format.
 Hash algorithms
 ---------------
 
-While maintaining a consistent supported hash set is important
-for interoperability, it is not a good fit for the generic layout
-of this GLEP. Furthermore, it would require updating the GLEP
-in the future every time the used algorithms change.
+Originally, this GLEP did not formally specify the complete set of hash
+algorithms. Instead, it only listed (informationally) the names already
+used at the time of writing. Since enforcing consistent use of algorithm
+names is important for interoperability, this was changed in version
+1.3.
 
-Instead, the specification focuses on listing the currently used
-algorithm names for interoperability, and sets a recommendation
-for consistent naming of algorithms in the future. The Python
-``hashlib`` module is used as a reference since it is used
-as the provider of hash functions for most of the Python software,
-including Portage and PkgCore.
+Since the effort needed to update the GLEP is small compared to the time
+needed for a new hash algorithm to be well-deployed, the GLEP needs
+to be updated prior to adding a new hash method.
 
-The basic rules for changing hash algorithms are defined in GLEP 59
-[#GLEP59]_. The implementations can focus only on those algorithms
-that are actually used or planned on being used. It may be feasible
-to devise a new GLEP that specifies the currently used hashes (or update
-GLEP 59 accordingly).
+The recommended naming is based off Python ``hashlib`` module,
+as most of the Gentoo tooling is written in Python. The names
+are transformed to match the historical naming used for hash functions
+in Manifests.
+
+Implementations are allowed to support and use only a subset of hashes
+listed in Manifest files. This could be used both to avoid the overhead
+of computing multiple hashes on non-performant systems, and to handle
+transition to new hashes gracefully.
 
 
 Manifest compression
@@ -1072,27 +1147,29 @@ References
 .. [#FILE-NAMING-RULES] Ebuild File Format -- Gentoo Development Guide
    (https://devmanual.gentoo.org/ebuild-writing/file-format/#file-naming-rules)
 
-.. [#MD5] RFC1321: The MD5 Message-Digest Algorithm
-   (https://www.ietf.org/rfc/rfc1321.txt)
+.. [#RFC7693] RFC 7693: The BLAKE2 Cryptographic Hash and Message Authentication
+   Code (MAC)
+   (https://www.rfc-editor.org/rfc/rfc7693)
 
-.. [#RIPEMD160] The hash function RIPEMD-160
+.. [#RFC1321] RFC 1321: The MD5 Message-Digest Algorithm
+   (https://www.rfc-editor.org/rfc/rfc1321)
+
+.. [#RMD160] The hash function RIPEMD-160
    (https://homes.esat.kuleuven.be/~bosselae/ripemd160.html)
 
 .. [#SHS] FIPS PUB 180-4: Secure Hash Standard (SHS)
-   (http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf)
-
-.. [#WHIRLPOOL] The WHIRLPOOL Hash Function
-   (http://www.larc.usp.br/~pbarreto/WhirlpoolPage.html)
-
-.. [#BLAKE2] BLAKE2 -- fast secure hashing
-   (https://blake2.net/)
+   (https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf)
 
 .. [#SHA3] FIPS PUB 202: SHA-3 Standard: Permutation-Based Hash
    and Extendable-Output Functions
-   (http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf)
+   (https:://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf)
 
-.. [#STREEBOG] GOST R 34.11-2012: Streebog Hash Function
-   (https://www.streebog.net/)
+.. [#RFC6986] RFC 6986: GOST R 34.11-2012: Hash Function
+   (https://www.rfc-editor.org/rfc/rfc6986)
+
+.. [#BARRETO] Paulo S. L. M. Barreto, The WHIRLPOOL Hash Function
+   (archived at 2017-11-29)
+   (https://web.archive.org/web/20171129084214/http://www.larc.usp.br/~pbarreto/WhirlpoolPage.html)
 
 .. [#C08] Cappos, J et al. (2008). "Attacks on Package Managers"
    (https://www2.cs.arizona.edu/stork/packagemanagersecurity/attacks-on-package-managers.html)
