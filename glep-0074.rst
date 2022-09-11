@@ -8,8 +8,8 @@ Type: Standards Track
 Status: Final
 Version: 1.2
 Created: 2017-10-21
-Last-Modified: 2022-09-08
-Post-History: 2017-10-26, 2017-11-16, 2018-02-08, 2022-09-08
+Last-Modified: 2022-09-21
+Post-History: 2017-10-26, 2017-11-16, 2018-02-08, 2022-09-08, 2022-09-11
 Content-Type: text/x-rst
 Requires: 59, 61
 Replaces: 44, 58, 60
@@ -21,6 +21,17 @@ Abstract
 This GLEP extends the Manifest file format to cover full-tree file
 integrity and authenticity checks. The format aims to be future-proof,
 efficient and provide means of backwards compatibility.
+
+
+Changes
+=======
+
+v1.2
+  Specified the newline convention used for Manifests.
+
+v1.1
+  Removed the restriction that all files covered by a Manifest tree
+  must reside on the same filesystem.
 
 
 Motivation
