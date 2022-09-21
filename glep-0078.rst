@@ -232,8 +232,10 @@ ignore unknown files but preserve them across package updates.
 Permitted .tar format features
 ------------------------------
 
-The tar archives should use either the POSIX ustar format or a subset
-of the GNU format with the following (optional) extensions:
+The tar archives should use either the POSIX ustar format as defined
+by POSIX.1-2017 [#POSIX-USTAR]_ or a subset of the ustar-compatible
+GNU tar format as described in the GNU tar manual [#GNU-TAR]_ with
+the following (optional) extensions:
 
 - long pathnames and long linknames,
 
@@ -628,6 +630,13 @@ References
 .. [#PORTAGE-UTILS] portage-utils: Small and fast Portage helper tools
    written in C
    (https://packages.gentoo.org/packages/app-portage/portage-utils)
+
+.. [#POSIX-USTAR] The Open Group Base Specifications Issue 7, 2018
+   edition, pax - portable archive interchange, ustar Interchange Format
+   (https://pubs.opengroup.org/onlinepubs/9699919799/utilities/pax.html#tag_20_92_13_06)
+
+.. [#GNU-TAR] GNU tar: an archiver tool, Appendix E Tar Internals
+   (https://www.gnu.org/software/tar/manual/html_node/Tar-Internals.html)
 
 .. [#DEB-FORMAT] deb(5) — Debian binary package format
    (https://manpages.debian.org/unstable/dpkg-dev/deb.5.en.html)
