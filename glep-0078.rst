@@ -328,7 +328,9 @@ the inner archive contents.  This file also provides protection against
 signature reuse/replacement attacks if the OpenPGP signatures are used.
 
 The implementation follows the Manifest specifications in GLEP 74
-[#GLEP74]_ and uses the DATA tag for files within the container.
+and uses the ``DATA`` tag for files within the container.
+If the package is using OpenPGP signatures, the Manifest file must also
+include a cleartext OpenPGP signature as defined in GLEP 74 [#GLEP74]_.
 
 The implementation should be able to detect checksum mismatches,
 as well as missing, duplicate, or extraneous files within
