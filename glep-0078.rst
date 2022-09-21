@@ -7,8 +7,9 @@ Type: Standards Track
 Status: Accepted
 Version: 1
 Created: 2018-11-15
-Last-Modified: 2022-08-14
-Post-History: 2018-11-17, 2019-07-08, 2021-09-13, 2021-09-22, 2022-05-28
+Last-Modified: 2022-09-21
+Post-History: 2018-11-17, 2019-07-08, 2021-09-13, 2021-09-22, 2022-05-28,
+              2022-09-21
 Content-Type: text/x-rst
 ---
 
@@ -193,10 +194,11 @@ The gpkg package container is an uncompressed .tar achive whose filename
 should use ``.gpkg.tar`` suffix.
 
 The archive contains a number of files.  All package-related files
-should be stored in a single directory whose name matches the basename
-of the package file.  However, the implementation must be able to
-process an archive where the directory name is mismatched.  There should
-be no explicit archive member entry for the directory.
+should be stored in a single directory whose name matches the package
+filename after stripping the ``.gpkg.tar`` suffix.  However,
+the implementation must be able to process an archive where
+the directory name is mismatched.  There should be no explicit archive
+member entry for the directory.
 
 The package directory contains the following members, in order:
 
