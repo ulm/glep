@@ -5,7 +5,7 @@ Author: Michał Górny <mgorny@gentoo.org>,
         Sheng Yu <syu.os@protonmail.com>
 Type: Standards Track
 Status: Accepted
-Version: 1
+Version: 1.1
 Created: 2018-11-15
 Last-Modified: 2022-09-21
 Post-History: 2018-11-17, 2019-07-08, 2021-09-13, 2021-09-22, 2022-05-28,
@@ -304,15 +304,17 @@ Archive member compression
 
 The archive members outlined above support optional compression using
 one of the compressed file formats supported by the package manager.
-The exact list of compression types is outside the scope of this
-specification.
+The list of compression types is maintained in GLEP 74 [#GLEP74]_.
+The package manager may implement an arbitrary subset of compressed file
+formats.  However, it is recommended that it can uncompress all formats
+that are not listed as deprecated.
 
 The implementations must support archive members being uncompressed,
 and must support using different compression types for different files.
 
 When compressing an archive member, the member filename should be
-suffixed using the standard suffix for the particular compressed file
-type (e.g. ``.bz2`` for bzip2 format).
+suffixed using the suffix for the particular compressed file type
+specified in GLEP 74.
 
 
 The package Manifest file
@@ -638,14 +640,14 @@ References
 .. [#GNU-TAR] GNU tar: an archiver tool, Appendix E Tar Internals
    (https://www.gnu.org/software/tar/manual/html_node/Tar-Internals.html)
 
+.. [#GLEP74] GLEP 74: Full-tree verification using Manifest files
+   (https://www.gentoo.org/glep/glep-0074.html)
+
 .. [#DEB-FORMAT] deb(5) — Debian binary package format
    (https://manpages.debian.org/unstable/dpkg-dev/deb.5.en.html)
 
 .. [#TAR-PORTABILITY] Michał Górny, Portability of tar features
    (https://dev.gentoo.org/~mgorny/articles/portability-of-tar-features.html)
-
-.. [#GLEP74] GLEP 74: Full-tree verification using Manifest files
-   (https://www.gentoo.org/glep/glep-0074.html)
 
 .. [#XPAK2GPKG] xpak2gpkg: Proof-of-concept converter from tbz2/xpak
    to gpkg binpkg format
