@@ -228,6 +228,11 @@ If the Manifest is present, all files contained in the archive must
 be listed in it and verify successfully.  The package manager should
 ignore unknown files but preserve them across package updates.
 
+For a binary package to be considered signed and suitable for
+authenticity verification, the Manifest file must be present and contain
+a valid signature.  It is recommended to include detached signatures
+for archive members as well.
+
 
 Permitted .tar format features
 ------------------------------
