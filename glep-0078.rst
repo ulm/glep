@@ -349,9 +349,10 @@ not verify, the package manager must reject processing the corresponding
 archive member.  In particular, it must not attempt decompressing
 compressed members in those circumstances.
 
-The signatures are created as binary detached OpenPGP signature files,
-with filename corresponding to the member filename with ``.sig`` suffix
-appended.
+The signatures are created as binary detached OpenPGP signature files
+as defined by RFC 4880 § 11.4 or a subsequent standard, with filename
+corresponding to the member filename with ``.sig`` suffix appended
+[#RFC-4880]_.
 
 The exact details regarding creating and verifying signatures, as well
 as maintaining and distributing keys are outside the scope of this
@@ -642,6 +643,9 @@ References
 
 .. [#GLEP74] GLEP 74: Full-tree verification using Manifest files
    (https://www.gentoo.org/glep/glep-0074.html)
+
+.. [#RFC4880] RFC 4880: OpenPGP Message Format
+   (https://www.rfc-editor.org/rfc/rfc4880)
 
 .. [#DEB-FORMAT] deb(5) — Debian binary package format
    (https://manpages.debian.org/unstable/dpkg-dev/deb.5.en.html)
