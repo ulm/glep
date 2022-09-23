@@ -191,6 +191,19 @@ The encoding can be used for other characters as well. In particular,
 escaping non-printable characters might be desirable.
 
 
+Size and checksum fields
+------------------------
+
+The Manifest entries used to describe files list the file size in bytes
+and one or more checksums. The size is expressed as an unsigned decimal
+integer. The checksums are expressed using pairs of fields, with
+the first field in every pair specifying the hash name and the second
+field its value. The names of hashes and the encoding of their values
+are specified in the `checksum algorithms`_ section.
+
+It is invalid to specify a hash name without a value.
+
+
 File verification
 -----------------
 
