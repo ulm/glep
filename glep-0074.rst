@@ -418,6 +418,14 @@ Checksum algorithms
    | ``WHIRLPOOL``   | Whirlpool [#BARRETO]_ | 512  | Hex  |             |
    +-----------------+-----------------------+------+------+-------------+
 
+The following hash value encodings are used:
+
+Hex
+  The hash value expressed as an unsigned hexadecimal integer,
+  using digits ``0`` to ``9`` and lowercase letters ``a`` to ``f``,
+  with no prefix or suffix.
+
+
 Any new hashes must be added to this specification prior to being used
 in Manifest files. Adding a new hash is considered
 a backwards-compatible change to the GLEP. It is recommended that new
