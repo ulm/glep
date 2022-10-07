@@ -67,6 +67,8 @@ must not fetch or process it.
 The data structure of metadata files is defined in this GLEP. The elements
 and attributes do not use namespaces. Conforming files must not contain
 any elements or attributes that are not defined in this specification.
+However, parsers should ignore any unknown elements or attributes in order
+to permit future extension.
 
 Category metadata files are named ``metadata.xml`` and located inside category
 directories in an ebuild repository. Their structure is described
