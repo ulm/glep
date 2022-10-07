@@ -4,10 +4,10 @@ Title: Package and category metadata
 Author: Michał Górny <mgorny@gentoo.org>
 Type: Standards Track
 Status: Final
-Version: 1.2
+Version: 1.3
 Created: 2016-03-14
-Last-Modified: 2022-05-22
-Post-History: 2016-03-16, 2018-02-20, 2022-05-22
+Last-Modified: 2022-10-14
+Post-History: 2016-03-16, 2018-02-20, 2022-05-22, 2022-10-07
 Content-Type: text/x-rst
 Requires: 67
 Replaces: 34, 46, 56
@@ -59,10 +59,14 @@ Metadata files
 --------------
 
 This specification provides two kinds of metadata files: category metadata
-files and package metadata files. Both kinds of files use XML file format
-with structure defined in this GLEP. The XML structure does not use
-a namespace and must not contain any elements outside the scope of this
-specification.
+files and package metadata files. Both kinds of files use the XML 1.0 file
+format [#XML10]_. They must not use external markup declarations, as defined
+in the XML specification. While they may reference or include a DTD, the parser
+must not fetch or process it.
+
+The data structure of metadata files is defined in this GLEP. The elements
+and attributes do not use namespaces. Conforming files must not contain
+any elements or attributes that are not defined in this specification.
 
 Category metadata files are named ``metadata.xml`` and located inside category
 directories in an ebuild repository. Their structure is described
@@ -515,6 +519,9 @@ References
 
 .. [#METADATA-DTD] The original metadata.dtd file
    https://gitweb.gentoo.org/data/dtd.git/tree/metadata.dtd?id=a908a93b5afe295359e0a01814c9bef8b5268bcd
+
+.. [#XML10] Extensible Markup Language (XML) 1.0 (Fifth Edition)
+   https://www.w3.org/TR/xml/
 
 .. [#BCP-47] BCP 47: "Tags for identifying languages",
    https://tools.ietf.org/rfc/bcp/bcp47.txt
