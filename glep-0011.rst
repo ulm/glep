@@ -34,8 +34,8 @@ Definitions
 
 	*Web Application Instance*
 		An apparent install of the Web Application that is served up via the
-		webserver. There may be any number of instances per Web Application.
-		This is a major use for web applications. Our Gentoo Zope setup
+		webserver.  There may be any number of instances per Web Application.
+		This is a major use for web applications.  Our Gentoo Zope setup
 		already provides instances and can be used for some concepts on this
 		matter.
 
@@ -209,7 +209,7 @@ must.
 ''''''''''''''''''''''''
 
 To enable support for multiple virtual host installations a new USE flag is
-to be added to Portage. The use flag will be::
+to be added to Portage.  The use flag will be::
 
 	vhost
 
@@ -220,7 +220,7 @@ application will be affected, see below for more details.
 ''''''''''''''''''''''''''''
 
 To assist administration of multiple virtual hosts a "VHost Configuration Tool"
-needs to be developed and implemented.	Initial discussion regarding the VHost
+needs to be developed and implemented.	 Initial discussion regarding the VHost
 Config tool and proposed usage can be found at [#VHost-Config-Tool]_.
 
 It's the job of the VHost Config toolset to make a local instance of the web
