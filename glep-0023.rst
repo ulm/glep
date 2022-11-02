@@ -100,8 +100,8 @@ The format of this file is
 	<groupname> <license1> <license2> ... <licenseN>
 
 Also any line starting with # is ignored and may be used for comments.
-Group names use the same syntax as normal license names. Also license groups
-may contain other groups.
+Group names use the same syntax as normal license names.  Also license
+groups may contain other groups.
 License groups may not contain negated elements, so a group
 
 ::
