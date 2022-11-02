@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Final
 Version: 1
 Created: 2003-08-02
-Last-Modified: 2019-11-07
+Last-Modified: 2022-11-02
 Post-History: 2003-08-07, 2003-08-12, 2003-08-13, 2006-09-03
 Content-Type: text/x-rst
 ---
@@ -165,7 +165,7 @@ add support for Apache 2 as well as supporting Apache 1 installations.
 2. Application Installation
 ---------------------------
 
-The current accepted standard Document Root in Gentoo is /home/httpd.  The
+The current accepted standard Document Root in Gentoo is /home/httpd/.  The
 discussion suggest that this is not the best location to install web based
 applications.
 
@@ -297,7 +297,7 @@ Backwards Compatibility
 
 There may be some issues regarding compatibility with existing installs of
 web applications.  This is particularly true if the default Document Root is
-moved from what is accepted as the current standard (/home/httpd).
+moved from what is accepted as the current standard (/home/httpd/).
 
 The main issues are:
 	* transition of existing configuration files to the
