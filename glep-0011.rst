@@ -1,7 +1,8 @@
 ---
 GLEP: 11
 Title: Web Application Installation
-Author: Stuart Herbert <stuart@gentoo.org>
+Author: Troy Dack <tad@gentoo.org>,
+        Stuart Herbert <stuart@gentoo.org>
 Type: Standards Track
 Status: Final
 Version: 1
