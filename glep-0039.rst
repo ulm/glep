@@ -206,6 +206,19 @@ So, does this proposal solve any of the previously-mentioned problems?
 
 8. This proposal has nothing to say about GLEPs.
 
+Updates to this document
+========================
+
+Any major updates to this document (that is, those that change its
+content rather than just fixing typos or adding small clarifications)
+require a vote of all developers.  Eligible voters are all developers
+at the time when the proposed update is published.  The vote passes if
+both of the following conditions are fulfilled:
+
+* The ratio of positive to negative votes is at least two to one, and
+* the number of positive votes is no less than one quarter of the number
+  of eligible voters.
+
 References
 ==========
 
