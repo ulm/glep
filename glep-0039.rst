@@ -1,13 +1,13 @@
 ---
 GLEP: 39
-Title: An "old-school" metastructure proposal with "boot for being a slacker"
+Title: Gentoo metastructure
 Author: Grant Goodyear <g2boojum@gentoo.org>,
         Ciaran McCreesh <ciaranm@gentoo.org>
 Type: Informational
 Status: Final
 Version: 2
 Created: 2005-09-01
-Last-Modified: 2019-11-07
+Last-Modified: 2023-04-10
 Post-History: 2005-09-01, 2006-02-09, 2007-10-12, 2008-01-19
 Content-Type: text/x-rst
 Replaces: 4
