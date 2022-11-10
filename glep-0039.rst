@@ -145,9 +145,16 @@ B. Global issues will be decided by an elected Gentoo council.
       two consecutive meetings, they are marked as a slacker.
    *  If a council member who has been marked a slacker misses any further
       meeting (or their appointed proxy doesn't show up), they lose their
-      position and a new election is held to replace that person. The newly
-      elected council member gets a 'reduced' term so that the yearly
-      elections still elect a full group.
+      position.
+   *  Whenever a member of the council loses their position (the reason
+      is irrelevant; e.g. they resign or they are booted for slacking),
+      then the next person in line from the previous council election
+      is offered the position.  If they accept and the current council
+      unanimously accepts the new person, they get the position.
+      Otherwise, it is offered to the next person in line, and so forth.
+      If the council does not accept that person, then a new election is
+      held to choose a new member.  The new member gets a 'reduced' term
+      so that the yearly elections still elect a full group.
    *  Council members who have previously been booted for excessive slacking
       may stand for future elections, including the election for their
       replacement. They should, however, justify their slackerness, and
