@@ -163,7 +163,8 @@ B. Global issues will be decided by an elected Gentoo council.
    *  The 'slacker' marker is reset when a member is elected.
    *  If any meeting has less than 50% attendance by council members, a new
       election for *all* places must be held within a month. The 'one year'
-      is then reset from that point.
+      is then reset from that point.  No substantive action can be taken
+      in any such meeting.
    *  Disciplinary actions may be appealed to the council.
    *  A proxy must not be an existing council member, and any single person
       may not be a proxy for more than one council member at any given
