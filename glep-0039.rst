@@ -138,6 +138,7 @@ B. Global issues will be decided by an elected Gentoo council.
       first election that number was set to 7 by acclamation.)
    *  Council members will be chosen by a general election of all
       devs once per year.
+   *  Council members (and their proxies) must be Gentoo developers.
    *  The council must hold an open meeting at least once per month.
    *  Council decisions are by majority vote of those who show up (or
       their proxies).
