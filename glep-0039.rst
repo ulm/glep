@@ -116,10 +116,9 @@ A. A project is a group of developers working towards a goal (or a set
       that the information on the page is factually correct and not
       out-of-date.)  If the Wiki page isn't maintained, it is presumed
       dead.
-   *  It may have one or many leads, and the leads are
-      selected by the members of the project.  This selection must
-      occur at least once every 12 months, and may occur at any
-      time.
+   *  It should have at least one lead, and the leads are selected by
+      the members of the project.  This selection must occur at least
+      once every 12 months, and may occur at any time.
    *  It may have zero or more sub-projects.  Sub-projects are
       just projects that provide some additional structure, and their
       Wiki pages are defined as sub-projects of the parent project.
