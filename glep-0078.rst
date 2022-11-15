@@ -7,7 +7,7 @@ Type: Standards Track
 Status: Accepted
 Version: 1.1
 Created: 2018-11-15
-Last-Modified: 2022-09-21
+Last-Modified: 2022-11-15
 Post-History: 2018-11-17, 2019-07-08, 2021-09-13, 2021-09-22, 2022-05-28,
               2022-09-21
 Content-Type: text/x-rst
@@ -359,7 +359,7 @@ compressed members in those circumstances.
 The signatures are created as binary detached OpenPGP signature files
 as defined by RFC 4880 § 11.4 or a subsequent standard, with filename
 corresponding to the member filename with ``.sig`` suffix appended
-[#RFC-4880]_.
+[#RFC4880]_.
 
 The exact details regarding creating and verifying signatures, as well
 as maintaining and distributing keys are outside the scope of this
