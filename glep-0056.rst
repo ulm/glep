@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Replaced
 Version: 1
 Created: 2008-06-03
-Last-Modified: 2020-04-12
+Last-Modified: 2023-02-21
 Post-History: 2008-06-05, 2008-06-13
 Content-Type: text/x-rst
 Replaced-By: 68
@@ -107,9 +107,9 @@ References
 
 .. [#use-flag-metadata-bug] https://bugs.gentoo.org/199788
 
-.. [#use-flag-metadata-example1] https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/sys-apps/hal/metadata.xml?view=markup
+.. [#use-flag-metadata-example1] https://gitweb.gentoo.org/archive/repo/gentoo-2.git/tree/sys-apps/hal/metadata.xml?id=37af07d2465e22f74394aa2ff2fd80698ac2d12b
 
-.. [#use-flag-metadata-example2] https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/media-tv/mythtv/metadata.xml?view=markup
+.. [#use-flag-metadata-example2] https://gitweb.gentoo.org/archive/repo/gentoo-2.git/tree/media-tv/mythtv/metadata.xml?id=37af07d2465e22f74394aa2ff2fd80698ac2d12b
 
 .. [#devhandbook] https://devmanual.gentoo.org/ebuild-writing/misc-files/metadata/index.html
 
