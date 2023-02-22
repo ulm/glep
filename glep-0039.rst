@@ -117,8 +117,10 @@ A. A project is a group of developers working towards a goal (or a set
       out-of-date.)  If the Wiki page isn't maintained, it is presumed
       dead.
    *  It should have at least one lead, and the leads are selected by
-      the members of the project.  This selection must occur at least
-      once every 12 months, and may occur at any time.
+      the members of the project.  This selection should occur at least
+      once every 12 months, and may occur at any time.  Any member can
+      demand a lead election if the last election was more than
+      12 months ago.
    *  It may have zero or more sub-projects.  Sub-projects are
       just projects that provide some additional structure, and their
       Wiki pages are defined as sub-projects of the parent project.
