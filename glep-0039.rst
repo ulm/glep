@@ -7,7 +7,7 @@ Type: Informational
 Status: Final
 Version: 2
 Created: 2005-09-01
-Last-Modified: 2023-04-10
+Last-Modified: 2023-05-08
 Post-History: 2005-09-01, 2006-02-09, 2007-10-12, 2008-01-19
 Content-Type: text/x-rst
 Replaces: 4
@@ -20,6 +20,14 @@ Implemented.  The metastructure proposal was accepted by a vote of all
 Gentoo developers on 2005-06-14 [#Metastructure_vote]_.
 GLEP amended on 2006-02-09 to add the final bullet point to list B in
 `Specification`_.
+
+Updated by an all-developers vote on 2023-05-08:
+
+* Replace leaving council members by next in line [#Council2007]_.
+* Updating this document requires an all-developers vote [#Council2009]_.
+* Council members must be developers [#Council2013]_.
+* An inquorate council meeting cannot take any substantive action.
+* Drop hard requirement of yearly project lead elections.
 
 Abstract
 ========
@@ -238,6 +246,17 @@ References
    (https://archives.gentoo.org/gentoo-dev/message/f5ab9ccca62a5d5e0b7b7ab0156f19b3)
 
 .. [#Project_pages] https://wiki.gentoo.org/wiki/Gentoo_Wiki:Developer_Central/Project_pages
+
+.. [#Council2007] 2007-02-08 council meeting
+   (https://projects.gentoo.org/council/meeting-logs/20070208-summary.txt)
+
+.. [#Council2009] 2009-07-20 council meeting
+   (https://projects.gentoo.org/council/meeting-logs/20090720-summary.txt),
+   confirmed on 2011-07-15
+   (https://projects.gentoo.org/council/meeting-logs/20110715-summary.txt)
+
+.. [#Council2013] 2013-02-12 council meeting
+   (https://projects.gentoo.org/council/meeting-logs/20130212-summary.txt)
 
 Copyright
 =========
