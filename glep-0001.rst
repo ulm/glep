@@ -8,7 +8,7 @@ Type: Informational
 Status: Active
 Version: 4
 Created: 2003-05-31
-Last-Modified: 2022-07-08
+Last-Modified: 2023-02-22
 Post-History: 2003-06-01, 2003-07-02, 2008-01-19, 2008-06-05, 2011-03-09,
               2013-12-14, 2017-09-17, 2018-07-10, 2019-11-24
 Content-Type: text/x-rst
@@ -294,7 +294,8 @@ The Created header records the date that the GLEP was assigned a number,
 Last-Modified specifies the date that the GLEP was last updated in the master
 branch, while Post-History is used to record the dates of when new versions
 of the GLEP are posted to the appropriate mailing list.  All three headers
-should be in ISO 8601 ``yyyy-mm-dd`` format, e.g. 2001-08-14.
+should be in ISO 8601 ``yyyy-mm-dd`` format, e.g. 2001-08-14, with the dates
+represented in UTC (Coordinated Universal Time).
 
 The format of a GLEP is specified with a Content-Type header, which
 must be "text/x-rst" for ReStructuredText GLEPs (see GLEP 2 [#GLEP2]_).
