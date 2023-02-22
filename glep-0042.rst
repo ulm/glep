@@ -9,7 +9,7 @@ Type: Standards Track
 Status: Final
 Version: 4
 Created: 2005-10-31
-Last-Modified: 2019-11-07
+Last-Modified: 2023-02-22
 Post-History: 2005-11-01, 2005-11-05, 2005-11-07, 2005-12-11, 2005-12-13,
               2005-12-18, 2006-01-05, 2006-03-02, 2006-03-06, 2006-06-12,
               2006-09-05, 2016-03-10, 2017-11-27
@@ -237,7 +237,8 @@ The following headers describe the purpose and format of the news item:
 
 ``Posted:``
     Date of posting, in ``yyyy-mm-dd`` format (e.g. 2005-12-18) for
-    compatibility with GLEP 45 [#glep-45]_. Translations should use the date
+    compatibility with GLEP 45 [#glep-45]_. The date must be represented
+    in UTC (Coordinated Universal Time). Translations should use the date
     of the original news item. Mandatory.
 
 ``Revision:``
@@ -519,8 +520,8 @@ References
 Copyright
 =========
 
-This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
-Unported License.  To view a copy of this license, visit
-https://creativecommons.org/licenses/by-sa/3.0/.
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License.  To view a copy of this license, visit
+https://creativecommons.org/licenses/by-sa/4.0/.
 
 .. vim: set tw=80 fileencoding=utf-8 spell spelllang=en et :
