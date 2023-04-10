@@ -81,12 +81,12 @@ Problems with the existing system
 1. The assumption that TLPs are complete is either incorrect (there
    still is no "server" TLP) or just plain weird (but the lack of a
    server TLP is technically okay because all devs who don't have an
-   obvious TLP belong to the "base" TLP by default).  
+   obvious TLP belong to the "base" TLP by default).
 2. There is nothing at all to ensure that project leads actually do
    represent the devs they supposedly lead or satisfy their
    responsibilities.  Indeed, should a TLP manager go AWOL it is not at
    all obvious how the situation should be resolved.
-3. Nothing is being decided at global scope right now.  Some TLP strategic 
+3. Nothing is being decided at global scope right now.  Some TLP strategic
    managers rarely attend the managers' meetings, and the managers as a
    whole certainly are not providing any sort of global vision for
    Gentoo right now.
@@ -174,7 +174,7 @@ B. Global issues will be decided by an elected Gentoo council.
 Rationale
 =========
 
-So, does this proposal solve any of the previously-mentioned problems?  
+So, does this proposal solve any of the previously-mentioned problems?
 
 1. There is no longer any requirement that the project structure be
    complete.  Some devs work on very specific parts of the tree, while
