@@ -7,7 +7,7 @@ Type: Standards Track
 Status: Accepted
 Version: 1.1
 Created: 2018-11-15
-Last-Modified: 2022-11-15
+Last-Modified: 2023-05-02
 Post-History: 2018-11-17, 2019-07-08, 2021-09-13, 2021-09-22, 2022-05-28,
               2022-09-21
 Content-Type: text/x-rst
@@ -625,9 +625,8 @@ the goal of using simple and transparent package format.
 Reference Implementation
 ========================
 
-The proof-of-concept implementation of binary package format converter
-is available as xpak2gpkg [#XPAK2GPKG]_.  It can be used to easily
-create packages in the new format for early inspection.
+The gpkg format is supported by Portage since version 3.0.36
+[#PORTAGE-3.0.36]_.
 
 
 References
@@ -660,9 +659,8 @@ References
 .. [#TAR-PORTABILITY] Michał Górny, Portability of tar features
    (https://dev.gentoo.org/~mgorny/articles/portability-of-tar-features.html)
 
-.. [#XPAK2GPKG] xpak2gpkg: Proof-of-concept converter from tbz2/xpak
-   to gpkg binpkg format
-   (https://github.com/mgorny/xpak2gpkg)
+.. [#PORTAGE-3.0.36] Portage version 3.0.36
+   (https://gitweb.gentoo.org/proj/portage.git/commit/?h=portage-3.0.36)
 
 .. [#TARDUP] tar: Multiple Members with the Same Name
    (https://www.gnu.org/software/tar/manual/html_node/multiple.html)
