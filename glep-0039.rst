@@ -246,8 +246,6 @@ References
    Message-ID 20050614035141.GC15256\@dst.grantgoodyear.org
    (https://archives.gentoo.org/gentoo-dev/message/f5ab9ccca62a5d5e0b7b7ab0156f19b3)
 
-.. [#Project_pages] https://wiki.gentoo.org/wiki/Gentoo_Wiki:Developer_Central/Project_pages
-
 .. [#Council2007] 2007-02-08 council meeting
    (https://projects.gentoo.org/council/meeting-logs/20070208-summary.txt)
 
@@ -258,6 +256,8 @@ References
 
 .. [#Council2013] 2013-02-12 council meeting
    (https://projects.gentoo.org/council/meeting-logs/20130212-summary.txt)
+
+.. [#Project_pages] https://wiki.gentoo.org/wiki/Gentoo_Wiki:Developer_Central/Project_pages
 
 Copyright
 =========
