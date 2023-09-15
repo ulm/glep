@@ -8,8 +8,8 @@ Type: Standards Track
 Status: Replaced
 Version: 1
 Created: 2005-12-26
-Last-Modified: 2017-10-13
-Post-History: 2005-12-26, 2006-03-05, 2008-01-24, 2008-05-10
+Last-Modified: 2023-09-15
+Post-History: 2005-12-26, 2006-03-05, 2008-01-21, 2008-03-25
 Content-Type: text/x-rst
 Replaced-By: 68
 ---
