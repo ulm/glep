@@ -7,10 +7,18 @@ Type: Standards Track
 Status: Final
 Version: 1
 Created: 2018-01-26
-Last-Modified: 2019-11-11
+Last-Modified: 2023-09-15
 Post-History: 2018-01-27, 2019-10-24
 Content-Type: text/x-rst
 ---
+
+Status
+======
+As of 2019-10-18, the Gentoo Infrastructure team has successfully
+deployed the ``filename-hash BLAKE2B 8`` layout on Gentoo mirrors.
+The previous flat directory structure has been removed on 2023-09-14
+[#BUG784713]_.
+
 
 Abstract
 ========
@@ -382,12 +390,12 @@ and maintaining mirrors via ``emirrordist``.  The implementation
 supports both listed layouts, with all hash functions supported
 by Portage and cutoffs being multiples of 4.
 
-As of 2019-10-18, the Gentoo Infrastructure team has successfully
-deployed the ``filename-hash BLAKE2B 8`` layout on Gentoo mirrors.
-
 
 References
 ==========
+.. [#BUG784713] Bug 784713 - Remove old distfile mirror layout
+   (https://bugs.gentoo.org/784713)
+
 .. [#DESKTOP_FORMAT] Desktop Entry Specification: Basic format of the file
    (https://standards.freedesktop.org/desktop-entry-spec/latest/ar01s03.html)
 
