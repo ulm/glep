@@ -3,10 +3,10 @@ GLEP: 84
 Title: Standard format for package.mask files
 Author: Arthur Zamarin <arthurzam@gentoo.org>
 Type: Standards Track
-Status: Draft
+Status: Accepted
 Version: 1.0
 Created: 2023-11-01
-Last-Modified: 2023-12-02
+Last-Modified: 2024-02-27
 Post-History: 2023-10-04, 2023-10-13, 2023-11-01
 Content-Type: text/x-rst
 ---
