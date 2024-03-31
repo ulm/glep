@@ -120,9 +120,6 @@ c) A license approved as GPL compatible by the Free Software
 Exceptions for other free software licenses will be granted by the
 Gentoo Council on a case by case basis.
 
-For easy reference, the license for each project should be documented
-on the wiki page at [#PROJECTS]_.
-
 
 Certificate of Origin
 ---------------------
@@ -372,9 +369,6 @@ References
 
 .. [#GPL-COMPAT] GPL-compatible free software licenses,
    https://www.gnu.org/licenses/license-list.en.html#GPLCompatibleLicenses
-
-.. [#PROJECTS] Licensing of Gentoo projects,
-   https://wiki.gentoo.org/wiki/Project:Licenses/Licensing_of_Gentoo_projects
 
 .. [#OSDL-DCO] Open Source Development Labs, Inc.,
    Developer's Certificate of Origin 1.1,
