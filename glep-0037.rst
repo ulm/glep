@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Deferred
 Version: 1
 Created: 2005-04-30
-Last-Modified: 2014-01-21
+Last-Modified: 2024-07-16
 Post-History: 2005-04-30, 2006-09-05
 Content-Type: text/x-rst
 ---
@@ -66,7 +66,7 @@ IUSE and RDEPEND metadata.  An example would be something like this::
 	DESCRIPTION="Java Development Kit 1.4"
 	KEYWORDS="amd64 hppa ia64 ppc ppc64 sparc x86"
 	RDEPEND="|| (
-	             =dev-java/blackdown-jdk-1.4\*
+	             =dev-java/blackdown-jdk-1.4*
 	             =dev-java/ibm-jdk-bin-1.4*
 	             =dev-java/jrockit-jdk-bin-1.4*
 	             =dev-java/kaffe-1.1.4*
