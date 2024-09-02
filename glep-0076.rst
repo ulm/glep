@@ -10,7 +10,7 @@ Type: Informational
 Status: Active
 Version: 2
 Created: 2013-04-23
-Last-Modified: 2024-04-16
+Last-Modified: 2024-09-02
 Post-History: 2018-06-10, 2018-06-19, 2018-08-31, 2018-09-26, 2023-03-02,
               2024-04-04
 Content-Type: text/x-rst
@@ -48,7 +48,7 @@ going forward.
 In the beginning (2000 or earlier), the copyright header stated that
 *Gentoo Technologies, Inc.* was the copyright holder, without any
 formal paperwork.  The formal assignment document was however only
-introduced in early 2004.  The assignment had many objectors (mostly
+introduced in late 2003.  The assignment had many objectors (mostly
 on the ``gentoo-core`` mailing list).  The developer recruiting
 procedures attempted to require signing of the document as a condition
 for becoming a developer, but it was not applied to pre-existing
