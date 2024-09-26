@@ -6,7 +6,7 @@ Type: Standards Track
 Status: Final
 Version: 1.0
 Created: 2023-11-01
-Last-Modified: 2024-07-22
+Last-Modified: 2024-09-26
 Post-History: 2023-10-04, 2023-10-13, 2023-11-01
 Content-Type: text/x-rst
 ---
@@ -93,7 +93,7 @@ Comments Block
 The lines in the comment block are prefixed with a "#" symbol. The comments
 should be separated with single space from the "#", unless this is trailing
 whitespace, in which case it should be removed (meaning blank lines in comments
-block are just "#\n").
+block are just "#\\n").
 
 The comments block consists of 2 mandatory parts (`author line`_ and
 `explanation`_) and one optional part (`last-rite epilogue`_). A blank line to
